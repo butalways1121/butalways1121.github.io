@@ -6,20 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>我的第一篇博客 | Hexo</title>
+  <title>hexo-yilia主题如何添加Live2d看板动画 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="第一章内容">
-<meta name="keywords" content="随笔">
+  <meta name="description" content="1.先看一下效果 喏，就是右下角框出来的那只黑色小猫咪，它会随着你的鼠标运动哦，还是很好玩的~ 2.安装相关的模块">
 <meta property="og:type" content="article">
-<meta property="og:title" content="我的第一篇博客">
-<meta property="og:url" content="http://yoursite.com/2019/07/05/我的第一篇博客/index.html">
+<meta property="og:title" content="hexo-yilia主题如何添加Live2d看板动画">
+<meta property="og:url" content="http://yoursite.com/2019/07/10/hexo-yilia主题如何添加Live2d看板动画/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="第一章内容">
+<meta property="og:description" content="1.先看一下效果 喏，就是右下角框出来的那只黑色小猫咪，它会随着你的鼠标运动哦，还是很好玩的~ 2.安装相关的模块">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-10T08:24:03.366Z">
+<meta property="og:image" content="https://github.com/butalways1121/img/blob/master/display.png">
+<meta property="og:updated_time" content="2019-07-10T23:41:48.507Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="我的第一篇博客">
-<meta name="twitter:description" content="第一章内容">
+<meta name="twitter:title" content="hexo-yilia主题如何添加Live2d看板动画">
+<meta name="twitter:description" content="1.先看一下效果 喏，就是右下角框出来的那只黑色小猫咪，它会随着你的鼠标运动哦，还是很好玩的~ 2.安装相关的模块">
+<meta name="twitter:image" content="https://github.com/butalways1121/img/blob/master/display.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -162,29 +163,32 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-我的第一篇博客" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-hexo-yilia主题如何添加Live2d看板动画" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      我的第一篇博客
+      hexo-yilia主题如何添加Live2d看板动画
     </h1>
   
 
         
-        <a href="/2019/07/05/我的第一篇博客/" class="archive-article-date">
-  	<time datetime="2019-07-05T07:04:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-05</time>
+        <a href="/2019/07/10/hexo-yilia主题如何添加Live2d看板动画/" class="archive-article-date">
+  	<time datetime="2019-07-10T08:27:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-10</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="第一章"><a href="#第一章" class="headerlink" title="第一章"></a>第一章</h1><p>内容</p>
-<a id="more"></a>
-<p>#第二章<br>内容<br>第三章<br>内容</p>
+        <h1 id="1-先看一下效果"><a href="#1-先看一下效果" class="headerlink" title="1.先看一下效果"></a>1.先看一下效果</h1><p> 喏，就是右下角框出来的那只黑色小猫咪，它会随着你的鼠标运动哦，还是很好玩的~<br><img src="https://github.com/butalways1121/img/blob/master/display.png" alt="image text"></p>
+<h1 id="2-安装相关的模块"><a href="#2-安装相关的模块" class="headerlink" title="2.安装相关的模块"></a>2.安装相关的模块</h1><a id="more"></a>
+<p> 在cmd命令行下进入你博客的根目录，然后运行以下命令来安装插件：<br> <code>npm install --save hexo-helper-live2d</code></p>
+<h1 id="3-安装你想要的Live2d动画"><a href="#3-安装你想要的Live2d动画" class="headerlink" title="3.安装你想要的Live2d动画"></a>3.安装你想要的Live2d动画</h1><p> 选择你想要的动画模型，运行以下命令来执行安装：<br> <code>npm install lived-widget-model-hijiki</code><br> 我这里使用的是lived-widget-model-hijiki，就是那只小猫咪对应的模型名称，可以<a href="https://www.cnblogs.com/Friends-A/p/11054968.html" target="_blank" rel="noopener">点击这里</a>来选择你喜欢的小动物或者小女孩等，替换到对应名称即可~</p>
+<h1 id="4-添加配置"><a href="#4-添加配置" class="headerlink" title="4.添加配置"></a>4.添加配置</h1><p> 打开你博客的根目录的_config.yml文件，在末尾添加如下代码：<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">live2d:</span><br><span class="line">  enable: true</span><br><span class="line">  scriptFrom: local</span><br><span class="line">  pluginRootPath: live2dw/</span><br><span class="line">  pluginJsPath: lib/</span><br><span class="line">  pluginModelPath: assets/</span><br><span class="line">  tagMode: false</span><br><span class="line">  debug: false</span><br><span class="line">  model:</span><br><span class="line">    use: live2d-widget-model-hijiki</span><br><span class="line">  display:</span><br><span class="line">    position: right</span><br><span class="line">    width: 150</span><br><span class="line">    height: 300</span><br><span class="line">  mobile:</span><br><span class="line">    show: true</span><br></pre></td></tr></table></figure></p>
+<p> 配置完成之后执行hexo clean、hexo g 、hexo s &amp;&amp; hexo d就可以啦！完成之后你的博客右下角也会出现如此可爱的动画~</p>
 
       
 
@@ -224,17 +228,6 @@
     <div class="article-info article-info-index">
       
       
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
       
 
       
@@ -285,7 +278,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/07/05/我的第一篇博客/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/07/10/hexo-yilia主题如何添加Live2d看板动画/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -299,15 +292,11 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/07/10/hexo-yilia主题如何添加Live2d看板动画/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          hexo-yilia主题如何添加Live2d看板动画
-        
-      </div>
-    </a>
   
+    <a href="/2019/07/05/我的第一篇博客/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">我的第一篇博客</div>
+      <i class="icon-circle-right"></i>
+    </a>
   
 </nav>
 
@@ -332,7 +321,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#第一章"><span class="toc-number">1.</span> <span class="toc-text">第一章</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-先看一下效果"><span class="toc-number">1.</span> <span class="toc-text">1.先看一下效果</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-安装相关的模块"><span class="toc-number">2.</span> <span class="toc-text">2.安装相关的模块</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-安装你想要的Live2d动画"><span class="toc-number">3.</span> <span class="toc-text">3.安装你想要的Live2d动画</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-添加配置"><span class="toc-number">4.</span> <span class="toc-text">4.添加配置</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -357,7 +346,7 @@
 <script src="https://billts.site/js/gitment.js"></script>
 <script>
 var gitment = new Gitment({
-  id: "http://yoursite.com/2019/07/05/我的第一篇博客/",
+  id: "http://yoursite.com/2019/07/10/hexo-yilia主题如何添加Live2d看板动画/",
   owner: 'butalways1121',
   repo: 'butalways1121.github.io',
   oauth: {
