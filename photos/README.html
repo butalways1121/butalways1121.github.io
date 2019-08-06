@@ -320,7 +320,7 @@
 <script src="https://billts.site/js/gitment.js"></script>
 <script>
 var gitment = new Gitment({
-  id: "http://yoursite.com/photos/README.html",
+  id: decodeURI(window.location.pathname),
   owner: 'butalways1121',
   repo: 'butalways1121.github.io',
   oauth: {
