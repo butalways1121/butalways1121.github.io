@@ -23,7 +23,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-SpringBoot/master/5.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-SpringBoot/master/6.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-SpringBoot/master/7.png">
-<meta property="og:updated_time" content="2019-08-08T02:15:08.999Z">
+<meta property="og:updated_time" content="2019-08-08T02:23:10.827Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Spring Boot创建接口实现数据库的查询操作">
 <meta name="twitter:description" content="工具及环境eclipse j2ee 2019、apache-maven-3.6.1、jdk1.8、Navicat for mysql 12、postman。 配置Maven环境下载apache-maven-3.6.1压缩包，解压到某个文件夹，右键计算机-属性-高级系统设置-环境变量中新建MAVEN_HOME，设置值为maven解压的目录路径，编辑Path变量，新增%MAVEN_HOME%\bin。">
@@ -199,7 +199,7 @@
         <h2 id="工具及环境"><a href="#工具及环境" class="headerlink" title="工具及环境"></a>工具及环境</h2><p>eclipse j2ee 2019、apache-maven-3.6.1、jdk1.8、Navicat for mysql 12、postman。</p>
 <h2 id="配置Maven环境"><a href="#配置Maven环境" class="headerlink" title="配置Maven环境"></a>配置Maven环境</h2><p>下载apache-maven-3.6.1压缩包，解压到某个文件夹，右键计算机-属性-高级系统设置-环境变量中新建MAVEN_HOME，设置值为maven解压的目录路径，编辑Path变量，新增%MAVEN_HOME%\bin。打开cmd.exe，输入命令mvn –version检测是否安装成功，出现Maven版本号字样则表示成功。</p>
 <a id="more"></a>
-<h2 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h2><p>在Navicat中的test数据库新建test表并设计如下，其中id选择为自增：<br><img src="https://raw.githubusercontent.com/butalways1121/img-SpringBoot/master/1.png" alt></p>
+<h2 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h2><p>在Navicat中的test数据库新建test表并设计如下，其中id属性选择为自增：<br><img src="https://raw.githubusercontent.com/butalways1121/img-SpringBoot/master/1.png" alt></p>
 <p>并添加数据如下：<br><img src="https://raw.githubusercontent.com/butalways1121/img-SpringBoot/master/2.png" alt></p>
 <h2 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h2><p>Eclipse中创建Maven Project，输入相应的包名及项目名，这里的项目名是Select，包名为com,创建好的项目结构如下:<br><img src="https://raw.githubusercontent.com/butalways1121/img-SpringBoot/master/3.png" alt></p>
 <p>接着使用如下代码替换pom.xml里面的内容:</p>
