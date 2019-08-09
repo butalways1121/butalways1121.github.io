@@ -6,20 +6,26 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>我的第一篇博客 | Hexo</title>
+  <title>Spring Boot 连接数据库并插入数据 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="第一章 内容">
-<meta name="keywords" content="随笔">
+  <meta name="description" content="创建数据库表在test数据库下新建test表如下,有id和name两个属性，其中id设为自增： 新建项目Eclipse中创建Maven Project，输入相应的包名及项目名，这里的项目名是Insert，包名为com,接着使用如下代码替换pom.xml里面的内容: 1234567891011121314151617181920212223242526272829303132333435363738">
+<meta name="keywords" content="Spring Boot">
 <meta property="og:type" content="article">
-<meta property="og:title" content="我的第一篇博客">
-<meta property="og:url" content="http://yoursite.com/2019/07/05/我的第一篇博客/index.html">
+<meta property="og:title" content="Spring Boot 连接数据库并插入数据">
+<meta property="og:url" content="http://yoursite.com/2019/08/09/Spring-Boot连接数据库并插入数据/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="第一章 内容">
+<meta property="og:description" content="创建数据库表在test数据库下新建test表如下,有id和name两个属性，其中id设为自增： 新建项目Eclipse中创建Maven Project，输入相应的包名及项目名，这里的项目名是Insert，包名为com,接着使用如下代码替换pom.xml里面的内容: 1234567891011121314151617181920212223242526272829303132333435363738">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-17T23:59:23.255Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/8.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/9.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/10.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/11.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/12.png">
+<meta property="og:updated_time" content="2019-08-09T01:21:30.026Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="我的第一篇博客">
-<meta name="twitter:description" content="第一章 内容">
+<meta name="twitter:title" content="Spring Boot 连接数据库并插入数据">
+<meta name="twitter:description" content="创建数据库表在test数据库下新建test表如下,有id和name两个属性，其中id设为自增： 新建项目Eclipse中创建Maven Project，输入相应的包名及项目名，这里的项目名是Insert，包名为com,接着使用如下代码替换pom.xml里面的内容: 1234567891011121314151617181920212223242526272829303132333435363738">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/8.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -168,34 +174,57 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-我的第一篇博客" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Spring-Boot连接数据库并插入数据" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      我的第一篇博客
+      Spring Boot 连接数据库并插入数据
     </h1>
   
 
         
-        <a href="/2019/07/05/我的第一篇博客/" class="archive-article-date">
-  	<time datetime="2019-07-05T07:04:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-05</time>
+        <a href="/2019/08/09/Spring-Boot连接数据库并插入数据/" class="archive-article-date">
+  	<time datetime="2019-08-08T23:59:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-09</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="第一章"><a href="#第一章" class="headerlink" title="第一章"></a>第一章</h1><hr>
-<p>内容</p>
-<a id="more"></a>
-<h1 id="第二章"><a href="#第二章" class="headerlink" title="第二章"></a>第二章</h1><hr>
-<p>内容</p>
-<h1 id="第三章"><a href="#第三章" class="headerlink" title="第三章"></a>第三章</h1><hr>
-<p>内容</p>
+        <h2 id="创建数据库表"><a href="#创建数据库表" class="headerlink" title="创建数据库表"></a>创建数据库表</h2><p>在test数据库下新建test表如下,有id和name两个属性，其中id设为自增：<br><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/8.png" alt></p>
+<h2 id="新建项目"><a href="#新建项目" class="headerlink" title="新建项目"></a>新建项目</h2><p>Eclipse中创建Maven Project，输入相应的包名及项目名，这里的项目名是Insert，包名为com,<br>接着使用如下代码替换pom.xml里面的内容:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line">&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot;</span><br><span class="line">	xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><br><span class="line">	xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt;</span><br><span class="line">	&lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;</span><br><span class="line"></span><br><span class="line">	&lt;groupId&gt;1.0.0&lt;/groupId&gt;</span><br><span class="line">	&lt;artifactId&gt;dms-get-ecall&lt;/artifactId&gt;</span><br><span class="line">	&lt;version&gt;0.0.1-SNAPSHOT&lt;/version&gt;</span><br><span class="line">	&lt;packaging&gt;jar&lt;/packaging&gt;</span><br><span class="line"></span><br><span class="line">	&lt;name&gt;springboot-restful&lt;/name&gt;</span><br><span class="line">	&lt;url&gt;http://maven.apache.org&lt;/url&gt;</span><br><span class="line"></span><br><span class="line">	&lt;properties&gt;</span><br><span class="line">		&lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt;</span><br><span class="line">		&lt;java.version&gt;1.7&lt;/java.version&gt;</span><br><span class="line">		&lt;mybatis-spring-boot&gt;1.2.0&lt;/mybatis-spring-boot&gt;</span><br><span class="line">	&lt;/properties&gt;</span><br><span class="line"></span><br><span class="line">	&lt;parent&gt;</span><br><span class="line">		&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">		&lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;</span><br><span class="line">		&lt;version&gt;1.5.9.RELEASE&lt;/version&gt;</span><br><span class="line">		&lt;relativePath /&gt;</span><br><span class="line">	&lt;/parent&gt;</span><br><span class="line"></span><br><span class="line">	&lt;dependencies&gt;</span><br><span class="line">		&lt;dependency&gt;</span><br><span class="line">			&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">			&lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;</span><br><span class="line">		&lt;/dependency&gt;</span><br><span class="line">		&lt;dependency&gt;</span><br><span class="line">			&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">			&lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt;</span><br><span class="line">			&lt;scope&gt;test&lt;/scope&gt;</span><br><span class="line">		&lt;/dependency&gt;</span><br><span class="line"></span><br><span class="line">		&lt;dependency&gt;</span><br><span class="line">			&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">			&lt;artifactId&gt;spring-boot-devtools&lt;/artifactId&gt;</span><br><span class="line">			&lt;optional&gt;true&lt;/optional&gt;</span><br><span class="line">		&lt;/dependency&gt;</span><br><span class="line"></span><br><span class="line">		&lt;dependency&gt;</span><br><span class="line">			&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">			&lt;artifactId&gt;spring-boot-starter-data-jpa&lt;/artifactId&gt;</span><br><span class="line">		&lt;/dependency&gt;</span><br><span class="line">		&lt;!-- Spring Boot Mybatis 依赖 --&gt;</span><br><span class="line">		&lt;dependency&gt;</span><br><span class="line">			&lt;groupId&gt;org.mybatis.spring.boot&lt;/groupId&gt;</span><br><span class="line">			&lt;artifactId&gt;mybatis-spring-boot-starter&lt;/artifactId&gt;</span><br><span class="line">			&lt;version&gt;$&#123;mybatis-spring-boot&#125;&lt;/version&gt;</span><br><span class="line">		&lt;/dependency&gt;</span><br><span class="line">		&lt;!-- MySQL 连接驱动依赖 --&gt;</span><br><span class="line">		&lt;dependency&gt;</span><br><span class="line">			&lt;groupId&gt;mysql&lt;/groupId&gt;</span><br><span class="line">			&lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;</span><br><span class="line">		&lt;/dependency&gt;</span><br><span class="line">	&lt;/dependencies&gt;</span><br><span class="line">	&lt;build&gt;</span><br><span class="line">		&lt;plugins&gt;</span><br><span class="line">			&lt;plugin&gt;</span><br><span class="line">				&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">				&lt;artifactId&gt;spring-boot-maven-plugin&lt;/artifactId&gt;</span><br><span class="line">				&lt;configuration&gt;</span><br><span class="line">					&lt;fork&gt;true&lt;/fork&gt;</span><br><span class="line">				&lt;/configuration&gt;</span><br><span class="line">			&lt;/plugin&gt;</span><br><span class="line">		&lt;/plugins&gt;</span><br><span class="line">	&lt;/build&gt;</span><br><span class="line">&lt;/project&gt;</span><br></pre></td></tr></table></figure>
 
+<p>在src/main下新建resources文件夹，新建application.properties文件，将如下内容复制并修改相关信息，主要内容是数据库的连接配置，包括url、数据库用户名、密码和之前创建的数据库表名，：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">banner.charset=UTF-8</span><br><span class="line">server.tomcat.uri-encoding=UTF-8</span><br><span class="line">spring.http.encoding.charset=UTF-8</span><br><span class="line">spring.http.encoding.enabled=true</span><br><span class="line">spring.http.encoding.force=true</span><br><span class="line">spring.messages.encoding=UTF-8</span><br><span class="line"></span><br><span class="line">server.port=8083</span><br><span class="line">spring.datasource.url=jdbc:mysql://数据库地址:3306/test?useUnicode=true&amp;characterEncoding=utf8&amp;useSSL=false</span><br><span class="line">spring.datasource.username=数据库用户名</span><br><span class="line">spring.datasource.password=数据库密码</span><br><span class="line">spring.datasource.driver-class-name=com.mysql.jdbc.Driver</span><br></pre></td></tr></table></figure>
+
+<p>将com.Insert下的App.java代码更新如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">package com.Select;</span><br><span class="line"></span><br><span class="line">import org.springframework.boot.SpringApplication;</span><br><span class="line">import org.springframework.boot.autoconfigure.SpringBootApplication;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * Hello world!</span><br><span class="line"> *</span><br><span class="line"> */</span><br><span class="line">@SpringBootApplication</span><br><span class="line">public class App </span><br><span class="line">&#123;</span><br><span class="line">    public static void main( String[] args )</span><br><span class="line">    &#123;</span><br><span class="line">    	SpringApplication.run(App.class, args);</span><br><span class="line">        System.out.println( &quot;Hello World!&quot; );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>创建后的项目结构如下：<br><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/9.png" alt><br>完成之后右键项目，选择Maven/Update Projects更新项目。</p>
+<h2 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h2><h3 id="entity层"><a href="#entity层" class="headerlink" title="entity层"></a>entity层</h3><p>在src/main/java下新建entity包，创建User实体类，该实体类封装的变量对应test数据库表中的属性，代码如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">package com.Insert.entity;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//创建test表对应的实体类</span><br><span class="line">public class User &#123;</span><br><span class="line">	private int id;</span><br><span class="line">	private String name;</span><br><span class="line">	public User(String name2) &#123;</span><br><span class="line">		// TODO Auto-generated constructor stub</span><br><span class="line">		this.name = name2;</span><br><span class="line">	&#125;</span><br><span class="line">	public String getName() &#123;</span><br><span class="line">		return name;</span><br><span class="line">	&#125;</span><br><span class="line">	public void setName(String name) &#123;</span><br><span class="line">		this.name = name;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="dao层"><a href="#dao层" class="headerlink" title="dao层"></a>dao层</h3><p>在src/main/java下新建dao包,新建UserDao接口，实现对数据库的插入操作：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">package com.Insert.dao;</span><br><span class="line"></span><br><span class="line">import org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line">import org.springframework.jdbc.core.JdbcTemplate;</span><br><span class="line">import org.springframework.stereotype.Repository;</span><br><span class="line"></span><br><span class="line">import com.Insert.entity.User;</span><br><span class="line"></span><br><span class="line">//交给springboot管理的注解</span><br><span class="line">@Repository</span><br><span class="line">public class UserDao &#123;</span><br><span class="line">	@Autowired</span><br><span class="line">	private JdbcTemplate jdbcTemplate;</span><br><span class="line"> </span><br><span class="line">	public void Insert(User user) &#123;</span><br><span class="line">		// TODO Auto-generated method stub</span><br><span class="line">		jdbcTemplate.update(&quot;insert into test(name) values(?)&quot;, user.getName());</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="service层"><a href="#service层" class="headerlink" title="service层"></a>service层</h3><p>在src/main/java下新建service包，新建UserService接口，添加要用到的方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">package com.Insert.service;</span><br><span class="line"></span><br><span class="line">import com.Insert.entity.User;</span><br><span class="line"></span><br><span class="line">public interface UserService &#123;</span><br><span class="line">	void Insert(User user);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在src/main/java下新建serviceimpl包,新建UserServiceImpl类来实现接口，重写UserService中声明的方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">package com.Insert.serviceimpl;</span><br><span class="line"></span><br><span class="line">import org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line">import org.springframework.stereotype.Service;</span><br><span class="line"></span><br><span class="line">import com.Insert.dao.UserDao;</span><br><span class="line">import com.Insert.entity.User;</span><br><span class="line">import com.Insert.service.UserService;</span><br><span class="line"></span><br><span class="line">@Service</span><br><span class="line">public class UserServiceImpl implements UserService&#123;</span><br><span class="line">	</span><br><span class="line">	@Autowired</span><br><span class="line">	private UserDao userDao;</span><br><span class="line"></span><br><span class="line">	@Override</span><br><span class="line">	public void Insert(User user) &#123;</span><br><span class="line">		// TODO 自动生成的方法存根</span><br><span class="line">		userDao.Insert(user);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="controller层"><a href="#controller层" class="headerlink" title="controller层"></a>controller层</h3><p>在src/main/java下新建controller包，新建UserController类来实现调用:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">package com.Insert.controller;</span><br><span class="line"></span><br><span class="line">import org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line">import org.springframework.web.bind.annotation.RequestMapping;</span><br><span class="line">import org.springframework.web.bind.annotation.RestController;</span><br><span class="line"></span><br><span class="line">import com.Insert.entity.User;</span><br><span class="line">import com.Insert.serviceimpl.UserServiceImpl;</span><br><span class="line"></span><br><span class="line">@RestController</span><br><span class="line">public class UserController &#123;</span><br><span class="line">	@Autowired</span><br><span class="line">	private UserServiceImpl userservice;</span><br><span class="line">	</span><br><span class="line">	@RequestMapping(&quot;/insert&quot;)</span><br><span class="line">	public String Insert(String name) &#123;</span><br><span class="line">		User user = new User(name);</span><br><span class="line">		userservice.Insert(user);</span><br><span class="line">		return &quot;insert successfully!&quot;;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>至此，整个项目已搭建完毕，整体的框架如下：<br><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/10.png" alt></p>
+<h2 id="测试运行"><a href="#测试运行" class="headerlink" title="测试运行"></a>测试运行</h2><p>右键App.java，选择运行方式-Java应用程序，如果控制台会出现Hello World！则表明映射成功，并且能正常运行。然后打开postman设置相关信息如下，点击send之后会成功显示insert successfully！：<br><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/11.png" alt><br>接着去数据库查看数据是否成功插入（运行了好多次）：<br><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/12.png" alt></p>
+<hr>
+<h2 id="OVER！"><a href="#OVER！" class="headerlink" title="OVER！"></a>OVER！</h2>
       
 
       
@@ -239,7 +268,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Spring Boot</a>
         		</li>
       		
 		</ul>
@@ -295,7 +324,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/07/05/我的第一篇博客/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/08/09/Spring-Boot连接数据库并插入数据/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -309,15 +338,11 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/07/10/hexo-yilia主题如何添加Live2d看板动画/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          hexo-yilia主题如何添加Live2d看板动画
-        
-      </div>
-    </a>
   
+    <a href="/2019/08/06/Spring-Boot创建接口实现数据库的查询操作/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Spring Boot创建接口实现数据库的查询操作</div>
+      <i class="icon-circle-right"></i>
+    </a>
   
 </nav>
 
@@ -342,7 +367,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#第一章"><span class="toc-number">1.</span> <span class="toc-text">第一章</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第二章"><span class="toc-number">2.</span> <span class="toc-text">第二章</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第三章"><span class="toc-number">3.</span> <span class="toc-text">第三章</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#创建数据库表"><span class="toc-number">1.</span> <span class="toc-text">创建数据库表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#新建项目"><span class="toc-number">2.</span> <span class="toc-text">新建项目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建项目"><span class="toc-number">3.</span> <span class="toc-text">创建项目</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#entity层"><span class="toc-number">3.1.</span> <span class="toc-text">entity层</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#dao层"><span class="toc-number">3.2.</span> <span class="toc-text">dao层</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#service层"><span class="toc-number">3.3.</span> <span class="toc-text">service层</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#controller层"><span class="toc-number">3.4.</span> <span class="toc-text">controller层</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#测试运行"><span class="toc-number">4.</span> <span class="toc-text">测试运行</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#OVER！"><span class="toc-number">5.</span> <span class="toc-text">OVER！</span></a></li></ol>
                     </div>
                 </span>
             </div>
