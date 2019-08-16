@@ -26,7 +26,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/26.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/27.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/28.png">
-<meta property="og:updated_time" content="2019-08-16T01:20:34.187Z">
+<meta property="og:updated_time" content="2019-08-16T01:26:01.169Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="springboot+springmvc+mybatis实现对数据库的操作">
 <meta name="twitter:description" content="创建数据库在Navicat中的deptmanage数据库新建dept表设计如下,并插入相关的部门信息，其中id属性选择为自增：">
@@ -233,13 +233,11 @@
 <hr>
 <p>至此，整个项目已搭建完毕，整体的框架如下：<br><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/21.png" alt></p>
 <h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><p>运行程序：右键App.java，选择运行方式-Java应用程序，如果不出意外控制台会出现Hello World！，接着到postman中就可以进行测试了：</p>
-<ol>
-<li>findAll-查询所有信息<br>在postman中设置如下信息，点击send之后就可以查看到所有的部门信息：<br><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/22.png" alt></li>
-<li>findByName-根据部门名称查询信息<br>postman中传入name参数，这里以”name=技术科”为例:<br><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/23.png" alt></li>
-<li>update-修改部门信息<br>对于”id=1”的部门信息进行修改,postman中传入参数:<br><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/24.png" alt><br>到数据库查看,”id=1”的部门信息已经修改成功：<br><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/25.png" alt></li>
-<li>add-增加部门信息<br>增加”name=测试部&amp;address=312”的部门信息：<br><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/26.png" alt><br>到数据库查看，该条信息已成功插入：<br><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/27.png" alt></li>
-<li>delete-删除部门信息<br>以删除”id=8”的部门信息：<br><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/28.png" alt><br>到数据库查看，该条信息已被删除。</li>
-</ol>
+<h3 id="1-findAll-查询所有信息"><a href="#1-findAll-查询所有信息" class="headerlink" title="1.findAll-查询所有信息"></a>1.findAll-查询所有信息</h3><p>在postman中设置如下信息，点击send之后就可以查看到所有的部门信息：<br><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/22.png" alt></p>
+<h3 id="2-findByName-根据部门名称查询信息"><a href="#2-findByName-根据部门名称查询信息" class="headerlink" title="2.findByName-根据部门名称查询信息"></a>2.findByName-根据部门名称查询信息</h3><p>postman中传入name参数，这里以”name=技术科”为例:<br><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/23.png" alt></p>
+<h3 id="3-update-修改部门信息"><a href="#3-update-修改部门信息" class="headerlink" title="3.update-修改部门信息"></a>3.update-修改部门信息</h3><p>对于”id=1”的部门信息进行修改,postman中传入参数:<br><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/24.png" alt><br>到数据库查看,”id=1”的部门信息已经修改成功：<br><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/25.png" alt></p>
+<h3 id="4-add-增加部门信息"><a href="#4-add-增加部门信息" class="headerlink" title="4.add-增加部门信息"></a>4.add-增加部门信息</h3><p>增加”name=测试部&amp;address=312”的部门信息：<br><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/26.png" alt><br>到数据库查看，该条信息已成功插入：<br><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/27.png" alt></p>
+<h3 id="5-delete-删除部门信息"><a href="#5-delete-删除部门信息" class="headerlink" title="5.delete-删除部门信息"></a>5.delete-删除部门信息</h3><p>以删除”id=8”的部门信息：<br><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/28.png" alt><br>到数据库查看，该条信息已被删除。</p>
 <hr>
 <h2 id="OVER！"><a href="#OVER！" class="headerlink" title="OVER！"></a>OVER！</h2>
       
@@ -392,7 +390,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#创建数据库"><span class="toc-number">1.</span> <span class="toc-text">创建数据库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建项目"><span class="toc-number">2.</span> <span class="toc-text">创建项目</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#新建Maven项目"><span class="toc-number">2.1.</span> <span class="toc-text">新建Maven项目</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建项目-1"><span class="toc-number">3.</span> <span class="toc-text">创建项目</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#entity层"><span class="toc-number">3.1.</span> <span class="toc-text">entity层</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#dao层"><span class="toc-number">3.2.</span> <span class="toc-text">dao层</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#service层"><span class="toc-number">3.3.</span> <span class="toc-text">service层</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#controller层"><span class="toc-number">3.4.</span> <span class="toc-text">controller层</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#测试"><span class="toc-number">4.</span> <span class="toc-text">测试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#OVER！"><span class="toc-number">5.</span> <span class="toc-text">OVER！</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#创建数据库"><span class="toc-number">1.</span> <span class="toc-text">创建数据库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建项目"><span class="toc-number">2.</span> <span class="toc-text">创建项目</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#新建Maven项目"><span class="toc-number">2.1.</span> <span class="toc-text">新建Maven项目</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建项目-1"><span class="toc-number">3.</span> <span class="toc-text">创建项目</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#entity层"><span class="toc-number">3.1.</span> <span class="toc-text">entity层</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#dao层"><span class="toc-number">3.2.</span> <span class="toc-text">dao层</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#service层"><span class="toc-number">3.3.</span> <span class="toc-text">service层</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#controller层"><span class="toc-number">3.4.</span> <span class="toc-text">controller层</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#测试"><span class="toc-number">4.</span> <span class="toc-text">测试</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-findAll-查询所有信息"><span class="toc-number">4.1.</span> <span class="toc-text">1.findAll-查询所有信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-findByName-根据部门名称查询信息"><span class="toc-number">4.2.</span> <span class="toc-text">2.findByName-根据部门名称查询信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-update-修改部门信息"><span class="toc-number">4.3.</span> <span class="toc-text">3.update-修改部门信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-add-增加部门信息"><span class="toc-number">4.4.</span> <span class="toc-text">4.add-增加部门信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-delete-删除部门信息"><span class="toc-number">4.5.</span> <span class="toc-text">5.delete-删除部门信息</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#OVER！"><span class="toc-number">5.</span> <span class="toc-text">OVER！</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -592,10 +590,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">hexo-yilia</a>
               </li>
              
@@ -604,11 +598,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Kafka</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">生产者与消费者</a>
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -617,6 +607,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">MyBaits</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Kafka</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">生产者与消费者</a>
               </li>
             
             <div class="clearfix"></div>
