@@ -8,21 +8,21 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>调用接口获取数据并插入数据库 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="该项目是整合了Spring Boot+SpringMVC+MyBaits的Maven项目，在项目中通过RestTemplate的getForObject方法发起GET请求，获取相应接口的数据，再将拿到的数据插入数据库。该项目中调用的接口是DeptManage项目的/api/findAll方法。 创建数据库在Navicat中的deptmanage数据库新建deptget表设计如下,其中id属性选择为">
+  <meta name="description" content="该项目是整合了Spring Boot+SpringMVC+MyBaits的Maven项目，在项目中通过RestTemplate的getForObject方法发起GET请求，获取相应接口的数据，再将拿到的数据插入数据库。该项目中调用的接口是DeptManage项目的/api/findAll方法。">
 <meta name="keywords" content="Spring Boot,SpringMVC,MyBaits,RestTemplate">
 <meta property="og:type" content="article">
 <meta property="og:title" content="调用接口获取数据并插入数据库">
 <meta property="og:url" content="http://yoursite.com/2019/08/16/调用接口获取数据并插入数据库/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="该项目是整合了Spring Boot+SpringMVC+MyBaits的Maven项目，在项目中通过RestTemplate的getForObject方法发起GET请求，获取相应接口的数据，再将拿到的数据插入数据库。该项目中调用的接口是DeptManage项目的/api/findAll方法。 创建数据库在Navicat中的deptmanage数据库新建deptget表设计如下,其中id属性选择为">
+<meta property="og:description" content="该项目是整合了Spring Boot+SpringMVC+MyBaits的Maven项目，在项目中通过RestTemplate的getForObject方法发起GET请求，获取相应接口的数据，再将拿到的数据插入数据库。该项目中调用的接口是DeptManage项目的/api/findAll方法。">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/29.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/30.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/31.png">
-<meta property="og:updated_time" content="2019-08-16T09:29:12.115Z">
+<meta property="og:updated_time" content="2019-08-16T09:36:16.010Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="调用接口获取数据并插入数据库">
-<meta name="twitter:description" content="该项目是整合了Spring Boot+SpringMVC+MyBaits的Maven项目，在项目中通过RestTemplate的getForObject方法发起GET请求，获取相应接口的数据，再将拿到的数据插入数据库。该项目中调用的接口是DeptManage项目的/api/findAll方法。 创建数据库在Navicat中的deptmanage数据库新建deptget表设计如下,其中id属性选择为">
+<meta name="twitter:description" content="该项目是整合了Spring Boot+SpringMVC+MyBaits的Maven项目，在项目中通过RestTemplate的getForObject方法发起GET请求，获取相应接口的数据，再将拿到的数据插入数据库。该项目中调用的接口是DeptManage项目的/api/findAll方法。">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/29.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -194,6 +194,7 @@
 </p>
       
         <p>该项目是整合了Spring Boot+SpringMVC+MyBaits的Maven项目，在项目中通过RestTemplate的getForObject方法发起GET请求，获取相应接口的数据，再将拿到的数据插入数据库。该项目中调用的接口是<a href="https://butalways1121.gitee.io/2019/08/16/Spring-Boot-SpringMVC-MyBaits%E5%AE%9E%E7%8E%B0%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/" target="_blank" rel="noopener">DeptManage项目</a>的/api/findAll方法。</p>
+<a id="more"></a>
 <h2 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h2><p>在Navicat中的deptmanage数据库新建deptget表设计如下,其中id属性选择为自增：<br><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/29.png" alt></p>
 <h2 id="新建项目"><a href="#新建项目" class="headerlink" title="新建项目"></a>新建项目</h2><p> 新建Maven项目，并做相应的配置文件修改（将端口设为8081）。</p>
 <h2 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h2><h3 id="entity层"><a href="#entity层" class="headerlink" title="entity层"></a>entity层</h3><p>在src/main/java下新建entity包，创建DeptInfo实体类，该实体类封装的变量对应deptget数据库表中的属性:</p>
@@ -570,6 +571,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Spring Boot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">hexo-yilia</a>
               </li>
              
@@ -579,10 +584,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">随笔</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Spring Boot</a>
               </li>
              
               <li class="article-tag-list-item">
