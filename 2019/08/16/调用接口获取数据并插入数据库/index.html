@@ -6,15 +6,24 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: Kafka | Hexo</title>
+  <title>调用接口获取数据并插入数据库 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/tags/Kafka/index.html">
+  <meta name="description" content="该项目是整合了Spring Boot+SpringMVC+MyBaits的Maven项目，在项目中通过RestTemplate的getForObject方法发起GET请求，获取相应接口的数据，再将拿到的数据插入数据库。该项目中调用的接口是DeptManage项目的/api/findAll方法。 创建数据库在Navicat中的deptmanage数据库新建deptget表设计如下,其中id属性选择为">
+<meta name="keywords" content="Spring Boot,SpringMVC,MyBaits,RestTemplate">
+<meta property="og:type" content="article">
+<meta property="og:title" content="调用接口获取数据并插入数据库">
+<meta property="og:url" content="http://yoursite.com/2019/08/16/调用接口获取数据并插入数据库/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="该项目是整合了Spring Boot+SpringMVC+MyBaits的Maven项目，在项目中通过RestTemplate的getForObject方法发起GET请求，获取相应接口的数据，再将拿到的数据插入数据库。该项目中调用的接口是DeptManage项目的/api/findAll方法。 创建数据库在Navicat中的deptmanage数据库新建deptget表设计如下,其中id属性选择为">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/29.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/30.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/31.png">
+<meta property="og:updated_time" content="2019-08-16T09:29:12.115Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="调用接口获取数据并插入数据库">
+<meta name="twitter:description" content="该项目是整合了Spring Boot+SpringMVC+MyBaits的Maven项目，在项目中通过RestTemplate的getForObject方法发起GET请求，获取相应接口的数据，再将拿到的数据插入数据库。该项目中调用的接口是DeptManage项目的/api/findAll方法。 创建数据库在Navicat中的deptmanage数据库新建deptget表设计如下,其中id属性选择为">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/29.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -163,64 +172,244 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-调用接口获取数据并插入数据库" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/13/Kafka使用Java实现数据的生产和消费/" class="archive-article-date">
-  	<time datetime="2019-08-13T01:07:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-13</time>
+      <header class="article-header">
+        
+        
+        <a href="/2019/08/16/调用接口获取数据并插入数据库/" class="archive-article-date">
+  	<time datetime="2019-08-16T07:15:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-16</time>
 </a>
-        </div>
-    	 
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+    <p>
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/13/Kafka使用Java实现数据的生产和消费/">Kafka使用Java实现数据的生产和消费</a>
+    <h1 class="article-title_code_ant" itemprop="name">
+      调用接口获取数据并插入数据库
     </h1>
   
+</p>
+      
+        <p>该项目是整合了Spring Boot+SpringMVC+MyBaits的Maven项目，在项目中通过RestTemplate的getForObject方法发起GET请求，获取相应接口的数据，再将拿到的数据插入数据库。该项目中调用的接口是<a href="https://butalways1121.gitee.io/2019/08/16/Spring-Boot-SpringMVC-MyBaits%E5%AE%9E%E7%8E%B0%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/" target="_blank" rel="noopener">DeptManage项目</a>的/api/findAll方法。</p>
+<h2 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h2><p>在Navicat中的deptmanage数据库新建deptget表设计如下,其中id属性选择为自增：<br><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/29.png" alt></p>
+<h2 id="新建项目"><a href="#新建项目" class="headerlink" title="新建项目"></a>新建项目</h2><p> 新建Maven项目，并做相应的配置文件修改（将端口设为8081）。</p>
+<h2 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h2><h3 id="entity层"><a href="#entity层" class="headerlink" title="entity层"></a>entity层</h3><p>在src/main/java下新建entity包，创建DeptInfo实体类，该实体类封装的变量对应deptget数据库表中的属性:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">package com.DeptManageGet.entity;</span><br><span class="line"></span><br><span class="line">public class DeptInfo &#123;</span><br><span class="line">	private int id;</span><br><span class="line">	private String name;</span><br><span class="line">	private String address;</span><br><span class="line">	public int getId() &#123;</span><br><span class="line">		return id;</span><br><span class="line">	&#125;</span><br><span class="line">	public void setId(int id) &#123;</span><br><span class="line">		this.id = id;</span><br><span class="line">	&#125;</span><br><span class="line">	public String getName() &#123;</span><br><span class="line">		return name;</span><br><span class="line">	&#125;</span><br><span class="line">	public void setName(String name) &#123;</span><br><span class="line">		this.name = name;</span><br><span class="line">	&#125;</span><br><span class="line">	public String getAddress() &#123;</span><br><span class="line">		return address;</span><br><span class="line">	&#125;</span><br><span class="line">	public void setAddress(String address) &#123;</span><br><span class="line">		this.address = address;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-        <div class="article-info info-on-right">
-          
+<h3 id="dao层"><a href="#dao层" class="headerlink" title="dao层"></a>dao层</h3><p>在src/main/java下新建dao包,新建DeptInfoDao接口，声明对数据库插入操作的方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">package com.DeptManageGet.dao;</span><br><span class="line"></span><br><span class="line">import org.apache.ibatis.annotations.Mapper;</span><br><span class="line">import com.DeptManageGet.entity.DeptInfo;</span><br><span class="line"></span><br><span class="line">@Mapper</span><br><span class="line">public interface DeptInfoDao &#123;</span><br><span class="line">	void insert(DeptInfo deptInfo);//插入数据信息</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在src/main/resources下创建mapper文件夹，在创建DeptInfoMapper.xml文件，在其中添加对数据库的具体操作:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;</span><br><span class="line">&lt;!DOCTYPE mapper PUBLIC &quot;-//mybatis.org//DTD Mapper 3.0//EN&quot;</span><br><span class="line">&quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;mapper namespace=&quot;com.DeptManageGet.dao.DeptInfoDao&quot;&gt;</span><br><span class="line">	&lt;!-- 插入数据库 --&gt;</span><br><span class="line">	&lt;select id=&quot;insert&quot; resultType=&quot;DeptInfo&quot; parameterType=&quot;DeptInfo&quot;&gt;</span><br><span class="line">		insert into deptget(name,address) values(#&#123;name&#125;,#&#123;address&#125;)</span><br><span class="line">	&lt;/select&gt;</span><br><span class="line">&lt;/mapper&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="service层"><a href="#service层" class="headerlink" title="service层"></a>service层</h3><p>在src/main/java下新建service包，新建DeptInfoService接口，声明方法：数据库插入信息的方法和从DeptManage项目获取数据的方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">package com.DeptManageGet.service;</span><br><span class="line"></span><br><span class="line">import com.DeptManageGet.entity.DeptInfo;</span><br><span class="line"></span><br><span class="line">public interface DeptInfoService &#123;</span><br><span class="line">	boolean insert(DeptInfo deptInfo);//插入信息</span><br><span class="line">	public DeptInfo[] getInfo();//从DeptManage接口获取数据信息,定义的是数组类型</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在src/main/java下新建serviceimpl包,新建DeptInfoServiceImpl类，重写DeptInfoService中声明的方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">package com.DeptManageGet.serviceimpl;</span><br><span class="line"></span><br><span class="line">import org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line">import org.springframework.stereotype.Service;</span><br><span class="line">import org.springframework.web.client.RestTemplate;</span><br><span class="line"></span><br><span class="line">import com.DeptManageGet.dao.DeptInfoDao;</span><br><span class="line">import com.DeptManageGet.entity.DeptInfo;</span><br><span class="line">import com.DeptManageGet.service.DeptInfoService;</span><br><span class="line"></span><br><span class="line">@Service</span><br><span class="line">public class DeptInfoServiceImpl implements DeptInfoService&#123;</span><br><span class="line">	@Autowired</span><br><span class="line">	private DeptInfoDao deptInfoDao;</span><br><span class="line"></span><br><span class="line">	@Override</span><br><span class="line">	//插入信息</span><br><span class="line">	public boolean insert(DeptInfo deptInfo) &#123;</span><br><span class="line">		// TODO 自动生成的方法存根</span><br><span class="line">		boolean flag=false;</span><br><span class="line">		try &#123;</span><br><span class="line">			deptInfoDao.insert(deptInfo);</span><br><span class="line">			flag=true;</span><br><span class="line">		&#125; catch (Exception e) &#123;</span><br><span class="line">			// TODO: handle exception</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">		return flag;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	@Override</span><br><span class="line">	//从DeptManage接口获取信息</span><br><span class="line">	public DeptInfo[] getInfo() &#123;</span><br><span class="line">		// TODO 自动生成的方法存根</span><br><span class="line">		RestTemplate restTemplate=new RestTemplate();//借助 RestTemplate，Spring应用能够方便地使用REST资源,RestTemplate定义了36个与REST资源交互的方法</span><br><span class="line">		System.out.println(&quot;获取数据...&quot;);</span><br><span class="line">		String url = &quot;http://127.0.0.1:8083/api/findAll&quot;;</span><br><span class="line">		DeptInfo[] result = restTemplate.getForObject(url, DeptInfo[].class);//getForObject() 发送一个HTTP GET请求，返回的请求体将映射为一个对象</span><br><span class="line">		System.out.println(result);</span><br><span class="line">		return result;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="controller层"><a href="#controller层" class="headerlink" title="controller层"></a>controller层</h3><p>在src/main/java下新建controller包，新建DeptInfoController类来处理请求返回数据:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">package com.DeptManageGet.controller;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">import org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line">import org.springframework.web.bind.annotation.RequestMapping;</span><br><span class="line">import org.springframework.web.bind.annotation.RequestMethod;</span><br><span class="line">import org.springframework.web.bind.annotation.RestController;</span><br><span class="line"></span><br><span class="line">import com.DeptManageGet.entity.DeptInfo;</span><br><span class="line">import com.DeptManageGet.service.DeptInfoService;</span><br><span class="line"></span><br><span class="line">@RestController</span><br><span class="line">@RequestMapping(value = &quot;/api&quot;)</span><br><span class="line">public class DeptInfoController &#123;</span><br><span class="line">	@Autowired</span><br><span class="line">	private DeptInfoService deptInfoService;</span><br><span class="line">	</span><br><span class="line">	@RequestMapping(value = &quot;/insert&quot;,method = RequestMethod.GET)</span><br><span class="line">	public boolean insert() &#123;</span><br><span class="line">		System.out.println(&quot;开始从DeptManage的接口获取数据&quot;);</span><br><span class="line">		DeptInfo[] infos = deptInfoService.getInfo();</span><br><span class="line">		for(DeptInfo info:infos) &#123;</span><br><span class="line">			System.out.println(&quot;插入数据&quot;);</span><br><span class="line">			deptInfoService.insert(info);</span><br><span class="line">		&#125;</span><br><span class="line">		return true;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>至此，整个项目已创建完毕。</p>
+<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><p>首先运行DeptManage项目，开启接口，然后在启动该项目，在postman中设置如下信息，点击send之后，会返回”true”:<br><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/30.png" alt><br>p30<br>到数据库查看deptget数据表，可以看到数据已插入：<br><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/31.png" alt></p>
+<hr>
+<p>至此，整个功能已实现！</p>
+<h2 id="OVER！"><a href="#OVER！" class="headerlink" title="OVER！"></a>OVER！</h2>
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/alipay.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/wechat.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Kafka</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Spring Boot</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">生产者与消费者</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">SpringMVC</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">MyBaits</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">RestTemplate</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/08/16/调用接口获取数据并插入数据库/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2019/08/16/Spring-Boot-SpringMVC-MyBaits实现数据库的基本操作/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">springboot+springmvc+mybatis实现对数据库的操作</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#创建数据库"><span class="toc-number">1.</span> <span class="toc-text">创建数据库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#新建项目"><span class="toc-number">2.</span> <span class="toc-text">新建项目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建项目"><span class="toc-number">3.</span> <span class="toc-text">创建项目</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#entity层"><span class="toc-number">3.1.</span> <span class="toc-text">entity层</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#dao层"><span class="toc-number">3.2.</span> <span class="toc-text">dao层</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#service层"><span class="toc-number">3.3.</span> <span class="toc-text">service层</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#controller层"><span class="toc-number">3.4.</span> <span class="toc-text">controller层</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#测试"><span class="toc-number">4.</span> <span class="toc-text">测试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#OVER！"><span class="toc-number">5.</span> <span class="toc-text">OVER！</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
+  <div id="gitment-ctn"></div> 
+<link rel="stylesheet" href="https://billts.site/extra_css/gitment.css">
+<script src="https://billts.site/js/gitment.js"></script>
+<script>
+var gitment = new Gitment({
+  id: decodeURI(window.location.pathname),
+  owner: 'butalways1121',
+  repo: 'butalways1121.github.io',
+  oauth: {
+    client_id: '04d1e89c3e35949cd1df',
+    client_secret: '349862188473214c081a620b26558ced1977789b',
+  },
+})
+gitment.render('gitment-ctn')
+</script>
+  
 
 
           </div>
@@ -250,9 +439,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
