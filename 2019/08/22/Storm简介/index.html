@@ -6,15 +6,26 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: Spring Boot | Hexo</title>
+  <title>Storm简介 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/tags/Spring-Boot/index.html">
+  <meta name="description" content="什么是StormStorm是Twitter开源的分布式、高容错的实时大数据处理框架，被业界称为实时版Hadoop，它的出现令持续不断的流计算变得容易，弥补了Hadoop批处理所不能满足的实时要求。Storm也是基于C/S架构来进行工作的,C负责将数据处理的方式的jar(Topology)发送给S,S解析C发送过来的jar(Topology)，并按一定规则将jar变成多个Task((Spout/Bo">
+<meta name="keywords" content="Storm,Topology">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Storm简介">
+<meta property="og:url" content="http://yoursite.com/2019/08/22/Storm简介/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="什么是StormStorm是Twitter开源的分布式、高容错的实时大数据处理框架，被业界称为实时版Hadoop，它的出现令持续不断的流计算变得容易，弥补了Hadoop批处理所不能满足的实时要求。Storm也是基于C/S架构来进行工作的,C负责将数据处理的方式的jar(Topology)发送给S,S解析C发送过来的jar(Topology)，并按一定规则将jar变成多个Task((Spout/Bo">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/46.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/47.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/48.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/49.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/50.png">
+<meta property="og:updated_time" content="2019-08-22T00:47:05.288Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="Storm简介">
+<meta name="twitter:description" content="什么是StormStorm是Twitter开源的分布式、高容错的实时大数据处理框架，被业界称为实时版Hadoop，它的出现令持续不断的流计算变得容易，弥补了Hadoop批处理所不能满足的实时要求。Storm也是基于C/S架构来进行工作的,C负责将数据处理的方式的jar(Topology)发送给S,S解析C发送过来的jar(Topology)，并按一定规则将jar变成多个Task((Spout/Bo">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/46.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -163,244 +174,260 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Storm简介" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+        
+        <a href="/2019/08/22/Storm简介/" class="archive-article-date">
+  	<time datetime="2019-08-22T00:06:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-22</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+    <p>
+  
+    <h1 class="article-title_code_ant" itemprop="name">
+      Storm简介
+    </h1>
+  
+</p>
+      
+        <h2 id="什么是Storm"><a href="#什么是Storm" class="headerlink" title="什么是Storm"></a>什么是Storm</h2><p>Storm是Twitter开源的分布式、高容错的实时大数据处理框架，被业界称为实时版Hadoop，它的出现令持续不断的流计算变得容易，弥补了Hadoop批处理所不能满足的实时要求。Storm也是基于C/S架构来进行工作的,C负责将数据处理的方式的jar(Topology)发送给S,S解析C发送过来的jar(Topology)，并按一定规则将jar变成多个Task((Spout/Bolt)),生成相关的进程和线程运行里面的Task。</p>
+<a id="more"></a>
+<h2 id="Storm的应用场景"><a href="#Storm的应用场景" class="headerlink" title="Storm的应用场景"></a>Storm的应用场景</h2><p>推荐系统（实时推荐，根据下单或加购物品推荐相关商品）、金融系统、预警系统、网站统计（实时销量、流量统计，如淘宝双11效果图）、交通路况实时系统等等。</p>
+<h2 id="Storm的特性"><a href="#Storm的特性" class="headerlink" title="Storm的特性"></a>Storm的特性</h2><ol>
+<li>适用场景广泛：Storm可以实时处理消息和更新DB，对一个数据量进行持续的查询并返回客户端（持续计算），对一个耗资源的查询作实时并行化的处理(分布式方法调用，即DRPC），Storm的这些基础API可以满足大量的场景；</li>
+<li>可伸缩性高：Storm的可伸缩性可以让Storm每秒可以处理的消息量达到很高。扩展一个实时计算任务，你所需要做的就是加机器并且提高这个计算任务的并行度 。Storm使用Zookeeper来协调集群内的各种配置使得Storm的集群可以很容易的扩展；</li>
+<li>保证无数据丢失：实时系统必须保证所有的数据被成功的处理。 那些会丢失数据的系统的适用场景非常窄， 而Storm保证每一条消息都会被处理；</li>
+<li>异常健壮：Storm集群非常容易管理，轮流重启节点不影响应用；</li>
+<li>容错性好：在消息处理过程中出现异常， Storm会进行重试；</li>
+<li>语言无关性：Storm的topology和消息处理组件(Bolt)可以用任何语言来定义， 这一点使得任何人都可以使用Storm。</li>
+</ol>
+<h2 id="Storm的术语"><a href="#Storm的术语" class="headerlink" title="Storm的术语"></a>Storm的术语</h2><ul>
+<li><strong>Topology(拓扑)</strong>:Storm中运行的一个实时应用程序(Storm的一个任务单元)，因为各个组件间的消息流动形成逻辑上的一个拓扑结构(所以叫Topology)。Topolog是一组由Spouts（数据源）和Bolts（数据操作）通过Stream Groupings进行连接组成的图，最简单的Topology：1个Spout，1个Bolt如下图：<br><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/46.png" alt></li>
+<li><strong>Tuple（元组）</strong>：一次消息传递的基本单元。</li>
+<li><strong>Stream</strong>：以Tuple为单位组成的一条有向无界的数据流（就是Tuple在各个组件中流动时的描述）。</li>
+<li><strong>Spout组件</strong>:就是一个继承了某个基类的类,里面有类的方法进行相关的操作,用于获取数据，并传递数据到Bolt。</li>
+<li><strong>Bolt组件</strong>:就是一个继承了某个基类的类,里面有类的方法进行相关的操作,用于对Spout组件发送过来的数据进行处理。<br><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/47.png" alt></li>
+<li><strong>Worker进程</strong>：用于运行Topology子集的进程（一个worker处理topology的一个子集，同一个子集可被多个worker同时处理，一个worker有且仅为一个topology服务）。如下图，一个worker就是一个进程，进程里面包含一个或多个线程，一个线程就是一个executor，一个线程会处理一个或多个任务，一个任务就是一个task，一个task就是一个节点类的实例对象。<br><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/48.png" alt></li>
+<li><strong>executor线程</strong>:是Worker进程中的一个线程,executor可能会同时运行多个组件(Spout/Bolt),当然同一个executor运行的组件类型是一样的。</li>
+<li><strong>Task任务</strong>：就是组件(Spout/Bolt),一般是一个executor线程运行一个Task。</li>
+<li><strong>Nimbus进程</strong>：控制节点(Nimbus节点)，主结点运行一个叫做Nimbus的守护进程，它负责在集群内分发代码，为每个工作结点指派任务和监控失败的任务。</li>
+<li><strong>Supervisor进程</strong>：工作节点(Supervisor节点),工作结点运行一个叫做Supervisor的守护进程，每个工作节点都是topology中一个子集的实现。</li>
+<li><strong>Zookeeper</strong>：集群协调软件（C/S），是完成nimbus和Supervisor之间协调的服务。</li>
+<li><strong>Storm UI</strong>：只提供对topology的监控和统计。</li>
+</ul>
+<h2 id="Storm的集群架构"><a href="#Storm的集群架构" class="headerlink" title="Storm的集群架构"></a>Storm的集群架构</h2><p>Storm集群采用主从架构方式，主节点是Nimbus，从节点是Supervisor，有关调度相关的信息存储到Zookeeper集群中。Nimbus和Supervisors之间所有的协调工作是通过Zookeeper集群。Nimbus进程和Supervisors进程是无法直接连接，并且是无状态的，所有的状态维持在Zookeeper中或保存在本地磁盘上。架构如下图所示：<br><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/49.png" alt></p>
+<ul>
+<li><strong>Nimbus</strong>：Storm集群的Master节点，负责分发用户代码，指派给具体的Supervisor节点上的Worker节点，去运行Topology对应的组件（Spout/Bolt）的Task。</li>
+<li><strong>Supervisor</strong>：Storm集群的从节点，负责管理运行在Supervisor节点上的每一个Worker进程的启动和终止。通过Storm的配置文件中的Supervisor.slots.ports配置项，可以指定在一个Supervisor上最大允许多少个Slot，每个Slot通过端口号来唯一标识，一个端口号对应一个Worker进程（如果该Worker进程被启动）。</li>
+<li><strong>Worker</strong>：运行具体处理组件逻辑的进程。Worker运行的任务类型只有两种，一种是Spout任务，一种是Bolt任务。</li>
+<li><strong>Task</strong>：worker中每一个Spout/Bolt的线程称为一个task. 在Storm0.8之后，task不再与物理线程对应，不同Spout/Bolt的task可能会共享一个物理线程，该线程称为executor。</li>
+<li><strong>Zookeeper</strong>：用来协调Nimbus和Supervisor，如果Supervisor因故障出现问题而无法运行Topology，Nimbus会第一时间感知到，并重新分配Topology到其它可用的Supervisor上运行。</li>
+</ul>
+<h2 id="Storm中的数据流"><a href="#Storm中的数据流" class="headerlink" title="Storm中的数据流"></a>Storm中的数据流</h2><p>Storm结构称为topology(拓扑)，由stream(数据流)、Spout(数据流的生成者)、Bolt(数据流运算者)组成。启动完Topology后,相关组件就开始运行起来了。在Storm中，Spout组件主要用来从数据源拉取数据,形成一个Tuple后转交给Bolt处理。Bolt接受到Tuple处理完后,可以选择继续交给下一个Bolt处理，也可以选择不往下传。这样数据以Tuple的形式一个接一个的往下执行,就形成了一个拓扑数据流。Storm数据在组件间的流向如下图所示:<br><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/50.png" alt></p>
+<h2 id="Storm的工作原理"><a href="#Storm的工作原理" class="headerlink" title="Storm的工作原理"></a>Storm的工作原理</h2><ol>
+<li>Storm集群中有两种节点，一种是控制节点(Nimbus节点)，另一种是工作节点(Supervisor节点)。</li>
+<li>所有Topology任务的提交必须在Storm客户端节点上进行(需要配置 Storm.yaml文件)，由Nimbus节点分配给其他Supervisor节点进行处理。</li>
+<li>Nimbus节点首先将提交的Topology进行分片（Spout/Bolt），分成一个个的Task，并将Task和Supervisor相关的信息提交到Zookeeper集群上。</li>
+<li>Supervisor会去Zookeeper集群上认领自己的Task，通知自己的Worker进程进行Task的处理。</li>
+</ol>
+<h2 id="Storm的工作流程"><a href="#Storm的工作流程" class="headerlink" title="Storm的工作流程"></a>Storm的工作流程</h2><ol>
+<li>提交Topology后,Storm会把代码首先存放到Nimbus节点的inbox目录下,之后，会把当前Storm运行的配置生成一个Stormconf.ser文件放到Nimbus节点的Stormdist目录中，在此目录中同时还有序列化之后的Topology代码文件；</li>
+<li>在设定Topology所关联的Spouts和Bolts时，可以同时设置当前Spout和Bolt的executor数目和task数目，默认情况下，一个Topology的task的总和是和executor的总和一致的。之后，系统根据worker(Topology的worker配置参数)的数目，尽量平均的分配这些task的执行。worker在哪个Supervisor节点上运行是由Storm（随机申请到可用的就OK）本身决定的；</li>
+<li>Storm看一下那些Worker进程可用，就申请worker(Topology的worker配置参数)的数目给这个Topology；</li>
+<li>Storm尽量平均的分配这些task到worker；</li>
+<li>任务分配好之后，Nimbus节点会将任务的信息提交到Zookeeper集群，同时在Zookeeper集群中会有workerbeats节点，这里存储了当前Topology的所有worker进程的心跳信息；</li>
+<li>Supervisor节点会不断的轮询Zookeeper集群，在Zookeeper的assignments节点中保存了所有Topology的任务分配信息、代码存储目录、任务之间的关联关系等，Supervisor通过轮询此节点的内容，来领取自己的任务，启动worker进程运行；</li>
+<li>一个Topology运行之后，就会不断的通过Spouts来发送Stream流，通过Bolts来不断的处理接收到的Stream流，Stream流是无界的；</li>
+<li>最后一步会不间断的执行，除非手动结束Topology。</li>
+</ol>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/alipay.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/wechat.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/21/Kafka与SSM的集成/" class="archive-article-date">
-  	<time datetime="2019-08-21T00:22:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-21</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/21/Kafka与SSM的集成/">Kafka与SSM的集成</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Kafka</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Storm</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Spring Boot</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">SpringMVC</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">MyBaits</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Topology</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/08/22/Storm简介/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/16/调用接口获取数据并插入数据库/" class="archive-article-date">
-  	<time datetime="2019-08-16T07:15:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-16</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/08/21/Kafka与SSM的集成/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Kafka与SSM的集成</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/16/调用接口获取数据并插入数据库/">调用接口获取数据并插入数据库</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Spring Boot</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">SpringMVC</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">MyBaits</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">RestTemplate</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是Storm"><span class="toc-number">1.</span> <span class="toc-text">什么是Storm</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Storm的应用场景"><span class="toc-number">2.</span> <span class="toc-text">Storm的应用场景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Storm的特性"><span class="toc-number">3.</span> <span class="toc-text">Storm的特性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Storm的术语"><span class="toc-number">4.</span> <span class="toc-text">Storm的术语</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Storm的集群架构"><span class="toc-number">5.</span> <span class="toc-text">Storm的集群架构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Storm中的数据流"><span class="toc-number">6.</span> <span class="toc-text">Storm中的数据流</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Storm的工作原理"><span class="toc-number">7.</span> <span class="toc-text">Storm的工作原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Storm的工作流程"><span class="toc-number">8.</span> <span class="toc-text">Storm的工作流程</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/16/Spring-Boot-SpringMVC-MyBaits实现数据库的基本操作/" class="archive-article-date">
-  	<time datetime="2019-08-16T00:17:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-16</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/16/Spring-Boot-SpringMVC-MyBaits实现数据库的基本操作/">springboot+springmvc+mybatis实现对数据库的操作</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Spring Boot</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">SpringMVC</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">MyBaits</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/09/Spring-Boot连接数据库并插入数据/" class="archive-article-date">
-  	<time datetime="2019-08-08T23:59:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-09</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/09/Spring-Boot连接数据库并插入数据/">Spring Boot 连接数据库并插入数据</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Spring Boot</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/06/Spring-Boot创建接口实现数据库的查询操作/" class="archive-article-date">
-  	<time datetime="2019-08-06T00:26:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/06/Spring-Boot创建接口实现数据库的查询操作/">Spring Boot创建接口实现数据库的查询操作</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Spring Boot</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
+  <div id="gitment-ctn"></div> 
+<link rel="stylesheet" href="https://billts.site/extra_css/gitment.css">
+<script src="https://billts.site/js/gitment.js"></script>
+<script>
+var gitment = new Gitment({
+  id: decodeURI(window.location.pathname),
+  owner: 'butalways1121',
+  repo: 'butalways1121.github.io',
+  oauth: {
+    client_id: '04d1e89c3e35949cd1df',
+    client_secret: '349862188473214c081a620b26558ced1977789b',
+  },
+})
+gitment.render('gitment-ctn')
+</script>
   
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -430,9 +457,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
