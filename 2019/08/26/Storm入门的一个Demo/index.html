@@ -6,15 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: 随笔 | Hexo</title>
+  <title>Storm入门的一个Demo | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/tags/随笔/index.html">
+  <meta name="description" content="对于一个最简单的Storm程序来讲，也就是一个Spout传输数据， 一个Bolt处理数据，编程步骤如下：1.编写Spout类，用于将数据传递给Bolt；2.编写Bolt类，用于对数据进行处理，该程序主要是对信息进行输出；  创建Topology类，对Spout和Bolt类进行统一管理。具体实现环境准备1234567Eclipse创建Maven项目，输入相应的包名及项目名，这里的项目名是Storm，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Storm入门的一个Demo">
+<meta property="og:url" content="http://yoursite.com/2019/08/26/Storm入门的一个Demo/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="对于一个最简单的Storm程序来讲，也就是一个Spout传输数据， 一个Bolt处理数据，编程步骤如下：1.编写Spout类，用于将数据传递给Bolt；2.编写Bolt类，用于对数据进行处理，该程序主要是对信息进行输出；  创建Topology类，对Spout和Bolt类进行统一管理。具体实现环境准备1234567Eclipse创建Maven项目，输入相应的包名及项目名，这里的项目名是Storm，">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-08-26T06:28:10.912Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="Storm入门的一个Demo">
+<meta name="twitter:description" content="对于一个最简单的Storm程序来讲，也就是一个Spout传输数据， 一个Bolt处理数据，编程步骤如下：1.编写Spout类，用于将数据传递给Bolt；2.编写Bolt类，用于对数据进行处理，该程序主要是对信息进行输出；  创建Topology类，对Spout和Bolt类进行统一管理。具体实现环境准备1234567Eclipse创建Maven项目，输入相应的包名及项目名，这里的项目名是Storm，">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -163,60 +167,227 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Storm入门的一个Demo" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/07/05/我的第一篇博客/" class="archive-article-date">
-  	<time datetime="2019-07-05T07:04:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-05</time>
+      <header class="article-header">
+        
+        
+        <a href="/2019/08/26/Storm入门的一个Demo/" class="archive-article-date">
+  	<time datetime="2019-08-26T06:23:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-26</time>
 </a>
-        </div>
-    	 
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+    <p>
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/07/05/我的第一篇博客/">我的第一篇博客</a>
+    <h1 class="article-title_code_ant" itemprop="name">
+      Storm入门的一个Demo
     </h1>
   
+</p>
+      
+        <p>对于一个最简单的Storm程序来讲，也就是一个Spout传输数据， 一个Bolt处理数据，编程步骤如下：<br>1.编写Spout类，用于将数据传递给Bolt；<br>2.编写Bolt类，用于对数据进行处理，该程序主要是对信息进行输出；</p>
+<ol start="3">
+<li>创建Topology类，对Spout和Bolt类进行统一管理。<h2 id="具体实现"><a href="#具体实现" class="headerlink" title="具体实现"></a>具体实现</h2><h3 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Eclipse创建Maven项目，输入相应的包名及项目名，这里的项目名是Storm，包名为com,接着在pom.xml添加Storm的相关jar内容如下，这里使用Storm的版本为1.1.1：</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">	    &lt;groupId&gt;org.apache.storm&lt;/groupId&gt;</span><br><span class="line">	    &lt;artifactId&gt;storm-core&lt;/artifactId&gt;</span><br><span class="line">	    &lt;version&gt;1.1.1&lt;/version&gt;</span><br><span class="line">	    &lt;scope&gt;provided&lt;/scope&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
+</li>
+</ol>
+<h3 id="编写Spout"><a href="#编写Spout" class="headerlink" title="编写Spout"></a>编写Spout</h3><p>com.Storm包下创建Spout类，Spout类一般是实现 IRichSpout 或继承BaseRichSpout该类，然后实现相关方法。这里我们继承BaseRichSpout类,该类需要实现主要的方法:</p>
+<ol>
+<li>open()方法:当一个Task被初始化的时候会调用此open方法,有三个参数:Storm配置的Map、topology中组件的信息和发射tuple的方法。</li>
+<li>nextTuple()方法:是Spout实现的核心。也就是主要执行方法，用于输出信息,通过collector.emit方法发射。</li>
+<li>declareOutputFields()方法：:此方法用于声明当前Spout的Tuple发送流。</li>
+<li>ack()方法：用于表示Tuple处理成功。</li>
+<li>fail()方法：用于表示Tuple处理失败。</li>
+<li>close（）方法：用于表示Topology停止。<br>具体代码如下：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line">package com.Storm;</span><br><span class="line"></span><br><span class="line">import java.util.Map;</span><br><span class="line"></span><br><span class="line">import org.apache.storm.spout.SpoutOutputCollector;</span><br><span class="line">import org.apache.storm.task.TopologyContext;</span><br><span class="line">import org.apache.storm.topology.OutputFieldsDeclarer;</span><br><span class="line">import org.apache.storm.topology.base.BaseRichSpout;</span><br><span class="line">import org.apache.storm.tuple.Fields;</span><br><span class="line">import org.apache.storm.tuple.Values;</span><br><span class="line"></span><br><span class="line">public class Spout extends BaseRichSpout&#123;</span><br><span class="line"></span><br><span class="line">	////collector的作用：将采集到的数据发送到下一个组件</span><br><span class="line">	private SpoutOutputCollector collector;</span><br><span class="line">	private int count;</span><br><span class="line">	//模拟产生一些数据</span><br><span class="line">	public String message = <span class="string">"butalways"</span>;</span><br><span class="line">	//定义一个域</span><br><span class="line">	private static final String field = <span class="string">"test"</span>;</span><br><span class="line">	</span><br><span class="line">	// open()方法中是在ISpout接口中定义，在Spout组件初始化时被调用。有三个参数:1.Storm配置的Map;2.topology中组件的信息;3.发射tuple的方法.</span><br><span class="line">		//当一个Task被初始化的时候会调用此open方法。一般都会在此方法中对发送Tuple的对象SpoutOutputCollector和配置对象TopologyContext初始化</span><br><span class="line">	@Override</span><br><span class="line">	public void open(Map map, TopologyContext arg1, SpoutOutputCollector collector) &#123;</span><br><span class="line">		// TODO 自动生成的方法存根</span><br><span class="line">		System.out.println(<span class="string">"open:"</span>+map.get(<span class="string">"test"</span>));</span><br><span class="line">        this.collector = collector;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	//nextTuple()方法是Spout实现的核心。也就是主要执行方法，用于输出信息,通过collector.emit方法发射。</span><br><span class="line">	@Override</span><br><span class="line">	public void <span class="function"><span class="title">nextTuple</span></span>() &#123;</span><br><span class="line">		// TODO 自动生成的方法存根</span><br><span class="line">		<span class="keyword">if</span>(count&lt;=2)&#123;</span><br><span class="line">            System.out.println(<span class="string">"第"</span>+count+<span class="string">"次开始发送数据..."</span>);</span><br><span class="line">            this.collector.emit(new Values(message));</span><br><span class="line">        &#125;</span><br><span class="line">        count++;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	//declareOutputFields用于声明数据格式。即输出的一个Tuple中，包含几个字段。这里只发射一个，所以就指定一个。如果是多个，则用逗号隔开。</span><br><span class="line">	// declareOutputFields:此方法用于声明当前Spout的Tuple发送流。Stream流的定义是通过OutputFieldsDeclare.declareStream方法完成的，其中的参数包括了发送的域Fields。</span><br><span class="line">	@Override</span><br><span class="line">	public void declareOutputFields(OutputFieldsDeclarer declarer) &#123;</span><br><span class="line">		// TODO 自动生成的方法存根</span><br><span class="line">		System.out.println(<span class="string">"定义格式..."</span>);</span><br><span class="line">        declarer.declare(new Fields(field));</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	//用于表示Tuple处理成功</span><br><span class="line">	@Override</span><br><span class="line">    public void ack(Object obj) &#123;</span><br><span class="line">        System.out.println(<span class="string">"ack:"</span>+obj);</span><br><span class="line">    &#125;</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	//用于表示Tuple处理失败</span><br><span class="line">	@Override</span><br><span class="line">    public void fail(Object obj) &#123;</span><br><span class="line">        System.out.println(<span class="string">"失败:"</span>+obj);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">	</span><br><span class="line">	//用于表示Topology停止</span><br><span class="line">	@Override</span><br><span class="line">    public void <span class="function"><span class="title">close</span></span>() &#123;</span><br><span class="line">        System.out.println(<span class="string">"关闭..."</span>);</span><br><span class="line">    &#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-          
+</li>
+</ol>
+<h3 id="编写Bolt"><a href="#编写Bolt" class="headerlink" title="编写Bolt"></a>编写Bolt</h3><p>com.Storm包下创建Bolt类，Bolt类一般是实现 IRichBolt 或继承BaseRichBolt类，然后实现相关方法。这里我们继承BaseRichBolt类,该类需要实现主要的方法:</p>
+<ol>
+<li>prepare()方法：prepare方法和Spout中的open方法类似，为Bolt提供了OutputCollector，用来从Bolt中发送Tuple。</li>
+<li>Execute（）方法：是Bolt实现的核心，每次Bolt从流接收一个订阅的tuple，都会调用这个方法。</li>
+<li>declareOutputFields（）方法：用于声明当前Bolt发送的Tuple中包含的字段。</li>
+<li>cleanup()方法：用于释放bolt占用的资源。Storm在终止一个bolt之前会调用这个方法。<br>具体代码如下：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">package com.Storm;</span><br><span class="line"></span><br><span class="line">import java.util.Map;</span><br><span class="line"></span><br><span class="line">import org.apache.storm.task.OutputCollector;</span><br><span class="line">import org.apache.storm.task.TopologyContext;</span><br><span class="line">import org.apache.storm.topology.OutputFieldsDeclarer;</span><br><span class="line">import org.apache.storm.topology.base.BaseRichBolt;</span><br><span class="line">import org.apache.storm.tuple.Tuple;</span><br><span class="line"></span><br><span class="line">public class Bolt extends BaseRichBolt &#123;</span><br><span class="line">	</span><br><span class="line">	private OutputCollector collector;</span><br><span class="line">	private int count;</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	//在Bolt启动前执行，提供Bolt启动环境配置的入口,一般对于不可序列化的对象进行实例化。</span><br><span class="line">		//prepare方法和Spout中的open方法类似，为Bolt提供了OutputCollector，用来从Bolt中发送Tuple</span><br><span class="line">	@Override</span><br><span class="line">	public void prepare(Map map, TopologyContext arg1, OutputCollector collector) &#123;</span><br><span class="line">		// TODO 自动生成的方法存根</span><br><span class="line">		 System.out.println(<span class="string">"prepare:"</span>+map.get(<span class="string">"test"</span>));</span><br><span class="line">	      this.collector=collector;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	</span><br><span class="line">	//执行方法，每次Bolt从流接收一个订阅的tuple，都会调用这个方法。</span><br><span class="line">	@Override</span><br><span class="line">	public void execute(Tuple tuple) &#123;</span><br><span class="line">		// TODO 自动生成的方法存根</span><br><span class="line">		String msg=tuple.getStringByField(<span class="string">"test"</span>);</span><br><span class="line">        //这里我们就不做消息的处理，只打印</span><br><span class="line">        System.out.println(<span class="string">"Bolt第"</span>+count+<span class="string">"接受的消息:"</span>+msg); </span><br><span class="line">        count++;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	</span><br><span class="line">	//用于声明当前Bolt发送的Tuple中包含的字段</span><br><span class="line">	@Override</span><br><span class="line">	public void declareOutputFields(OutputFieldsDeclarer declarer) &#123;</span><br><span class="line">		// TODO 自动生成的方法存根</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	//cleanup是IBolt接口中定义,用于释放bolt占用的资源。Storm在终止一个bolt之前会调用这个方法。</span><br><span class="line">	@Override</span><br><span class="line">    public void <span class="function"><span class="title">cleanup</span></span>() &#123;</span><br><span class="line">        System.out.println(<span class="string">"资源释放"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">	</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+</li>
+</ol>
+<h3 id="编写topology"><a href="#编写topology" class="headerlink" title="编写topology"></a>编写topology</h3><p>com.Storm包下创建Topology类，对于Spout和Bolt进行统一管理。具体实现代码如下所示：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">package com.Storm;</span><br><span class="line"></span><br><span class="line">import org.apache.storm.Config;</span><br><span class="line">import org.apache.storm.LocalCluster;</span><br><span class="line">import org.apache.storm.StormSubmitter;</span><br><span class="line">import org.apache.storm.topology.TopologyBuilder;</span><br><span class="line"></span><br><span class="line">public class Topology &#123;</span><br><span class="line">	private static final String str1 = <span class="string">"test1"</span>;</span><br><span class="line">	private static final String str2 = <span class="string">"test2"</span>;</span><br><span class="line"></span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		// TODO Auto-generated method stub</span><br><span class="line">		// 定义一个拓扑</span><br><span class="line">		TopologyBuilder builder = new TopologyBuilder();</span><br><span class="line">		// 设置一个Executeor(线程)，默认一个</span><br><span class="line">		builder.setSpout(str1, new Spout());</span><br><span class="line">		// 设置一个Executeor(线程)，和一个task</span><br><span class="line">		builder.setBolt(str2, new Bolt(), 1).setNumTasks(1).shuffleGrouping(str1);</span><br><span class="line">		Config conf = new Config();</span><br><span class="line">		conf.put(<span class="string">"test"</span>, <span class="string">"test"</span>);</span><br><span class="line">		try &#123;</span><br><span class="line">			// 运行拓扑</span><br><span class="line">			<span class="keyword">if</span> (args != null &amp;&amp; args.length &gt; 0) &#123; // 有参数时，表示向集群提交作业，并把第一个参数当做topology名称</span><br><span class="line">				System.out.println(<span class="string">"远程模式"</span>);</span><br><span class="line">				StormSubmitter.submitTopology(args[0], conf, builder.createTopology());</span><br><span class="line">			&#125; <span class="keyword">else</span> &#123;// 没有参数时，本地提交</span><br><span class="line">				// 启动本地模式</span><br><span class="line">				System.out.println(<span class="string">"本地模式"</span>);</span><br><span class="line">				LocalCluster cluster = new LocalCluster();</span><br><span class="line">				cluster.submitTopology(<span class="string">"111"</span>, conf, builder.createTopology());</span><br><span class="line">				Thread.sleep(10000);</span><br><span class="line">				//  关闭本地集群</span><br><span class="line">				cluster.shutdown();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; catch (Exception e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><p>右键运行Topology，控制台输入结果如下:</p>
+<p>本地模式<br>定义格式…<br>open:test<br>第0次开始发送数据…<br>第1次开始发送数据…<br>第2次开始发送数据…<br>Bolt第0接受的消息:butalways<br>Bolt第1接受的消息:butalways<br>Bolt第2接受的消息:butalways<br>关闭…<br>资源释放</p>
+<hr>
+<h2 id="OVER！"><a href="#OVER！" class="headerlink" title="OVER！"></a>OVER！</h2>
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/alipay.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/wechat.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/08/26/Storm入门的一个Demo/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2019/08/22/Storm简介/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Storm简介</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#具体实现"><span class="toc-number">1.</span> <span class="toc-text">具体实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#环境准备"><span class="toc-number">1.1.</span> <span class="toc-text">环境准备</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#编写Spout"><span class="toc-number">1.2.</span> <span class="toc-text">编写Spout</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#编写Bolt"><span class="toc-number">1.3.</span> <span class="toc-text">编写Bolt</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#编写topology"><span class="toc-number">1.4.</span> <span class="toc-text">编写topology</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#测试"><span class="toc-number">1.5.</span> <span class="toc-text">测试</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#OVER！"><span class="toc-number">2.</span> <span class="toc-text">OVER！</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
+  <div id="gitment-ctn"></div> 
+<link rel="stylesheet" href="https://billts.site/extra_css/gitment.css">
+<script src="https://billts.site/js/gitment.js"></script>
+<script>
+var gitment = new Gitment({
+  id: decodeURI(window.location.pathname),
+  owner: 'butalways1121',
+  repo: 'butalways1121.github.io',
+  oauth: {
+    client_id: '04d1e89c3e35949cd1df',
+    client_secret: '349862188473214c081a620b26558ced1977789b',
+  },
+})
+gitment.render('gitment-ctn')
+</script>
+  
 
 
           </div>
@@ -246,9 +417,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,

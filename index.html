@@ -165,6 +165,101 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Storm入门的一个Demo" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+        
+        <a href="/2019/08/26/Storm入门的一个Demo/" class="archive-article-date">
+  	<time datetime="2019-08-26T06:23:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+    <p>
+  
+    <h1 itemprop="name">
+      <a class="article-title_code_ant" href="/2019/08/26/Storm入门的一个Demo/">Storm入门的一个Demo</a>
+    </h1>
+  
+</p>
+      
+        <p>对于一个最简单的Storm程序来讲，也就是一个Spout传输数据， 一个Bolt处理数据，编程步骤如下：<br>1.编写Spout类，用于将数据传递给Bolt；<br>2.编写Bolt类，用于对数据进行处理，该程序主要是对信息进行输出；</p>
+<ol start="3">
+<li>创建Topology类，对Spout和Bolt类进行统一管理。<h2 id="具体实现"><a href="#具体实现" class="headerlink" title="具体实现"></a>具体实现</h2><h3 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Eclipse创建Maven项目，输入相应的包名及项目名，这里的项目名是Storm，包名为com,接着在pom.xml添加Storm的相关jar内容如下，这里使用Storm的版本为1.1.1：</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">	    &lt;groupId&gt;org.apache.storm&lt;/groupId&gt;</span><br><span class="line">	    &lt;artifactId&gt;storm-core&lt;/artifactId&gt;</span><br><span class="line">	    &lt;version&gt;1.1.1&lt;/version&gt;</span><br><span class="line">	    &lt;scope&gt;provided&lt;/scope&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h3 id="编写Spout"><a href="#编写Spout" class="headerlink" title="编写Spout"></a>编写Spout</h3><p>com.Storm包下创建Spout类，Spout类一般是实现 IRichSpout 或继承BaseRichSpout该类，然后实现相关方法。这里我们继承BaseRichSpout类,该类需要实现主要的方法:</p>
+<ol>
+<li>open()方法:当一个Task被初始化的时候会调用此open方法,有三个参数:Storm配置的Map、topology中组件的信息和发射tuple的方法。</li>
+<li>nextTuple()方法:是Spout实现的核心。也就是主要执行方法，用于输出信息,通过collector.emit方法发射。</li>
+<li>declareOutputFields()方法：:此方法用于声明当前Spout的Tuple发送流。</li>
+<li>ack()方法：用于表示Tuple处理成功。</li>
+<li>fail()方法：用于表示Tuple处理失败。</li>
+<li>close（）方法：用于表示Topology停止。<br>具体代码如下：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line">package com.Storm;</span><br><span class="line"></span><br><span class="line">import java.util.Map;</span><br><span class="line"></span><br><span class="line">import org.apache.storm.spout.SpoutOutputCollector;</span><br><span class="line">import org.apache.storm.task.TopologyContext;</span><br><span class="line">import org.apache.storm.topology.OutputFieldsDeclarer;</span><br><span class="line">import org.apache.storm.topology.base.BaseRichSpout;</span><br><span class="line">import org.apache.storm.tuple.Fields;</span><br><span class="line">import org.apache.storm.tuple.Values;</span><br><span class="line"></span><br><span class="line">public class Spout extends BaseRichSpout&#123;</span><br><span class="line"></span><br><span class="line">	////collector的作用：将采集到的数据发送到下一个组件</span><br><span class="line">	private SpoutOutputCollector collector;</span><br><span class="line">	private int count;</span><br><span class="line">	//模拟产生一些数据</span><br><span class="line">	public String message = <span class="string">"butalways"</span>;</span><br><span class="line">	//定义一个域</span><br><span class="line">	private static final String field = <span class="string">"test"</span>;</span><br><span class="line">	</span><br><span class="line">	// open()方法中是在ISpout接口中定义，在Spout组件初始化时被调用。有三个参数:1.Storm配置的Map;2.topology中组件的信息;3.发射tuple的方法.</span><br><span class="line">		//当一个Task被初始化的时候会调用此open方法。一般都会在此方法中对发送Tuple的对象SpoutOutputCollector和配置对象TopologyContext初始化</span><br><span class="line">	@Override</span><br><span class="line">	public void open(Map map, TopologyContext arg1, SpoutOutputCollector collector) &#123;</span><br><span class="line">		// TODO 自动生成的方法存根</span><br><span class="line">		System.out.println(<span class="string">"open:"</span>+map.get(<span class="string">"test"</span>));</span><br><span class="line">        this.collector = collector;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	//nextTuple()方法是Spout实现的核心。也就是主要执行方法，用于输出信息,通过collector.emit方法发射。</span><br><span class="line">	@Override</span><br><span class="line">	public void <span class="function"><span class="title">nextTuple</span></span>() &#123;</span><br><span class="line">		// TODO 自动生成的方法存根</span><br><span class="line">		<span class="keyword">if</span>(count&lt;=2)&#123;</span><br><span class="line">            System.out.println(<span class="string">"第"</span>+count+<span class="string">"次开始发送数据..."</span>);</span><br><span class="line">            this.collector.emit(new Values(message));</span><br><span class="line">        &#125;</span><br><span class="line">        count++;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	//declareOutputFields用于声明数据格式。即输出的一个Tuple中，包含几个字段。这里只发射一个，所以就指定一个。如果是多个，则用逗号隔开。</span><br><span class="line">	// declareOutputFields:此方法用于声明当前Spout的Tuple发送流。Stream流的定义是通过OutputFieldsDeclare.declareStream方法完成的，其中的参数包括了发送的域Fields。</span><br><span class="line">	@Override</span><br><span class="line">	public void declareOutputFields(OutputFieldsDeclarer declarer) &#123;</span><br><span class="line">		// TODO 自动生成的方法存根</span><br><span class="line">		System.out.println(<span class="string">"定义格式..."</span>);</span><br><span class="line">        declarer.declare(new Fields(field));</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	//用于表示Tuple处理成功</span><br><span class="line">	@Override</span><br><span class="line">    public void ack(Object obj) &#123;</span><br><span class="line">        System.out.println(<span class="string">"ack:"</span>+obj);</span><br><span class="line">    &#125;</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	//用于表示Tuple处理失败</span><br><span class="line">	@Override</span><br><span class="line">    public void fail(Object obj) &#123;</span><br><span class="line">        System.out.println(<span class="string">"失败:"</span>+obj);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">	</span><br><span class="line">	//用于表示Topology停止</span><br><span class="line">	@Override</span><br><span class="line">    public void <span class="function"><span class="title">close</span></span>() &#123;</span><br><span class="line">        System.out.println(<span class="string">"关闭..."</span>);</span><br><span class="line">    &#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h3 id="编写Bolt"><a href="#编写Bolt" class="headerlink" title="编写Bolt"></a>编写Bolt</h3><p>com.Storm包下创建Bolt类，Bolt类一般是实现 IRichBolt 或继承BaseRichBolt类，然后实现相关方法。这里我们继承BaseRichBolt类,该类需要实现主要的方法:</p>
+<ol>
+<li>prepare()方法：prepare方法和Spout中的open方法类似，为Bolt提供了OutputCollector，用来从Bolt中发送Tuple。</li>
+<li>Execute（）方法：是Bolt实现的核心，每次Bolt从流接收一个订阅的tuple，都会调用这个方法。</li>
+<li>declareOutputFields（）方法：用于声明当前Bolt发送的Tuple中包含的字段。</li>
+<li>cleanup()方法：用于释放bolt占用的资源。Storm在终止一个bolt之前会调用这个方法。<br>具体代码如下：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">package com.Storm;</span><br><span class="line"></span><br><span class="line">import java.util.Map;</span><br><span class="line"></span><br><span class="line">import org.apache.storm.task.OutputCollector;</span><br><span class="line">import org.apache.storm.task.TopologyContext;</span><br><span class="line">import org.apache.storm.topology.OutputFieldsDeclarer;</span><br><span class="line">import org.apache.storm.topology.base.BaseRichBolt;</span><br><span class="line">import org.apache.storm.tuple.Tuple;</span><br><span class="line"></span><br><span class="line">public class Bolt extends BaseRichBolt &#123;</span><br><span class="line">	</span><br><span class="line">	private OutputCollector collector;</span><br><span class="line">	private int count;</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	//在Bolt启动前执行，提供Bolt启动环境配置的入口,一般对于不可序列化的对象进行实例化。</span><br><span class="line">		//prepare方法和Spout中的open方法类似，为Bolt提供了OutputCollector，用来从Bolt中发送Tuple</span><br><span class="line">	@Override</span><br><span class="line">	public void prepare(Map map, TopologyContext arg1, OutputCollector collector) &#123;</span><br><span class="line">		// TODO 自动生成的方法存根</span><br><span class="line">		 System.out.println(<span class="string">"prepare:"</span>+map.get(<span class="string">"test"</span>));</span><br><span class="line">	      this.collector=collector;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	</span><br><span class="line">	//执行方法，每次Bolt从流接收一个订阅的tuple，都会调用这个方法。</span><br><span class="line">	@Override</span><br><span class="line">	public void execute(Tuple tuple) &#123;</span><br><span class="line">		// TODO 自动生成的方法存根</span><br><span class="line">		String msg=tuple.getStringByField(<span class="string">"test"</span>);</span><br><span class="line">        //这里我们就不做消息的处理，只打印</span><br><span class="line">        System.out.println(<span class="string">"Bolt第"</span>+count+<span class="string">"接受的消息:"</span>+msg); </span><br><span class="line">        count++;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	</span><br><span class="line">	//用于声明当前Bolt发送的Tuple中包含的字段</span><br><span class="line">	@Override</span><br><span class="line">	public void declareOutputFields(OutputFieldsDeclarer declarer) &#123;</span><br><span class="line">		// TODO 自动生成的方法存根</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	//cleanup是IBolt接口中定义,用于释放bolt占用的资源。Storm在终止一个bolt之前会调用这个方法。</span><br><span class="line">	@Override</span><br><span class="line">    public void <span class="function"><span class="title">cleanup</span></span>() &#123;</span><br><span class="line">        System.out.println(<span class="string">"资源释放"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">	</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h3 id="编写topology"><a href="#编写topology" class="headerlink" title="编写topology"></a>编写topology</h3><p>com.Storm包下创建Topology类，对于Spout和Bolt进行统一管理。具体实现代码如下所示：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">package com.Storm;</span><br><span class="line"></span><br><span class="line">import org.apache.storm.Config;</span><br><span class="line">import org.apache.storm.LocalCluster;</span><br><span class="line">import org.apache.storm.StormSubmitter;</span><br><span class="line">import org.apache.storm.topology.TopologyBuilder;</span><br><span class="line"></span><br><span class="line">public class Topology &#123;</span><br><span class="line">	private static final String str1 = <span class="string">"test1"</span>;</span><br><span class="line">	private static final String str2 = <span class="string">"test2"</span>;</span><br><span class="line"></span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		// TODO Auto-generated method stub</span><br><span class="line">		// 定义一个拓扑</span><br><span class="line">		TopologyBuilder builder = new TopologyBuilder();</span><br><span class="line">		// 设置一个Executeor(线程)，默认一个</span><br><span class="line">		builder.setSpout(str1, new Spout());</span><br><span class="line">		// 设置一个Executeor(线程)，和一个task</span><br><span class="line">		builder.setBolt(str2, new Bolt(), 1).setNumTasks(1).shuffleGrouping(str1);</span><br><span class="line">		Config conf = new Config();</span><br><span class="line">		conf.put(<span class="string">"test"</span>, <span class="string">"test"</span>);</span><br><span class="line">		try &#123;</span><br><span class="line">			// 运行拓扑</span><br><span class="line">			<span class="keyword">if</span> (args != null &amp;&amp; args.length &gt; 0) &#123; // 有参数时，表示向集群提交作业，并把第一个参数当做topology名称</span><br><span class="line">				System.out.println(<span class="string">"远程模式"</span>);</span><br><span class="line">				StormSubmitter.submitTopology(args[0], conf, builder.createTopology());</span><br><span class="line">			&#125; <span class="keyword">else</span> &#123;// 没有参数时，本地提交</span><br><span class="line">				// 启动本地模式</span><br><span class="line">				System.out.println(<span class="string">"本地模式"</span>);</span><br><span class="line">				LocalCluster cluster = new LocalCluster();</span><br><span class="line">				cluster.submitTopology(<span class="string">"111"</span>, conf, builder.createTopology());</span><br><span class="line">				Thread.sleep(10000);</span><br><span class="line">				//  关闭本地集群</span><br><span class="line">				cluster.shutdown();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; catch (Exception e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><p>右键运行Topology，控制台输入结果如下:</p>
+<p>本地模式<br>定义格式…<br>open:test<br>第0次开始发送数据…<br>第1次开始发送数据…<br>第2次开始发送数据…<br>Bolt第0接受的消息:butalways<br>Bolt第1接受的消息:butalways<br>Bolt第2接受的消息:butalways<br>关闭…<br>资源释放</p>
+<hr>
+<h2 id="OVER！"><a href="#OVER！" class="headerlink" title="OVER！"></a>OVER！</h2>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/08/26/Storm入门的一个Demo/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Storm简介" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -912,88 +1007,6 @@
 
 
   
-    <article id="post-hexo-yilia主题如何添加Live2d看板动画" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-        
-        <a href="/2019/07/10/hexo-yilia主题如何添加Live2d看板动画/" class="archive-article-date">
-  	<time datetime="2019-07-10T08:27:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-    <p>
-  
-    <h1 itemprop="name">
-      <a class="article-title_code_ant" href="/2019/07/10/hexo-yilia主题如何添加Live2d看板动画/">hexo-yilia主题如何添加Live2d看板动画</a>
-    </h1>
-  
-</p>
-      
-        <hr>
-<h1 id="1-先看一下效果"><a href="#1-先看一下效果" class="headerlink" title="1.先看一下效果"></a>1.先看一下效果</h1><p> 喏，就是右下角框出来的那只黑色小猫咪，它会随着你的鼠标运动哦，还是很好玩的~<br><img src="https://github.com/butalways1121/img/raw/master/display.png" alt></p>
-        
-          <a class="article-more-a" href="/2019/07/10/hexo-yilia主题如何添加Live2d看板动画/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">hexo-yilia</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Live2d看板动画</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/07/10/hexo-yilia主题如何添加Live2d看板动画/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1151,14 +1164,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Yilia</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">相册</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Kafka</a>
               </li>
              
@@ -1171,7 +1176,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Spring Boot</a>
+                <a href="javascript:void(0)" class="js-tag color1">Yilia</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">相册</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1184,6 +1193,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Spring Boot</a>
               </li>
              
               <li class="article-tag-list-item">
