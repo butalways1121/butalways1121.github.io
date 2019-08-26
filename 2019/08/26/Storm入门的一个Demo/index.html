@@ -8,17 +8,17 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>Storm入门的一个Demo | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="对于一个最简单的Storm程序来讲，也就是一个Spout传输数据， 一个Bolt处理数据，编程步骤如下：1.编写Spout类，用于将数据传递给Bolt；2.编写Bolt类，用于对数据进行处理，该程序主要是对信息进行输出；  创建Topology类，对Spout和Bolt类进行统一管理。">
+  <meta name="description" content="对于一个最简单的Storm程序来讲，也就是一个Spout传输数据， 一个Bolt处理数据，编程步骤如下：1.编写Spout类，用于将数据传递给Bolt；2.编写Bolt类，用于对数据进行处理，该程序主要是对信息进行输出；3.创建Topology类，对Spout和Bolt类进行统一管理。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Storm入门的一个Demo">
 <meta property="og:url" content="http://yoursite.com/2019/08/26/Storm入门的一个Demo/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="对于一个最简单的Storm程序来讲，也就是一个Spout传输数据， 一个Bolt处理数据，编程步骤如下：1.编写Spout类，用于将数据传递给Bolt；2.编写Bolt类，用于对数据进行处理，该程序主要是对信息进行输出；  创建Topology类，对Spout和Bolt类进行统一管理。">
+<meta property="og:description" content="对于一个最简单的Storm程序来讲，也就是一个Spout传输数据， 一个Bolt处理数据，编程步骤如下：1.编写Spout类，用于将数据传递给Bolt；2.编写Bolt类，用于对数据进行处理，该程序主要是对信息进行输出；3.创建Topology类，对Spout和Bolt类进行统一管理。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-08-26T06:33:03.560Z">
+<meta property="og:updated_time" content="2019-08-26T06:38:41.266Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Storm入门的一个Demo">
-<meta name="twitter:description" content="对于一个最简单的Storm程序来讲，也就是一个Spout传输数据， 一个Bolt处理数据，编程步骤如下：1.编写Spout类，用于将数据传递给Bolt；2.编写Bolt类，用于对数据进行处理，该程序主要是对信息进行输出；  创建Topology类，对Spout和Bolt类进行统一管理。">
+<meta name="twitter:description" content="对于一个最简单的Storm程序来讲，也就是一个Spout传输数据， 一个Bolt处理数据，编程步骤如下：1.编写Spout类，用于将数据传递给Bolt；2.编写Bolt类，用于对数据进行处理，该程序主要是对信息进行输出；3.创建Topology类，对Spout和Bolt类进行统一管理。">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -188,13 +188,10 @@
   
 </p>
       
-        <p>对于一个最简单的Storm程序来讲，也就是一个Spout传输数据， 一个Bolt处理数据，编程步骤如下：<br>1.编写Spout类，用于将数据传递给Bolt；<br>2.编写Bolt类，用于对数据进行处理，该程序主要是对信息进行输出；</p>
-<ol start="3">
-<li>创建Topology类，对Spout和Bolt类进行统一管理。<a id="more"></a>
+        <p>对于一个最简单的Storm程序来讲，也就是一个Spout传输数据， 一个Bolt处理数据，编程步骤如下：<br>1.编写Spout类，用于将数据传递给Bolt；<br>2.编写Bolt类，用于对数据进行处理，该程序主要是对信息进行输出；<br>3.创建Topology类，对Spout和Bolt类进行统一管理。</p>
+<a id="more"></a>
 <h2 id="具体实现"><a href="#具体实现" class="headerlink" title="具体实现"></a>具体实现</h2><h3 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Eclipse创建Maven项目，输入相应的包名及项目名，这里的项目名是Storm，包名为com,接着在pom.xml添加Storm的相关jar内容如下，这里使用Storm的版本为1.1.1：</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">	    &lt;groupId&gt;org.apache.storm&lt;/groupId&gt;</span><br><span class="line">	    &lt;artifactId&gt;storm-core&lt;/artifactId&gt;</span><br><span class="line">	    &lt;version&gt;1.1.1&lt;/version&gt;</span><br><span class="line">	    &lt;scope&gt;provided&lt;/scope&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
 
-</li>
-</ol>
 <h3 id="编写Spout"><a href="#编写Spout" class="headerlink" title="编写Spout"></a>编写Spout</h3><p>com.Storm包下创建Spout类，Spout类一般是实现 IRichSpout 或继承BaseRichSpout该类，然后实现相关方法。这里我们继承BaseRichSpout类,该类需要实现主要的方法:</p>
 <ol>
 <li>open()方法:当一个Task被初始化的时候会调用此open方法,有三个参数:Storm配置的Map、topology中组件的信息和发射tuple的方法。</li>
@@ -569,6 +566,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">hexo-yilia</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Live2d看板动画</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">SpringMVC</a>
               </li>
              
@@ -578,14 +583,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">RestTemplate</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">hexo-yilia</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Live2d看板动画</a>
               </li>
              
               <li class="article-tag-list-item">
