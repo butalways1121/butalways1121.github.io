@@ -6,15 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: SpringMVC | Hexo</title>
+  <title>SpringBoot整合Jsp | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/tags/SpringMVC/index.html">
+  <meta name="description" content="本文内容为SpringBoot与Jsp的整合,最终的成果是在DeptManage项目的基础上，结合简单的Jsp页面整合成DeptManageJsp项目,在Jsp页面实现对数据库的增删改查操作。主要内容如下：">
+<meta name="keywords" content="Spring Boot,Jsp">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SpringBoot整合Jsp">
+<meta property="og:url" content="http://yoursite.com/2019/09/05/SpringBoot整合Jsp/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="本文内容为SpringBoot与Jsp的整合,最终的成果是在DeptManage项目的基础上，结合简单的Jsp页面整合成DeptManageJsp项目,在Jsp页面实现对数据库的增删改查操作。主要内容如下：">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/54.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/55.png">
+<meta property="og:updated_time" content="2019-09-05T09:30:32.912Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="SpringBoot整合Jsp">
+<meta name="twitter:description" content="本文内容为SpringBoot与Jsp的整合,最终的成果是在DeptManage项目的基础上，结合简单的Jsp页面整合成DeptManageJsp项目,在Jsp页面实现对数据库的增删改查操作。主要内容如下：">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/54.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -179,86 +187,85 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-SpringBoot整合Jsp" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+        
+        <a href="/2019/09/05/SpringBoot整合Jsp/" class="archive-article-date">
+  	<time datetime="2019-09-05T02:22:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-05</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+    <p>
+  
+    <h1 class="article-title_code_ant" itemprop="name">
+      SpringBoot整合Jsp
+    </h1>
+  
+</p>
+      
+        <p>本文内容为SpringBoot与Jsp的整合,最终的成果是在<a href="https://github.com/butalways1121/Spring-Boot-SpringMVC-MyBaits" target="_blank" rel="noopener">DeptManage项目</a>的基础上，结合简单的Jsp页面整合成<a href="https://github.com/butalways1121/SpringBoot-Jsp" target="_blank" rel="noopener">DeptManageJsp项目</a>,在Jsp页面实现对数据库的增删改查操作。主要内容如下：</p>
+<a id="more"></a>
+
+<p>1.在pom.xml文件中添加Jsp及Tomcat的相关依赖，如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--JSP 依赖  --&gt;</span><br><span class="line">  		&lt;!-- servlet依赖. --&gt;</span><br><span class="line">		&lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;javax.servlet.jsp.jstl&lt;/groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;jstl-api&lt;/artifactId&gt;</span><br><span class="line">            &lt;version&gt;1.2&lt;/version&gt;</span><br><span class="line">            &lt;exclusions&gt;</span><br><span class="line">                &lt;exclusion&gt;</span><br><span class="line">                    &lt;groupId&gt;javax.servlet&lt;/groupId&gt;</span><br><span class="line">                    &lt;artifactId&gt;servlet-api&lt;/artifactId&gt;</span><br><span class="line">                &lt;/exclusion&gt;</span><br><span class="line">                &lt;exclusion&gt;</span><br><span class="line">                    &lt;groupId&gt;javax.servlet.jsp&lt;/groupId&gt;</span><br><span class="line">                    &lt;artifactId&gt;jsp-api&lt;/artifactId&gt;</span><br><span class="line">                &lt;/exclusion&gt;</span><br><span class="line">            &lt;/exclusions&gt;</span><br><span class="line">        &lt;/dependency&gt;</span><br><span class="line"> </span><br><span class="line">        &lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;org.glassfish.web&lt;/groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;jstl-impl&lt;/artifactId&gt;</span><br><span class="line">            &lt;version&gt;1.2&lt;/version&gt;</span><br><span class="line">            &lt;exclusions&gt;</span><br><span class="line">                &lt;exclusion&gt;</span><br><span class="line">                    &lt;groupId&gt;javax.servlet&lt;/groupId&gt;</span><br><span class="line">                    &lt;artifactId&gt;servlet-api&lt;/artifactId&gt;</span><br><span class="line">                &lt;/exclusion&gt;</span><br><span class="line">                &lt;exclusion&gt;</span><br><span class="line">                    &lt;groupId&gt;javax.servlet.jsp&lt;/groupId&gt;</span><br><span class="line">                    &lt;artifactId&gt;jsp-api&lt;/artifactId&gt;</span><br><span class="line">                &lt;/exclusion&gt;</span><br><span class="line">                &lt;exclusion&gt;</span><br><span class="line">                    &lt;groupId&gt;javax.servlet.jsp.jstl&lt;/groupId&gt;</span><br><span class="line">                    &lt;artifactId&gt;jstl-api&lt;/artifactId&gt;</span><br><span class="line">                &lt;/exclusion&gt;</span><br><span class="line">            &lt;/exclusions&gt;</span><br><span class="line">        &lt;/dependency&gt;  </span><br><span class="line"></span><br><span class="line">        &lt;dependency&gt;  </span><br><span class="line">            &lt;groupId&gt;javax.servlet&lt;/groupId&gt;  </span><br><span class="line">            &lt;artifactId&gt;javax.servlet-api&lt;/artifactId&gt;</span><br><span class="line">            &lt;scope&gt;provided&lt;/scope&gt;  </span><br><span class="line">        &lt;/dependency&gt;  </span><br><span class="line">        </span><br><span class="line">        &lt;!-- tomcat的支持.--&gt;</span><br><span class="line">		&lt;dependency&gt;</span><br><span class="line">			&lt;groupId&gt;org.apache.tomcat.embed&lt;/groupId&gt;</span><br><span class="line">			&lt;artifactId&gt;tomcat-embed-jasper&lt;/artifactId&gt;</span><br><span class="line">			&lt;scope&gt;provided&lt;/scope&gt;</span><br><span class="line">		&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+
+<p>2.将Jsp页面的前后缀配置加入到application.properties中：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## JSP配置</span></span><br><span class="line"><span class="comment"># 页面默认前缀</span></span><br><span class="line">spring.mvc.view.prefix=/WEB-INF/jsp/</span><br><span class="line"><span class="comment"># 响应页面默认后缀</span></span><br><span class="line">spring.mvc.view.suffix=.jsp</span><br></pre></td></tr></table></figure>
+
+<p>3.在main下新建webapp文件夹，其下继续新建WEB-INF文件夹，接着创建jsp文件夹，并将list.jsp(展示所有数据信息页面)、add.jsp(增加数据页面)及edit.jsp(编辑数据信息页面)放到jsp文件夹下，项目整体的框架如下：<br><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/54.png" alt><br>在jsp页面中用到了如下拼接网页相对路径的方法：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;%</span><br><span class="line">String path = request.getContextPath();</span><br><span class="line">String basePath = request.getScheme()+<span class="string">"://"</span>+request.getServerName()+<span class="string">":"</span>+request.getServerPort()+path+<span class="string">"/"</span>;</span><br><span class="line">%&gt;</span><br></pre></td></tr></table></figure>
+
+<p>其中，request.getContextPath()：用来获取当前的项目根目录路径；request.getSchema()：可以返回当前页面所使用的协议，就是”http”；request.getServerName()返回当前页面所在服务器的名字，就是的“localhost”；request.getServerPort()：返回当前页面所在服务器的端口号，在本例中就是“8088”。例如，在该项目中：“a href=”&lt;%=basePath%&gt;/toEdit”编辑”中的herf即为：“<a href="http://localhost:8088//toEdit”，" target="_blank" rel="noopener">http://localhost:8088//toEdit”，</a><br>点击之后就会转到相对应的controller方法。</p>
+<p>4.修改controller类的相关方法，实现页面的跳转及对数据的增删改查操作，如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line">package com.DeptManage.controller;</span><br><span class="line"></span><br><span class="line">import java.util.List;</span><br><span class="line"></span><br><span class="line">import org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line">import org.springframework.stereotype.Controller;</span><br><span class="line">import org.springframework.ui.Model;</span><br><span class="line">import org.springframework.web.bind.annotation.RequestMapping;</span><br><span class="line"></span><br><span class="line">import com.DeptManage.entity.Dept;</span><br><span class="line">import com.DeptManage.service.DeptService;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">@Controller</span><br><span class="line">public class DeptController &#123;</span><br><span class="line"></span><br><span class="line">	@Autowired</span><br><span class="line">	private DeptService deptService;</span><br><span class="line">	</span><br><span class="line">	//跳转到list页面，展示所有数据</span><br><span class="line">	@RequestMapping(value = <span class="string">"/list"</span>)</span><br><span class="line">	public String list(Model model) &#123;</span><br><span class="line">		System.out.println(<span class="string">"查询所有信息！"</span>);</span><br><span class="line">		List&lt;Dept&gt; depts=deptService.findAll();</span><br><span class="line">		//model是作为前后台的一个交互作用的,往前台传数据，可以传对象，可以传List，通过el表达式 <span class="variable">$&#123;&#125;</span>可以获取到，类似于request.setAttribute(<span class="string">"sts"</span>,sts)效果一样</span><br><span class="line">        model.addAttribute(<span class="string">"depts"</span>, depts);</span><br><span class="line">        <span class="built_in">return</span> <span class="string">"list"</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	//跳转到edit页面，并将根据id查找到部门数据传入edit</span><br><span class="line">	@RequestMapping(<span class="string">"/toEdit"</span>)</span><br><span class="line">	 public String toEdit(Model model,Long id) &#123;</span><br><span class="line">        Dept dept = deptService.findById(id);</span><br><span class="line">        model.addAttribute(<span class="string">"dept"</span>, dept);</span><br><span class="line">        <span class="built_in">return</span> <span class="string">"edit"</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">	//编辑部门信息，更新之后再转到list页面</span><br><span class="line">	@RequestMapping(<span class="string">"/edit"</span>)</span><br><span class="line">    public String edit(Dept dept) &#123;</span><br><span class="line">        deptService.update(dept);</span><br><span class="line">        <span class="built_in">return</span> <span class="string">"redirect:/list"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">	</span><br><span class="line">	//删除部门信息</span><br><span class="line">	@RequestMapping(<span class="string">"/toDelete"</span>)</span><br><span class="line">    public String delete(Long id) &#123;</span><br><span class="line">        deptService.delete(id);</span><br><span class="line">        System.out.println(<span class="string">"删除成功！"</span>);</span><br><span class="line">        <span class="built_in">return</span> <span class="string">"redirect:/list"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">	</span><br><span class="line">	//跳转到add页面</span><br><span class="line">	@RequestMapping(<span class="string">"/toAdd"</span>)</span><br><span class="line">    public String <span class="function"><span class="title">toAdd</span></span>() &#123;</span><br><span class="line">        <span class="built_in">return</span> <span class="string">"add"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">	</span><br><span class="line">	//添加部门信息，添加完成之后转到list页面</span><br><span class="line">	@RequestMapping(<span class="string">"/add"</span>)</span><br><span class="line">    public String add(Dept dept) &#123;</span><br><span class="line">        deptService.add(dept);</span><br><span class="line">        System.out.println(<span class="string">"添加成功！"</span>);</span><br><span class="line">        <span class="built_in">return</span> <span class="string">"redirect:/list"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>注意这里controller类的注解不能用RestController，因为RestController注解以json的格式返回数据，但是我们有时返回的时候需要跳转界面，所以应该使用Controller这个注解。如果想在某个方法中返回的数据格式是json的话，在该方法上加上ResponseBody这个注解即可。</p>
+<p>5.测试<br>启动App.java，在浏览器中输入“<a href="http://localhost:8088/list”，" target="_blank" rel="noopener">http://localhost:8088/list”，</a><br>显示数据库中的所有信息，结果如下：<br><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/55.png" alt><br>点击删除，则直接将该条数据信息删除；点击编辑或添加则会跳转到相应的页面，输入相关信息提交之后数据库和list页面会同步更新。</p>
+<hr>
+<h2 id="至此，OVER！"><a href="#至此，OVER！" class="headerlink" title="至此，OVER！"></a>至此，OVER！</h2>
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/alipay.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/wechat.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/21/Kafka与SSM的集成/" class="archive-article-date">
-  	<time datetime="2019-08-21T00:22:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-21</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/21/Kafka与SSM的集成/">Kafka与SSM的集成</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Kafka</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Spring Boot</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">SpringMVC</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">MyBaits</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/16/调用接口获取数据并插入数据库/" class="archive-article-date">
-  	<time datetime="2019-08-16T07:15:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/16/调用接口获取数据并插入数据库/">调用接口获取数据并插入数据库</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -268,79 +275,141 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">SpringMVC</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">MyBaits</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">RestTemplate</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Jsp</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/09/05/SpringBoot整合Jsp/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/16/Spring-Boot-SpringMVC-MyBaits实现数据库的基本操作/" class="archive-article-date">
-  	<time datetime="2019-08-16T00:17:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-16</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/08/30/SpringBoot整合Kafka-Storm/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">SpringBoot整合Kafka+Storm</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/16/Spring-Boot-SpringMVC-MyBaits实现数据库的基本操作/">springboot+springmvc+mybatis实现对数据库的操作</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Spring Boot</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">SpringMVC</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">MyBaits</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#至此，OVER！"><span class="toc-number">1.</span> <span class="toc-text">至此，OVER！</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
   
-    </div></section>
   
 
-    
+  
+
+  
+
+  
+  <div id="gitment-ctn"></div> 
+<link rel="stylesheet" href="https://billts.site/extra_css/gitment.css">
+<script src="https://billts.site/js/gitment.js"></script>
+<script>
+var gitment = new Gitment({
+  id: decodeURI(window.location.pathname),
+  owner: 'butalways1121',
+  repo: 'butalways1121.github.io',
+  oauth: {
+    client_id: '04d1e89c3e35949cd1df',
+    client_secret: '349862188473214c081a620b26558ced1977789b',
+  },
+})
+gitment.render('gitment-ctn')
+</script>
+  
 
 
           </div>
@@ -370,9 +439,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
