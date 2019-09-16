@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="在SpringBoot项目和Kafka整合的项目中用到了Java对象和Json字符串之间的转换，这里简单总结一下转换的几种方法。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-09-10T07:53:12.560Z">
+<meta property="og:updated_time" content="2019-09-16T01:49:12.962Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java对象与Json字符串之间的相互转换">
 <meta name="twitter:description" content="在SpringBoot项目和Kafka整合的项目中用到了Java对象和Json字符串之间的转换，这里简单总结一下转换的几种方法。">
@@ -207,14 +207,11 @@
       
         <p>在SpringBoot项目和Kafka整合的项目中用到了Java对象和Json字符串之间的转换，这里简单总结一下转换的几种方法。</p>
 <a id="more"></a>
-<h3 id="Java对象转换成Jon字符串"><a href="#Java对象转换成Jon字符串" class="headerlink" title="Java对象转换成Jon字符串"></a>Java对象转换成Jon字符串</h3><p>对于一个Java对象，可利用如下两种方法将其转换成Json字符串：<br><strong>1.</strong>  在创建实体对象时，让其继承Serializable类，并重写toString()方法，如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">import java.io.Serializable;</span><br><span class="line">import com.alibaba.fastjson.JSON;</span><br><span class="line"></span><br><span class="line">public class Info implements Serializable&#123;</span><br><span class="line">	private static final long serialVersionUID = 6080679564201817023L;</span><br><span class="line">	private int id;</span><br><span class="line">	private String name;</span><br><span class="line">	private String age;</span><br><span class="line">	//省略get和<span class="built_in">set</span>方法</span><br><span class="line">	@Override</span><br><span class="line">	public String <span class="function"><span class="title">toString</span></span>() &#123;</span><br><span class="line">		<span class="built_in">return</span> JSON.toJSONString(this);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Java对象转换成Jon字符串"><a href="#Java对象转换成Jon字符串" class="headerlink" title="Java对象转换成Jon字符串"></a>Java对象转换成Jon字符串</h3><p>对于一个Java对象，可利用如下两种方法将其转换成Json字符串：<br><strong>1.</strong>  直接调用JSON.toJSONString()方法将对象转换成字符串，例如我们要对info对象进行转换，示例如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import com.alibaba.fastjson.JSON;</span><br><span class="line"></span><br><span class="line">String jsonString;</span><br><span class="line">jsonString = JSON.toJSONString(info);</span><br></pre></td></tr></table></figure>
 
-<p>需添加的依赖如下：</p>
+<p>使用该类需要配置相关依赖：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">	&lt;groupId&gt;com.alibaba&lt;/groupId&gt;</span><br><span class="line">	&lt;artifactId&gt;fastjson&lt;/artifactId&gt;</span><br><span class="line">	&lt;version&gt;1.2.41&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
-
-<p>使用时直接调用Info的toString()方法即可，如：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Info info = new Info();</span><br><span class="line">String JsonString = info.toString();</span><br></pre></td></tr></table></figure>
 
 <p><strong>2.</strong>  ObjectMapper类是Jackson库的主要类。它提供一些功能将转换成Java对象匹配JSON结构,反之亦然。可利用ObjectMapper类的writeValueAsString()进行Json字符串的转换：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import org.codehaus.jackson.map.ObjectMapper;</span><br><span class="line"></span><br><span class="line">ObjectMapper om = new ObjectMapper();</span><br><span class="line">String jsonResult = om.writeValueAsString(info);</span><br></pre></td></tr></table></figure>
@@ -565,19 +562,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Yilia</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">相册</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JPA</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JpaRepository</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Yilia</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">相册</a>
               </li>
              
               <li class="article-tag-list-item">
