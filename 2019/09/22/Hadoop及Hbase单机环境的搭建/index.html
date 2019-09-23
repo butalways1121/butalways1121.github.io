@@ -8,13 +8,13 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>Hadoop及Hbase单机环境的搭建 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="本文内容为VMware的Centos 7上的Hadoop单机环境以及Hbase的搭建，Centos 7的安装比较简单，可参考：https://jingyan.baidu.com/article/c843ea0be03ece77921e4a53.html，这里就不用介绍了，下面直接进入正题，进行Hadoop单机环境的搭建。">
+  <meta name="description" content="本文内容为VMware的Centos 7上的Hadoop以及Hbase单机环境de搭建，Centos 7的安装比较简单，可参考：https://jingyan.baidu.com/article/c843ea0be03ece77921e4a53.html，这里就不用介绍了，下面直接进入正题，进行Hadoop单机环境的搭建。">
 <meta name="keywords" content="Hadoop,Hbase,Centos7">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hadoop及Hbase单机环境的搭建">
 <meta property="og:url" content="http://yoursite.com/2019/09/22/Hadoop及Hbase单机环境的搭建/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="本文内容为VMware的Centos 7上的Hadoop单机环境以及Hbase的搭建，Centos 7的安装比较简单，可参考：https://jingyan.baidu.com/article/c843ea0be03ece77921e4a53.html，这里就不用介绍了，下面直接进入正题，进行Hadoop单机环境的搭建。">
+<meta property="og:description" content="本文内容为VMware的Centos 7上的Hadoop以及Hbase单机环境de搭建，Centos 7的安装比较简单，可参考：https://jingyan.baidu.com/article/c843ea0be03ece77921e4a53.html，这里就不用介绍了，下面直接进入正题，进行Hadoop单机环境的搭建。">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/64.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/65.png">
@@ -22,10 +22,10 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/67.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/68.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/69.png">
-<meta property="og:updated_time" content="2019-09-23T01:28:13.293Z">
+<meta property="og:updated_time" content="2019-09-23T01:47:06.708Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hadoop及Hbase单机环境的搭建">
-<meta name="twitter:description" content="本文内容为VMware的Centos 7上的Hadoop单机环境以及Hbase的搭建，Centos 7的安装比较简单，可参考：https://jingyan.baidu.com/article/c843ea0be03ece77921e4a53.html，这里就不用介绍了，下面直接进入正题，进行Hadoop单机环境的搭建。">
+<meta name="twitter:description" content="本文内容为VMware的Centos 7上的Hadoop以及Hbase单机环境de搭建，Centos 7的安装比较简单，可参考：https://jingyan.baidu.com/article/c843ea0be03ece77921e4a53.html，这里就不用介绍了，下面直接进入正题，进行Hadoop单机环境的搭建。">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/64.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -212,32 +212,32 @@
   
 </p>
       
-        <p>本文内容为VMware的Centos 7上的Hadoop单机环境以及Hbase的搭建，Centos 7的安装比较简单，可参考：<a href="https://jingyan.baidu.com/article/c843ea0be03ece77921e4a53.html" target="_blank" rel="noopener">https://jingyan.baidu.com/article/c843ea0be03ece77921e4a53.html</a>，这里就不用介绍了，下面直接进入正题，进行Hadoop单机环境的搭建。</p>
+        <p>本文内容为VMware的Centos 7上的Hadoop以及Hbase单机环境de搭建，Centos 7的安装比较简单，可参考：<a href="https://jingyan.baidu.com/article/c843ea0be03ece77921e4a53.html" target="_blank" rel="noopener">https://jingyan.baidu.com/article/c843ea0be03ece77921e4a53.html</a>，这里就不用介绍了，下面直接进入正题，进行Hadoop单机环境的搭建。</p>
 <a id="more"></a>
-<h2 id="一、下载准备"><a href="#一、下载准备" class="headerlink" title="一、下载准备"></a>一、下载准备</h2><blockquote>
-<p>JDK<br>Jdk的版本为1.8，百度网盘链接: <a href="https://pan.baidu.com/s/13BfnryYKbQT5o2bSfaoJGA，提取码" target="_blank" rel="noopener">https://pan.baidu.com/s/13BfnryYKbQT5o2bSfaoJGA，提取码</a>: jds4<br>Hadoop<br>Hadoop的版本为2.8，百度网盘链接为：<a href="https://pan.baidu.com/s/1Px7jAed_DB5clSeMP3VWew，提取码" target="_blank" rel="noopener">https://pan.baidu.com/s/1Px7jAed_DB5clSeMP3VWew，提取码</a>: axe5<br>Hbase<br>Hbase的版本为1.2.6，度网盘链接为: <a href="https://pan.baidu.com/s/1ARc6EHSi1IShd5D67AV1OA" target="_blank" rel="noopener">https://pan.baidu.com/s/1ARc6EHSi1IShd5D67AV1OA</a> 提取码: pj29</p>
-</blockquote>
-<h2 id="二、NAT模式设置虚拟机静态IP"><a href="#二、NAT模式设置虚拟机静态IP" class="headerlink" title="二、NAT模式设置虚拟机静态IP"></a>二、NAT模式设置虚拟机静态IP</h2><p><strong>1.</strong>打开VMware-&gt;编辑-&gt;虚拟网络编辑器，点击右下角更改设置，选中VMnet8，取消使用本地DHCP服务将IP地址分配给虚拟机，如图：<br><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/64.png" alt><br><strong>2.</strong>点击NAT设置，添加一个端口。其中，主机端口号可以是0<del>65535中任意一个，但是最好设置为10000</del>65535；虚拟机IP地址就是你想为这台虚拟机设置的IP地址，最后一位可以随意设置；虚拟机端口号根据所需服务设置，这里就设置为22用于SSH服务，如下图：<br><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/65.png" alt><br><strong>3.</strong>打开虚拟机，进入虚拟机的终端，在根目录下按顺序输入以下命令编辑三个文件：</p>
-<blockquote>
-<p>#gedit /etc/sysconfig/network<br>在文件中添加如下信息，其中GATEWAY的地址是在上一步NAT设置中的网关IP：</p>
-</blockquote>
+<h2 id="一、下载准备"><a href="#一、下载准备" class="headerlink" title="一、下载准备"></a>一、下载准备</h2><ul>
+<li><strong>JDK</strong><br>Jdk的版本为1.8，百度网盘链接: <a href="https://pan.baidu.com/s/13BfnryYKbQT5o2bSfaoJGA" target="_blank" rel="noopener">https://pan.baidu.com/s/13BfnryYKbQT5o2bSfaoJGA</a>，提取码: jds4。</li>
+<li><strong>Hadoop</strong><br>Hadoop的版本为2.8，百度网盘链接为：<a href="https://pan.baidu.com/s/1Px7jAed_DB5clSeMP3VWew" target="_blank" rel="noopener">https://pan.baidu.com/s/1Px7jAed_DB5clSeMP3VWew</a>，提取码: axe5。</li>
+<li><strong>Hbase</strong><br>Hbase的版本为1.2.6，百度网盘链接为: <a href="https://pan.baidu.com/s/1ARc6EHSi1IShd5D67AV1OA" target="_blank" rel="noopener">https://pan.baidu.com/s/1ARc6EHSi1IShd5D67AV1OA</a>, 提取码: pj29。</li>
+</ul>
+<h2 id="二、NAT模式设置虚拟机静态IP"><a href="#二、NAT模式设置虚拟机静态IP" class="headerlink" title="二、NAT模式设置虚拟机静态IP"></a>二、NAT模式设置虚拟机静态IP</h2><p><strong>1.</strong>打开VMware-&gt;编辑-&gt;虚拟网络编辑器，点击右下角更改设置，选中VMnet8，取消使用本地DHCP服务将IP地址分配给虚拟机，如图：<br><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/64.png" alt><br><strong>2.</strong>点击NAT设置，添加一个端口。其中，主机端口号可以是0-65535中任意一个，但是最好设置为10000-65535；虚拟机IP地址就是你想为这台虚拟机设置的IP地址，最后一位可以随意设置；虚拟机端口号根据所需服务设置，这里就设置为22用于SSH服务，如下图：<br><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/65.png" alt><br><strong>3.</strong>打开虚拟机，进入虚拟机的终端，在根目录下按顺序输入以下命令编辑三个文件：</p>
+<ul>
+<li><p><strong>#gedit /etc/sysconfig/network</strong><br>在文件中添加如下信息，其中GATEWAY的地址是在上一步NAT设置中的网关IP：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">NETWORKING=yes</span><br><span class="line">GATEWAY=192.168.134.2</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>#gedit /etc/sysconfig/network-scripts/ifcfg-eno<em>（</em>可用Tab键自动补全）<br>设置如下，其中NAME需根据实际修改，IPADDR是上一步设置的虚拟机IP地址，DNS1是网关IP：</p>
-</blockquote>
+</li>
+<li><p><strong>#gedit /etc/sysconfig/network-scripts/ifcfg-eno<em>（</em>可用Tab键自动补全）</strong><br>设置如下，其中NAME需根据实际修改，IPADDR是上一步设置的虚拟机IP地址，DNS1是网关IP：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">TYPE=<span class="string">"Ethernet"</span></span><br><span class="line">NAME=“eno16777736”</span><br><span class="line">BOOTPROTO=static</span><br><span class="line">NM_CONTROLLED=<span class="string">"yes"</span></span><br><span class="line">IPV6INIT=<span class="string">"no"</span></span><br><span class="line">ONBOOT=<span class="string">"yes"</span></span><br><span class="line">IPADDR=192.168.134.6</span><br><span class="line">PREFIX0=32</span><br><span class="line">NETMASK=255.255.255.0</span><br><span class="line">DNS1=192.168.134.2</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>#gedit /etc/resolv.conf<br>添加如下信息：<br><code>nameserver 192.168.134.2</code><br><strong>4.</strong>编辑完成之后输入如下命令关闭防火墙，重启网络：</p>
-</blockquote>
+</li>
+<li><p><strong>#gedit /etc/resolv.conf</strong><br>添加如下信息：<br><code>nameserver 192.168.134.2</code></p>
+</li>
+</ul>
+<p><strong>4.</strong>编辑完成之后输入如下命令关闭防火墙，重启网络：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#systemctl stop firewalld.service</span></span><br><span class="line"><span class="comment">#systemctl disable firewalld.service</span></span><br><span class="line"><span class="comment">#systemctl restart network.service</span></span><br></pre></td></tr></table></figure>
 
 <p>其中，#systemctl disable firewalld.service是执行开机禁用防火墙自启的命令.</p>
 <hr>
 <p>然后可以ping一下自己的主机，如果能ping通，就没问题啦，可以继续下面的操作了。</p>
-<h2 id="三、更改主机名称"><a href="#三、更改主机名称" class="headerlink" title="三、更改主机名称"></a>三、更改主机名称</h2><p>虚拟机终端输入<code>#hostname</code>查看主机名称，输入<code>#hostnamectl set-hostname master</code>将主机名称永久修改为你想要设置的名称以方便日后的管理，这里设置的就是master。<br>接着在根目录下输入<code>#gedit /etc/hosts</code>，在其中添加虚拟机IP和对应的主机名称，做映射：<br><code>192.168.134.6 master</code><br>完成后需要<code>#reboot</code>方可生效。</p>
-<h2 id="四、Hadoop单机环境安装"><a href="#四、Hadoop单机环境安装" class="headerlink" title="四、Hadoop单机环境安装"></a>四、Hadoop单机环境安装</h2><h3 id="1-解压文件"><a href="#1-解压文件" class="headerlink" title="1.解压文件"></a>1.解压文件</h3><p>将下载好的jdk和hadoop的压缩包放到home目录下，并新建java、hadoop文件夹，如下：<br><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/66.png" alt><br>在home目录下输入一下命令进行解压：</p>
+<h2 id="三、更改主机名称"><a href="#三、更改主机名称" class="headerlink" title="三、更改主机名称"></a>三、更改主机名称</h2><p>虚拟机终端输入<code>#hostname</code>查看主机名称，输入<code>#hostnamectl set-hostname master</code>将主机名称永久修改为你想要设置的名称以方便日后的管理，这里设置的就是master。接着在根目录下输入<code>#gedit /etc/hosts</code>，在其中添加虚拟机IP和对应的主机名称，做映射：<code>192.168.134.6 master</code>完成后需要<code>#reboot</code>方可生效。</p>
+<h2 id="四、Hadoop单机环境安装"><a href="#四、Hadoop单机环境安装" class="headerlink" title="四、Hadoop单机环境安装"></a>四、Hadoop单机环境安装</h2><h3 id="1-解压文件"><a href="#1-解压文件" class="headerlink" title="1.解压文件"></a>1.解压文件</h3><p>将下载好的jdk和hadoop的压缩包放到home目录下，并新建java、hadoop文件夹，如下：<br><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/66.png" alt><br>在home目录下输入以下命令进行解压：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@master home]<span class="comment"># tar -xvf jdk-8u221-linux-x64.tar.gz</span></span><br><span class="line">[root@master home]<span class="comment"># tar -xvf hadoop-2.8.3.tar.gz</span></span><br></pre></td></tr></table></figure>
 
 <p>将解压后的文件分别重命名为jdk1.8和hadoop2.8，并移动到java和hadoop文件夹下。</p>
@@ -253,7 +253,7 @@
 <p>编辑完成，保存退出后输入<code>[root@master ~]# source /etc/profile</code>使配置生效。<br>接着输入java -version查看jdk是否配置成功，出现如下信息则jdk配置完成：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@master ~]<span class="comment"># java -version</span></span><br><span class="line">java version <span class="string">"1.8.0_221"</span></span><br><span class="line">Java(TM) SE Runtime Environment (build 1.8.0_221-b11)</span><br><span class="line">Java HotSpot(TM) 64-Bit Server VM (build 25.221-b11, mixed mode)</span><br></pre></td></tr></table></figure>
 
-<h3 id="3-Hadoop环境配置"><a href="#3-Hadoop环境配置" class="headerlink" title="3.Hadoop环境配置"></a>3.Hadoop环境配置</h3><p><strong>(1)profile文件更改</strong><br>根目录下输入：<br><code>[root@master ~]# vim /etc/profile</code><br>在其中添加hadoop的相关配置信息如下：</p>
+<h3 id="3-Hadoop环境配置"><a href="#3-Hadoop环境配置" class="headerlink" title="3.Hadoop环境配置"></a>3.Hadoop环境配置</h3><p><strong>(1)profile文件更改</strong><br>根目录下输入：<code>[root@master ~]# vim /etc/profile</code><br>在其中添加hadoop的相关配置信息如下：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Hadoop Config</span></span><br><span class="line"><span class="built_in">export</span> HADOOP_HOME=/home/hadoop/hadoop2.8</span><br><span class="line"><span class="built_in">export</span> HADOOP_COMMON_LIB_NATIVE_DIR=<span class="variable">$HADOOP_HOME</span>/lib/native</span><br><span class="line"><span class="built_in">export</span> HADOOP_OPTS=<span class="string">"-Djava.library.path=<span class="variable">$HADOOP_HOME</span>/lib"</span></span><br><span class="line"><span class="built_in">export</span> PATH=.:<span class="variable">$&#123;JAVA_HOME&#125;</span>/bin:<span class="variable">$&#123;HADOOP_HOME&#125;</span>/bin:<span class="variable">$PATH</span>/bin:<span class="variable">$HADOOP_HOME</span>/sbin</span><br></pre></td></tr></table></figure>
 
 <p>编辑完成后，保存退出，然后使profile配置生效：<code>[root@master ~]# source /etc/profile</code><br><strong>(2)新建文件夹</strong><br>在root目录下建立一些文件夹，以防止被莫名的删除，命令如下：</p>
@@ -290,10 +290,10 @@
 <p>过程中登录会询问是否连接，输入yes，然后输入几次密码就可以了。启动完成之后，可以输入jps查看是否启动成功，出现以下结果就是OK的：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@master sbin]<span class="comment"># jps</span></span><br><span class="line">29558 SecondaryNameNode</span><br><span class="line">29256 NameNode</span><br><span class="line">29720 ResourceManager</span><br><span class="line">30120 Jps</span><br><span class="line">29385 DataNode</span><br><span class="line">29820 NodeManager</span><br></pre></td></tr></table></figure>
 
-<p>在浏览器中可以输入<a href="http://192.168.134.6:8088/cluster" target="_blank" rel="noopener">http://192.168.134.6:8088/cluster</a>通过 Web 界面查看任务的运行情况：<br><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/67.png" alt><br>输入<a href="http://192.168.134.6:50070/" target="_blank" rel="noopener">http://192.168.134.6:50070/</a>查看hdfs的web管理页面：<br><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/68.png" alt><br>以上两个页面若都能访问成功，则Hadoop的单机环境配置完成了。使用完毕后执行以下命令即可关闭Hadoop：</p>
+<p>在浏览器中可以输入<a href="http://192.168.134.6:8088/cluster" target="_blank" rel="noopener">http://192.168.134.6:8088/cluster</a>，通过 Web 界面查看任务的运行情况：<br><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/67.png" alt><br>输入<a href="http://192.168.134.6:50070/" target="_blank" rel="noopener">http://192.168.134.6:50070/</a>，查看hdfs的web管理页面：<br><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/68.png" alt><br>以上两个页面若都能访问成功，则Hadoop的单机环境配置完成了。使用完毕后执行以下命令即可关闭Hadoop：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@master ~]<span class="comment"># cd /home/hadoop/hadoop2.8/sbin</span></span><br><span class="line">[root@master sbin]<span class="comment"># ./stop-all.sh</span></span><br></pre></td></tr></table></figure>
 
-<h2 id="七、配置Hbase单机环境"><a href="#七、配置Hbase单机环境" class="headerlink" title="七、配置Hbase单机环境"></a>七、配置Hbase单机环境</h2><p><strong>1.解压文件</strong>home下新建hbase文件夹，将hbase压缩包复制到home文件夹，切换到home目录进行解压：<code>[root@master home]# tar  -xvf hbase-1.2.6-bin.tar.gz</code><br>将解压后的文件移动到/home/hbase下：<code>[root@master home]# mv hbase-1.2.6 /home/hbase</code><br><strong>2.配置hbase环境</strong><br>输入命令：<code>[root@master ~]# vim /etc/profile</code>，在其中添加Hbase的配置信息：</p>
+<h2 id="七、配置Hbase单机环境"><a href="#七、配置Hbase单机环境" class="headerlink" title="七、配置Hbase单机环境"></a>七、配置Hbase单机环境</h2><p><strong>1.解压文件</strong><br>home下新建hbase文件夹，将hbase压缩包复制到home文件夹，切换到home目录进行解压：<code>[root@master home]# tar  -xvf hbase-1.2.6-bin.tar.gz</code><br>将解压后的文件移动到/home/hbase下：<code>[root@master home]# mv hbase-1.2.6 /home/hbase</code><br><strong>2.配置hbase环境</strong><br>输入命令：<code>[root@master ~]# vim /etc/profile</code>，在其中添加Hbase的配置信息：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Hbase Config</span></span><br><span class="line"><span class="built_in">export</span> HBASE_HOME=/home/hbase/hbase-1.2.6</span><br><span class="line"><span class="built_in">export</span> PATH=.:<span class="variable">$&#123;JAVA_HOME&#125;</span>/bin:<span class="variable">$&#123;HADOOP_HOME&#125;</span>/bin:<span class="variable">$&#123;HBASE_HOME&#125;</span>/bin:<span class="variable">$PATH</span></span><br></pre></td></tr></table></figure>
 
 <p>使配置生效：<code>[root@master ~]# source  /etc/profile</code><br>查看hbase版本：</p>
@@ -302,7 +302,10 @@
 <p><strong>3.修改配置文件</strong><br>(1)新建文件夹<br>在root目录下新建文件夹，命令如下：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@master ~]<span class="comment"># mkdir  /root/hbase</span></span><br><span class="line">[root@master ~]<span class="comment"># mkdir  /root/hbase/tmp</span></span><br><span class="line">[root@master ~]<span class="comment"># mkdir  /root/hbase/pids</span></span><br></pre></td></tr></table></figure>
 
-<p>(2)编辑hbase-env.sh 文件<br><code>[root@master ~]# cd /home/hbase/hbase-1.2.6/conf</code><br>[root@master conf]# vim hbase-env.sh<br>在其中添加配置信息如下：</p>
+<p>(2)编辑hbase-env.sh 文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@master ~]<span class="comment"># cd /home/hbase/hbase-1.2.6/conf</span></span><br><span class="line">[root@master conf]<span class="comment"># vim hbase-env.sh</span></span><br></pre></td></tr></table></figure>
+
+<p>在其中添加配置信息如下：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> JAVA_HOME=/home/java/jdk1.8</span><br><span class="line"><span class="built_in">export</span> HADOOP_HOME=/home/hadoop/hadoop2.8</span><br><span class="line"><span class="built_in">export</span> HBASE_HOME=/home/hbase/hbase-1.2.6</span><br><span class="line"><span class="built_in">export</span> HBASE_CLASSPATH=/home/hadoop/hadoop2.8/etc/hadoop</span><br><span class="line"><span class="built_in">export</span> HBASE_PID_DIR=/root/hbase/pids</span><br><span class="line"><span class="built_in">export</span> HBASE_MANAGES_ZK=<span class="literal">false</span></span><br></pre></td></tr></table></figure>
 
 <p>(3)修改 hbase-site.xml<br><code>[root@master conf]# vim hbase-site.xml</code><br>添加配置：</p>
@@ -313,8 +316,7 @@
 
 <p>浏览器输入<a href="http://192.168.134.6:16010" target="_blank" rel="noopener">http://192.168.134.6:16010</a>如能出现以下页面则Hbase单机环境配置就完成了：<br><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/69.png" alt></p>
 <hr>
-<p>至此，OVER！</p>
-
+<h2 id="至此，OVER！"><a href="#至此，OVER！" class="headerlink" title="至此，OVER！"></a>至此，OVER！</h2>
       
 
       
@@ -465,7 +467,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、下载准备"><span class="toc-number">1.</span> <span class="toc-text">一、下载准备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、NAT模式设置虚拟机静态IP"><span class="toc-number">2.</span> <span class="toc-text">二、NAT模式设置虚拟机静态IP</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、更改主机名称"><span class="toc-number">3.</span> <span class="toc-text">三、更改主机名称</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、Hadoop单机环境安装"><span class="toc-number">4.</span> <span class="toc-text">四、Hadoop单机环境安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-解压文件"><span class="toc-number">4.1.</span> <span class="toc-text">1.解压文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-配置Jdk环境"><span class="toc-number">4.2.</span> <span class="toc-text">2.配置Jdk环境</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Hadoop环境配置"><span class="toc-number">4.3.</span> <span class="toc-text">3.Hadoop环境配置</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五、重装SSH"><span class="toc-number">5.</span> <span class="toc-text">五、重装SSH</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#六、启动Hadoop"><span class="toc-number">6.</span> <span class="toc-text">六、启动Hadoop</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#七、配置Hbase单机环境"><span class="toc-number">7.</span> <span class="toc-text">七、配置Hbase单机环境</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、下载准备"><span class="toc-number">1.</span> <span class="toc-text">一、下载准备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、NAT模式设置虚拟机静态IP"><span class="toc-number">2.</span> <span class="toc-text">二、NAT模式设置虚拟机静态IP</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、更改主机名称"><span class="toc-number">3.</span> <span class="toc-text">三、更改主机名称</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、Hadoop单机环境安装"><span class="toc-number">4.</span> <span class="toc-text">四、Hadoop单机环境安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-解压文件"><span class="toc-number">4.1.</span> <span class="toc-text">1.解压文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-配置Jdk环境"><span class="toc-number">4.2.</span> <span class="toc-text">2.配置Jdk环境</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Hadoop环境配置"><span class="toc-number">4.3.</span> <span class="toc-text">3.Hadoop环境配置</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五、重装SSH"><span class="toc-number">5.</span> <span class="toc-text">五、重装SSH</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#六、启动Hadoop"><span class="toc-number">6.</span> <span class="toc-text">六、启动Hadoop</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#七、配置Hbase单机环境"><span class="toc-number">7.</span> <span class="toc-text">七、配置Hbase单机环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#至此，OVER！"><span class="toc-number">8.</span> <span class="toc-text">至此，OVER！</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -661,6 +663,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JPA</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JpaRepository</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">ObjectMapper</a>
               </li>
              
@@ -685,14 +695,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JPA</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JpaRepository</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Spring Boot</a>
               </li>
              
@@ -709,22 +711,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">SpringMVC</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">MyBaits</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">RestTemplate</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Hadoop</a>
               </li>
              
@@ -737,11 +723,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">SpringMVC</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">MyBaits</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Storm</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Topology</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">RestTemplate</a>
               </li>
             
             <div class="clearfix"></div>
