@@ -22,7 +22,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/67.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/68.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/69.png">
-<meta property="og:updated_time" content="2019-09-23T01:47:06.708Z">
+<meta property="og:updated_time" content="2019-09-24T08:44:05.637Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hadoop及Hbase单机环境的搭建">
 <meta name="twitter:description" content="本文内容为VMware的Centos 7上的Hadoop以及Hbase单机环境de搭建，Centos 7的安装比较简单，可参考：https://jingyan.baidu.com/article/c843ea0be03ece77921e4a53.html，这里就不用介绍了，下面直接进入正题，进行Hadoop单机环境的搭建。">
@@ -224,7 +224,7 @@
 <li><p><strong>#gedit /etc/sysconfig/network</strong><br>在文件中添加如下信息，其中GATEWAY的地址是在上一步NAT设置中的网关IP：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">NETWORKING=yes</span><br><span class="line">GATEWAY=192.168.134.2</span><br></pre></td></tr></table></figure>
 </li>
-<li><p><strong>#gedit /etc/sysconfig/network-scripts/ifcfg-eno<em>（</em>可用Tab键自动补全）</strong><br>设置如下，其中NAME需根据实际修改，IPADDR是上一步设置的虚拟机IP地址，DNS1是网关IP：</p>
+<li><p><strong>#gedit /etc/sysconfig/network-scripts/ifcfg-eno*（*可用Tab键自动补全）</strong><br>设置如下，其中NAME需根据实际修改，IPADDR是上一步设置的虚拟机IP地址，DNS1是网关IP：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">TYPE=<span class="string">"Ethernet"</span></span><br><span class="line">NAME=“eno16777736”</span><br><span class="line">BOOTPROTO=static</span><br><span class="line">NM_CONTROLLED=<span class="string">"yes"</span></span><br><span class="line">IPV6INIT=<span class="string">"no"</span></span><br><span class="line">ONBOOT=<span class="string">"yes"</span></span><br><span class="line">IPADDR=192.168.134.6</span><br><span class="line">PREFIX0=32</span><br><span class="line">NETMASK=255.255.255.0</span><br><span class="line">DNS1=192.168.134.2</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><strong>#gedit /etc/resolv.conf</strong><br>添加如下信息：<br><code>nameserver 192.168.134.2</code></p>
@@ -655,22 +655,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Yilia</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">相册</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ObjectMapper</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JSONObject</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JPA</a>
               </li>
              
@@ -679,7 +663,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Redis</a>
+                <a href="javascript:void(0)" class="js-tag color1">Yilia</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">相册</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -692,6 +680,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">分区</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Redis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -715,6 +707,26 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">ObjectMapper</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JSONObject</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">SpringMVC</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">MyBaits</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">RestTemplate</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Hadoop</a>
               </li>
              
@@ -727,23 +739,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">SpringMVC</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">MyBaits</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Storm</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Topology</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">RestTemplate</a>
               </li>
             
             <div class="clearfix"></div>
