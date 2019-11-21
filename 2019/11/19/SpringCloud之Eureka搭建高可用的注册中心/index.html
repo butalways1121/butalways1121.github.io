@@ -19,7 +19,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/72.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/73.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/74.png">
-<meta property="og:updated_time" content="2019-11-20T00:59:45.320Z">
+<meta property="og:updated_time" content="2019-11-20T01:02:12.989Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SpringCloud之Eureka搭建高可用的注册中心">
 <meta name="twitter:description" content="&amp;emsp;&amp;emsp;第一次接触SpringCloud，在这里简单介绍一下SpringCloud及Eureka，同时记录一下使用Eureka搭建一个高可用的服务注册于发现模块。戳这里下载源码。">
@@ -235,7 +235,7 @@
         <p>&emsp;&emsp;<strong>第一次接触SpringCloud，在这里简单介绍一下SpringCloud及Eureka，同时记录一下使用Eureka搭建一个高可用的服务注册于发现模块。戳<a href="https://github.com/butalways1121/SpringCloudEureka" target="_blank" rel="noopener">这里</a>下载源码。</strong></p>
 <a id="more"></a>
 <h2 id="一、SpringCloud简介"><a href="#一、SpringCloud简介" class="headerlink" title="一、SpringCloud简介"></a>一、SpringCloud简介</h2><h3 id="1-什么是SpringCloud"><a href="#1-什么是SpringCloud" class="headerlink" title="1.什么是SpringCloud"></a>1.什么是SpringCloud</h3><p>&emsp;&emsp;首先，尽管Spring Cloud带有“Cloud”这个单词，但它并不是云计算解决方案，它是一系列框架的有序集合，是在SpringBoot的基础上构建的。SpringCloud利用Spring Boot的开发便利性巧妙地简化了分布式系统基础设施的开发，为开发人员提供了快速建立分布式系统中的一些常见的模式，如配置管理（configuration management），服务发现（service discovery），断路器（circuit breakers），智能路由（ intelligent routing），微代理（micro-proxy），控制总线（control bus），一次性令牌（ one-time okens），全局锁（global locks），领导选举（leadership election），分布式会话(distributed sessions），集群状态（cluster state)等等。Spring Cloud并没有重复制造轮子，它只是将目前各家公司开发的比较成熟、经得起实际考验的服务框架组合起来，通过Spring Boot风格进行再封装屏蔽掉了复杂的配置和实现原理，最终给开发者留出了一套简单易懂、易部署和易维护的分布式系统开发工具包。</p>
-<h3 id="2-SpringCloud的组成"><a href="#2-SpringCloud的组成" class="headerlink" title="2.SpringCloud的组成"></a>2.SpringCloud的组成</h3><p>&emsp;&emsp;Spring Cloud的子项目，大致可分成两类，一类是对现有成熟框架”Spring Boot化”的封装和抽象，也是数量最多的项目；第二类是开发了一部分分布式系统的基础设施的实现，如Spring Cloud Stream扮演的就是kafka、ActiveMQ这样的角色。对于想快速实践微服务的开发者来说，第一类子项目就已经足够使用，如：<br><strong>（1）Spring Cloud Netflix：</strong>是对Netflix开发的一套分布式服务框架的封装，包括服务的发现和注册，负载均衡、断路器、REST客户端、请求路由等；<br><strong>（2）Spring Cloud Config：</strong>将配置信息中央化保存, 配置Spring Cloud Bus可以实现动态修改配置文件；<br><strong>（3）Spring Cloud Bus：</strong>分布式消息队列，是对Kafka, MQ的封装；<br><strong>（4）Spring Cloud Security：</strong>对Spring Security的封装，并能配合Netflix使用；<br><strong>（5）Spring Cloud Zookeeper：</strong>对Zookeeper的封装，使之能配置其它Spring Cloud的子项目使用；<br><strong>（6）Spring Cloud Eureka：</strong>是 Spring Cloud Netflix 微服务套件中的一部分，它基于Netflix Eureka 做了二次封装，主要负责完成微服务架构中的服务治理功能。</p>
+<h3 id="2-SpringCloud的组成"><a href="#2-SpringCloud的组成" class="headerlink" title="2.SpringCloud的组成"></a>2.SpringCloud的组成</h3><p>&emsp;&emsp;Spring Cloud的子项目，大致可分成两类，一类是对现有成熟框架”Spring Boot化”的封装和抽象，也是数量最多的项目；第二类是开发了一部分分布式系统的基础设施的实现，如Spring Cloud Stream扮演的就是kafka、ActiveMQ这样的角色。对于想快速实践微服务的开发者来说，第一类子项目就已经足够使用，如：<br>&emsp;&emsp;（1）Spring Cloud Netflix：是对Netflix开发的一套分布式服务框架的封装，包括服务的发现和注册，负载均衡、断路器、REST客户端、请求路由等；<br>&emsp;&emsp;（2）Spring Cloud Config：将配置信息中央化保存, 配置Spring Cloud Bus可以实现动态修改配置文件；<br>&emsp;&emsp;（3）Spring Cloud Bus：分布式消息队列，是对Kafka, MQ的封装；<br>&emsp;&emsp;（4）Spring Cloud Security：对Spring Security的封装，并能配合Netflix使用；<br>&emsp;&emsp;（5）Spring Cloud Zookeeper：对Zookeeper的封装，使之能配置其它Spring Cloud的子项目使用；<br>&emsp;&emsp;（6）Spring Cloud Eureka：是 Spring Cloud Netflix 微服务套件中的一部分，它基于Netflix Eureka 做了二次封装，主要负责完成微服务架构中的服务治理功能。</p>
 <h3 id="3-SpringCloud的特点"><a href="#3-SpringCloud的特点" class="headerlink" title="3.SpringCloud的特点"></a>3.SpringCloud的特点</h3><ul>
 <li>约定大于配置</li>
 <li>适用于各种环境</li>
@@ -396,6 +396,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2019/11/20/SpringCloud之服务消费者-Feign-和负载均衡-Ribbon/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          SpringCloud之服务消费者(Feign)和负载均衡(Ribbon)
+        
+      </div>
+    </a>
   
   
     <a href="/2019/11/18/SpringBoot整合jsp项目与web项目打包运行/" id="article-nav-older" class="article-nav-link-wrap">
@@ -622,11 +631,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JPA</a>
+                <a href="javascript:void(0)" class="js-tag color3">ObjectMapper</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JpaRepository</a>
+                <a href="javascript:void(0)" class="js-tag color1">JSONObject</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -642,15 +651,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ObjectMapper</a>
+                <a href="javascript:void(0)" class="js-tag color4">JPA</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JSONObject</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Redis</a>
+                <a href="javascript:void(0)" class="js-tag color4">JpaRepository</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -671,6 +676,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Tomcat</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Redis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -710,6 +719,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">SpringCloud</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Eureka</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">高可用注册中心</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Storm</a>
               </li>
              
@@ -726,15 +747,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">SpringCloud</a>
+                <a href="javascript:void(0)" class="js-tag color1">Feign</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Eureka</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">高可用注册中心</a>
+                <a href="javascript:void(0)" class="js-tag color2">Ribbon</a>
               </li>
              
               <li class="article-tag-list-item">

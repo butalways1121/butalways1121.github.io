@@ -6,15 +6,26 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: 相册 | Hexo</title>
+  <title>SpringCloud之服务消费者(Feign)和负载均衡(Ribbon) | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/tags/相册/index.html">
+  <meta name="description" content="&amp;emsp;&amp;emsp;本篇主要介绍的是SpringCloud中的服务消费者(Feign)和负载均衡(Ribbon)功能的实现以及使用Feign结合Ribbon实现负载均衡。戳这里下载源码。">
+<meta name="keywords" content="SpringCloud,Feign,Ribbon">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SpringCloud之服务消费者(Feign)和负载均衡(Ribbon)">
+<meta property="og:url" content="http://yoursite.com/2019/11/20/SpringCloud之服务消费者-Feign-和负载均衡-Ribbon/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="&amp;emsp;&amp;emsp;本篇主要介绍的是SpringCloud中的服务消费者(Feign)和负载均衡(Ribbon)功能的实现以及使用Feign结合Ribbon实现负载均衡。戳这里下载源码。">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/75.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/76.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/77.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/78.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/79.png">
+<meta property="og:updated_time" content="2019-11-21T08:00:31.176Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="SpringCloud之服务消费者(Feign)和负载均衡(Ribbon)">
+<meta name="twitter:description" content="&amp;emsp;&amp;emsp;本篇主要介绍的是SpringCloud中的服务消费者(Feign)和负载均衡(Ribbon)功能的实现以及使用Feign结合Ribbon实现负载均衡。戳这里下载源码。">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/75.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -182,64 +193,336 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-SpringCloud之服务消费者-Feign-和负载均衡-Ribbon" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/01/Hexo-Yilia添加相册功能/" class="archive-article-date">
-  	<time datetime="2019-08-01T03:17:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-01</time>
+      <header class="article-header">
+        
+        
+        <a href="/2019/11/20/SpringCloud之服务消费者-Feign-和负载均衡-Ribbon/" class="archive-article-date">
+  	<time datetime="2019-11-20T08:54:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-20</time>
 </a>
-        </div>
-    	 
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+    <p>
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/01/Hexo-Yilia添加相册功能/">Hexo Yilia添加相册功能</a>
+    <h1 class="article-title_code_ant" itemprop="name">
+      SpringCloud之服务消费者(Feign)和负载均衡(Ribbon)
     </h1>
   
+</p>
+    
+    <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">3.8k字</span>
+      </span>
+    </span>
 
-        <div class="article-info info-on-right">
-          
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">17分</span>
+      </span>
+    </span>
+</div>
+
+      
+        <p>&emsp;&emsp;<strong>本篇主要介绍的是SpringCloud中的服务消费者(Feign)和负载均衡(Ribbon)功能的实现以及使用Feign结合Ribbon实现负载均衡。戳<a href="https://github.com/butalways1121/SpringCloudFeign-Ribbon" target="_blank" rel="noopener">这里</a>下载源码。</strong></p>
+<a id="more"></a>
+<h2 id="一、SpringCloud-Feign"><a href="#一、SpringCloud-Feign" class="headerlink" title="一、SpringCloud Feign"></a>一、SpringCloud Feign</h2><h3 id="1-SpringCloud-Feign简介"><a href="#1-SpringCloud-Feign简介" class="headerlink" title="1.SpringCloud Feign简介"></a>1.SpringCloud Feign简介</h3><p>&emsp;&emsp;SpringCloud Feign是一个声明式的web service客户端，它让微服务之间的调用变得更简单了，类似controller调用service。在Spring Cloud中，使用Feign非常简单–创建一个接口，并在接口上添加一些注解，代码就完成了。Feign支持多种注解，例如Feign自带的注解或者JAX-RS注解等。Spring Cloud对Feign进行了增强，使Feign支持了Spring MVC注解，同时也集成了Ribbon和Eureka来提供均衡负载的HTTP客户端实现，让Feign的使用更加方便。</p>
+<p>&emsp;&emsp;何谓声明式：Spring Cloud的声明式调用, 可以做到使用 HTTP请求远程服务时能就像调用本地方法一样的体验，开发者完全感知不到这是远程方法，更感知不到这是个HTTP请求。consumer直接调用接口方法调用provider，而不需要通过常规的Http Client构造请求再解析返回数据。它解决了让开发者调用远程接口就跟调用本地方法一样，无需关注与远程的交互细节，更无需关注分布式环境开发。</p>
+<h3 id="2-SpringCloud-Feign示例"><a href="#2-SpringCloud-Feign示例" class="headerlink" title="2.SpringCloud Feign示例"></a>2.SpringCloud Feign示例</h3><h4 id="（1）服务端"><a href="#（1）服务端" class="headerlink" title="（1）服务端"></a>（1）服务端</h4><p>&emsp;&emsp;首先建立一个springcloud-feign-eureka服务的Maven Project，pom.xml的配置如下，同样需要注意的是根据SpringBoot的版本添加Eureka的依赖，如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line">&lt;project xmlns=<span class="string">"http://maven.apache.org/POM/4.0.0"</span></span><br><span class="line">	xmlns:xsi=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></span><br><span class="line">	xsi:schemaLocation=<span class="string">"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"</span>&gt;</span><br><span class="line">	&lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;</span><br><span class="line"></span><br><span class="line">	&lt;groupId&gt;1.0&lt;/groupId&gt;</span><br><span class="line">	&lt;artifactId&gt;springcloud-eureka-feign&lt;/artifactId&gt;</span><br><span class="line">	&lt;version&gt;0.0.1-SNAPSHOT&lt;/version&gt;</span><br><span class="line">	&lt;packaging&gt;jar&lt;/packaging&gt;</span><br><span class="line"></span><br><span class="line">	&lt;name&gt;springcloud-eureka-feign&lt;/name&gt;</span><br><span class="line">	&lt;url&gt;http://maven.apache.org&lt;/url&gt;</span><br><span class="line"></span><br><span class="line">	&lt;!-- Spring Boot启动器父类 --&gt;</span><br><span class="line">	&lt;parent&gt;</span><br><span class="line">		&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">		&lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;</span><br><span class="line">		&lt;version&gt;1.5.9.RELEASE&lt;/version&gt;</span><br><span class="line">		&lt;relativePath /&gt;</span><br><span class="line">	&lt;/parent&gt;</span><br><span class="line"></span><br><span class="line">	&lt;properties&gt;</span><br><span class="line">		&lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt;</span><br><span class="line">		&lt;project.reporting.outputEncoding&gt;UTF-8&lt;/project.reporting.outputEncoding&gt;</span><br><span class="line">		&lt;java.version&gt;1.8&lt;/java.version&gt;</span><br><span class="line">		&lt;spring-cloud.version&gt;Dalston.RELEASE&lt;/spring-cloud.version&gt;</span><br><span class="line">	&lt;/properties&gt;</span><br><span class="line"></span><br><span class="line">	&lt;dependencies&gt;</span><br><span class="line">		&lt;!-- eureka依赖 --&gt;</span><br><span class="line">		&lt;dependency&gt;</span><br><span class="line">			&lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;</span><br><span class="line">			&lt;artifactId&gt;spring-cloud-starter&lt;/artifactId&gt;</span><br><span class="line">		&lt;/dependency&gt;</span><br><span class="line">		&lt;dependency&gt;</span><br><span class="line">			&lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;</span><br><span class="line">			&lt;artifactId&gt;spring-cloud-starter-eureka-server&lt;/artifactId&gt;</span><br><span class="line">			&lt;!-- springboot2.x以上 --&gt;</span><br><span class="line">			&lt;!-- &lt;artifactId&gt;spring-cloud-starter-netflix-eureka-server&lt;/artifactId&gt; --&gt;</span><br><span class="line">		&lt;/dependency&gt;</span><br><span class="line">		&lt;!-- Spring Boot Test 依赖 --&gt;</span><br><span class="line">		&lt;dependency&gt;</span><br><span class="line">			&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">			&lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt;</span><br><span class="line">			&lt;scope&gt;<span class="built_in">test</span>&lt;/scope&gt;</span><br><span class="line">		&lt;/dependency&gt;</span><br><span class="line">	&lt;/dependencies&gt;</span><br><span class="line"></span><br><span class="line">	&lt;dependencyManagement&gt;</span><br><span class="line">		&lt;dependencies&gt;</span><br><span class="line">			&lt;dependency&gt;</span><br><span class="line">				&lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;</span><br><span class="line">				&lt;artifactId&gt;spring-cloud-dependencies&lt;/artifactId&gt;</span><br><span class="line">				&lt;version&gt;<span class="variable">$&#123;spring-cloud.version&#125;</span>&lt;/version&gt;</span><br><span class="line">				&lt;<span class="built_in">type</span>&gt;pom&lt;/<span class="built_in">type</span>&gt;</span><br><span class="line">				&lt;scope&gt;import&lt;/scope&gt;</span><br><span class="line">			&lt;/dependency&gt;</span><br><span class="line">		&lt;/dependencies&gt;</span><br><span class="line">	&lt;/dependencyManagement&gt;</span><br><span class="line"></span><br><span class="line">	&lt;build&gt;</span><br><span class="line">		&lt;plugins&gt;</span><br><span class="line">			&lt;plugin&gt;</span><br><span class="line">				&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">				&lt;artifactId&gt;spring-boot-maven-plugin&lt;/artifactId&gt;</span><br><span class="line">			&lt;/plugin&gt;</span><br><span class="line">		&lt;/plugins&gt;</span><br><span class="line">	&lt;/build&gt;</span><br><span class="line">&lt;/project&gt;</span><br></pre></td></tr></table></figure>
+
+<p>application.properties文件的配置信息：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">spring.application.name=springcloud-feign-eureka-server</span><br><span class="line">server.port=8001</span><br><span class="line">eureka.client.register-with-eureka=<span class="literal">false</span></span><br><span class="line">eureka.client.fetch-registry=<span class="literal">false</span></span><br><span class="line">eureka.client.serviceUrl.defaultZone=http://localhost:8001/eureka/</span><br></pre></td></tr></table></figure>
+
+<p>接着，在SpringBoot启动类添加<code>@EnableEurekaServer</code>注解就可以了。</p>
+<h4 id="（2）客户端"><a href="#（2）客户端" class="headerlink" title="（2）客户端"></a>（2）客户端</h4><p>&emsp;&emsp;这里定义两个消费者，即创建两个Maven Project项目springcloud-feign-consumer和springcloud-feign-consumer2，前者使用Feign做转发，后者就是一个普通的项目，两个项目的pom.xml同springcloud-feign-eureka即可。</p>
+<h5 id="1）springcloud-feign-consumer项目"><a href="#1）springcloud-feign-consumer项目" class="headerlink" title="1）springcloud-feign-consumer项目"></a>1）springcloud-feign-consumer项目</h5><p>application.properties文件的配置信息如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">spring.application.name=springcloud-feign-consumer</span><br><span class="line">server.port=9002</span><br><span class="line">eureka.client.serviceUrl.defaultZone=http://localhost:8001/eureka/</span><br></pre></td></tr></table></figure>
+
+<p>因为该项目要实现Fegin的功能，因此需要在启动类上添加@EnableFeignClients注解，表示启用Feign进行远程调用，如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">@SpringBootApplication</span><br><span class="line">@EnableEurekaClient</span><br><span class="line">@EnableFeignClients</span><br><span class="line">public class App </span><br><span class="line">&#123;</span><br><span class="line">    public static void main( String[] args )</span><br><span class="line">    &#123;</span><br><span class="line">    	SpringApplication.run(App.class, args);</span><br><span class="line">        System.out.println(<span class="string">"feign第一个消费者服务启动..."</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>接着创建一个转发类把请求转发到另外一个服务，需要使用<code>@FeignClient</code>注解来实现，表示需要转发服务的名称，这里把请求转发到第二个服务springcloud-feign-consumer2，<strong>需要注意的是这里转发服务的<code>@RequestMapping(value = &quot;/helloworld&quot;)</code>要与第二个消费服务springcloud-feign-consumer2中的提供打印信息接口的<code>@RequestMapping(&quot;/helloworld&quot;)</code>保持一致</strong>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">@FeignClient(name = <span class="string">"springcloud-feign-consumer2"</span>)</span><br><span class="line">public interface HelloRemote &#123;</span><br><span class="line">	@RequestMapping(value = <span class="string">"/helloworld"</span>)</span><br><span class="line">    //@RequestParam主要用于将请求参数区域的数据映射到控制层方法的参数上,即获取前端参数</span><br><span class="line">	public String hello(@RequestParam(value = <span class="string">"name"</span>) String name);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>另外，还需要提供一个入口供外部调用，然后调用上述的方法将请求进行转发：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">@RestController</span><br><span class="line">public class ConsumerController &#123;</span><br><span class="line">	@Autowired</span><br><span class="line">	HelloRemote helloRemote;</span><br><span class="line">	@RequestMapping(<span class="string">"/hello/&#123;name&#125;"</span>)</span><br><span class="line">    //可以将URL中占位符参数&#123;xxx&#125;绑定到处理器类的方法形参中@PathVariable(<span class="string">"xxx"</span>)</span><br><span class="line">    public String index(@PathVariable(<span class="string">"name"</span>) String name) &#123;</span><br><span class="line">    	System.out.println(<span class="string">"接受到请求参数:"</span>+name+<span class="string">",进行转发到其他服务"</span>);</span><br><span class="line">        <span class="built_in">return</span> helloRemote.hello(name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="2）springcloud-feign-consumer2项目"><a href="#2）springcloud-feign-consumer2项目" class="headerlink" title="2）springcloud-feign-consumer2项目"></a>2）springcloud-feign-consumer2项目</h5><p>这个服务的代码就比较简单，只是一个普通的项目，提供一个接口然后打印信息即可。</p>
+<p>application.properties文件的配置信息如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">spring.application.name=springcloud-feign-consumer2</span><br><span class="line">server.port=9003</span><br><span class="line">eureka.client.serviceUrl.defaultZone=http://localhost:8001/eureka/</span><br></pre></td></tr></table></figure>
+
+<p>启动类代码：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">@SpringBootApplication</span><br><span class="line">@EnableEurekaClient</span><br><span class="line">public class App </span><br><span class="line">&#123;</span><br><span class="line">    public static void main( String[] args )</span><br><span class="line">    &#123;</span><br><span class="line">    	SpringApplication.run(App.class, args);</span><br><span class="line">        System.out.println( <span class="string">"feign第二个消费者服务启动..."</span> );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>提供打印信息接口的控制层代码示例如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@RestController</span><br><span class="line">public class ConsumerController &#123;</span><br><span class="line"></span><br><span class="line">	@RequestMapping(<span class="string">"/helloworld"</span>)</span><br><span class="line">	public String index(@RequestParam String name) &#123;</span><br><span class="line">        <span class="built_in">return</span> name+<span class="string">",Hello World"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="（3）测试"><a href="#（3）测试" class="headerlink" title="（3）测试"></a>（3）测试</h4><p>&emsp;&emsp;完成如上三个项目之后，依次启动服务端和客户端的三个程序，然后在浏览器里输入:<code>http://localhost:8001/</code>，即可查看注册中心的信息，如下图，可以看到客户端的两个服务已经注册到Eureka服务端了：<br><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/75.png" alt></p>
+<p>然后在浏览器中输入<code>http://localhost:9003/hello?name=butalways</code>直接调用第二个消费服务springcloud-feign-consumer2的接口，浏览器界面回返回<code>butalways,Hello World</code>：<br><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/76.png" alt></p>
+<p>接着在浏览器中再输入<code>http://localhost:9002/hello/butalways</code>，来通过第一个消费服务springcloud-feign-consumer调用第二个服务springcloud-feign-consumer2，此时控制台会打印<code>接受到请求参数:butalways,进行转发到其他服务</code>，浏览器界面返回<code>butalways,Hello World</code>：<br><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/77.png" alt></p>
+<p>&emsp;&emsp;若结果如上，则说明客户端已经成功的通过Feign调用了远程服务hello，并且将结果返回到了浏览器。</p>
+<h2 id="二、SpringCloud-Ribbon"><a href="#二、SpringCloud-Ribbon" class="headerlink" title="二、SpringCloud Ribbon"></a>二、SpringCloud Ribbon</h2><h3 id="1-SpringCloud-Ribbon简介"><a href="#1-SpringCloud-Ribbon简介" class="headerlink" title="1.SpringCloud Ribbon简介"></a>1.SpringCloud Ribbon简介</h3><p>&emsp;&emsp;Spring Cloud Ribbon是Netflix发布的开源项目，是一个基于Http和TCP的客服端负载均衡工具。Ribbon客户端组件提供一系列完善的配置项如连接超时、重试等。与Eureka配合使用时，Ribbon可自动从Eureka Server (注册中心)获取服务提供者地址列表，并基于负载均衡算法，通过在客户端中配置ribbonServerList来设置服务端列表去轮询访问以达到均衡负载的作用。简单的说，就是在配置文件中列出Load Balancer后面所有的机器，Ribbon会自动的帮助你基于某种规则（如简单轮询、随即连接等）去连接这些机器，我们也很容易使用Ribbon实现自定义的负载均衡算法。简单地说，Ribbon是一个客户端负载均衡器。</p>
+<p>&emsp;&emsp;使用负载均衡带来的好处很明显：当集群里的1台或者多台服务器down的时候，剩余的没有down的服务器可以保证服务的继续使用<br>使用了更多的机器保证了机器的良性使用，不会由于某一高峰时刻导致系统cpu急剧上升。</p>
+<p>&emsp;&emsp;另外，在这里简单说一下Ribbon提供的7中负载均衡策略，如下图：<br><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/78.png" alt></p>
+<p>Ribbon默认使用的策略是轮询，想要更改的话可以在项目的application.properties中修改，如想将springcloud-ribbon-consumer服务的策略指定为“随机策略”，只需在配置中添加<code>springcloud-ribbon-consumer.ribbon.NFLoadBalancerRuleClassName=com.netflix.loadbalancer.RandomRule</code>即可。</p>
+<h3 id="2-SpringCloud-Ribbon示例"><a href="#2-SpringCloud-Ribbon示例" class="headerlink" title="2.SpringCloud Ribbon示例"></a>2.SpringCloud Ribbon示例</h3><h4 id="（1）服务端-1"><a href="#（1）服务端-1" class="headerlink" title="（1）服务端"></a>（1）服务端</h4><p>&emsp;&emsp;首先建立一个springcloud-ribbon-eureka服务的Maven Project，用于做注册中心，在pom.xml文件中添加相关配置信息：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><span class="line">&lt;project xmlns=<span class="string">"http://maven.apache.org/POM/4.0.0"</span></span><br><span class="line">	xmlns:xsi=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></span><br><span class="line">	xsi:schemaLocation=<span class="string">"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"</span>&gt;</span><br><span class="line">	&lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;</span><br><span class="line"></span><br><span class="line">	&lt;groupId&gt;1.0&lt;/groupId&gt;</span><br><span class="line">	&lt;artifactId&gt;springcloud-eureka-ribbon&lt;/artifactId&gt;</span><br><span class="line">	&lt;version&gt;0.0.1-SNAPSHOT&lt;/version&gt;</span><br><span class="line">	&lt;packaging&gt;jar&lt;/packaging&gt;</span><br><span class="line"></span><br><span class="line">	&lt;name&gt;springcloud-eureka-ribbon&lt;/name&gt;</span><br><span class="line">	&lt;url&gt;http://maven.apache.org&lt;/url&gt;</span><br><span class="line"></span><br><span class="line">	&lt;!-- Spring Boot启动器父类 --&gt;</span><br><span class="line">	&lt;parent&gt;</span><br><span class="line">		&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">		&lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;</span><br><span class="line">		&lt;version&gt;1.5.9.RELEASE&lt;/version&gt;</span><br><span class="line">		&lt;relativePath /&gt;</span><br><span class="line">	&lt;/parent&gt;</span><br><span class="line"></span><br><span class="line">	&lt;properties&gt;</span><br><span class="line">		&lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt;</span><br><span class="line">		&lt;project.reporting.outputEncoding&gt;UTF-8&lt;/project.reporting.outputEncoding&gt;</span><br><span class="line">		&lt;java.version&gt;1.8&lt;/java.version&gt;</span><br><span class="line">		&lt;spring-cloud.version&gt;Dalston.RELEASE&lt;/spring-cloud.version&gt;</span><br><span class="line">	&lt;/properties&gt;</span><br><span class="line"></span><br><span class="line">	&lt;dependencies&gt;</span><br><span class="line">		&lt;!-- eureka依赖 --&gt;</span><br><span class="line">		&lt;dependency&gt;</span><br><span class="line">			&lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;</span><br><span class="line">			&lt;artifactId&gt;spring-cloud-starter&lt;/artifactId&gt;</span><br><span class="line">		&lt;/dependency&gt;</span><br><span class="line">		&lt;dependency&gt;</span><br><span class="line">			&lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;</span><br><span class="line">			&lt;artifactId&gt;spring-cloud-starter-eureka-server&lt;/artifactId&gt;</span><br><span class="line">			&lt;!-- springboot2.x以上 --&gt;</span><br><span class="line">			&lt;!-- &lt;artifactId&gt;spring-cloud-starter-netflix-eureka-server&lt;/artifactId&gt; --&gt;</span><br><span class="line">		&lt;/dependency&gt;</span><br><span class="line">		&lt;!-- Spring Boot Test 依赖 --&gt;</span><br><span class="line">		&lt;dependency&gt;</span><br><span class="line">			&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">			&lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt;</span><br><span class="line">			&lt;scope&gt;<span class="built_in">test</span>&lt;/scope&gt;</span><br><span class="line">		&lt;/dependency&gt;</span><br><span class="line">		&lt;!-- 监控系统健康情况的工具 --&gt;</span><br><span class="line">		&lt;dependency&gt;</span><br><span class="line">			&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">			&lt;artifactId&gt;spring-boot-starter-actuator&lt;/artifactId&gt;</span><br><span class="line">		&lt;/dependency&gt;</span><br><span class="line">		&lt;!-- ribbon依赖 --&gt;</span><br><span class="line">		&lt;dependency&gt;</span><br><span class="line">			&lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;</span><br><span class="line">			&lt;artifactId&gt;spring-cloud-starter-ribbon&lt;/artifactId&gt;</span><br><span class="line">		&lt;/dependency&gt;</span><br><span class="line">	&lt;/dependencies&gt;</span><br><span class="line"></span><br><span class="line">	&lt;dependencyManagement&gt;</span><br><span class="line">		&lt;dependencies&gt;</span><br><span class="line">			&lt;dependency&gt;</span><br><span class="line">				&lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;</span><br><span class="line">				&lt;artifactId&gt;spring-cloud-dependencies&lt;/artifactId&gt;</span><br><span class="line">				&lt;version&gt;<span class="variable">$&#123;spring-cloud.version&#125;</span>&lt;/version&gt;</span><br><span class="line">				&lt;<span class="built_in">type</span>&gt;pom&lt;/<span class="built_in">type</span>&gt;</span><br><span class="line">				&lt;scope&gt;import&lt;/scope&gt;</span><br><span class="line">			&lt;/dependency&gt;</span><br><span class="line">		&lt;/dependencies&gt;</span><br><span class="line">	&lt;/dependencyManagement&gt;</span><br><span class="line"></span><br><span class="line">	&lt;build&gt;</span><br><span class="line">		&lt;plugins&gt;</span><br><span class="line">			&lt;plugin&gt;</span><br><span class="line">				&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">				&lt;artifactId&gt;spring-boot-maven-plugin&lt;/artifactId&gt;</span><br><span class="line">			&lt;/plugin&gt;</span><br><span class="line">		&lt;/plugins&gt;</span><br><span class="line">	&lt;/build&gt;</span><br><span class="line">&lt;/project&gt;</span><br></pre></td></tr></table></figure>
+
+<p>application.properties文件配置为：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">spring.application.name=springcloud-ribbon-eureka-server</span><br><span class="line">server.port=8003</span><br><span class="line">eureka.client.register-with-eureka=<span class="literal">false</span></span><br><span class="line">eureka.client.fetch-registry=<span class="literal">false</span></span><br><span class="line">eureka.client.serviceUrl.defaultZone=http://localhost:8003/eureka/</span><br></pre></td></tr></table></figure>
+
+<p>启动类代码示例：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">@EnableEurekaServer</span><br><span class="line">@SpringBootApplication</span><br><span class="line">public class App </span><br><span class="line">&#123;</span><br><span class="line">    public static void main( String[] args )</span><br><span class="line">    &#123;</span><br><span class="line">    	SpringApplication.run(App.class, args);</span><br><span class="line">        System.out.println( <span class="string">"ribbon注册中心启动"</span> );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="（2）客户端-1"><a href="#（2）客户端-1" class="headerlink" title="（2）客户端"></a>（2）客户端</h4><p>&emsp;&emsp;这里我们定义三个服务，一个服务springcloud-ribbon-consumer使用Ribbon做负载均衡，另外两个springcloud-ribbon-consumer2和springcloud-ribbon-consumer3做普通的服务，三个同样均为Maven Project项目，pom.xml文件同springcloud-ribbon-eureka即可。</p>
+<h5 id="1）springcloud-ribbon-consumer"><a href="#1）springcloud-ribbon-consumer" class="headerlink" title="1）springcloud-ribbon-consumer"></a>1）springcloud-ribbon-consumer</h5><p>application.properties文件配置信息为：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">spring.application.name=springcloud-ribbon-consumer</span><br><span class="line">server.port=9006</span><br><span class="line">eureka.client.serviceUrl.defaultZone=http://localhost:8003/eureka/</span><br></pre></td></tr></table></figure>
+
+<p>该服务要使用Ribbon实现负载均衡，只需要在启动类中实例化RestTemplate，通过<code>@LoadBalanced</code>注解开启均衡负载能力即可，启动类代码：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">@SpringBootApplication</span><br><span class="line">@EnableDiscoveryClient</span><br><span class="line">public class RibbonConsumerApplication &#123;</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		SpringApplication.run(RibbonConsumerApplication.class, args);</span><br><span class="line">		System.out.println(<span class="string">"ribbon第一个消费者服务启动..."</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	@Bean</span><br><span class="line">	@LoadBalanced</span><br><span class="line">	public RestTemplate <span class="function"><span class="title">restTemplate</span></span>() &#123;</span><br><span class="line">		<span class="built_in">return</span> new RestTemplate();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>接着需要定义转发的服务，这里使用RestTemplate来调用另外一个服务springcloud-ribbon-consumer2：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">@RestController</span><br><span class="line">public class ConsumerController &#123;</span><br><span class="line">    @Autowired</span><br><span class="line">    RestTemplate restTemplate;</span><br><span class="line"></span><br><span class="line">    @RequestMapping(<span class="string">"/hello"</span>)</span><br><span class="line">    public String <span class="function"><span class="title">hello</span></span>() &#123;</span><br><span class="line">    	//进行远程调用</span><br><span class="line">        <span class="built_in">return</span> restTemplate.getForObject(<span class="string">"http://springcloud-ribbon-consumer2/hello/?name=butalways"</span>, String.class);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="2）springcloud-ribbon-consumer2"><a href="#2）springcloud-ribbon-consumer2" class="headerlink" title="2）springcloud-ribbon-consumer2"></a>2）springcloud-ribbon-consumer2</h5><p>application.properties文件配置信息如下，这里指定服务名为springcloud-ribbon-consumer中需要转发到的服务名springcloud-ribbon-consumer2：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">spring.application.name=springcloud-ribbon-consumer2</span><br><span class="line">server.port=9007</span><br><span class="line">eureka.client.serviceUrl.defaultZone=http://localhost:8003/eureka/</span><br></pre></td></tr></table></figure>
+
+<p>启动类代码为：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">@SpringBootApplication</span><br><span class="line">@EnableDiscoveryClient</span><br><span class="line">public class App </span><br><span class="line">&#123;</span><br><span class="line">    public static void main( String[] args )</span><br><span class="line">    &#123;</span><br><span class="line">    	SpringApplication.run(App.class, args);</span><br><span class="line">        System.out.println( <span class="string">"ribbon第二个消费者服务启动..."</span> );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>该服务只是一个普通的服务，再提供一个接口打印信息即可：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@RestController</span><br><span class="line">public class ConsumerController &#123;</span><br><span class="line"></span><br><span class="line">	@RequestMapping(<span class="string">"/hello"</span>)</span><br><span class="line">	public String index(@RequestParam String name) &#123;</span><br><span class="line">		<span class="built_in">return</span> name+<span class="string">",Hello World!"</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="3）springcloud-ribbon-consumer3"><a href="#3）springcloud-ribbon-consumer3" class="headerlink" title="3）springcloud-ribbon-consumer3"></a>3）springcloud-ribbon-consumer3</h5><p>同服务springcloud-ribbon-consumer2一样，springcloud-ribbon-consumer3也只是一个普通的服务，只需提供一个接口打印信息即可。application.properties文件配置信息如下，这里指定的服务名要和springcloud-ribbon-consumer2指定的一样，这样springcloud-ribbon-consumer在转发服务时才可实现负载均衡：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">spring.application.name=springcloud-ribbon-consumer2</span><br><span class="line">server.port=9008</span><br><span class="line">eureka.client.serviceUrl.defaultZone=http://localhost:8003/eureka/</span><br></pre></td></tr></table></figure>
+
+<p>控制层代码：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">@SpringBootApplication</span><br><span class="line">@EnableDiscoveryClient</span><br><span class="line">public class App </span><br><span class="line">&#123;</span><br><span class="line">    public static void main( String[] args )</span><br><span class="line">    &#123;</span><br><span class="line">    	SpringApplication.run(App.class, args);</span><br><span class="line">        System.out.println( <span class="string">"ribbon第三个消费者服务启动..."</span> );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>打印信息接口类代码：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@RestController</span><br><span class="line">public class ConsumerController &#123;</span><br><span class="line">	</span><br><span class="line">	@RequestMapping(<span class="string">"/hello"</span>)</span><br><span class="line">	public String index(@RequestParam String name) &#123;</span><br><span class="line">		<span class="built_in">return</span> name+<span class="string">",Hello World!这是另一个服务！"</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="（3）测试-1"><a href="#（3）测试-1" class="headerlink" title="（3）测试"></a>（3）测试</h4><p>&emsp;&emsp;完成之后依次启动服务端和客户端的四个程序，然后在浏览器输入<code>http://localhost:8003/</code>即可查看注册中心的信息，可以看到服务端的三个服务都已注册：<br><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/79.png" alt><br>接着，在浏览器中输入<code>http://localhost:9006//hello</code>请求springcloud-ribbon-consumer的方法，并重复访问，浏览器返回结果为：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">butalways,Hello World!</span><br><span class="line">butalways,Hello World! 这是另一个服务！</span><br><span class="line">butalways,Hello World!</span><br><span class="line">butalways,Hello World! 这是另一个服务！</span><br><span class="line">butalways,Hello World!</span><br><span class="line">butalways,Hello World! 这是另一个服务！</span><br></pre></td></tr></table></figure>
+
+<p>至此，说明已经实现了负载均衡功能，而且是采用默认的轮询策略来回调用两个服务名相同的服务。</p>
+<h2 id="三、SpringCloud-Fegin结合Ribbon实现负载均衡"><a href="#三、SpringCloud-Fegin结合Ribbon实现负载均衡" class="headerlink" title="三、SpringCloud Fegin结合Ribbon实现负载均衡"></a>三、SpringCloud Fegin结合Ribbon实现负载均衡</h2><p>&emsp;&emsp;Fegin包含了Ribbon，可以直接实现负载均衡功能，要完成Fegin结合Ribbon实现负载均衡，只需简单修改上述项目springcloud-ribbon-consumer即可实现远程调用服务，修改内容如下：</p>
+<ol>
+<li><p>首先，在pom.xml中添加Feign依赖：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- feign依赖 --&gt;</span><br><span class="line">		&lt;dependency&gt;</span><br><span class="line">			&lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;</span><br><span class="line">			&lt;artifactId&gt;spring-cloud-starter-feign&lt;/artifactId&gt;</span><br><span class="line">			&lt;!-- &lt;artifactId&gt;spring-cloud-starter-openfeign&lt;/artifactId&gt; --&gt;</span><br><span class="line">		&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>然后在启动类上添加<code>@EnableFeignClients</code>注解，表示启用Feign进行远程调用。</p>
+</li>
+<li><p>接着新建一个类，实现Feign远程调用：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">@FeignClient(name= <span class="string">"springcloud-ribbon-consumer2"</span>) </span><br><span class="line">public interface HelloRemote &#123;</span><br><span class="line"></span><br><span class="line">	@RequestMapping(value = <span class="string">"/hello"</span>)</span><br><span class="line">    public String hello(@RequestParam(value = <span class="string">"name"</span>) String name);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>最后在提供一个新的接口供外部调用，在原来的控制层上添加如下接口即可：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@Autowired</span><br><span class="line">HelloRemote helloRemote;</span><br><span class="line">	</span><br><span class="line">@RequestMapping(<span class="string">"/hello/&#123;name&#125;"</span>)</span><br><span class="line">public String index(@PathVariable(<span class="string">"name"</span>) String name) &#123;</span><br><span class="line">    System.out.println(<span class="string">"接受到请求参数:"</span>+name+<span class="string">",进行转发到其他服务!"</span>);</span><br><span class="line">    <span class="built_in">return</span> helloRemote.hello(name);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>&emsp;&emsp;完成如上修改之后，重新启动服务端和客户端的四个程序，在浏览器中重复访问<code>http://localhost:9006//hello/butalways</code>，结果应为：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">butalways,Hello World!</span><br><span class="line">butalways,Hello World! 这是另一个服务！</span><br><span class="line">butalways,Hello World!</span><br><span class="line">butalways,Hello World! 这是另一个服务！</span><br><span class="line">butalways,Hello World!</span><br><span class="line">butalways,Hello World! 这是另一个服务！</span><br></pre></td></tr></table></figure>
+
+<p>至此，SpringCloud Fegin结合Ribbon实现负载均衡功能已完成。</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/alipay.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/wechat.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Yilia</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">SpringCloud</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">相册</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Feign</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Ribbon</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/11/20/SpringCloud之服务消费者-Feign-和负载均衡-Ribbon/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2019/11/19/SpringCloud之Eureka搭建高可用的注册中心/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">SpringCloud之Eureka搭建高可用的注册中心</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、SpringCloud-Feign"><span class="toc-number">1.</span> <span class="toc-text">一、SpringCloud Feign</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-SpringCloud-Feign简介"><span class="toc-number">1.1.</span> <span class="toc-text">1.SpringCloud Feign简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-SpringCloud-Feign示例"><span class="toc-number">1.2.</span> <span class="toc-text">2.SpringCloud Feign示例</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#（1）服务端"><span class="toc-number">1.2.1.</span> <span class="toc-text">（1）服务端</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#（2）客户端"><span class="toc-number">1.2.2.</span> <span class="toc-text">（2）客户端</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1）springcloud-feign-consumer项目"><span class="toc-number">1.2.2.1.</span> <span class="toc-text">1）springcloud-feign-consumer项目</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2）springcloud-feign-consumer2项目"><span class="toc-number">1.2.2.2.</span> <span class="toc-text">2）springcloud-feign-consumer2项目</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#（3）测试"><span class="toc-number">1.2.3.</span> <span class="toc-text">（3）测试</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、SpringCloud-Ribbon"><span class="toc-number">2.</span> <span class="toc-text">二、SpringCloud Ribbon</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-SpringCloud-Ribbon简介"><span class="toc-number">2.1.</span> <span class="toc-text">1.SpringCloud Ribbon简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-SpringCloud-Ribbon示例"><span class="toc-number">2.2.</span> <span class="toc-text">2.SpringCloud Ribbon示例</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#（1）服务端-1"><span class="toc-number">2.2.1.</span> <span class="toc-text">（1）服务端</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#（2）客户端-1"><span class="toc-number">2.2.2.</span> <span class="toc-text">（2）客户端</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1）springcloud-ribbon-consumer"><span class="toc-number">2.2.2.1.</span> <span class="toc-text">1）springcloud-ribbon-consumer</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2）springcloud-ribbon-consumer2"><span class="toc-number">2.2.2.2.</span> <span class="toc-text">2）springcloud-ribbon-consumer2</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3）springcloud-ribbon-consumer3"><span class="toc-number">2.2.2.3.</span> <span class="toc-text">3）springcloud-ribbon-consumer3</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#（3）测试-1"><span class="toc-number">2.2.3.</span> <span class="toc-text">（3）测试</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、SpringCloud-Fegin结合Ribbon实现负载均衡"><span class="toc-number">3.</span> <span class="toc-text">三、SpringCloud Fegin结合Ribbon实现负载均衡</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
+  <div id="gitment-ctn"></div> 
+<link rel="stylesheet" href="https://billts.site/extra_css/gitment.css">
+<script src="https://billts.site/js/gitment.js"></script>
+<script>
+var gitment = new Gitment({
+  id: decodeURI(window.location.pathname),
+  owner: 'butalways1121',
+  repo: 'butalways1121.github.io',
+  oauth: {
+    client_id: '04d1e89c3e35949cd1df',
+    client_secret: '349862188473214c081a620b26558ced1977789b',
+  },
+})
+gitment.render('gitment-ctn')
+</script>
+  
 
 
           </div>
@@ -269,9 +552,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
