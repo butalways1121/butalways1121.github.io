@@ -6,15 +6,28 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2019 | Hexo</title>
+  <title>SpringCloud之断路器Hystrix和断路器监控Dashboard | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/archives/2019/index.html">
+  <meta name="description" content="&amp;emsp;&amp;emsp;本篇主要介绍的是SpringCloud中的断路器(Hystrix)和断路器指标看板(Dashboard)的相关使用知识，项目实例也非常简单，戳这里下载源码。">
+<meta name="keywords" content="SpringCloud,Hystrix,Dashboard">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SpringCloud之断路器Hystrix和断路器监控Dashboard">
+<meta property="og:url" content="http://yoursite.com/2019/11/22/SpringCloud之断路器Hystrix和断路器监控Dashboard/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="&amp;emsp;&amp;emsp;本篇主要介绍的是SpringCloud中的断路器(Hystrix)和断路器指标看板(Dashboard)的相关使用知识，项目实例也非常简单，戳这里下载源码。">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/80.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/81.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/82.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/83.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/84.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/85.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/86.png">
+<meta property="og:updated_time" content="2019-11-22T06:34:38.036Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="SpringCloud之断路器Hystrix和断路器监控Dashboard">
+<meta name="twitter:description" content="&amp;emsp;&amp;emsp;本篇主要介绍的是SpringCloud中的断路器(Hystrix)和断路器指标看板(Dashboard)的相关使用知识，项目实例也非常简单，戳这里下载源码。">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/80.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -182,36 +195,149 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-SpringCloud之断路器Hystrix和断路器监控Dashboard" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/11/22/SpringCloud之断路器Hystrix和断路器监控Dashboard/" class="archive-article-date">
+      <header class="article-header">
+        
+        
+        <a href="/2019/11/22/SpringCloud之断路器Hystrix和断路器监控Dashboard/" class="archive-article-date">
   	<time datetime="2019-11-22T03:03:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-22</time>
 </a>
-        </div>
-    	 
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+    <p>
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/11/22/SpringCloud之断路器Hystrix和断路器监控Dashboard/">SpringCloud之断路器Hystrix和断路器监控Dashboard</a>
+    <h1 class="article-title_code_ant" itemprop="name">
+      SpringCloud之断路器Hystrix和断路器监控Dashboard
     </h1>
   
+</p>
+    
+    <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">2.2k字</span>
+      </span>
+    </span>
 
-        <div class="article-info info-on-right">
-          
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">10分</span>
+      </span>
+    </span>
+</div>
+
+      
+        <p>&emsp;&emsp;<strong>本篇主要介绍的是SpringCloud中的断路器(Hystrix)和断路器指标看板(Dashboard)的相关使用知识，项目实例也非常简单，戳<a href="https://github.com/butalways1121/SpringCloudHystrix" target="_blank" rel="noopener">这里</a>下载源码。</strong></p>
+<a id="more"></a>
+<h2 id="一、SpringCloud-Hystrix"><a href="#一、SpringCloud-Hystrix" class="headerlink" title="一、SpringCloud Hystrix"></a>一、SpringCloud Hystrix</h2><h3 id="1-SpringCloud-Hystrix简介"><a href="#1-SpringCloud-Hystrix简介" class="headerlink" title="1.SpringCloud Hystrix简介"></a>1.SpringCloud Hystrix简介</h3><p>&emsp;&emsp;Netflix创建了一个名为Hystrix的库，它实现了断路器模式，主要是为了解决服务雪崩效应的一个组件，是保护服务高可用的最后一道防线。在分布式环境中，许多服务依赖关系中的一些必然会失败。Hystrix是一个库，它通过添加延迟容忍和容错逻辑来帮助您控制这些分布式服务之间的交互。Hystrix通过隔离服务之间的访问点、停止跨服务的级联故障并提供回退选项来实现这一点，所有这些选项都提高了系统的总体弹性。</p>
+<p>Hystrix的设计目的如下:</p>
+<ul>
+<li>为通过第三方客户端库访问的依赖项(通常通过网络)提供保护和控制延迟和故障；</li>
+<li>停止复杂分布式系统中的级联故障；</li>
+<li>故障快速恢复；</li>
+<li>在可能的情况下，后退并优雅地降级；<br>启用近实时监视、警报和操作控制。<h3 id="2-SpringCloud-Hystrix示例"><a href="#2-SpringCloud-Hystrix示例" class="headerlink" title="2.SpringCloud Hystrix示例"></a>2.SpringCloud Hystrix示例</h3><h4 id="（1）服务端"><a href="#（1）服务端" class="headerlink" title="（1）服务端"></a>（1）服务端</h4>&emsp;&emsp;同之前一样首先创建一个注册中心springcloud-hystrix-eureka，pom.xml完整配置如下：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line">&lt;project xmlns=<span class="string">"http://maven.apache.org/POM/4.0.0"</span></span><br><span class="line">	xmlns:xsi=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></span><br><span class="line">	xsi:schemaLocation=<span class="string">"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"</span>&gt;</span><br><span class="line">	&lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;</span><br><span class="line"></span><br><span class="line">	&lt;groupId&gt;1.0.0&lt;/groupId&gt;</span><br><span class="line">	&lt;artifactId&gt;springcloud-hystrix-eureka&lt;/artifactId&gt;</span><br><span class="line">	&lt;version&gt;0.0.1-SNAPSHOT&lt;/version&gt;</span><br><span class="line">	&lt;packaging&gt;jar&lt;/packaging&gt;</span><br><span class="line">	&lt;name&gt;springcloud-eureka&lt;/name&gt;</span><br><span class="line">	&lt;url&gt;http://maven.apache.org&lt;/url&gt;</span><br><span class="line">	&lt;parent&gt;</span><br><span class="line">		&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">		&lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;</span><br><span class="line">		&lt;version&gt;1.5.9.RELEASE&lt;/version&gt;</span><br><span class="line">		&lt;relativePath /&gt;</span><br><span class="line">	&lt;/parent&gt;</span><br><span class="line">	&lt;properties&gt;</span><br><span class="line">		&lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt;</span><br><span class="line">		&lt;project.reporting.outputEncoding&gt;UTF-8&lt;/project.reporting.outputEncoding&gt;</span><br><span class="line">		&lt;java.version&gt;1.8&lt;/java.version&gt;</span><br><span class="line">		&lt;spring-cloud.version&gt;Dalston.RELEASE&lt;/spring-cloud.version&gt;</span><br><span class="line">	&lt;/properties&gt;</span><br><span class="line"></span><br><span class="line">	&lt;dependencies&gt;</span><br><span class="line">		&lt;dependency&gt;</span><br><span class="line">			&lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;</span><br><span class="line">			&lt;artifactId&gt;spring-cloud-starter&lt;/artifactId&gt;</span><br><span class="line">		&lt;/dependency&gt;</span><br><span class="line">		&lt;dependency&gt;</span><br><span class="line">			&lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;</span><br><span class="line">			&lt;artifactId&gt;spring-cloud-starter-eureka-server&lt;/artifactId&gt;</span><br><span class="line">		&lt;/dependency&gt;</span><br><span class="line">		&lt;dependency&gt;</span><br><span class="line">			&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">			&lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt;</span><br><span class="line">			&lt;scope&gt;<span class="built_in">test</span>&lt;/scope&gt;</span><br><span class="line">		&lt;/dependency&gt;</span><br><span class="line">		&lt;!-- feign依赖 --&gt;</span><br><span class="line">		&lt;dependency&gt;</span><br><span class="line">			&lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;</span><br><span class="line">			&lt;artifactId&gt;spring-cloud-starter-feign&lt;/artifactId&gt;</span><br><span class="line">			&lt;!-- &lt;artifactId&gt;spring-cloud-starter-openfeign&lt;/artifactId&gt; --&gt;</span><br><span class="line">		&lt;/dependency&gt;</span><br><span class="line">		&lt;!-- hystrix依赖 --&gt;</span><br><span class="line">		&lt;dependency&gt;</span><br><span class="line">	        &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;</span><br><span class="line">	        &lt;artifactId&gt;spring-cloud-starter-hystrix&lt;/artifactId&gt;</span><br><span class="line">    	&lt;/dependency&gt;</span><br><span class="line">        &lt;!-- Spring Boot 热部署 class文件之后会自动重启 --&gt;</span><br><span class="line">		&lt;dependency&gt;</span><br><span class="line">			&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">			&lt;artifactId&gt;spring-boot-devtools&lt;/artifactId&gt;</span><br><span class="line">			&lt;optional&gt;<span class="literal">true</span>&lt;/optional&gt;</span><br><span class="line">		&lt;/dependency&gt;</span><br><span class="line">	&lt;/dependencies&gt;</span><br><span class="line">	&lt;dependencyManagement&gt;</span><br><span class="line">		&lt;dependencies&gt;</span><br><span class="line">			&lt;dependency&gt;</span><br><span class="line">				&lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;</span><br><span class="line">				&lt;artifactId&gt;spring-cloud-dependencies&lt;/artifactId&gt;</span><br><span class="line">				&lt;version&gt;<span class="variable">$&#123;spring-cloud.version&#125;</span>&lt;/version&gt;</span><br><span class="line">				&lt;<span class="built_in">type</span>&gt;pom&lt;/<span class="built_in">type</span>&gt;</span><br><span class="line">				&lt;scope&gt;import&lt;/scope&gt;</span><br><span class="line">			&lt;/dependency&gt;</span><br><span class="line">		&lt;/dependencies&gt;</span><br><span class="line">	&lt;/dependencyManagement&gt;</span><br><span class="line">	&lt;build&gt;</span><br><span class="line">		&lt;plugins&gt;</span><br><span class="line">			&lt;plugin&gt;</span><br><span class="line">				&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">				&lt;artifactId&gt;spring-boot-maven-plugin&lt;/artifactId&gt;</span><br><span class="line">			&lt;/plugin&gt;</span><br><span class="line">		&lt;/plugins&gt;</span><br><span class="line">	&lt;/build&gt;</span><br><span class="line">&lt;/project&gt;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>application.properties文件配置如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">spring.application.name=springcloud-hystrix-eureka-server</span><br><span class="line">server.port=8002</span><br><span class="line">eureka.client.register-with-eureka=<span class="literal">false</span></span><br><span class="line">eureka.client.fetch-registry=<span class="literal">false</span></span><br><span class="line">eureka.client.serviceUrl.defaultZone=http://localhost:8002/eureka/</span><br></pre></td></tr></table></figure>
+
+<p>启动类代码：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">@SpringBootApplication</span><br><span class="line">@EnableEurekaServer</span><br><span class="line">public class App </span><br><span class="line">&#123;</span><br><span class="line">    public static void main( String[] args )</span><br><span class="line">    &#123;</span><br><span class="line">    	SpringApplication.run(App.class, args);</span><br><span class="line">        System.out.println( <span class="string">"hystrix注册中心服务启动..."</span> );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="（2）客户端"><a href="#（2）客户端" class="headerlink" title="（2）客户端"></a>（2）客户端</h4><p>&emsp;&emsp;这次同样是新建两个项目springcloud-hystrix-consumer和springcloud-hystrix-consumer2，前者使用Feign做转发，同时新增一个回调类，用于处理断路的情况，后者只是提供一个简单的接口用于打印信息即可，这两个项目的依赖同springcloud-hystrix-eureka即可。</p>
+<h4 id="1）springcloud-hystrix-consumer"><a href="#1）springcloud-hystrix-consumer" class="headerlink" title="1）springcloud-hystrix-consumer"></a>1）springcloud-hystrix-consumer</h4><p>application.properties配置如下，其中<code>feign.hystrix.enabled</code>配置表示是否启用熔断机制：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">spring.application.name=springcloud-hystrix-consumer</span><br><span class="line">server.port=9004</span><br><span class="line">eureka.client.serviceUrl.defaultZone=http://localhost:8002/eureka/</span><br><span class="line">feign.hystrix.enabled=<span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+<p>启动类代码：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">@SpringBootApplication</span><br><span class="line">@EnableDiscoveryClient</span><br><span class="line">@EnableFeignClients</span><br><span class="line">public class App </span><br><span class="line">&#123;</span><br><span class="line">    public static void main( String[] args )</span><br><span class="line">    &#123;</span><br><span class="line">    	SpringApplication.run(App.class, args);</span><br><span class="line">        System.out.println( <span class="string">"hystrix第一个消费者服务启动..."</span> );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>接着定义一个转发类把请求转发到服务springcloud-hystrix-consumer2上，同时在@FeignClient注解上添加一个回调方法fallback，表示服务熔断的时候返回fallback类中的内容：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@FeignClient(name= <span class="string">"springcloud-hystrix-consumer2"</span>,fallback = HelloRemoteHystrix.class)</span><br><span class="line">public interface HelloRemote &#123;</span><br><span class="line">    @RequestMapping(value = <span class="string">"/hello"</span>)</span><br><span class="line">    public String hello(@RequestParam(value = <span class="string">"name"</span>) String name);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>新增一个回调类，用于处理断路的情况，就是定义上述转发类的实现类，对应的方法就是转发类熔断时调用的方法：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@Component</span><br><span class="line">public class HelloRemoteHystrix implements HelloRemote&#123;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public String hello(@RequestParam(value = <span class="string">"name"</span>) String name) &#123;</span><br><span class="line">        <span class="built_in">return</span> name+<span class="string">", 请求另一个服务失败!"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>最后，在提供一个入口供外部调用，然后调用上述的方法将请求进行转发：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">@RestController</span><br><span class="line">public class ConsumerController &#123;</span><br><span class="line">	@Autowired</span><br><span class="line">    HelloRemote helloRemote;</span><br><span class="line"></span><br><span class="line">    @RequestMapping(<span class="string">"/hello/&#123;name&#125;"</span>)</span><br><span class="line">    public String index(@PathVariable(<span class="string">"name"</span>) String name) &#123;</span><br><span class="line">    	System.out.println(<span class="string">"接受到请求参数:"</span>+name+<span class="string">",进行转发到其他服务"</span>);</span><br><span class="line">        <span class="built_in">return</span> helloRemote.hello(name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="2）springcloud-hystrix-consumer2"><a href="#2）springcloud-hystrix-consumer2" class="headerlink" title="2）springcloud-hystrix-consumer2"></a>2）springcloud-hystrix-consumer2</h4><p>application.properties配置：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">spring.application.name=springcloud-hystrix-consumer2</span><br><span class="line">server.port=9005</span><br><span class="line">eureka.client.serviceUrl.defaultZone=http://localhost:8002/eureka/</span><br></pre></td></tr></table></figure>
+
+<p>启动类代码：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">@SpringBootApplication</span><br><span class="line">@EnableEurekaClient</span><br><span class="line">public class App </span><br><span class="line">&#123;</span><br><span class="line">    public static void main( String[] args )</span><br><span class="line">    &#123;</span><br><span class="line">    	SpringApplication.run(App.class, args);</span><br><span class="line">        System.out.println( <span class="string">"hystrix第二个消费者服务启动..."</span> );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>提供打印信息的控制层:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@RestController</span><br><span class="line">public class ConsumerController &#123;</span><br><span class="line"></span><br><span class="line">	@RequestMapping(<span class="string">"/hello"</span>)</span><br><span class="line">    public String index(@RequestParam String name) &#123;</span><br><span class="line">        <span class="built_in">return</span> name+<span class="string">",Hello World"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="（3）测试"><a href="#（3）测试" class="headerlink" title="（3）测试"></a>（3）测试</h4><p>&emsp;&emsp;完成如上的工程开发之后，依次启动服务端和客户端的springcloud-hystrix-eureka、springcloud-hystrix-consumer和springcloud-hystrix-consumer2这三个程序，然后在浏览器界面输入<code>http://localhost:8002/</code>，即可查看注册中心的信息：<br><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/80.png" alt></p>
+<p>接着，在浏览器中输入<code>http://localhost:9005/hello?name=butalways</code>，浏览器若返回如下则说明springcloud-hystrix-consumer2服务正常：<br><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/81.png" alt></p>
+<p>然后在浏览器中输入<code>http://localhost:9004/hello/bualways</code>，控制台打印:<br><code>接受到请求参数:pancm,进行转发到其他服务</code>，同时浏览器显示如下则说明springcloud-hystrix-consumer的Feign调用也是好的：<br><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/82.png" alt></p>
+<p>接下来进行短路测试，首先停止springcloud-hystrix-consumer2的服务，然后在浏览器中输入<code>http://localhost:9004/hello/bualways</code>，此时控制台应打印<code>接受到请求参数:butalways,进行转发到其他服务</code>，浏览器则返回如下：<br><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/83.png" alt></p>
+<p>出现以上结果则说明短路的功能已经实现了。</p>
+<h2 id="二、SpringCloud-Hystrix-Dashboard"><a href="#二、SpringCloud-Hystrix-Dashboard" class="headerlink" title="二、SpringCloud Hystrix-Dashboard"></a>二、SpringCloud Hystrix-Dashboard</h2><h3 id="1-Hystrix-Dashboard介绍"><a href="#1-Hystrix-Dashboard介绍" class="headerlink" title="1.Hystrix-Dashboard介绍"></a>1.Hystrix-Dashboard介绍</h3><p>&emsp;&emsp;Hystrix-dashboard是一款针对Hystrix进行实时监控的工具，通过Hystrix Dashboard我们可以在直观地看到各Hystrix Command的请求响应时间、请求成功率等数据。</p>
+<p>&emsp;&emsp;Hystrix提供了对于微服务调用状态的监控信息，但是需要结合spring-boot-actuator模块一起使用。<br>Hystrix Dashboard主要用来实时监控Hystrix的各项指标信息。通过Hystrix Dashboard反馈的实时信息，可以帮助我们快速发现系统中存在的问题。</p>
+<h3 id="2-SpringCloud-Hystrix-Dashboard-示例"><a href="#2-SpringCloud-Hystrix-Dashboard-示例" class="headerlink" title="2.SpringCloud Hystrix-Dashboard 示例"></a>2.SpringCloud Hystrix-Dashboard 示例</h3><p>&emsp;&emsp;这里直接把上面的springcloud-hystrix-consumer项目简单修改下，项目名称改为springcloud-hystrix-dashboard-consumer，在启动类上添加两个注解：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">@EnableCircuitBreaker:表示启用hystrix功能。</span><br><span class="line">@EnableHystrixDashboard:启用HystrixDashboard 断路器看板相关配置。</span><br></pre></td></tr></table></figure>
+
+<p>启动类完整配置如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">@SpringBootApplication</span><br><span class="line">@EnableDiscoveryClient</span><br><span class="line">@EnableFeignClients</span><br><span class="line">@EnableCircuitBreaker</span><br><span class="line">@EnableHystrixDashboard</span><br><span class="line">public class App </span><br><span class="line">&#123;</span><br><span class="line">    public static void main( String[] args )</span><br><span class="line">    &#123;</span><br><span class="line">    	SpringApplication.run(App.class, args);</span><br><span class="line">        System.out.println( &quot;hystrix dashboard 服务启动...&quot; );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后在application.properties配置文件中新增配置如下，该配置的意思是指定hystrixDashboard的访问路径，SpringBoot2.x以上必须指定，不然是无法进行访问的，访问会出现 Unable to connect to Command Metric Stream 错误，在修改一下端口，完整的配置如下:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">spring.application.name=springcloud-hystrix-dashboard-consumer</span><br><span class="line">server.port=9010</span><br><span class="line">eureka.client.serviceUrl.defaultZone=http://localhost:8002/eureka/</span><br><span class="line">feign.hystrix.enabled=<span class="literal">true</span></span><br><span class="line">management.endpoints.web.exposure.include=hystrix.stream</span><br><span class="line">management.endpoints.web.base-path=/</span><br></pre></td></tr></table></figure>
+
+<p>接着，就可以进行测试了，启动springcloud-hystrix-eureka、springcloud-hystrix-dashboard-consumer和springcloud-hystrix-consumer2三个程序，然后在浏览器中输入<code>http://localhost:9010/hystrix</code>，出现如下界面，可以通过该界面监控使用hystrix-dashboard的项目：<br><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/84.png" alt></p>
+<p>接着依照提示在中间的输入框输入:<br><code>http://localhost:9010/hystrix.stream</code>,就会出现如下界面：<br><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/85.png" alt></p>
+<p>该界面就是Hystrix Dashboard监控的界面了，通过这个界面我们可以很详细的看到程序的信息，图中一些信息的简单说明如下：<br><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/86.png" alt></p>
+<p><strong>注: 如果界面一直提示loading，那么是因为没有进行请求访问，只需在到浏览器上输入:<code>http://localhost:9010/hello/butalways</code>，然后刷新该界面就可以进行查看了。</strong></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/alipay.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/wechat.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -231,409 +357,134 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/11/22/SpringCloud之断路器Hystrix和断路器监控Dashboard/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/11/20/SpringCloud之服务消费者-Feign-和负载均衡-Ribbon/" class="archive-article-date">
-  	<time datetime="2019-11-20T08:54:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-20</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/11/20/SpringCloud之服务消费者-Feign-和负载均衡-Ribbon/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">SpringCloud之服务消费者(Feign)和负载均衡(Ribbon)</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/11/20/SpringCloud之服务消费者-Feign-和负载均衡-Ribbon/">SpringCloud之服务消费者(Feign)和负载均衡(Ribbon)</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">SpringCloud</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Feign</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Ribbon</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、SpringCloud-Hystrix"><span class="toc-number">1.</span> <span class="toc-text">一、SpringCloud Hystrix</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-SpringCloud-Hystrix简介"><span class="toc-number">1.1.</span> <span class="toc-text">1.SpringCloud Hystrix简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-SpringCloud-Hystrix示例"><span class="toc-number">1.2.</span> <span class="toc-text">2.SpringCloud Hystrix示例</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#（1）服务端"><span class="toc-number">1.2.1.</span> <span class="toc-text">（1）服务端</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#（2）客户端"><span class="toc-number">1.2.2.</span> <span class="toc-text">（2）客户端</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1）springcloud-hystrix-consumer"><span class="toc-number">1.2.3.</span> <span class="toc-text">1）springcloud-hystrix-consumer</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2）springcloud-hystrix-consumer2"><span class="toc-number">1.2.4.</span> <span class="toc-text">2）springcloud-hystrix-consumer2</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#（3）测试"><span class="toc-number">1.2.5.</span> <span class="toc-text">（3）测试</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、SpringCloud-Hystrix-Dashboard"><span class="toc-number">2.</span> <span class="toc-text">二、SpringCloud Hystrix-Dashboard</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Hystrix-Dashboard介绍"><span class="toc-number">2.1.</span> <span class="toc-text">1.Hystrix-Dashboard介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-SpringCloud-Hystrix-Dashboard-示例"><span class="toc-number">2.2.</span> <span class="toc-text">2.SpringCloud Hystrix-Dashboard 示例</span></a></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/11/19/SpringCloud之Eureka搭建高可用的注册中心/" class="archive-article-date">
-  	<time datetime="2019-11-19T08:12:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-19</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/11/19/SpringCloud之Eureka搭建高可用的注册中心/">SpringCloud之Eureka搭建高可用的注册中心</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">SpringCloud</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Eureka</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">高可用注册中心</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/11/18/SpringBoot整合jsp项目与web项目打包运行/" class="archive-article-date">
-  	<time datetime="2019-11-18T03:35:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-18</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/11/18/SpringBoot整合jsp项目与web项目打包运行/">SpringBoot整合jsp项目与web项目打包运行</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">SpringBoot</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">war包</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Tomcat</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/10/14/圈小猫/" class="archive-article-date">
-  	<time datetime="2019-10-14T00:43:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-14</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/10/14/圈小猫/">圈小猫</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/09/27/关系型与非关系型数据库以及Hbase与Redis/" class="archive-article-date">
-  	<time datetime="2019-09-27T02:43:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-27</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/27/关系型与非关系型数据库以及Hbase与Redis/">关系型与非关系型数据库以及Hbase与Redis</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Redis</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Hbase</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">关系型数据库</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">非关系型数据库</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/09/26/SpringBoot整合Thymeleaf与Hbase/" class="archive-article-date">
-  	<time datetime="2019-09-26T08:11:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-26</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/26/SpringBoot整合Thymeleaf与Hbase/">SpringBoot整合Thymeleaf与Hbase</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">SpringBoot</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Hbase</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Thymeleaf</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/09/22/Hadoop及Hbase单机环境的搭建/" class="archive-article-date">
-  	<time datetime="2019-09-22T07:45:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/22/Hadoop及Hbase单机环境的搭建/">Hadoop及Hbase单机环境的搭建</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Hadoop</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Hbase</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Centos7</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/09/17/Redis简介/" class="archive-article-date">
-  	<time datetime="2019-09-17T01:45:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-17</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/17/Redis简介/">Redis简介</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Redis</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/09/10/Java对象与Json字符串之间的相互转换/" class="archive-article-date">
-  	<time datetime="2019-09-10T07:17:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-10</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/10/Java对象与Json字符串之间的相互转换/">Java对象与Json字符串之间的相互转换</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">ObjectMapper</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JSONObject</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/2019/page/2/">2</a><a class="page-number" href="/archives/2019/page/3/">3</a><a class="extend next" rel="next" href="/archives/2019/page/2/">Next &raquo;</a>
-    </nav>
+  <div id="gitment-ctn"></div> 
+<link rel="stylesheet" href="https://billts.site/extra_css/gitment.css">
+<script src="https://billts.site/js/gitment.js"></script>
+<script>
+var gitment = new Gitment({
+  id: decodeURI(window.location.pathname),
+  owner: 'butalways1121',
+  repo: 'butalways1121.github.io',
+  oauth: {
+    client_id: '04d1e89c3e35949cd1df',
+    client_secret: '349862188473214c081a620b26558ced1977789b',
+  },
+})
+gitment.render('gitment-ctn')
+</script>
   
 
 
@@ -664,8 +515,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

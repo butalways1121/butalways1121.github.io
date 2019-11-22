@@ -21,7 +21,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/77.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/78.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/79.png">
-<meta property="og:updated_time" content="2019-11-21T08:17:01.223Z">
+<meta property="og:updated_time" content="2019-11-21T08:34:47.993Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SpringCloud之服务消费者(Feign)和负载均衡(Ribbon)">
 <meta name="twitter:description" content="&amp;emsp;&amp;emsp;本篇主要介绍的是SpringCloud中的服务消费者(Feign)和负载均衡(Ribbon)功能的实现以及使用Feign结合Ribbon实现负载均衡。戳这里下载源码。">
@@ -228,7 +228,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">17分</span>
+        <span class="post-count">18分</span>
       </span>
     </span>
 </div>
@@ -320,20 +320,16 @@
 
 <p>至此，说明已经实现了负载均衡功能，而且是采用默认的轮询策略来回调用两个服务名相同的服务。</p>
 <h2 id="三、SpringCloud-Fegin结合Ribbon实现负载均衡"><a href="#三、SpringCloud-Fegin结合Ribbon实现负载均衡" class="headerlink" title="三、SpringCloud Fegin结合Ribbon实现负载均衡"></a>三、SpringCloud Fegin结合Ribbon实现负载均衡</h2><p>&emsp;&emsp;Fegin包含了Ribbon，可以直接实现负载均衡功能，要完成Fegin结合Ribbon实现负载均衡，只需简单修改上述项目springcloud-ribbon-consumer即可实现远程调用服务，修改内容如下：</p>
-<ol>
-<li><p>首先，在pom.xml中添加Feign依赖：</p>
+<p>1.首先，在pom.xml中添加Feign依赖：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- feign依赖 --&gt;</span><br><span class="line">		&lt;dependency&gt;</span><br><span class="line">			&lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;</span><br><span class="line">			&lt;artifactId&gt;spring-cloud-starter-feign&lt;/artifactId&gt;</span><br><span class="line">			&lt;!-- &lt;artifactId&gt;spring-cloud-starter-openfeign&lt;/artifactId&gt; --&gt;</span><br><span class="line">		&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>然后在启动类上添加<code>@EnableFeignClients</code>注解，表示启用Feign进行远程调用。</p>
-</li>
-<li><p>接着新建一个类，实现Feign远程调用：</p>
+
+<p>2.然后在启动类上添加<code>@EnableFeignClients</code>注解，表示启用Feign进行远程调用。</p>
+<p>3.接着新建一个类，实现Feign远程调用：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">@FeignClient(name= <span class="string">"springcloud-ribbon-consumer2"</span>) </span><br><span class="line">public interface HelloRemote &#123;</span><br><span class="line"></span><br><span class="line">	@RequestMapping(value = <span class="string">"/hello"</span>)</span><br><span class="line">    public String hello(@RequestParam(value = <span class="string">"name"</span>) String name);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>最后在提供一个新的接口供外部调用，在原来的控制层上添加如下接口即可：</p>
+
+<p>4.最后在提供一个新的接口供外部调用，在原来的控制层上添加如下接口即可：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@Autowired</span><br><span class="line">HelloRemote helloRemote;</span><br><span class="line">	</span><br><span class="line">@RequestMapping(<span class="string">"/hello/&#123;name&#125;"</span>)</span><br><span class="line">public String index(@PathVariable(<span class="string">"name"</span>) String name) &#123;</span><br><span class="line">    System.out.println(<span class="string">"接受到请求参数:"</span>+name+<span class="string">",进行转发到其他服务!"</span>);</span><br><span class="line">    <span class="built_in">return</span> helloRemote.hello(name);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 
-</li>
-</ol>
 <p>&emsp;&emsp;完成如上修改之后，重新启动服务端和客户端的四个程序，在浏览器中重复访问<code>http://localhost:9006//hello/butalways</code>，结果应为：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">butalways,Hello World!</span><br><span class="line">butalways,Hello World! 这是另一个服务！</span><br><span class="line">butalways,Hello World!</span><br><span class="line">butalways,Hello World! 这是另一个服务！</span><br><span class="line">butalways,Hello World!</span><br><span class="line">butalways,Hello World! 这是另一个服务！</span><br></pre></td></tr></table></figure>
 
@@ -459,6 +455,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2019/11/22/SpringCloud之断路器Hystrix和断路器监控Dashboard/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          SpringCloud之断路器Hystrix和断路器监控Dashboard
+        
+      </div>
+    </a>
   
   
     <a href="/2019/11/19/SpringCloud之Eureka搭建高可用的注册中心/" id="article-nav-older" class="article-nav-link-wrap">
@@ -685,14 +690,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JPA</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JpaRepository</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">ObjectMapper</a>
               </li>
              
@@ -713,15 +710,31 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Redis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Spring Boot</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Redis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JPA</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JpaRepository</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Jsp</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">hexo-yilia</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Live2d看板动画</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -734,14 +747,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Tomcat</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">hexo-yilia</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Live2d看板动画</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -773,10 +778,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Storm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">SpringCloud</a>
               </li>
              
@@ -786,6 +787,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">高可用注册中心</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Hystrix</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Dashboard</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Storm</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -801,15 +814,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Thymeleaf</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Feign</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Ribbon</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Thymeleaf</a>
               </li>
             
             <div class="clearfix"></div>
