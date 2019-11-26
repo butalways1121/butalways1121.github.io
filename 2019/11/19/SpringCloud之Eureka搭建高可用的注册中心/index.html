@@ -8,21 +8,21 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>SpringCloud之Eureka搭建高可用的注册中心 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="&amp;emsp;&amp;emsp;第一次接触SpringCloud，在这里简单介绍一下SpringCloud及Eureka，同时记录一下使用Eureka搭建一个高可用的服务注册于发现模块。戳这里下载源码。顺便在这里分享一篇SpringCloud注解和配置以及pom依赖说明，文中很详细得说明了pom依赖可以支持什么功能、支持什么注解以及引入该依赖可以在application.properties中添加什么配置">
+  <meta name="description" content="&amp;emsp;&amp;emsp;第一次接触SpringCloud，在这里简单介绍一下SpringCloud及Eureka，同时记录一下使用Eureka搭建一个高可用的服务注册与发现模块。戳这里下载源码。顺便在这里分享一篇SpringCloud注解和配置以及pom依赖说明，文中很详细得说明了pom依赖可以支持什么功能、支持什么注解以及引入该依赖可以在application.properties中添加什么配置">
 <meta name="keywords" content="SpringCloud,Eureka,高可用注册中心">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SpringCloud之Eureka搭建高可用的注册中心">
 <meta property="og:url" content="http://yoursite.com/2019/11/19/SpringCloud之Eureka搭建高可用的注册中心/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="&amp;emsp;&amp;emsp;第一次接触SpringCloud，在这里简单介绍一下SpringCloud及Eureka，同时记录一下使用Eureka搭建一个高可用的服务注册于发现模块。戳这里下载源码。顺便在这里分享一篇SpringCloud注解和配置以及pom依赖说明，文中很详细得说明了pom依赖可以支持什么功能、支持什么注解以及引入该依赖可以在application.properties中添加什么配置">
+<meta property="og:description" content="&amp;emsp;&amp;emsp;第一次接触SpringCloud，在这里简单介绍一下SpringCloud及Eureka，同时记录一下使用Eureka搭建一个高可用的服务注册与发现模块。戳这里下载源码。顺便在这里分享一篇SpringCloud注解和配置以及pom依赖说明，文中很详细得说明了pom依赖可以支持什么功能、支持什么注解以及引入该依赖可以在application.properties中添加什么配置">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/72.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/73.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/74.png">
-<meta property="og:updated_time" content="2019-11-22T00:35:31.467Z">
+<meta property="og:updated_time" content="2019-11-25T00:28:39.249Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SpringCloud之Eureka搭建高可用的注册中心">
-<meta name="twitter:description" content="&amp;emsp;&amp;emsp;第一次接触SpringCloud，在这里简单介绍一下SpringCloud及Eureka，同时记录一下使用Eureka搭建一个高可用的服务注册于发现模块。戳这里下载源码。顺便在这里分享一篇SpringCloud注解和配置以及pom依赖说明，文中很详细得说明了pom依赖可以支持什么功能、支持什么注解以及引入该依赖可以在application.properties中添加什么配置">
+<meta name="twitter:description" content="&amp;emsp;&amp;emsp;第一次接触SpringCloud，在这里简单介绍一下SpringCloud及Eureka，同时记录一下使用Eureka搭建一个高可用的服务注册与发现模块。戳这里下载源码。顺便在这里分享一篇SpringCloud注解和配置以及pom依赖说明，文中很详细得说明了pom依赖可以支持什么功能、支持什么注解以及引入该依赖可以在application.properties中添加什么配置">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/72.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -217,7 +217,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">2.5k字</span>
+        <span class="post-count">2.6k字</span>
       </span>
     </span>
 
@@ -232,7 +232,7 @@
 </div>
 
       
-        <p>&emsp;&emsp;<strong>第一次接触SpringCloud，在这里简单介绍一下SpringCloud及Eureka，同时记录一下使用Eureka搭建一个高可用的服务注册于发现模块。戳<a href="https://github.com/butalways1121/SpringCloudEureka" target="_blank" rel="noopener">这里</a>下载源码。顺便在这里分享一篇<a href="https://www.cnblogs.com/zhuwenjoyce/p/9663324.html" target="_blank" rel="noopener">SpringCloud注解和配置以及pom依赖说明</a>，文中很详细得说明了pom依赖可以支持什么功能、支持什么注解以及引入该依赖可以在application.properties中添加什么配置等，还是很良心之作。</strong></p>
+        <p>&emsp;&emsp;<strong>第一次接触SpringCloud，在这里简单介绍一下SpringCloud及Eureka，同时记录一下使用Eureka搭建一个高可用的服务注册与发现模块。戳<a href="https://github.com/butalways1121/SpringCloudEureka" target="_blank" rel="noopener">这里</a>下载源码。顺便在这里分享一篇<a href="https://www.cnblogs.com/zhuwenjoyce/p/9663324.html" target="_blank" rel="noopener">SpringCloud注解和配置以及pom依赖说明</a>，文中很详细得说明了pom依赖可以支持什么功能、支持什么注解以及引入该依赖可以在application.properties中添加什么配置等，还是很良心之作。</strong></p>
 <a id="more"></a>
 <h2 id="一、SpringCloud简介"><a href="#一、SpringCloud简介" class="headerlink" title="一、SpringCloud简介"></a>一、SpringCloud简介</h2><h3 id="1-什么是SpringCloud"><a href="#1-什么是SpringCloud" class="headerlink" title="1.什么是SpringCloud"></a>1.什么是SpringCloud</h3><p>&emsp;&emsp;首先，尽管Spring Cloud带有“Cloud”这个单词，但它并不是云计算解决方案，它是一系列框架的有序集合，是在SpringBoot的基础上构建的。SpringCloud利用Spring Boot的开发便利性巧妙地简化了分布式系统基础设施的开发，为开发人员提供了快速建立分布式系统中的一些常见的模式，如配置管理（configuration management），服务发现（service discovery），断路器（circuit breakers），智能路由（ intelligent routing），微代理（micro-proxy），控制总线（control bus），一次性令牌（ one-time okens），全局锁（global locks），领导选举（leadership election），分布式会话(distributed sessions），集群状态（cluster state)等等。Spring Cloud并没有重复制造轮子，它只是将目前各家公司开发的比较成熟、经得起实际考验的服务框架组合起来，通过Spring Boot风格进行再封装屏蔽掉了复杂的配置和实现原理，最终给开发者留出了一套简单易懂、易部署和易维护的分布式系统开发工具包。</p>
 <h3 id="2-SpringCloud的组成"><a href="#2-SpringCloud的组成" class="headerlink" title="2.SpringCloud的组成"></a>2.SpringCloud的组成</h3><p>&emsp;&emsp;Spring Cloud的子项目，大致可分成两类，一类是对现有成熟框架”Spring Boot化”的封装和抽象，也是数量最多的项目；第二类是开发了一部分分布式系统的基础设施的实现，如Spring Cloud Stream扮演的就是kafka、ActiveMQ这样的角色。对于想快速实践微服务的开发者来说，第一类子项目就已经足够使用，如：<br>&emsp;&emsp;（1）Spring Cloud Netflix：是对Netflix开发的一套分布式服务框架的封装，包括服务的发现和注册，负载均衡、断路器、REST客户端、请求路由等；<br>&emsp;&emsp;（2）Spring Cloud Config：将配置信息中央化保存, 配置Spring Cloud Bus可以实现动态修改配置文件；<br>&emsp;&emsp;（3）Spring Cloud Bus：分布式消息队列，是对Kafka, MQ的封装；<br>&emsp;&emsp;（4）Spring Cloud Security：对Spring Security的封装，并能配合Netflix使用；<br>&emsp;&emsp;（5）Spring Cloud Zookeeper：对Zookeeper的封装，使之能配置其它Spring Cloud的子项目使用；<br>&emsp;&emsp;（6）Spring Cloud Eureka：是 Spring Cloud Netflix 微服务套件中的一部分，它基于Netflix Eureka 做了二次封装，主要负责完成微服务架构中的服务治理功能。</p>
@@ -261,7 +261,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">@EnableEurekaClient</span><br><span class="line">@SpringBootApplication</span><br><span class="line">public class App </span><br><span class="line">&#123;</span><br><span class="line">    public static void main( String[] args )</span><br><span class="line">    &#123;</span><br><span class="line">    	SpringApplication.run(App.class, args);</span><br><span class="line">        System.out.println( <span class="string">"客户端服务启动..."</span> );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h4 id="（3）测试"><a href="#（3）测试" class="headerlink" title="（3）测试"></a>（3）测试</h4><p>&emsp;&emsp;以上两个项目完成后，依次启动服务端和客户端程序，在浏览器中输入<code>http://localhost:8000/</code>，即可查看注册中心的信息如下图，可以看到Eureka启动成功了，并且有一个服务已经注册了：<br><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/72.png" alt></p>
-<h2 id="三、搭建高可用的注册中心"><a href="#三、搭建高可用的注册中心" class="headerlink" title="三、搭建高可用的注册中心"></a>三、搭建高可用的注册中心</h2><p>&emsp;&emsp;上述的服务注册中心示例是单点的，但在生产环境中像注册中心这么关键的服务，如果是单点话，遇到故障就是毁灭性的。在一个分布式系统中，服务注册中心是最重要的基础部分，理应随时处于可以提供服务的状态。为了维持其可用性，使用集群是很好的解决方案，Eureka通过互相注册的方式来实现高可用的部署。接下来再新建两个服务端的工程，让它们互相注册，从而搭建一个高可用的注册中心。</p>
+<h2 id="三、搭建高可用的注册中心"><a href="#三、搭建高可用的注册中心" class="headerlink" title="三、搭建高可用的注册中心"></a>三、搭建高可用的注册中心</h2><p>&emsp;&emsp;上述的服务注册中心示例是单点的，但在生产环境中像注册中心这么关键的服务，如果是单点的话，遇到故障就是毁灭性的。在一个分布式系统中，服务注册中心是最重要的基础部分，理应随时处理可以提供服务的状态。为了维持其可用性，使用集群是很好的解决方案，Eureka通过互相注册的方式来实现高可用的部署。接下来再新建两个服务端的工程，让它们互相注册，从而搭建一个高可用的注册中心。</p>
 <h3 id="1-新建服务端工程server2"><a href="#1-新建服务端工程server2" class="headerlink" title="1.新建服务端工程server2"></a>1.新建服务端工程server2</h3><p>&emsp;&emsp;同样新建一个Maven Project，配置中稍有不同的是这里的配置允许自己进行注册，即将上述配置中的<code>eureka.client.register-with-eureka=false</code>去掉或者改为true即可，如下：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">spring.application.name=springcloud-eureka-client</span><br><span class="line">server.port=8002</span><br><span class="line">eureka.client.serviceUrl.defaultZone=http://server3:8003/eureka/</span><br><span class="line">eureka.instance.hostname = server2</span><br></pre></td></tr></table></figure>
 
@@ -623,14 +623,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JPA</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JpaRepository</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Yilia</a>
               </li>
              
@@ -647,7 +639,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Redis</a>
+                <a href="javascript:void(0)" class="js-tag color4">JPA</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JpaRepository</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -660,6 +656,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">分区</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Redis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -727,6 +727,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Config</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Topology</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Hystrix</a>
               </li>
              
@@ -740,10 +748,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">高可用注册中心</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Topology</a>
               </li>
              
               <li class="article-tag-list-item">

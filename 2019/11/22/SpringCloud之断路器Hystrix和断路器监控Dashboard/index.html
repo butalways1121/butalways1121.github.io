@@ -23,7 +23,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/84.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/85.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/86.png">
-<meta property="og:updated_time" content="2019-11-22T09:36:07.723Z">
+<meta property="og:updated_time" content="2019-11-25T00:43:19.069Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SpringCloud之断路器Hystrix和断路器监控Dashboard">
 <meta name="twitter:description" content="&amp;emsp;&amp;emsp;本篇主要介绍的是SpringCloud中的断路器(Hystrix)和断路器指标看板(Dashboard)的相关使用知识，项目实例也非常简单，戳这里下载源码。">
@@ -299,7 +299,7 @@
 <p>启动类完整配置如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">@SpringBootApplication</span><br><span class="line">@EnableDiscoveryClient</span><br><span class="line">@EnableFeignClients</span><br><span class="line">@EnableCircuitBreaker</span><br><span class="line">@EnableHystrixDashboard</span><br><span class="line">public class App </span><br><span class="line">&#123;</span><br><span class="line">    public static void main( String[] args )</span><br><span class="line">    &#123;</span><br><span class="line">    	SpringApplication.run(App.class, args);</span><br><span class="line">        System.out.println( &quot;hystrix dashboard 服务启动...&quot; );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>然后在application.properties配置文件中新增配置如下，该配置的意思是指定hystrixDashboard的访问路径，SpringBoot2.x以上必须指定，不然是无法进行访问的，访问会出现 Unable to connect to Command Metric Stream 错误，在修改一下端口，完整的配置如下:</p>
+<p>然后在application.properties配置文件中新增配置，在这里需要指定hystrixDashboard的访问路径，SpringBoot2.x以上必须指定，不然是无法进行访问的，访问会出现 Unable to connect to Command Metric Stream 错误，在修改一下端口，完整的配置如下:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">spring.application.name=springcloud-hystrix-dashboard-consumer</span><br><span class="line">server.port=9010</span><br><span class="line">eureka.client.serviceUrl.defaultZone=http://localhost:8002/eureka/</span><br><span class="line">feign.hystrix.enabled=<span class="literal">true</span></span><br><span class="line">management.endpoints.web.exposure.include=hystrix.stream</span><br><span class="line">management.endpoints.web.base-path=/</span><br></pre></td></tr></table></figure>
 
 <p>接着，就可以进行测试了，启动springcloud-hystrix-eureka、springcloud-hystrix-dashboard-consumer和springcloud-hystrix-consumer2三个程序，然后在浏览器中输入<code>http://localhost:9010/hystrix</code>，出现如下界面，可以通过该界面监控使用hystrix-dashboard的项目：</p>
@@ -430,6 +430,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2019/11/25/SpringCloud之配置中心Config/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          SpringCloud之配置中心Config
+        
+      </div>
+    </a>
   
   
     <a href="/2019/11/20/SpringCloud之服务消费者-Feign-和负载均衡-Ribbon/" id="article-nav-older" class="article-nav-link-wrap">
@@ -648,14 +657,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JPA</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JpaRepository</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Yilia</a>
               </li>
              
@@ -672,7 +673,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Redis</a>
+                <a href="javascript:void(0)" class="js-tag color4">JPA</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JpaRepository</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -685,6 +690,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">分区</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Redis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -752,6 +761,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Config</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Topology</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Hystrix</a>
               </li>
              
@@ -765,10 +782,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">高可用注册中心</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Topology</a>
               </li>
              
               <li class="article-tag-list-item">

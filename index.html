@@ -184,6 +184,167 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-SpringCloud之配置中心Config" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+        
+        <a href="/2019/11/25/SpringCloud之配置中心Config/" class="archive-article-date">
+  	<time datetime="2019-11-25T07:16:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-25</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+    <p>
+  
+    <h1 itemprop="name">
+      <a class="article-title_code_ant" href="/2019/11/25/SpringCloud之配置中心Config/">SpringCloud之配置中心Config</a>
+    </h1>
+  
+</p>
+    
+    <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">3.1k字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">13分</span>
+      </span>
+    </span>
+</div>
+
+      
+        <p>&emsp;&emsp;<strong>本文简单介绍了SpringCloud的分布式配置中心Config及其简单的使用教程，戳<a href="https://github.com/butalways1121/SpringCloudConfig" target="_blank" rel="noopener">这里</a>下载源码。</strong></p>
+<h2 id="一、SpringCloud-Config"><a href="#一、SpringCloud-Config" class="headerlink" title="一、SpringCloud Config"></a>一、SpringCloud Config</h2><h3 id="1-SpringCloud-Config介绍"><a href="#1-SpringCloud-Config介绍" class="headerlink" title="1.SpringCloud Config介绍"></a>1.SpringCloud Config介绍</h3><p>&emsp;&emsp;Spring Cloud Config是一个解决分布式系统的配置管理方案，为分布式系统中的外部配置提供服务器和客户端支持，方便部署与运维。它包含了Client和Server两个部分：服务端也称分布式配置中心，是一个独立的微服务应用，用来连接配置服务器并为客户端提供获取配置信息，加密/解密信息等访问接口；客户端则是通过指定配置中心来管理应用资源以及与业务相关的配置内容，通过接口从配置中心获取和加载配置信息，并在启动的时候依据此数据初始化自己的应用。Spring Cloud Config默认采用Git来存储配置信息，并且可以通过Git客户端工具来方便管理和访问配置内容。</p>
+<h3 id="2-SpringCloud-Config优点"><a href="#2-SpringCloud-Config优点" class="headerlink" title="2.SpringCloud Config优点"></a>2.SpringCloud Config优点</h3><p>&emsp;&emsp;集中管理配置文件；</p>
+<p>&emsp;&emsp;不同环境不同配置，动态化的配置更新；</p>
+<p>&emsp;&emsp;运行期间，不需要去服务器修改配置文件，服务会想配置中心拉取自己的信息；</p>
+<p>&emsp;&emsp;配置信息改变时，不需要重启即可更新配置信息到服务；</p>
+<p>&emsp;&emsp;配置信息以 rest 接口暴露。</p>
+<h3 id="3-为什么要使用SpringCloud-Config"><a href="#3-为什么要使用SpringCloud-Config" class="headerlink" title="3.为什么要使用SpringCloud Config"></a>3.为什么要使用SpringCloud Config</h3><p>首先，先看一下Config的结构，如下图：</p>
+<p><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/87.png" alt></p>
+<p>&emsp;&emsp;随着项目越来越大，模块越来越多，配置文件少则四五个多则二三十个，配置放代码和配置文件里不够安全，放maven里不够优雅，放环境变量里是够安全，随着docker的流行也还算方便，可不能统一管理，况且还要写个脚本往环境变量里写，这都太麻烦了，能不能用一个优雅，安全又方便统一管理的方法来解决这些问题呢，SpringCloud Config就是一个比较好的解决方案。</p>
+<p>&emsp;&emsp;从上图中可以看到SpringCloud Config整体结构包括三个部分：客户端（各个微服务应用），服务端（中介者），配置仓库（可以是本地文件系统或者远端仓库，包括git,svn等）。其中，配置仓库中放置各个配置文件（.yml 或者.properties），服务端指定配置文件存放的位置，客户端指定配置文件的名称。</p>
+<p>&emsp;&emsp;SpringCloud Config的这种结构配置是集中化管理的，因为是分布式应用，当修改某个应用的配置的时候，就不需要到该应用中去修改相关的配置，并且修改之后还有重启应用，相对来说很麻烦。当迁移仓库的位置时，只需要修改server中的配置即可，client中无需进行任何修改,并且SpringCloud Config还支持热更新，当你修改了配置文件中的配置，通过<code>post: http://hostname:port/actuator/refresh</code> 到server应用操作，就可以实现配置热更新，当client中的类使用了@RefreshScope 注解，那么该类再次使用时，新更改的配置会生效。</p>
+<h2 id="二、SpringCloud-Config-示例"><a href="#二、SpringCloud-Config-示例" class="headerlink" title="二、SpringCloud Config 示例"></a>二、SpringCloud Config 示例</h2><h3 id="1-服务端"><a href="#1-服务端" class="headerlink" title="1.服务端"></a>1.服务端</h3><p>&emsp;&emsp;这次的项目需要创建两个服务端springcloud-config-eureka和springcloud-config-server，前者用于注册中心，后者一个则用于配置中心。</p>
+<h4 id="（1）springcloud-config-eureka"><a href="#（1）springcloud-config-eureka" class="headerlink" title="（1）springcloud-config-eureka"></a>（1）springcloud-config-eureka</h4><p>pom.xml完整配置如下，这里依旧使用的是1.5.9.RELEASE版本的SpringBoot：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">&lt;project xmlns=<span class="string">"http://maven.apache.org/POM/4.0.0"</span></span><br><span class="line">	xmlns:xsi=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></span><br><span class="line">	xsi:schemaLocation=<span class="string">"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"</span>&gt;</span><br><span class="line">	&lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;</span><br><span class="line"></span><br><span class="line">	&lt;groupId&gt;1.0.0&lt;/groupId&gt;</span><br><span class="line">	&lt;artifactId&gt;springcloud-config-eureka&lt;/artifactId&gt;</span><br><span class="line">	&lt;version&gt;0.0.1-SNAPSHOT&lt;/version&gt;</span><br><span class="line">	&lt;packaging&gt;jar&lt;/packaging&gt;</span><br><span class="line">	&lt;name&gt;springcloud-config-eureka&lt;/name&gt;</span><br><span class="line">	&lt;url&gt;http://maven.apache.org&lt;/url&gt;</span><br><span class="line">	&lt;parent&gt;</span><br><span class="line">		&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">		&lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;</span><br><span class="line">		&lt;version&gt;1.5.9.RELEASE&lt;/version&gt;</span><br><span class="line">		&lt;relativePath /&gt;</span><br><span class="line">	&lt;/parent&gt;</span><br><span class="line">	&lt;properties&gt;</span><br><span class="line">		&lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt;</span><br><span class="line">		&lt;project.reporting.outputEncoding&gt;UTF-8&lt;/project.reporting.outputEncoding&gt;</span><br><span class="line">		&lt;java.version&gt;1.8&lt;/java.version&gt;</span><br><span class="line">		&lt;spring-cloud.version&gt;Dalston.RELEASE&lt;/spring-cloud.version&gt;</span><br><span class="line">	&lt;/properties&gt;</span><br><span class="line"></span><br><span class="line">	&lt;dependencies&gt;</span><br><span class="line">		&lt;dependency&gt;</span><br><span class="line">			&lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;</span><br><span class="line">			&lt;artifactId&gt;spring-cloud-starter&lt;/artifactId&gt;</span><br><span class="line">		&lt;/dependency&gt;</span><br><span class="line">		&lt;dependency&gt;</span><br><span class="line">			&lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;</span><br><span class="line">			&lt;artifactId&gt;spring-cloud-starter-eureka-server&lt;/artifactId&gt;</span><br><span class="line">		&lt;/dependency&gt;</span><br><span class="line">		&lt;dependency&gt;</span><br><span class="line">			&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">			&lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt;</span><br><span class="line">			&lt;scope&gt;<span class="built_in">test</span>&lt;/scope&gt;</span><br><span class="line">		&lt;/dependency&gt;</span><br><span class="line">	&lt;/dependencies&gt;</span><br><span class="line">	&lt;dependencyManagement&gt;</span><br><span class="line">		&lt;dependencies&gt;</span><br><span class="line">			&lt;dependency&gt;</span><br><span class="line">				&lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;</span><br><span class="line">				&lt;artifactId&gt;spring-cloud-dependencies&lt;/artifactId&gt;</span><br><span class="line">				&lt;version&gt;<span class="variable">$&#123;spring-cloud.version&#125;</span>&lt;/version&gt;</span><br><span class="line">				&lt;<span class="built_in">type</span>&gt;pom&lt;/<span class="built_in">type</span>&gt;</span><br><span class="line">				&lt;scope&gt;import&lt;/scope&gt;</span><br><span class="line">			&lt;/dependency&gt;</span><br><span class="line">		&lt;/dependencies&gt;</span><br><span class="line">	&lt;/dependencyManagement&gt;</span><br><span class="line">	&lt;build&gt;</span><br><span class="line">		&lt;plugins&gt;</span><br><span class="line">			&lt;plugin&gt;</span><br><span class="line">				&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">				&lt;artifactId&gt;spring-boot-maven-plugin&lt;/artifactId&gt;</span><br><span class="line">			&lt;/plugin&gt;</span><br><span class="line">		&lt;/plugins&gt;</span><br><span class="line">	&lt;/build&gt;</span><br><span class="line">&lt;/project&gt;</span><br></pre></td></tr></table></figure>
+
+<p>application.properties文件配置信息：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">spring.application.name=springcloud-config-eureka-server</span><br><span class="line">server.port=8005</span><br><span class="line">eureka.client.register-with-eureka=<span class="literal">true</span></span><br><span class="line">eureka.client.fetch-registry=<span class="literal">false</span></span><br><span class="line">eureka.client.serviceUrl.defaultZone=http://localhost:8005/eureka/</span><br></pre></td></tr></table></figure>
+
+<p>启动类代码示例：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">@SpringBootApplication</span><br><span class="line">@EnableEurekaServer</span><br><span class="line">public class App </span><br><span class="line">&#123;</span><br><span class="line">    public static void main( String[] args )</span><br><span class="line">    &#123;</span><br><span class="line">    	SpringApplication.run(App.class,args);</span><br><span class="line">        System.out.println( <span class="string">"config注册中心服务启动。。。"</span> );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-springcloud-config-server"><a href="#2-springcloud-config-server" class="headerlink" title="(2)springcloud-config-server"></a>(2)springcloud-config-server</h4><p>pom.xml文件在springcloud-config-eureka的依赖基础上添加Config服务端的依赖：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- Config依赖 --&gt;</span><br><span class="line">	&lt;dependency&gt;</span><br><span class="line">	    &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;</span><br><span class="line">	    &lt;artifactId&gt;spring-cloud-config-server&lt;/artifactId&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+
+<p>application.properties文件配置信息：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">spring.application.name=springcloud-config-server</span><br><span class="line">server.port=9005</span><br><span class="line">eureka.client.serviceUrl.defaultZone=http://localhost:8005/eureka/</span><br><span class="line"><span class="comment">#配置的Git仓库的地址。</span></span><br><span class="line">spring.cloud.config.server.git.uri = https://github.com/butalways1121/springcloud-config/</span><br><span class="line"><span class="comment">#git仓库地址下的配置文件目录</span></span><br><span class="line">spring.cloud.config.server.git.search-paths = /config-repo</span><br><span class="line"><span class="comment">#git仓库的账号</span></span><br><span class="line">spring.cloud.config.server.git.username = xxxxx</span><br><span class="line"><span class="comment">#git仓库的密码。</span></span><br><span class="line">spring.cloud.config.server.git.password = xxxxx</span><br></pre></td></tr></table></figure>
+
+<p><strong>注：以上配置信息是通过Git方式做一个配置中心，然后每个服务从其中获取自身配置所需的参数。SpringCloud Config也支持本地参数配置的获取，如果使用本地存储的方式，在配置文件添加 <code>spring.profiles.active=native</code>，取消Git的相关配置，然后在src/main/resources路径下新增一个文件即可，这样定义后就会从项目的resources路径下读取配置文件。另外，如果是读取指定路径下的配置文件，那么可以使用 <code>spring.cloud.config.server.native.searchLocations = file:D:/properties/</code>来读取。</strong></p>
+<p>为方便进行本地配置文件测试，在resources路径下新建一个configtest.properties配置文件，添加如下内容：</p>
+<p><code>word=hello world</code></p>
+<p>启动类代码示例如下，其中<code>@EnableConfigServer</code>注解表示启用config配置中心功能：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">@SpringBootApplication</span><br><span class="line">@EnableDiscoveryClient</span><br><span class="line">@EnableConfigServer</span><br><span class="line">public class App </span><br><span class="line">&#123;</span><br><span class="line">    public static void main( String[] args )</span><br><span class="line">    &#123;</span><br><span class="line">    	SpringApplication.run(App.class,args);</span><br><span class="line">        System.out.println( <span class="string">"config配置中心服务端启动成功!"</span> );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-客户端"><a href="#2-客户端" class="headerlink" title="2.客户端"></a>2.客户端</h3><p>&emsp;&emsp;创建一个springcloud-config-client项目用于读取配置中心的配置，pom.xml文件在springcloud-config-eureka的依赖基础上添加Config客户端的依赖，需要注意的是Config服务端和客户端的依赖是不同的：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">	&lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;</span><br><span class="line">	&lt;artifactId&gt;spring-cloud-starter-config&lt;/artifactId&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+
+<p>新建一个bootstrap.properties文件，并添加如下信息:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#spring.cloud.config.name： 获取配置文件的名称</span></span><br><span class="line">spring.cloud.config.name=configtest</span><br><span class="line"><span class="comment">#spring.cloud.config.profile: 获取配置的策略,客户端通过spring.cloud.config.profile=pro/dev来指定拉取的环境配置</span></span><br><span class="line">spring.cloud.config.profile=pro</span><br><span class="line"><span class="comment">#spring.cloud.config.label：获取配置文件的分支，默认是master。如果是是本地获取的话，则无用。</span></span><br><span class="line">spring.cloud.config.label=master</span><br><span class="line">spring.cloud.config.discovery.enabled=<span class="literal">true</span></span><br><span class="line">spring.cloud.config.discovery.serviceId=springcloud-config-server</span><br><span class="line">eureka.client.serviceUrl.defaultZone=http://localhost:8005/eureka/</span><br></pre></td></tr></table></figure>
+
+<p><strong>注:上面这些与SpringCloud相关的属性必须配置在bootstrap.properties文件中，Config部分的内容才能被正确加载，因为bootstrap.properties的相关配置会先于application.properties，而bootstrap.properties的加载也是先于application.properties。需要注意的是eureka.client.serviceUrl.defaultZone也要配置在bootstrap.properties，不然客户端是无法获取配置中心参数的，会启动失败！</strong><br>application.properties配置：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">spring.application.name=springcloud-config-client</span><br><span class="line">server.port=9006</span><br></pre></td></tr></table></figure>
+
+<p>启动类代码示例：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">@SpringBootApplication</span><br><span class="line">@EnableDiscoveryClient</span><br><span class="line">public class App </span><br><span class="line">&#123;</span><br><span class="line">    public static void main( String[] args )</span><br><span class="line">    &#123;</span><br><span class="line">    	SpringApplication.run(App.class,args);</span><br><span class="line">        System.out.println( <span class="string">"config配置中心客户端启动成功!"</span> );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>为了方便查询，新建一个ClientController控制类，在其中进行参数的获取并返回：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">@RestController</span><br><span class="line">public class ClientController &#123;</span><br><span class="line"></span><br><span class="line">	@Value(<span class="string">"<span class="variable">$&#123;word&#125;</span>"</span>)</span><br><span class="line">	private String word;</span><br><span class="line">	</span><br><span class="line">    @RequestMapping(<span class="string">"/hello"</span>)</span><br><span class="line">    public String index(@RequestParam String name) &#123;</span><br><span class="line">        <span class="built_in">return</span> name+<span class="string">","</span>+this.word;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里，<code>@Value</code>注解是默认是从application.properties配置文件获取参数，但是我们在bootstrap.properties文件中使用<code>spring.cloud.config.name=configtest</code>指定了获取配置文件的名称，如果是采用本地存储的方式，则直接是从resources路径下或者application.properties文件中指定的路径下的configtest.properties文件中读取配置信息；如果是Git方式，则是从配置中心服务端指定的路径下读取configtest.properties文件中的配置信息。</p>
+<h3 id="3-测试"><a href="#3-测试" class="headerlink" title="3.测试"></a>3.测试</h3><h4 id="（1）本地测试"><a href="#（1）本地测试" class="headerlink" title="（1）本地测试"></a>（1）本地测试</h4><p>&emsp;&emsp;首先，将springcloud-config-server项目的application.properties配置文件修改为使用本地存储的方式，即注释掉<code>spring.cloud.config.server.git</code>相关的配置，添加<code>spring.profiles.active=native</code>，然后在src/main/resources下创建configtest.properties文件，然后在里面添加一个配置<code>word=hello world</code>。</p>
+<p>&emsp;&emsp;修改完成之后，依次启动springcloud-config-eureka、springcloud-config-server、springcloud-config-client这三个项目，接着在浏览器中输入<code>http://localhost:8005/</code>查看Eureka注册中心的信息，如下：<br><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/88.png" alt></p>
+<p>然后，获取一下配置中心服务端的配置文件，在浏览器中输入<code>http://localhost:9005/configtest-1.properties</code>查看configtest.properties文件的配置信息:<br><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/89.png" alt></p>
+<p><strong>注：从上图访问的地址可以发现，我们定义的配置文件的名称是configtest.properties，访问的配置文件名后面还有一个<code>-1</code>（<code>-</code>后面可以随意添加一个参数），这其实是Config的访问规则，如果直接使用该名称是获取不到的，因为配置文件名需要通过<code>-</code>来进行获取，所以在创建文件的时候，最好是按这种命名规则来创建，如果配置文件名称没有<code>-</code>，那么添加了<code>-</code>之后，会自动进行匹配搜索。SpringCloud Config 的URL与配置文件的映射关系如下：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">/&#123;application&#125;/&#123;profile&#125;/[label]</span><br><span class="line">/&#123;application&#125;-&#123;profile&#125;.yml</span><br><span class="line">/&#123;label&#125;/&#123;application&#125;-&#123;profile&#125;.yml</span><br><span class="line">/&#123;application&#125;-&#123;profile&#125;.properties</span><br><span class="line">/&#123;label&#125;/&#123;application&#125;-&#123;profile&#125;.properties</span><br></pre></td></tr></table></figure>
+
+<p><strong>其中，<code>{application}</code>指的是配置文件的前缀，通常我们取微服务的名称好一点；<code>{lable}</code>对应Git上不同的分支，默认为master，指定访问某分支下的配置文件；<code>{profile}</code>是<code>-</code>后面的部分，通常指的是环境信息。上述URL：<code>http://localhost:9005/configtest-1.properties</code>会映射{application}-{profile}.properties对应的配置文件。</strong></p>
+<p>然后调用springcloud-config-client客户端的接口，查看是否能够获取配置信息，在浏览器上输入<code>http://localhost:9006//hello?name=butalways</code>:<br><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/90.png" alt></p>
+<h4 id="（2）Git测试"><a href="#（2）Git测试" class="headerlink" title="（2）Git测试"></a>（2）Git测试</h4><p>&emsp;&emsp;在完成本地测试之后，再将springcloud-config-server项目的application.properties配置文件修改为使用Git方式读取配置文件，即将<code>spring.profiles.active=native</code>注释掉，解除<code>spring.cloud.config.server.git</code>相关的注释(账号和密码要填写真实的)，然后在Git的springcloud-config仓库下建立一个config-repo文件夹，新建configtest-pro.properties、configtest-dev.properties两个配置文件，内容分别为<code>word=hello world!!</code>和<code>word=hello world!</code>， 然后和configtest.properties配置文件一起上传到config-repo文件夹中，依次启动三个程序。</p>
+<p>首先，在浏览器中输入<code>http://localhost:9005/configtest-dev.properties</code>查看configtest-dev.properties文件信息：<br><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/91.png" alt></p>
+<p>在输入<code>http://localhost:9005/configtest-pro.properties</code>查看configtest-pro.properties文件信息：<br><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/92.png" alt></p>
+<p>接着，调用客户端的接口测试，在浏览器中输入<code>http://localhost:9006/hello?name=butalways</code>:<br><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/93.png" alt></p>
+<p>由于springcloud-config-server项目的bootstrap.properties文件中配置的是<code>spring.cloud.config.profile=pro</code>和<code>spring.cloud.config.name=configtest</code>，所以读取的是 configtest-pro.properties文件的信息，想要获取其他的配置，修改以上两项配置即可。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">SpringCloud</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Config</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/11/25/SpringCloud之配置中心Config/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-SpringCloud之断路器Hystrix和断路器监控Dashboard" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -324,7 +485,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">18分</span>
+        <span class="post-count">17分</span>
       </span>
     </span>
 </div>
@@ -420,7 +581,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">2.5k字</span>
+        <span class="post-count">2.6k字</span>
       </span>
     </span>
 
@@ -435,7 +596,7 @@
 </div>
 
       
-        <p>&emsp;&emsp;<strong>第一次接触SpringCloud，在这里简单介绍一下SpringCloud及Eureka，同时记录一下使用Eureka搭建一个高可用的服务注册于发现模块。戳<a href="https://github.com/butalways1121/SpringCloudEureka" target="_blank" rel="noopener">这里</a>下载源码。顺便在这里分享一篇<a href="https://www.cnblogs.com/zhuwenjoyce/p/9663324.html" target="_blank" rel="noopener">SpringCloud注解和配置以及pom依赖说明</a>，文中很详细得说明了pom依赖可以支持什么功能、支持什么注解以及引入该依赖可以在application.properties中添加什么配置等，还是很良心之作。</strong></p>
+        <p>&emsp;&emsp;<strong>第一次接触SpringCloud，在这里简单介绍一下SpringCloud及Eureka，同时记录一下使用Eureka搭建一个高可用的服务注册与发现模块。戳<a href="https://github.com/butalways1121/SpringCloudEureka" target="_blank" rel="noopener">这里</a>下载源码。顺便在这里分享一篇<a href="https://www.cnblogs.com/zhuwenjoyce/p/9663324.html" target="_blank" rel="noopener">SpringCloud注解和配置以及pom依赖说明</a>，文中很详细得说明了pom依赖可以支持什么功能、支持什么注解以及引入该依赖可以在application.properties中添加什么配置等，还是很良心之作。</strong></p>
         
           <a class="article-more-a" href="/2019/11/19/SpringCloud之Eureka搭建高可用的注册中心/#more">more >></a>
         
@@ -946,7 +1107,7 @@
 </div>
 
       
-        <p>本文内容为VMware的Centos 7上的Hadoop以及Hbase单机环境de搭建，Centos 7的安装比较简单，可参考：<a href="https://jingyan.baidu.com/article/c843ea0be03ece77921e4a53.html" target="_blank" rel="noopener">https://jingyan.baidu.com/article/c843ea0be03ece77921e4a53.html</a>，这里就不用介绍了，下面直接进入正题，进行Hadoop单机环境的搭建。</p>
+        <p>本文内容为VMware的Centos 7上的Hadoop以及Hbase单机环境的搭建，Centos 7的安装比较简单，可参考：<a href="https://jingyan.baidu.com/article/c843ea0be03ece77921e4a53.html" target="_blank" rel="noopener">https://jingyan.baidu.com/article/c843ea0be03ece77921e4a53.html</a>，这里就不用介绍了，下面直接进入正题，进行Hadoop单机环境的搭建。</p>
         
           <a class="article-more-a" href="/2019/09/22/Hadoop及Hbase单机环境的搭建/#more">more >></a>
         
@@ -1078,107 +1239,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2019/09/17/Redis简介/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Java对象与Json字符串之间的相互转换" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-        
-        <a href="/2019/09/10/Java对象与Json字符串之间的相互转换/" class="archive-article-date">
-  	<time datetime="2019-09-10T07:17:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-    <p>
-  
-    <h1 itemprop="name">
-      <a class="article-title_code_ant" href="/2019/09/10/Java对象与Json字符串之间的相互转换/">Java对象与Json字符串之间的相互转换</a>
-    </h1>
-  
-</p>
-    
-    <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">384字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">1分</span>
-      </span>
-    </span>
-</div>
-
-      
-        <p>在SpringBoot项目和Kafka整合的项目中用到了Java对象和Json字符串之间的转换，这里简单总结一下转换的几种方法。</p>
-        
-          <a class="article-more-a" href="/2019/09/10/Java对象与Json字符串之间的相互转换/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">ObjectMapper</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JSONObject</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/10/Java对象与Json字符串之间的相互转换/">展开全文 >></a>
         </p>
       
 
@@ -1365,14 +1425,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JPA</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JpaRepository</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Yilia</a>
               </li>
              
@@ -1389,7 +1441,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Redis</a>
+                <a href="javascript:void(0)" class="js-tag color4">JPA</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JpaRepository</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1402,6 +1458,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">分区</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Redis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1469,6 +1529,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Config</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Topology</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Hystrix</a>
               </li>
              
@@ -1482,10 +1550,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">高可用注册中心</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Topology</a>
               </li>
              
               <li class="article-tag-list-item">
