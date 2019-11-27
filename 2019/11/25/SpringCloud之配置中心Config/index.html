@@ -8,13 +8,13 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>SpringCloud之配置中心Config | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="&amp;emsp;&amp;emsp;本文简单介绍了SpringCloud的分布式配置中心Config及其简单的使用教程，戳这里下载源码。">
+  <meta name="description" content="&amp;emsp;&amp;emsp;本文简单介绍了SpringCloud的分布式配置中心Config及其简单的使用教程，同时也介绍了基于SpringBoot 1.X、SpringCloud Dalston版本的SpringCloud Config的配置刷新机制Refresh的简单使用，戳这里下载源码。">
 <meta name="keywords" content="SpringCloud,Config">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SpringCloud之配置中心Config">
 <meta property="og:url" content="http://yoursite.com/2019/11/25/SpringCloud之配置中心Config/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="&amp;emsp;&amp;emsp;本文简单介绍了SpringCloud的分布式配置中心Config及其简单的使用教程，戳这里下载源码。">
+<meta property="og:description" content="&amp;emsp;&amp;emsp;本文简单介绍了SpringCloud的分布式配置中心Config及其简单的使用教程，同时也介绍了基于SpringBoot 1.X、SpringCloud Dalston版本的SpringCloud Config的配置刷新机制Refresh的简单使用，戳这里下载源码。">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/87.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/88.png">
@@ -23,10 +23,13 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/91.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/92.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/93.png">
-<meta property="og:updated_time" content="2019-11-26T02:12:55.970Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/93.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/94.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/95.png">
+<meta property="og:updated_time" content="2019-11-27T00:08:29.951Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SpringCloud之配置中心Config">
-<meta name="twitter:description" content="&amp;emsp;&amp;emsp;本文简单介绍了SpringCloud的分布式配置中心Config及其简单的使用教程，戳这里下载源码。">
+<meta name="twitter:description" content="&amp;emsp;&amp;emsp;本文简单介绍了SpringCloud的分布式配置中心Config及其简单的使用教程，同时也介绍了基于SpringBoot 1.X、SpringCloud Dalston版本的SpringCloud Config的配置刷新机制Refresh的简单使用，戳这里下载源码。">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/87.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -221,7 +224,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">3.1k字</span>
+        <span class="post-count">3.7k字</span>
       </span>
     </span>
 
@@ -230,13 +233,13 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">13分</span>
+        <span class="post-count">15分</span>
       </span>
     </span>
 </div>
 
       
-        <p>&emsp;&emsp;<strong>本文简单介绍了SpringCloud的分布式配置中心Config及其简单的使用教程，戳<a href="https://github.com/butalways1121/SpringCloudConfig" target="_blank" rel="noopener">这里</a>下载源码。</strong></p>
+        <p>&emsp;&emsp;<strong>本文简单介绍了SpringCloud的分布式配置中心Config及其简单的使用教程，同时也介绍了基于SpringBoot 1.X、SpringCloud Dalston版本的SpringCloud Config的配置刷新机制Refresh的简单使用，戳<a href="https://github.com/butalways1121/SpringCloudConfig" target="_blank" rel="noopener">这里</a>下载源码。</strong></p>
 <a id="more"></a>
 <h2 id="一、SpringCloud-Config"><a href="#一、SpringCloud-Config" class="headerlink" title="一、SpringCloud Config"></a>一、SpringCloud Config</h2><h3 id="1-SpringCloud-Config介绍"><a href="#1-SpringCloud-Config介绍" class="headerlink" title="1.SpringCloud Config介绍"></a>1.SpringCloud Config介绍</h3><p>&emsp;&emsp;Spring Cloud Config是一个解决分布式系统的配置管理方案，为分布式系统中的外部配置提供服务器和客户端支持，方便部署与运维。它包含了Client和Server两个部分，服务端也称分布式配置中心，是一个独立的微服务应用，用来连接配置服务器并为客户端提供获取配置信息，加密/解密信息等访问接口；客户端则是通过指定配置中心来管理应用资源以及与业务相关的配置内容，通过接口从配置中心获取和加载配置信息，并在启动的时候依据此数据初始化自己的应用。Spring Cloud Config默认采用Git来存储配置信息，并且可以通过Git客户端工具来方便管理和访问配置内容。</p>
 <h3 id="2-SpringCloud-Config优点"><a href="#2-SpringCloud-Config优点" class="headerlink" title="2.SpringCloud Config优点"></a>2.SpringCloud Config优点</h3><ul>
@@ -302,6 +305,17 @@
 <p>再输入<code>http://localhost:9005/configtest-pro.properties</code>查看configtest-pro.properties信息：<br><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/92.png" alt></p>
 <p>接着，调用客户端的接口测试，在浏览器中输入<code>http://localhost:9006/hello?name=butalways</code>：<br><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/93.png" alt></p>
 <p>由于springcloud-config-server项目的bootstrap.properties文件中配置的是<code>spring.cloud.config.profile=pro</code>和<code>spring.cloud.config.name=configtest</code>，所以读取的是 configtest-pro.properties文件的信息，想要获取其他的配置，修改以上两项配置即可。</p>
+<h2 id="三、SpringCloud-Refresh"><a href="#三、SpringCloud-Refresh" class="headerlink" title="三、SpringCloud Refresh"></a>三、SpringCloud Refresh</h2><p>&emsp;&emsp;上文中介绍了SpringCloud Config配置中心的Git使用其实存在一个问题，当我们修改了configtest-pro.properties配置文件并重新提交后，再去调用客户端接口<code>http://localhost:9006/hello?name=butalways</code>获取配置信息，会发现得到的是修改之前的信息，只有在客户端重启后才可以获取最新的配置，那么接下来就尝试使用Refresh机制实现客户端主动获取Config Server配置服务中心的最新配置以实现动态更新。</p>
+<h3 id="1-修改相关配置"><a href="#1-修改相关配置" class="headerlink" title="1.修改相关配置"></a>1.修改相关配置</h3><p>&emsp;&emsp;我们直接在上述项目基础上进行修改，首先，要使用Refresh机制需要在客户端项目springcloud-config-client的pom.xml的文件中添加如下配置：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">	&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">	&lt;artifactId&gt;spring-boot-starter-actuator&lt;/artifactId&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>注：<code>spring-boot-starter-actuator</code>表示对程序进行监控，可以通过http接口得到该程序的各种信息。</strong></p>
+<p>接着，到application.properties中添加配置<code>management.security.enabled=false</code>，表示暴露所有端点。</p>
+<p>最后，在控制层上添加<code>@RefreshScope</code>注解即可，该注解表示在接到SpringCloud配置中心配置刷新的时候，自动将新的配置更新到该类对应的字段中。</p>
+<h3 id="2-测试"><a href="#2-测试" class="headerlink" title="2.测试"></a>2.测试</h3><p>&emsp;&emsp;完成修改之后，就来测试SpringCloud Config是否可以进行配置实时更新，首先，依次启动springcloud-config-eureka、springcloud-config-server和springcloud-config-client三个项目，然后在浏览器中输入<code>http://localhost:9006//hello?name=butalways</code>查看服务端configtest.properities的配置信息：<br><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/93.png" alt></p>
+<p>接着，把Git端的configtest.properities文件配置改为<code>word=hello world!!hello world!!</code>，再请求<code>http://localhost:9006//hello?name=butalways</code>，此时浏览器返回的还是修改之前的配置信息，可以发现配置并没有实时刷新，查阅官方文档得知，这里需要客户端通过POST方法触发各自的/Refresh才可以实现动态刷新，所以我们就使用Postman工具模拟post请求地址<code>http://localhost:9006/refresh</code>，返回如下说明已经完成了word配置的刷新：<br><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/94.png" alt></p>
+<p>然后，浏览器中再次请求<code>http://localhost:9006//hello?name=butalways</code>：<br><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/95.png" alt></p>
+<p>若结果如图，则说明我们已经成功实现了动态刷新配置。</p>
 
       
 
@@ -449,7 +463,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、SpringCloud-Config"><span class="toc-number">1.</span> <span class="toc-text">一、SpringCloud Config</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-SpringCloud-Config介绍"><span class="toc-number">1.1.</span> <span class="toc-text">1.SpringCloud Config介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-SpringCloud-Config优点"><span class="toc-number">1.2.</span> <span class="toc-text">2.SpringCloud Config优点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-为什么要使用SpringCloud-Config"><span class="toc-number">1.3.</span> <span class="toc-text">3.为什么要使用SpringCloud Config</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、SpringCloud-Config-示例"><span class="toc-number">2.</span> <span class="toc-text">二、SpringCloud Config 示例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-服务端"><span class="toc-number">2.1.</span> <span class="toc-text">1.服务端</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#（1）springcloud-config-eureka"><span class="toc-number">2.1.1.</span> <span class="toc-text">（1）springcloud-config-eureka</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-springcloud-config-server"><span class="toc-number">2.1.2.</span> <span class="toc-text">(2)springcloud-config-server</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-客户端"><span class="toc-number">2.2.</span> <span class="toc-text">2.客户端</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-测试"><span class="toc-number">2.3.</span> <span class="toc-text">3.测试</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#（1）本地测试"><span class="toc-number">2.3.1.</span> <span class="toc-text">（1）本地测试</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#（2）Git测试"><span class="toc-number">2.3.2.</span> <span class="toc-text">（2）Git测试</span></a></li></ol></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、SpringCloud-Config"><span class="toc-number">1.</span> <span class="toc-text">一、SpringCloud Config</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-SpringCloud-Config介绍"><span class="toc-number">1.1.</span> <span class="toc-text">1.SpringCloud Config介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-SpringCloud-Config优点"><span class="toc-number">1.2.</span> <span class="toc-text">2.SpringCloud Config优点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-为什么要使用SpringCloud-Config"><span class="toc-number">1.3.</span> <span class="toc-text">3.为什么要使用SpringCloud Config</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、SpringCloud-Config-示例"><span class="toc-number">2.</span> <span class="toc-text">二、SpringCloud Config 示例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-服务端"><span class="toc-number">2.1.</span> <span class="toc-text">1.服务端</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#（1）springcloud-config-eureka"><span class="toc-number">2.1.1.</span> <span class="toc-text">（1）springcloud-config-eureka</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-springcloud-config-server"><span class="toc-number">2.1.2.</span> <span class="toc-text">(2)springcloud-config-server</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-客户端"><span class="toc-number">2.2.</span> <span class="toc-text">2.客户端</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-测试"><span class="toc-number">2.3.</span> <span class="toc-text">3.测试</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#（1）本地测试"><span class="toc-number">2.3.1.</span> <span class="toc-text">（1）本地测试</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#（2）Git测试"><span class="toc-number">2.3.2.</span> <span class="toc-text">（2）Git测试</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、SpringCloud-Refresh"><span class="toc-number">3.</span> <span class="toc-text">三、SpringCloud Refresh</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-修改相关配置"><span class="toc-number">3.1.</span> <span class="toc-text">1.修改相关配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-测试"><span class="toc-number">3.2.</span> <span class="toc-text">2.测试</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -645,14 +659,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JPA</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JpaRepository</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">ObjectMapper</a>
               </li>
              
@@ -670,6 +676,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">分区</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JPA</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JpaRepository</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -709,6 +723,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">SpringMVC</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">MyBaits</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">RestTemplate</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Hadoop</a>
               </li>
              
@@ -721,14 +747,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">SpringMVC</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">MyBaits</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Storm</a>
               </li>
              
@@ -737,23 +755,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Eureka</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">高可用注册中心</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Config</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Hystrix</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Dashboard</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Eureka</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">高可用注册中心</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -769,7 +783,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">RestTemplate</a>
+                <a href="javascript:void(0)" class="js-tag color2">Config</a>
               </li>
              
               <li class="article-tag-list-item">
