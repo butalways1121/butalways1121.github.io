@@ -6,15 +6,27 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Hexo</title>
+  <title>SpringCloud之消息总线Bus | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="&amp;emsp;&amp;emsp;上一篇博客有讲到SpringCloud Refresh机制，但是会发现客户端每次获取最新配置都需要手动进行刷新，如果客户端较少的时候还可以使用，但很当客户端数量较多时要是一个一个去post客户端来刷新配置就很麻烦了，这时，使用Spring Cloud Bus可以完美解决这一问题：只需要在SpringCloud Config Server端发出refresh，就可以触发所有客">
+<meta name="keywords" content="SpringCloud,Config,Bus,RabbitMQ">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SpringCloud之消息总线Bus">
+<meta property="og:url" content="http://yoursite.com/2019/11/28/SpringCloud之消息总线Bus/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="&amp;emsp;&amp;emsp;上一篇博客有讲到SpringCloud Refresh机制，但是会发现客户端每次获取最新配置都需要手动进行刷新，如果客户端较少的时候还可以使用，但很当客户端数量较多时要是一个一个去post客户端来刷新配置就很麻烦了，这时，使用Spring Cloud Bus可以完美解决这一问题：只需要在SpringCloud Config Server端发出refresh，就可以触发所有客">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/96.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/97.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/98.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/99.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/100.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/101.png">
+<meta property="og:updated_time" content="2019-11-28T06:25:10.512Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="SpringCloud之消息总线Bus">
+<meta name="twitter:description" content="&amp;emsp;&amp;emsp;上一篇博客有讲到SpringCloud Refresh机制，但是会发现客户端每次获取最新配置都需要手动进行刷新，如果客户端较少的时候还可以使用，但很当客户端数量较多时要是一个一个去post客户端来刷新配置就很麻烦了，这时，使用Spring Cloud Bus可以完美解决这一问题：只需要在SpringCloud Config Server端发出refresh，就可以触发所有客">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/96.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -182,9 +194,7 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-SpringCloud之消息总线Bus" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-SpringCloud之消息总线Bus" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -199,8 +209,8 @@
     <div class="article-entry" itemprop="articleBody">
     <p>
   
-    <h1 itemprop="name">
-      <a class="article-title_code_ant" href="/2019/11/28/SpringCloud之消息总线Bus/">SpringCloud之消息总线Bus</a>
+    <h1 class="article-title_code_ant" itemprop="name">
+      SpringCloud之消息总线Bus
     </h1>
   
 </p>
@@ -226,11 +236,115 @@
 
       
         <p>&emsp;&emsp;<strong><a href="https://butalways1121.github.io/2019/11/25/SpringCloud%E4%B9%8B%E9%85%8D%E7%BD%AE%E4%B8%AD%E5%BF%83Config/" target="_blank" rel="noopener">上一篇博客</a>有讲到SpringCloud Refresh机制，但是会发现客户端每次获取最新配置都需要手动进行刷新，如果客户端较少的时候还可以使用，但很当客户端数量较多时要是一个一个去post客户端来刷新配置就很麻烦了，这时，使用Spring Cloud Bus可以完美解决这一问题：只需要在SpringCloud Config Server端发出refresh，就可以触发所有客户端的微服务实现更新。本文的主要内容就是简单介绍SpringCloud Bus的使用，戳<a href="https://github.com/butalways1121/SpringCloudConfig-Bus" target="_blank" rel="noopener">这里</a>下载源码。。</strong></p>
-        
-          <a class="article-more-a" href="/2019/11/28/SpringCloud之消息总线Bus/#more">more >></a>
-        
+<a id="more"></a>
+<h2 id="一、SpringCloud-Bus简介"><a href="#一、SpringCloud-Bus简介" class="headerlink" title="一、SpringCloud Bus简介"></a>一、SpringCloud Bus简介</h2><h3 id="1-SpringCloud-Bus是什么"><a href="#1-SpringCloud-Bus是什么" class="headerlink" title="1.SpringCloud Bus是什么"></a>1.SpringCloud Bus是什么</h3><p>&emsp;&emsp;SpringCloud Bus通过轻量消息代理连接各分布式的节点，它可以用于广播配置文件的更改或者服务之间的通讯，也可以用于监控。SpringCloud Bus的一个核心思想是通过分布式的启动器对SpringBoot应用进行扩展，也可以用来建立一个多应用之间的通信频道。目前唯一实现的方式是用AMQP消息代理作为通道，同样特性的设置（有些取决于通道的设置）在更多通道的文档中。<br>&emsp;&emsp;SpringCloud Bus被很形象地翻译为“消息总线”，可以将它理解为管理和传播所有分布式项目中的消息，其实本质是利用了MQ的广播机制在分布式的系统中传播消息，目前常用的有Kafka和RabbitMQ。利用Bus的机制可以做很多的事情，其中配置中心客户端刷新就是典型的应用场景之一。</p>
+<h3 id="2-Bus在配置中心使用的机制"><a href="#2-Bus在配置中心使用的机制" class="headerlink" title="2.Bus在配置中心使用的机制"></a>2.Bus在配置中心使用的机制</h3><p>首先，先看一下不使用SpringCloud Bus获取配置信息流程图：<br><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/96.png" alt></p>
+<p>再看一下使用SpringCloud Bus获取配置信息流程图:<br><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/97.png" alt></p>
+<p>由上图可以看出利用SpringCloud Bus做配置更新的步骤:<br>&emsp;&emsp;(1)首先在配置中进行更新配置文件信息，提交代码触发post发送bus/refresh；<br>&emsp;&emsp;(2)Server端接收到请求并发送给SpringCloud Bus；<br>&emsp;&emsp;(3)SpringCloud Bus接到消息并通知给客户端；<br>&emsp;&emsp;(4)客户端接收到通知，请求Server端获取最新配置进行更新。</p>
+<h2 id="二、RabbitMQ的安装与环境配置"><a href="#二、RabbitMQ的安装与环境配置" class="headerlink" title="二、RabbitMQ的安装与环境配置"></a>二、RabbitMQ的安装与环境配置</h2><p>&emsp;&emsp;因为我们要用到消息队列MQ，MQ主要使用的是RabbitMQ和Kafka，接下来的示例使用的是RabbitMQ，所以需要安装RabbitMQ并配置相应的环境。先来简单了解一下MQ和RabbitMQ：<br>&emsp;&emsp;MQ全称为Message Queue, 是一种应用程序对应用程序的通信方法。应用程序通过读写出入队列的消息（针对应用程序的数据）来通信，而无需专用连接来连接它们。消息传递指的是程序之间通过在消息中发送数据进行通信，而不是通过直接调用彼此来通信，直接调用通常是用于诸如远程过程调用的技术。队列的使用除去了接收和发送应用程序同时执行的要求。<br>&emsp;&emsp;RabbitMQ则是一个实现了AMQP（Advanced Message Queuing Protocol）高级消息队列协议的消息队列服务，使用的是Erlang语言，也因此在安装RabbitMQ之前，需要先安装Erlang并配置相应环境。</p>
+<h3 id="1-Erlang的安装与配置"><a href="#1-Erlang的安装与配置" class="headerlink" title="1.Erlang的安装与配置"></a>1.Erlang的安装与配置</h3><p>&emsp;&emsp;根据电脑系统版本下载Erlang：<code>http://www.erlang.org/downloads</code>，下载完成之后进行安装，除了更改安装路径之外其他默认就好，之后系统的高级设置中配置环境变量：<br>&emsp;&emsp;（1）新建<code>ERLANG_HOME</code>，变量值为Erlang的安装目录，例如<code>D:\Program Files\erl10.5</code>；<br>&emsp;&emsp;（2）在Path变量值中加入<code>;%ERLANG_HOME%\bin</code>即可。</p>
+<h3 id="2-RabbitMQ的安装与配置"><a href="#2-RabbitMQ的安装与配置" class="headerlink" title="2.RabbitMQ的安装与配置"></a>2.RabbitMQ的安装与配置</h3><p>&emsp;&emsp;同样，根据电脑系统版本下载RabbitMQ：<code>http://www.rabbitmq.com/install-windows.html</code>，安装时除了更改安装路径之外其他默认就好，然后在系统的高级设置中配置环境变量：<br>&emsp;&emsp;（1）新建<code>RABBITMQ_HOME</code>，变量值为RabbitMQ的安装目录，例如<code>D:\Program Files\Rabbit MQServer\rabbitmq_server-3.8.1</code>；<br>&emsp;&emsp;（2）在Path变量值中加入<code>;%RABBITMQ_HOME%\sbin</code>即可。</p>
+<h3 id="3-启动RabbitMQ"><a href="#3-启动RabbitMQ" class="headerlink" title="3.启动RabbitMQ"></a>3.启动RabbitMQ</h3><p>&emsp;&emsp;配置完成之后，切换到RabbitMQ的sbin目录下，如<code>D:\Program Files\RabbitMQ Server\rabbitmq_server-3.8.1\sbin</code>，双击<code>rabbitmq-server.bat</code>启动，出现<code>Starting broker... completed with 3 plugins.</code>字样则启动成功：</p>
+<p><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/98.png" alt></p>
+<p><strong>注：如果提示<code>node with name rabbit already running on *</code>的错误，就试着删除<code>C:\Users\Administrator\AppData\Roaming\rabbitmq</code>目录，再重新启动。如果还是不行，就点击开始菜单，在所有程序 - &gt;RabbitMQ Servr - &gt;RabbitMQ Service - stop，先关闭已经启动的RabbitMQ，然后再重新启动。</strong></p>
+<h3 id="4-RabbitMQ的使用"><a href="#4-RabbitMQ的使用" class="headerlink" title="4.RabbitMQ的使用"></a>4.RabbitMQ的使用</h3><p>&emsp;&emsp;成功安装配置好RabbitMQ之后，使用官方提供的一个web管理工具rabbitmq_management来对RabbitMQ进行后台管理（安装RabbitMQ自带有该工具）：先切换到RabbitMQ的sbin目录下，输入<code>rabbitmq-plugins enable rabbitmq_management</code>进行启动：</p>
+<p><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/99.png" alt></p>
+<p>成功启动后，在浏览器输入<code>http://localhost:15672/</code>进行登录，账号密码都是：guest：</p>
+<p><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/100.png" alt></p>
+<p><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/101.png" alt></p>
+<p>登录成功之后可以使用命令进行用户、角色、权限之类的的配置等等。</p>
+<h2 id="三、SpringCloud-Config-Bus示例"><a href="#三、SpringCloud-Config-Bus示例" class="headerlink" title="三、SpringCloud Config Bus示例"></a>三、SpringCloud Config Bus示例</h2><h3 id="1-注册中心"><a href="#1-注册中心" class="headerlink" title="1.注册中心"></a>1.注册中心</h3><p>&emsp;&emsp;同样，需要先创建一个springcloud-config-bus-eureka项目作为注册中心，为了方便，这里还是贴一下代码吧，<strong>需要注意的是此次的项目最好是使用SpringBoot 2.X、Finchley.SR2版本的，因为使用1.X的话，post后相应的服务会在注册中心掉线，影响后期的调用，但2.X版本的post后短暂掉线后就会重新向注册中心注册</strong>。<br>pom.xml文件完整配置：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">&lt;project xmlns=<span class="string">"http://maven.apache.org/POM/4.0.0"</span></span><br><span class="line">	xmlns:xsi=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></span><br><span class="line">	xsi:schemaLocation=<span class="string">"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"</span>&gt;</span><br><span class="line">	&lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;</span><br><span class="line"></span><br><span class="line">	&lt;groupId&gt;1.0.0&lt;/groupId&gt;</span><br><span class="line">	&lt;artifactId&gt;springcloud-config-eureka&lt;/artifactId&gt;</span><br><span class="line">	&lt;version&gt;0.0.1-SNAPSHOT&lt;/version&gt;</span><br><span class="line">	&lt;packaging&gt;jar&lt;/packaging&gt;</span><br><span class="line">	&lt;name&gt;springcloud-config-eureka&lt;/name&gt;</span><br><span class="line">	&lt;url&gt;http://maven.apache.org&lt;/url&gt;</span><br><span class="line">	&lt;parent&gt;</span><br><span class="line">		&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">		&lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;</span><br><span class="line">		&lt;version&gt;2.0.6.RELEASE&lt;/version&gt;</span><br><span class="line">		&lt;relativePath /&gt;</span><br><span class="line">	&lt;/parent&gt;</span><br><span class="line">	&lt;properties&gt;</span><br><span class="line">		&lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt;</span><br><span class="line">		&lt;project.reporting.outputEncoding&gt;UTF-8&lt;/project.reporting.outputEncoding&gt;</span><br><span class="line">		&lt;java.version&gt;1.8&lt;/java.version&gt;</span><br><span class="line">		&lt;spring-cloud.version&gt;Finchley.SR2&lt;/spring-cloud.version&gt;</span><br><span class="line">	&lt;/properties&gt;</span><br><span class="line"></span><br><span class="line">	&lt;dependencies&gt;</span><br><span class="line">		&lt;dependency&gt;</span><br><span class="line">			&lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;</span><br><span class="line">			&lt;artifactId&gt;spring-cloud-starter&lt;/artifactId&gt;</span><br><span class="line">		&lt;/dependency&gt;</span><br><span class="line">		&lt;dependency&gt;</span><br><span class="line">			&lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;</span><br><span class="line">			&lt;artifactId&gt;spring-cloud-starter-netflix-eureka-server&lt;/artifactId&gt;</span><br><span class="line">		&lt;/dependency&gt;</span><br><span class="line">		&lt;dependency&gt;</span><br><span class="line">			&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">			&lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt;</span><br><span class="line">			&lt;scope&gt;<span class="built_in">test</span>&lt;/scope&gt;</span><br><span class="line">		&lt;/dependency&gt;</span><br><span class="line">	&lt;/dependencies&gt;</span><br><span class="line">	&lt;dependencyManagement&gt;</span><br><span class="line">		&lt;dependencies&gt;</span><br><span class="line">			&lt;dependency&gt;</span><br><span class="line">				&lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;</span><br><span class="line">				&lt;artifactId&gt;spring-cloud-dependencies&lt;/artifactId&gt;</span><br><span class="line">				&lt;version&gt;<span class="variable">$&#123;spring-cloud.version&#125;</span>&lt;/version&gt;</span><br><span class="line">				&lt;<span class="built_in">type</span>&gt;pom&lt;/<span class="built_in">type</span>&gt;</span><br><span class="line">				&lt;scope&gt;import&lt;/scope&gt;</span><br><span class="line">			&lt;/dependency&gt;</span><br><span class="line">		&lt;/dependencies&gt;</span><br><span class="line">	&lt;/dependencyManagement&gt;</span><br><span class="line">	&lt;build&gt;</span><br><span class="line">		&lt;plugins&gt;</span><br><span class="line">			&lt;plugin&gt;</span><br><span class="line">				&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">				&lt;artifactId&gt;spring-boot-maven-plugin&lt;/artifactId&gt;</span><br><span class="line">			&lt;/plugin&gt;</span><br><span class="line">		&lt;/plugins&gt;</span><br><span class="line">	&lt;/build&gt;</span><br><span class="line">&lt;/project&gt;</span><br></pre></td></tr></table></figure>
+
+<p>application.properties文件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">spring.application.name=springcloud-config-bus-eureka</span><br><span class="line">server.port=8006</span><br><span class="line">eureka.client.register-with-eureka=<span class="literal">false</span></span><br><span class="line">eureka.client.fetch-registry=<span class="literal">false</span></span><br><span class="line">eureka.client.serviceUrl.defaultZone=http://localhost:8006/eureka/</span><br></pre></td></tr></table></figure>
+
+<p>启动类：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@EnableEurekaServer</span><br><span class="line">@SpringBootApplication</span><br><span class="line">public class App </span><br><span class="line">&#123;</span><br><span class="line">    public static void main( String[] args )</span><br><span class="line">    &#123;</span><br><span class="line">    	SpringApplication.run(App.class,args);</span><br><span class="line">        System.out.println( <span class="string">"config-bus注册中心服务启动..."</span> );</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-服务端"><a href="#2-服务端" class="headerlink" title="2.服务端"></a>2.服务端</h3><p>&emsp;&emsp;创建springcloud-config-bus-server作为服务端，在注册中心的pom.xml基础上添加如下配置，同时应将Eureka的依赖修改为<code>spring-cloud-starter-netflix-eureka-client</code>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- Config依赖--&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;</span><br><span class="line">	&lt;artifactId&gt;spring-cloud-config-server&lt;/artifactId&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line">&lt;!-- 添加监控，以便可以刷新服务端配置--&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">	&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">	&lt;artifactId&gt;spring-boot-starter-actuator&lt;/artifactId&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line">&lt;!-- rabbitMQ依赖 --&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">	&lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;</span><br><span class="line">	&lt;artifactId&gt;spring-cloud-starter-bus-amqp&lt;/artifactId&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+
+<p>application.properties配置：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">spring.application.name=springcloud-config-bus-server</span><br><span class="line">server.port=9005</span><br><span class="line">eureka.client.serviceUrl.defaultZone=http://localhost:8006/eureka/</span><br><span class="line"><span class="comment"># git仓库的地址</span></span><br><span class="line"> spring.cloud.config.server.git.uri = https://github.com/butalways1121/springcloud-config/</span><br><span class="line"><span class="comment"># git仓库地址下的相对地址 多个用逗号","分割</span></span><br><span class="line"> spring.cloud.config.server.git.search-paths = /config-repo</span><br><span class="line"><span class="comment"># git仓库的账号</span></span><br><span class="line"> spring.cloud.config.server.git.username = </span><br><span class="line"><span class="comment"># git仓库的密码</span></span><br><span class="line"> spring.cloud.config.server.git.password = </span><br><span class="line">management.endpoints.web.exposure.include=bus-refresh</span><br><span class="line"><span class="comment">#启用springcloud config bus</span></span><br><span class="line">spring.cloud.bus.enabled = <span class="literal">true</span></span><br><span class="line"><span class="comment">#开启跟踪总线事件</span></span><br><span class="line">spring.cloud.bus.trace.enabled = <span class="literal">true</span></span><br><span class="line"><span class="comment">##rabbitmq的地址</span></span><br><span class="line">spring.rabbitmq.host:127.0.0.1</span><br><span class="line"><span class="comment">##rabbitmq的端口</span></span><br><span class="line">spring.rabbitmq.port:5672</span><br><span class="line"><span class="comment">##rabbitmq的用户名</span></span><br><span class="line">spring.rabbitmq.username:guest</span><br><span class="line"><span class="comment">##rabbitmq的密码</span></span><br><span class="line">spring.rabbitmq.password:guest</span><br></pre></td></tr></table></figure>
+
+<p>启动类：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">@EnableEurekaClient</span><br><span class="line">@EnableConfigServer	</span><br><span class="line">@SpringBootApplication</span><br><span class="line">public class App </span><br><span class="line">&#123;</span><br><span class="line">    public static void main( String[] args )</span><br><span class="line">    &#123;</span><br><span class="line">    	SpringApplication.run(App.class,args);</span><br><span class="line">        System.out.println( <span class="string">"config-bus配置中心服务端启动成功!"</span> );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-客户端"><a href="#3-客户端" class="headerlink" title="3.客户端"></a>3.客户端</h3><p>&emsp;&emsp;此次客户端需要创建两个项目，先创建springcloud-config-bus-clinet，pom.xml在注册中心的pom.xml基础上添加如下配置，同时应将Eureka的依赖修改为<code>spring-cloud-starter-netflix-eureka-client</code>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">	&lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;</span><br><span class="line">	&lt;artifactId&gt;spring-cloud-starter-config&lt;/artifactId&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">	&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">	&lt;artifactId&gt;spring-boot-starter-actuator&lt;/artifactId&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">	&lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;</span><br><span class="line">	&lt;artifactId&gt;spring-cloud-starter-bus-amqp&lt;/artifactId&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+
+<p>bootstrap.properties文件的配置信息:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">spring.cloud.config.name=configtest</span><br><span class="line">spring.cloud.config.profile=pro</span><br><span class="line">spring.cloud.config.label=master</span><br><span class="line">spring.cloud.config.discovery.enabled=<span class="literal">true</span></span><br><span class="line">spring.cloud.config.discovery.serviceId=springcloud-config-bus-server</span><br><span class="line">eureka.client.serviceUrl.defaultZone=http://localhost:8006/eureka/</span><br></pre></td></tr></table></figure>
+
+<p>application.properties配置信息：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">spring.application.name=springcloud-config-bus-client2</span><br><span class="line">server.port=9007</span><br><span class="line">management.endpoints.web.exposure.include=refresh</span><br><span class="line">spring.cloud.config.failFast=<span class="literal">true</span></span><br><span class="line">spring.cloud.bus.trace.enabled = <span class="literal">true</span></span><br><span class="line">spring.rabbitmq.host:127.0.0.1</span><br><span class="line">spring.rabbitmq.port:5672</span><br><span class="line">spring.rabbitmq.username:guest</span><br><span class="line">spring.rabbitmq.password:guest</span><br></pre></td></tr></table></figure>
+
+<p>提供一个接口供外部调用：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">@RestController</span><br><span class="line">@RefreshScope</span><br><span class="line">public class ClientController &#123;</span><br><span class="line"></span><br><span class="line">	@Value(<span class="string">"<span class="variable">$&#123;word&#125;</span>"</span>)</span><br><span class="line">	private String word;</span><br><span class="line">	</span><br><span class="line">    @RequestMapping(<span class="string">"/hello"</span>)</span><br><span class="line">    public String index(@RequestParam String name) &#123;</span><br><span class="line">        <span class="built_in">return</span> name+<span class="string">","</span>+this.word;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>控制类：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">@EnableEurekaClient</span><br><span class="line">@SpringBootApplication</span><br><span class="line">public class App </span><br><span class="line">&#123;</span><br><span class="line">    public static void main( String[] args )</span><br><span class="line">    &#123;</span><br><span class="line">    	SpringApplication.run(App.class,args);</span><br><span class="line">        System.out.println( <span class="string">"config-bus配置中心客户端1启动成功!"</span> );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>完成springcloud-config-bus-client的开发之后，将其复制一下，重命名为springcloud-config-bus-client2作为第二个客户端项目，把它的端口改为9007即可。</p>
+<hr>
+<p>至此，整个项目开发完成。</p>
+<h2 id="三、测试"><a href="#三、测试" class="headerlink" title="三、测试"></a>三、测试</h2><p>&emsp;&emsp;首先启动RabbitMQ服务，接着依次启动springcloud-config-bus-eureka、springcloud-config-bus-server、springcloud-config-bus-client和springcloud-config-bus-client2这四个项目。其中8006是注册中心springcloud-config-bus-eureka的端口，9005是服务端springcloud-config-bus-server的端口，9006是第一个客户端springcloud-config-bus-client的端口，9007是是第二个客户端springcloud-config-bus-client2的端口。接下来的测试分为全局测试和局部测试：</p>
+<h3 id="1-全局刷新"><a href="#1-全局刷新" class="headerlink" title="1.全局刷新"></a>1.全局刷新</h3><p>&emsp;&emsp;启动成功之后，首先在浏览器中输入<code>http://localhost:9006//hello?name=butalways</code>来查看服务端configtest-pro.properties的配置信息（此时configtest-pro.properties的内容为<code>word=hello world!!hello world!!</code>），浏览器会返回：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">butalways,hello world!!hello world!!</span><br></pre></td></tr></table></figure>
+
+<p>再输入<code>http://localhost:9007//hello?name=butalways2</code>，返回：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">butalways2,hello world!!hello world!!</span><br></pre></td></tr></table></figure>
+
+<p>接着，把configtest-pro.properties的配置更改为<code>word=hello world!!</code>，然后使用Postman发起post请求<code>http://localhost:9005/actuator/bus-refresh</code>，注意这次的地址是服务端的地址和端口，之后在浏览器中输入<code>http://localhost:9006//hello?name=butalways</code>，返回：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">butalways,hello world!!</span><br></pre></td></tr></table></figure>
+
+<p>再输入<code>http://localhost:9007//hello?name=butalways2</code>，返回：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">butalways2,hello world!!</span><br></pre></td></tr></table></figure>
+
+<p>出现以上结果，则说明全局刷新已经实现了！</p>
+<h3 id="2-局部刷新"><a href="#2-局部刷新" class="headerlink" title="2.局部刷新"></a>2.局部刷新</h3><p>&emsp;&emsp;全局刷新时所有的客户端都会获取到最新的配置，如果只想刷新某一个客户端微服务的配置，就可以使用<code>http://localhost:9005/actuator/bus-refresh/{destination}</code>来指定要刷新的应用程序，其中destination就是某一个客户端的服务名，例如，现在我们只想刷新springcloud-config-bus-client2的配置：</p>
+<p>&emsp;&emsp;首先，将configtest-pro.properties的配置信息改为<code>word=hello!!!</code>，发送post请求<code>http://localhost:9005/actuator/bus-refresh/springcloud-config-bus-client2</code>，然后再在浏览器请求<code>http://localhost:9006//hello?name=butalways</code>，返回：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">butalways,hello world!!</span><br></pre></td></tr></table></figure>
+
+<p>再请求<code>http://localhost:9007//hello?name=butalways2</code>，返回：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">butalways2,hello!!!</span><br></pre></td></tr></table></figure>
+
+<p>以上结果可以看出只有springcloud-config-bus-client2客户端的配置进行了更新，另一个springcloud-config-bus-client并没有刷新，达到了局部刷新的目的。</p>
+
       
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/alipay.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/wechat.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -262,222 +376,75 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/11/28/SpringCloud之消息总线Bus/">展开全文 >></a>
-        </p>
-      
 
       
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
         
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-SpringCloud之配置中心Config" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-        
-        <a href="/2019/11/25/SpringCloud之配置中心Config/" class="archive-article-date">
-  	<time datetime="2019-11-25T07:16:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-    <p>
-  
-    <h1 itemprop="name">
-      <a class="article-title_code_ant" href="/2019/11/25/SpringCloud之配置中心Config/">SpringCloud之配置中心Config</a>
-    </h1>
-  
-</p>
-    
-    <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">3.7k字</span>
-      </span>
+      </div>
     </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">15分</span>
-      </span>
-    </span>
+  </div>
 </div>
 
-      
-        <p>&emsp;&emsp;<strong>本文简单介绍了SpringCloud的分布式配置中心Config及其简单的使用教程，同时也介绍了基于SpringBoot 1.X、SpringCloud Dalston版本的SpringCloud Config的配置刷新机制Refresh的简单使用，戳<a href="https://github.com/butalways1121/SpringCloudConfig" target="_blank" rel="noopener">这里</a>下载源码。</strong></p>
-        
-          <a class="article-more-a" href="/2019/11/25/SpringCloud之配置中心Config/#more">more >></a>
-        
-      
-
-      
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/11/28/SpringCloud之消息总线Bus/" alt="微信分享二维码">
     </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">SpringCloud</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Config</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/11/25/SpringCloud之配置中心Config/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-SpringCloud之断路器Hystrix和断路器监控Dashboard" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-        
-        <a href="/2019/11/22/SpringCloud之断路器Hystrix和断路器监控Dashboard/" class="archive-article-date">
-  	<time datetime="2019-11-22T03:03:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-    <p>
-  
-    <h1 itemprop="name">
-      <a class="article-title_code_ant" href="/2019/11/22/SpringCloud之断路器Hystrix和断路器监控Dashboard/">SpringCloud之断路器Hystrix和断路器监控Dashboard</a>
-    </h1>
-  
-</p>
-    
-    <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">2.3k字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">10分</span>
-      </span>
-    </span>
 </div>
 
-      
-        <p>&emsp;&emsp;<strong>本篇主要介绍的是SpringCloud中的断路器(Hystrix)和断路器指标看板(Dashboard)的相关使用知识，项目实例也非常简单，戳<a href="https://github.com/butalways1121/SpringCloudHystrix" target="_blank" rel="noopener">这里</a>下载源码。</strong></p>
-        
-          <a class="article-more-a" href="/2019/11/22/SpringCloud之断路器Hystrix和断路器监控Dashboard/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">SpringCloud</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Hystrix</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Dashboard</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/11/22/SpringCloud之断路器Hystrix和断路器监控Dashboard/">展开全文 >></a>
-        </p>
-      
-
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2019/11/25/SpringCloud之配置中心Config/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">SpringCloud之配置中心Config</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -492,738 +459,48 @@
         </div>
         
         
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-SpringCloud之服务消费者-Feign-和负载均衡-Ribbon" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-        
-        <a href="/2019/11/20/SpringCloud之服务消费者-Feign-和负载均衡-Ribbon/" class="archive-article-date">
-  	<time datetime="2019-11-20T08:54:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-    <p>
-  
-    <h1 itemprop="name">
-      <a class="article-title_code_ant" href="/2019/11/20/SpringCloud之服务消费者-Feign-和负载均衡-Ribbon/">SpringCloud之服务消费者(Feign)和负载均衡(Ribbon)</a>
-    </h1>
-  
-</p>
-    
-    <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">3.8k字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">17分</span>
-      </span>
-    </span>
-</div>
-
-      
-        <p>&emsp;&emsp;<strong>本篇主要介绍的是SpringCloud中的服务消费者(Feign)和负载均衡(Ribbon)功能的实现以及使用Feign结合Ribbon实现负载均衡。戳<a href="https://github.com/butalways1121/SpringCloudFeign-Ribbon" target="_blank" rel="noopener">这里</a>下载源码。</strong></p>
-        
-          <a class="article-more-a" href="/2019/11/20/SpringCloud之服务消费者-Feign-和负载均衡-Ribbon/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">SpringCloud</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Feign</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Ribbon</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/11/20/SpringCloud之服务消费者-Feign-和负载均衡-Ribbon/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、SpringCloud-Bus简介"><span class="toc-number">1.</span> <span class="toc-text">一、SpringCloud Bus简介</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-SpringCloud-Bus是什么"><span class="toc-number">1.1.</span> <span class="toc-text">1.SpringCloud Bus是什么</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Bus在配置中心使用的机制"><span class="toc-number">1.2.</span> <span class="toc-text">2.Bus在配置中心使用的机制</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、RabbitMQ的安装与环境配置"><span class="toc-number">2.</span> <span class="toc-text">二、RabbitMQ的安装与环境配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Erlang的安装与配置"><span class="toc-number">2.1.</span> <span class="toc-text">1.Erlang的安装与配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-RabbitMQ的安装与配置"><span class="toc-number">2.2.</span> <span class="toc-text">2.RabbitMQ的安装与配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-启动RabbitMQ"><span class="toc-number">2.3.</span> <span class="toc-text">3.启动RabbitMQ</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-RabbitMQ的使用"><span class="toc-number">2.4.</span> <span class="toc-text">4.RabbitMQ的使用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、SpringCloud-Config-Bus示例"><span class="toc-number">3.</span> <span class="toc-text">三、SpringCloud Config Bus示例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-注册中心"><span class="toc-number">3.1.</span> <span class="toc-text">1.注册中心</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-服务端"><span class="toc-number">3.2.</span> <span class="toc-text">2.服务端</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-客户端"><span class="toc-number">3.3.</span> <span class="toc-text">3.客户端</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、测试"><span class="toc-number">4.</span> <span class="toc-text">三、测试</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-全局刷新"><span class="toc-number">4.1.</span> <span class="toc-text">1.全局刷新</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-局部刷新"><span class="toc-number">4.2.</span> <span class="toc-text">2.局部刷新</span></a></li></ol></li></ol>
+                    </div>
+                </span>
             </div>
         </div>
         
-        
     </div>
 </aside>
 
 
 
-
-  
-    <article id="post-SpringCloud之Eureka搭建高可用的注册中心" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-        
-        <a href="/2019/11/19/SpringCloud之Eureka搭建高可用的注册中心/" class="archive-article-date">
-  	<time datetime="2019-11-19T08:12:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-    <p>
-  
-    <h1 itemprop="name">
-      <a class="article-title_code_ant" href="/2019/11/19/SpringCloud之Eureka搭建高可用的注册中心/">SpringCloud之Eureka搭建高可用的注册中心</a>
-    </h1>
-  
-</p>
-    
-    <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">2.6k字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">10分</span>
-      </span>
-    </span>
-</div>
-
-      
-        <p>&emsp;&emsp;<strong>第一次接触SpringCloud，在这里简单介绍一下SpringCloud及Eureka，同时记录一下使用Eureka搭建一个高可用的服务注册与发现模块。戳<a href="https://github.com/butalways1121/SpringCloudEureka" target="_blank" rel="noopener">这里</a>下载源码。顺便在这里分享一篇<a href="https://www.cnblogs.com/zhuwenjoyce/p/9663324.html" target="_blank" rel="noopener">SpringCloud注解和配置以及pom依赖说明</a>，文中很详细得说明了pom依赖可以支持什么功能、支持什么注解以及引入该依赖可以在application.properties中添加什么配置等，还是很良心之作。</strong></p>
-        
-          <a class="article-more-a" href="/2019/11/19/SpringCloud之Eureka搭建高可用的注册中心/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">SpringCloud</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Eureka</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">高可用注册中心</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/11/19/SpringCloud之Eureka搭建高可用的注册中心/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-SpringBoot整合jsp项目与web项目打包运行" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-        
-        <a href="/2019/11/18/SpringBoot整合jsp项目与web项目打包运行/" class="archive-article-date">
-  	<time datetime="2019-11-18T03:35:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-18</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-    <p>
-  
-    <h1 itemprop="name">
-      <a class="article-title_code_ant" href="/2019/11/18/SpringBoot整合jsp项目与web项目打包运行/">SpringBoot整合jsp项目与web项目打包运行</a>
-    </h1>
-  
-</p>
-    
-    <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">658字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">2分</span>
-      </span>
-    </span>
-</div>
-
-      
-        <p>最近完成了一个可以实现文件上传下载及相关信息管理的小项目，在此过程中遇到了两个问题：一是将web项目打成war包，部署于Tomcat，使其可以跟随Tomcat服务的启动而启动；二是将SpringBoot整合JSP的项目打包，使其可以在服务器后台一直运行，方便使用。虽说过程实际很简单，但又由于各种原因折腾了许久，特此记录一下，以防再次掉坑。</p>
-        
-          <a class="article-more-a" href="/2019/11/18/SpringBoot整合jsp项目与web项目打包运行/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">SpringBoot</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">war包</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Tomcat</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/11/18/SpringBoot整合jsp项目与web项目打包运行/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-圈小猫" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-        
-        <a href="/2019/10/14/圈小猫/" class="archive-article-date">
-  	<time datetime="2019-10-14T00:43:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-14</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-    <p>
-  
-    <h1 itemprop="name">
-      <a class="article-title_code_ant" href="/2019/10/14/圈小猫/">圈小猫</a>
-    </h1>
-  
-</p>
-    
-    <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">14字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">1分</span>
-      </span>
-    </span>
-</div>
-
-      
-        <p>分享一款小游戏，一起来圈小猫吧~</p>
-<iframe src="https://yl1690561739.gitee.io/cat/" width="100%" height="650px" frameborder="0" scrolling="no"></iframe>
-        
-          <a class="article-more-a" href="/2019/10/14/圈小猫/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/10/14/圈小猫/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-关系型与非关系型数据库以及Hbase与Redis" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-        
-        <a href="/2019/09/27/关系型与非关系型数据库以及Hbase与Redis/" class="archive-article-date">
-  	<time datetime="2019-09-27T02:43:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-    <p>
-  
-    <h1 itemprop="name">
-      <a class="article-title_code_ant" href="/2019/09/27/关系型与非关系型数据库以及Hbase与Redis/">关系型与非关系型数据库以及Hbase与Redis</a>
-    </h1>
-  
-</p>
-    
-    <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">3.2k字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">11分</span>
-      </span>
-    </span>
-</div>
-
-      
-        <p>本文简单对比了关系型数据库与非关系数据库，再将近日用到的Hbase与Redis这两个NoSQL类型的数据库做了简单的介绍对比。</p>
-        
-          <a class="article-more-a" href="/2019/09/27/关系型与非关系型数据库以及Hbase与Redis/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Redis</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Hbase</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">关系型数据库</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">非关系型数据库</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/27/关系型与非关系型数据库以及Hbase与Redis/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-SpringBoot整合Thymeleaf与Hbase" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-        
-        <a href="/2019/09/26/SpringBoot整合Thymeleaf与Hbase/" class="archive-article-date">
-  	<time datetime="2019-09-26T08:11:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-    <p>
-  
-    <h1 itemprop="name">
-      <a class="article-title_code_ant" href="/2019/09/26/SpringBoot整合Thymeleaf与Hbase/">SpringBoot整合Thymeleaf与Hbase</a>
-    </h1>
-  
-</p>
-    
-    <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">3.1k字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">16分</span>
-      </span>
-    </span>
-</div>
-
-      
-        <p>上一篇博客实现了在虚拟机中搭建Hadoop与Hbase的单机环境，本文内容为之前的<a href="https://github.com/butalways1121/SpringBoot-Kafka-Storm" target="_blank" rel="noopener">SpringBoot项目</a>与Thymeleaf引擎模板和Hbase整合成<a href="https://github.com/butalways1121/KafkaConsumerStormThymeleaf.git" target="_blank" rel="noopener">KafaConsumerStormThymeleaf项目</a>，最终实现的是在前端页面对mysql数据库的增删改查操作，另外，也将hbase数据库的数据展示到前端并实现新增数据功能，同时又将从Hbase数据库拿到的数据插入mysql数据库，主要的一些步骤如下。</p>
-        
-          <a class="article-more-a" href="/2019/09/26/SpringBoot整合Thymeleaf与Hbase/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">SpringBoot</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Hbase</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Thymeleaf</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/26/SpringBoot整合Thymeleaf与Hbase/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Hadoop及Hbase单机环境的搭建" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-        
-        <a href="/2019/09/22/Hadoop及Hbase单机环境的搭建/" class="archive-article-date">
-  	<time datetime="2019-09-22T07:45:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-    <p>
-  
-    <h1 itemprop="name">
-      <a class="article-title_code_ant" href="/2019/09/22/Hadoop及Hbase单机环境的搭建/">Hadoop及Hbase单机环境的搭建</a>
-    </h1>
-  
-</p>
-    
-    <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">2.8k字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">13分</span>
-      </span>
-    </span>
-</div>
-
-      
-        <p>本文内容为VMware的Centos 7上的Hadoop以及Hbase单机环境的搭建，Centos 7的安装比较简单，可参考：<a href="https://jingyan.baidu.com/article/c843ea0be03ece77921e4a53.html" target="_blank" rel="noopener">https://jingyan.baidu.com/article/c843ea0be03ece77921e4a53.html</a>，这里就不用介绍了，下面直接进入正题，进行Hadoop单机环境的搭建。</p>
-        
-          <a class="article-more-a" href="/2019/09/22/Hadoop及Hbase单机环境的搭建/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Hadoop</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Hbase</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Centos7</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/22/Hadoop及Hbase单机环境的搭建/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
   
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
-    </nav>
+  
+
+  
+
+  
+
+  
+  <div id="gitment-ctn"></div> 
+<link rel="stylesheet" href="https://billts.site/extra_css/gitment.css">
+<script src="https://billts.site/js/gitment.js"></script>
+<script>
+var gitment = new Gitment({
+  id: decodeURI(window.location.pathname),
+  owner: 'butalways1121',
+  repo: 'butalways1121.github.io',
+  oauth: {
+    client_id: '04d1e89c3e35949cd1df',
+    client_secret: '349862188473214c081a620b26558ced1977789b',
+  },
+})
+gitment.render('gitment-ctn')
+</script>
   
 
 
@@ -1253,8 +530,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
