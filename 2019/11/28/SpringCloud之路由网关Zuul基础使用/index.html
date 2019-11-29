@@ -6,20 +6,24 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>关系型与非关系型数据库以及Hbase与Redis | Hexo</title>
+  <title>SpringCloud之路由网关Zuul基础使用 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="本文简单对比了关系型数据库与非关系数据库，再将近日用到的Hbase与Redis这两个NoSQL类型的数据库做了简单的介绍对比。">
-<meta name="keywords" content="Redis,Hbase,关系型数据库,非关系型数据库">
+  <meta name="description" content="&amp;emsp;&amp;emsp;本文介绍的是SpringCloud（基于SpringBoot 2.X，Finchley.SR2版）中的路由网关SpringCloud Zuul的简单使用，戳这里下载源码。">
+<meta name="keywords" content="SpringCloud,Zuul">
 <meta property="og:type" content="article">
-<meta property="og:title" content="关系型与非关系型数据库以及Hbase与Redis">
-<meta property="og:url" content="http://yoursite.com/2019/09/27/关系型与非关系型数据库以及Hbase与Redis/index.html">
+<meta property="og:title" content="SpringCloud之路由网关Zuul基础使用">
+<meta property="og:url" content="http://yoursite.com/2019/11/28/SpringCloud之路由网关Zuul基础使用/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="本文简单对比了关系型数据库与非关系数据库，再将近日用到的Hbase与Redis这两个NoSQL类型的数据库做了简单的介绍对比。">
+<meta property="og:description" content="&amp;emsp;&amp;emsp;本文介绍的是SpringCloud（基于SpringBoot 2.X，Finchley.SR2版）中的路由网关SpringCloud Zuul的简单使用，戳这里下载源码。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-09-27T03:43:01.119Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/102.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/103.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/104.png">
+<meta property="og:updated_time" content="2019-11-29T02:20:48.106Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="关系型与非关系型数据库以及Hbase与Redis">
-<meta name="twitter:description" content="本文简单对比了关系型数据库与非关系数据库，再将近日用到的Hbase与Redis这两个NoSQL类型的数据库做了简单的介绍对比。">
+<meta name="twitter:title" content="SpringCloud之路由网关Zuul基础使用">
+<meta name="twitter:description" content="&amp;emsp;&amp;emsp;本文介绍的是SpringCloud（基于SpringBoot 2.X，Finchley.SR2版）中的路由网关SpringCloud Zuul的简单使用，戳这里下载源码。">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/102.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -187,14 +191,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-关系型与非关系型数据库以及Hbase与Redis" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-SpringCloud之路由网关Zuul基础使用" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
         
-        <a href="/2019/09/27/关系型与非关系型数据库以及Hbase与Redis/" class="archive-article-date">
-  	<time datetime="2019-09-27T02:43:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-27</time>
+        <a href="/2019/11/28/SpringCloud之路由网关Zuul基础使用/" class="archive-article-date">
+  	<time datetime="2019-11-28T07:50:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-28</time>
 </a>
         
       </header>
@@ -203,7 +207,7 @@
     <p>
   
     <h1 class="article-title_code_ant" itemprop="name">
-      关系型与非关系型数据库以及Hbase与Redis
+      SpringCloud之路由网关Zuul基础使用
     </h1>
   
 </p>
@@ -213,7 +217,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">3.2k字</span>
+        <span class="post-count">3k字</span>
       </span>
     </span>
 
@@ -222,133 +226,106 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">11分</span>
+        <span class="post-count">14分</span>
       </span>
     </span>
 </div>
 
       
-        <p>本文简单对比了关系型数据库与非关系数据库，再将近日用到的Hbase与Redis这两个NoSQL类型的数据库做了简单的介绍对比。</p>
+        <p>&emsp;&emsp;<strong>本文介绍的是SpringCloud（基于SpringBoot 2.X，Finchley.SR2版）中的路由网关SpringCloud Zuul的简单使用，戳<a href="https://github.com/butalways1121/SpringCloud-Zuul" target="_blank" rel="noopener">这里</a>下载源码。</strong></p>
 <a id="more"></a>
-<h2 id="关系型数据库与非关系型数据库"><a href="#关系型数据库与非关系型数据库" class="headerlink" title="关系型数据库与非关系型数据库"></a>关系型数据库与非关系型数据库</h2><h3 id="一、关系型数据库"><a href="#一、关系型数据库" class="headerlink" title="一、关系型数据库"></a>一、关系型数据库</h3><p>关系型数据库：指采用了关系模型来组织数据的数据库。其中，关系模型指的就是二维表格模型，而一个关系型数据库就是由二维表及其之间的联系所组成的一个数据组织。</p>
-<h4 id="1、关系模型中常用的概念"><a href="#1、关系模型中常用的概念" class="headerlink" title="1、关系模型中常用的概念"></a>1、关系模型中常用的概念</h4><ul>
-<li>关系：一张二维表，每个关系都具有一个关系名，也就是表名；</li>
-<li>元组：二维表中的一行，在数据库中被称为记录；</li>
-<li>属性：二维表中的一列，在数据库中被称为字段；</li>
-<li>域：属性的取值范围，也就是数据库中某一列的取值限制；</li>
-<li>关键字：一组可以唯一标识元组的属性，数据库中常称为主键，由一个或多个列组成；</li>
-<li>关系模式：指对关系的描述。其格式为：关系名(属性1，属性2， … … ，属性N)，在数据库中成为表结构。</li>
+<h2 id="一、SpringCloud-Zuul简介"><a href="#一、SpringCloud-Zuul简介" class="headerlink" title="一、SpringCloud Zuul简介"></a>一、SpringCloud Zuul简介</h2><h3 id="1-SpringCloud-Zuul是什么"><a href="#1-SpringCloud-Zuul是什么" class="headerlink" title="1.SpringCloud Zuul是什么"></a>1.SpringCloud Zuul是什么</h3><p>&emsp;&emsp;SpringCloud Zuul是Netflix设计用来为所有面向设备、web网站提供服务的所有应用的门面，Zuul可以提供动态路由、监控、弹性扩展、安全认证等服务，还可以根据需求将请求路由到多个应用中。<strong>通俗一点来说，就是对服务提供一层保护，对外界的请求进行过滤转发到后端服务中。</strong></p>
+<p>&emsp;&emsp;这里我们可以通过几张简单的示例图来进行了解，不使用路由网关的服务请求与响应示例图:</p>
+<p><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/102.png" alt><br>使用路由网关的示例图：</p>
+<p><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/103.png" alt><br>使用路由网关及注册中心的示例图:</p>
+<p><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/104.png" alt><br>&emsp;&emsp;从上述图中，可以看出加了路由网关之后，实际上是将一对多的关系转变成了一对一的关系，这样的好处是可以在网关层进行数据合法校验、权限认证、负载均衡等统一处理，这样可以在很大的程度上节省的人力和物力，但是这种方式也有一定的弊端，就是以后新增了服务或者在服务中新增方法，就会使得网关层可能需要进行改动。幸好在SpringCloud有Zuul这个组件，通过Eureka将网关和微服务之间相互关联起来，所有的微服务都会在Eureka上进行注册，这样Zuul就能感知到哪些服务在线，并且可以通过配置路由规则将请求自动转发到指定的后端微服务上，这样即使后续新增了服务或者在服务中新增了某些方法，那么只需在Zuul层进行简单配置即可。</p>
+<h3 id="2-SpringCloud-Zuul的功能"><a href="#2-SpringCloud-Zuul的功能" class="headerlink" title="2.SpringCloud Zuul的功能"></a>2.SpringCloud Zuul的功能</h3><p>Zuul可以通过加载动态过滤机制，从而实现以下各项功能：</p>
+<blockquote>
+<p><strong>验证与安全保障：</strong>识别面向各类资源的验证要求并拒绝那些与要求不符的请求；</p>
+</blockquote>
+<blockquote>
+<p><strong>审查与监控：</strong>在边缘位置追踪有意义数据及统计结果，从而为我们带来准确的生产状态结论；</p>
+</blockquote>
+<blockquote>
+<p><strong>动态路由：</strong>以动态方式根据需要将请求路由至不同后端集群处；</p>
+</blockquote>
+<blockquote>
+<p><strong>压力测试：</strong>逐渐增加指向集群的负载流量，从而计算性能水平；</p>
+</blockquote>
+<blockquote>
+<p><strong>负载分配：</strong>为每一种负载类型分配对应容量，并弃用超出限定值的请求；</p>
+</blockquote>
+<blockquote>
+<p><strong>静态响应处理：</strong>在边缘位置直接建立部分响应，从而避免其流入内部集群；</p>
+</blockquote>
+<blockquote>
+<p><strong>多区域弹性：</strong>跨越AWS区域进行请求路由，旨在实现ELB使用多样化并保证边缘位置与使用者尽可能接近。</p>
+</blockquote>
+<h3 id="3-为什么需要Zuul"><a href="#3-为什么需要Zuul" class="headerlink" title="3.为什么需要Zuul"></a>3.为什么需要Zuul</h3><ul>
+<li>Zuul和Ribbon以及Eureka相结合，可以实现智能路由和负载均衡的功能，可以将流量按照某种策略分发到集群中的多个实例；</li>
+<li>统一了对外暴露接口，外界系统不需要知道微服务系统中各服务之间调用的复杂性，也保护了内部微服务的api接口；</li>
+<li>可以统一做用户身份认证，权限验证，这样就不用在每个微服务中进行认证了；</li>
+<li>可以统一实现监控、日志的输出；</li>
+<li>客户端请求多个微服务时，可以只请求Zuul一次，在Zuul中请求多个微服务，减少客户端和微服务的交互次数。<h2 id="二、SpringCloud-Zuul示例"><a href="#二、SpringCloud-Zuul示例" class="headerlink" title="二、SpringCloud Zuul示例"></a>二、SpringCloud Zuul示例</h2>本次项目同样分为注册中心、服务端、客户端，详细示例如下：<h3 id="1-注册中心"><a href="#1-注册中心" class="headerlink" title="1.注册中心"></a>1.注册中心</h3>新建springcloud-zuul-eureka项目作为注册中心，pom.xml依赖完整配置：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">&lt;project xmlns=<span class="string">"http://maven.apache.org/POM/4.0.0"</span></span><br><span class="line">	xmlns:xsi=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></span><br><span class="line">	xsi:schemaLocation=<span class="string">"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"</span>&gt;</span><br><span class="line">	&lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;</span><br><span class="line"></span><br><span class="line">	&lt;groupId&gt;1.0.0&lt;/groupId&gt;</span><br><span class="line">	&lt;artifactId&gt;springcloud-zuul-eureka&lt;/artifactId&gt;</span><br><span class="line">	&lt;version&gt;0.0.1-SNAPSHOT&lt;/version&gt;</span><br><span class="line">	&lt;packaging&gt;jar&lt;/packaging&gt;</span><br><span class="line">	&lt;name&gt;springcloud-eureka&lt;/name&gt;</span><br><span class="line">	&lt;url&gt;http://maven.apache.org&lt;/url&gt;</span><br><span class="line">	&lt;parent&gt;</span><br><span class="line">		&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">		&lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;</span><br><span class="line">		&lt;version&gt;2.0.6.RELEASE&lt;/version&gt;</span><br><span class="line">		&lt;relativePath /&gt;</span><br><span class="line">	&lt;/parent&gt;</span><br><span class="line">	&lt;properties&gt;</span><br><span class="line">		&lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt;</span><br><span class="line">		&lt;project.reporting.outputEncoding&gt;UTF-8&lt;/project.reporting.outputEncoding&gt;</span><br><span class="line">		&lt;java.version&gt;1.8&lt;/java.version&gt;</span><br><span class="line">		&lt;spring-cloud.version&gt;Finchley.SR2&lt;/spring-cloud.version&gt;</span><br><span class="line">	&lt;/properties&gt;</span><br><span class="line"></span><br><span class="line">	&lt;dependencies&gt;</span><br><span class="line">		&lt;dependency&gt;</span><br><span class="line">			&lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;</span><br><span class="line">			&lt;artifactId&gt;spring-cloud-starter&lt;/artifactId&gt;</span><br><span class="line">		&lt;/dependency&gt;</span><br><span class="line">		&lt;dependency&gt;</span><br><span class="line">			&lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;</span><br><span class="line">			&lt;artifactId&gt;spring-cloud-starter-netflix-eureka-server&lt;/artifactId&gt;</span><br><span class="line">		&lt;/dependency&gt;</span><br><span class="line">		&lt;dependency&gt;</span><br><span class="line">			&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">			&lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt;</span><br><span class="line">			&lt;scope&gt;<span class="built_in">test</span>&lt;/scope&gt;</span><br><span class="line">		&lt;/dependency&gt;</span><br><span class="line">	&lt;/dependencies&gt;</span><br><span class="line">	&lt;dependencyManagement&gt;</span><br><span class="line">		&lt;dependencies&gt;</span><br><span class="line">			&lt;dependency&gt;</span><br><span class="line">				&lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;</span><br><span class="line">				&lt;artifactId&gt;spring-cloud-dependencies&lt;/artifactId&gt;</span><br><span class="line">				&lt;version&gt;<span class="variable">$&#123;spring-cloud.version&#125;</span>&lt;/version&gt;</span><br><span class="line">				&lt;<span class="built_in">type</span>&gt;pom&lt;/<span class="built_in">type</span>&gt;</span><br><span class="line">				&lt;scope&gt;import&lt;/scope&gt;</span><br><span class="line">			&lt;/dependency&gt;</span><br><span class="line">		&lt;/dependencies&gt;</span><br><span class="line">	&lt;/dependencyManagement&gt;</span><br><span class="line">	&lt;build&gt;</span><br><span class="line">		&lt;plugins&gt;</span><br><span class="line">			&lt;plugin&gt;</span><br><span class="line">				&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">				&lt;artifactId&gt;spring-boot-maven-plugin&lt;/artifactId&gt;</span><br><span class="line">			&lt;/plugin&gt;</span><br><span class="line">		&lt;/plugins&gt;</span><br><span class="line">	&lt;/build&gt;</span><br><span class="line">&lt;/project&gt;</span><br></pre></td></tr></table></figure>
+
+</li>
 </ul>
-<h4 id="2、关系型数据库的优点"><a href="#2、关系型数据库的优点" class="headerlink" title="2、关系型数据库的优点"></a>2、关系型数据库的优点</h4><ul>
-<li>容易理解：二维表结构是非常贴近逻辑世界的一个概念，关系模型相对网状、层次等其他模型来说更容易理解；</li>
-<li>使用方便：通用的SQL语言使得操作关系型数据库非常方便；</li>
-<li>易于维护：丰富的完整性(实体完整性、参照完整性和用户定义的完整性)大大减低了数据冗余和数据不一致的概率。</li>
-</ul>
-<h4 id="3、当今十大主流的关系型数据库"><a href="#3、当今十大主流的关系型数据库" class="headerlink" title="3、当今十大主流的关系型数据库"></a>3、当今十大主流的关系型数据库</h4><p>Oracle，Microsoft SQL Server，MySQL，PostgreSQL，DB2，Microsoft Access， SQLite，Teradata，MariaDB(MySQL的一个分支)，SAP</p>
-<h4 id="4、关系型数据库存在的问题"><a href="#4、关系型数据库存在的问题" class="headerlink" title="4、关系型数据库存在的问题"></a>4、关系型数据库存在的问题</h4><ul>
-<li>网站的用户并发性非常高，往往达到每秒上万次读写请求，对于传统关系型数据库来说，硬盘I/O是一个很大的瓶颈；</li>
-<li>网站每天产生的数据量是巨大的，对于关系型数据库来说，在一张包含海量数据的表中查询，效率是非常低的；</li>
-<li>在基于web的结构当中，数据库是最难进行横向扩展的，当一个应用系统的用户量和访问量与日俱增的时候，数据库却没有办法像web server和app server那样简单的通过添加更多的硬件和服务节点来扩展性能和负载能力。当需要对数据库系统进行升级和扩展时，往往需要停机维护和数据迁移；</li>
-<li>性能欠佳：在关系型数据库中，导致性能欠佳的最主要原因是多表的关联查询，以及复杂的数据分析类型的复杂SQL报表查询。为了保证数据库的ACID特性（ACID分别是Atomic原子性，Consistency一致性，Isolation隔离性，Durability持久性），必须尽量按照其要求的范式进行设计，关系型数据库中的表都是存储一个格式化的数据结构。</li>
-</ul>
-<h3 id="二、非关系型数据库"><a href="#二、非关系型数据库" class="headerlink" title="二、非关系型数据库"></a>二、非关系型数据库</h3><p>非关系型数据库：指非关系型的，分布式的，且一般不保证遵循ACID原则的数据存储系统。</p>
-<h4 id="1、非关系数据库结构"><a href="#1、非关系数据库结构" class="headerlink" title="1、非关系数据库结构"></a>1、非关系数据库结构</h4><p>非关系型数据库以键值对存储，且结构不固定，每一个元组可以有不一样的字段，每个元组可以根据需要增加一些自己的键值对，不局限于固定的结构，可以减少一些时间和空间的开销型。</p>
-<h4 id="2、非关系型数据库的优点"><a href="#2、非关系型数据库的优点" class="headerlink" title="2、非关系型数据库的优点"></a>2、非关系型数据库的优点</h4><ul>
-<li>用户可以根据需要去添加自己需要的字段，为了获取用户的不同信息，不像关系型数据库中，要对多表进行关联查询。仅需要根据id取出相应的value就可以完成查询；</li>
-<li>适用于SNS(Social Networking Services)中，例如facebook，微博。系统的升级，功能的增加，往往意味着数据结构巨大变动，这一点关系型数据库难以应付，需要新的结构化数据存储。由于不可能用一种数据结构化存储应付所有的新的需求，因此，非关系型数据库严格上不是一种数据库，应该是一种数据结构化存储方法的集合。</li>
-</ul>
-<h4 id="3、非关系型数据库的不足"><a href="#3、非关系型数据库的不足" class="headerlink" title="3、非关系型数据库的不足"></a>3、非关系型数据库的不足</h4><p>只适合存储一些较为简单的数据，对于需要进行较复杂查询的数据，关系型数据库显的更为合适。不适合持久存储海量数据。</p>
-<h4 id="4、非关系型数据库的分类"><a href="#4、非关系型数据库的分类" class="headerlink" title="4、非关系型数据库的分类"></a>4、非关系型数据库的分类</h4><p>非关系型数据库都是针对某些特定的应用需求出现的，因此，对于该类应用，具有极高的性能。依据结构化方法以及应用场合的不同，主要分为以下几类：</p>
-<ol>
-<li>面向高性能并发读写的key-value数据库<br>Key-value数据库是一种以键值对存储数据的一种数据库，其主要特点是具有极高的并发读写性能，类似Java中的map。可以将整个数据库理解为一个大的map，每个键都会对应一个唯一的值。主流代表为Redis， Amazon DynamoDB， Memcached，Microsoft Azure Cosmos DB和Hazelcast。</li>
-<li>面向海量数据访问的面向文档数据库<br>这类数据库的主要特点是在海量的数据中可以快速的查询数据,。文档存储通常使用内部表示法，可以直接在应用程序中处理，主要是JSON。JSON文档也可以作为纯文本存储在键值存储或关系数据库系统中。主流代表为MongoDB，Amazon DynamoDB，Couchbase，Microsoft Azure Cosmos DB和CouchDB。</li>
-<li>面向搜索数据内容的搜索引擎<br>搜索引擎是专门用于搜索数据内容的NoSQL数据库管理系统。主要是用于对海量数据进行近实时的处理和分析处理，可用于机器学习和数据挖掘。主流代表为Elasticsearch，Splunk，Solr，MarkLogic和Sphinx。</li>
-<li>面向可扩展性的分布式数据库<br>这类数据库的主要特点是具有很强的可拓展性，想解决的问题就是传统数据库存在可扩展性上的缺陷，这类数据库可以适应数据量的增加以及数据结构的变化，将数据存储在记录中，能够容纳大量动态列。由于列名和记录键不是固定的，并且由于记录可能有数十亿列，因此可扩展性存储可以看作是二维键值存储。主流代表为Cassandra，HBase，Microsoft Azure Cosmos DB，Datastax Enterprise和Accumulo。</li>
-</ol>
-<h3 id="三、关系型与非关系型数据库的比较"><a href="#三、关系型与非关系型数据库的比较" class="headerlink" title="三、关系型与非关系型数据库的比较"></a>三、关系型与非关系型数据库的比较</h3><blockquote>
-<p><strong>1、成本</strong></p>
-</blockquote>
-<p>Nosql数据库简单易部署，基本都是开源软件，不需要像使用Oracle那样花费大量成本购买使用，相比关系型数据库价格便宜；</p>
-<blockquote>
-<p><strong>2、查询速度</strong></p>
-</blockquote>
-<p>Nosql数据库将数据存储于缓存之中，而且不需要经过SQL层的解析，关系型数据库将数据存储在硬盘中，自然查询速度远不及Nosql数据库；</p>
-<blockquote>
-<p><strong>3、存储数据的格式</strong></p>
-</blockquote>
-<p>Nosql的存储格式是key,value形式、文档形式、图片形式等等，所以可以存储基础类型以及对象或者是集合等各种格式，而数据库则只支持基础类型；</p>
-<blockquote>
-<p><strong>4、扩展性</strong></p>
-</blockquote>
-<p>关系型数据库有类似join这样的多表查询机制的限制导致扩展很艰难。Nosql基于键值对，数据之间没有耦合性，所以非常容易水平扩展；</p>
-<blockquote>
-<p><strong>5、持久存储</strong></p>
-</blockquote>
-<p>Nosql不使用于持久存储，海量数据的持久存储，还是需要关系型数据库；</p>
-<blockquote>
-<p><strong>6、数据一致性</strong></p>
-</blockquote>
-<p>非关系型数据库一般强调的是数据最终一致性，不像关系型数据库一样强调数据的强一致性，从非关系型数据库中读到的有可能还是处于一个中间态的数据，Nosql不提供对事务的处理。</p>
+<p>application.properties配置信息：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">spring.application.name=springcloud-zuul-eureka</span><br><span class="line">server.port=8006</span><br><span class="line">eureka.client.register-with-eureka=<span class="literal">false</span></span><br><span class="line">eureka.client.fetch-registry=<span class="literal">false</span></span><br><span class="line">eureka.client.serviceUrl.defaultZone=http://localhost:<span class="variable">$&#123;server.port&#125;</span>/eureka/</span><br></pre></td></tr></table></figure>
+
+<p>启动类代码：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">@EnableEurekaServer</span><br><span class="line">@SpringBootApplication</span><br><span class="line">public class ZuulApplicaton </span><br><span class="line">&#123;</span><br><span class="line">    public static void main( String[] args )</span><br><span class="line">    &#123;</span><br><span class="line">    	SpringApplication.run(ZuulApplicaton.class, args);</span><br><span class="line">        System.out.println(<span class="string">"zuul注册中心服务启动..."</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-服务端"><a href="#2-服务端" class="headerlink" title="2.服务端"></a>2.服务端</h3><p>创建springcloud-zuul-gateway项目作为Zuul服务端，pom.xml文件配置：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line">&lt;project xmlns=<span class="string">"http://maven.apache.org/POM/4.0.0"</span></span><br><span class="line">	xmlns:xsi=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></span><br><span class="line">	xsi:schemaLocation=<span class="string">"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"</span>&gt;</span><br><span class="line">	&lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;</span><br><span class="line"></span><br><span class="line">	&lt;groupId&gt;1.0.0&lt;/groupId&gt;</span><br><span class="line">	&lt;artifactId&gt;springcloud-zuul-eureka&lt;/artifactId&gt;</span><br><span class="line">	&lt;version&gt;0.0.1-SNAPSHOT&lt;/version&gt;</span><br><span class="line">	&lt;packaging&gt;jar&lt;/packaging&gt;</span><br><span class="line">	&lt;name&gt;springcloud-eureka&lt;/name&gt;</span><br><span class="line">	&lt;url&gt;http://maven.apache.org&lt;/url&gt;</span><br><span class="line">	&lt;parent&gt;</span><br><span class="line">		&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">		&lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;</span><br><span class="line">		&lt;version&gt;2.0.6.RELEASE&lt;/version&gt;</span><br><span class="line">		&lt;relativePath /&gt;</span><br><span class="line">	&lt;/parent&gt;</span><br><span class="line">	&lt;properties&gt;</span><br><span class="line">		&lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt;</span><br><span class="line">		&lt;project.reporting.outputEncoding&gt;UTF-8&lt;/project.reporting.outputEncoding&gt;</span><br><span class="line">		&lt;java.version&gt;1.8&lt;/java.version&gt;</span><br><span class="line">		&lt;spring-cloud.version&gt;Finchley.SR2&lt;/spring-cloud.version&gt;</span><br><span class="line">	&lt;/properties&gt;</span><br><span class="line"></span><br><span class="line">	&lt;dependencies&gt;</span><br><span class="line">		&lt;dependency&gt;</span><br><span class="line">			&lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;</span><br><span class="line">			&lt;artifactId&gt;spring-cloud-starter&lt;/artifactId&gt;</span><br><span class="line">		&lt;/dependency&gt;</span><br><span class="line">		&lt;dependency&gt;</span><br><span class="line">			&lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;</span><br><span class="line">			&lt;artifactId&gt;spring-cloud-starter-netflix-eureka-client&lt;/artifactId&gt;</span><br><span class="line">		&lt;/dependency&gt;</span><br><span class="line">		&lt;!-- zuul依赖 --&gt;</span><br><span class="line">		&lt;dependency&gt;</span><br><span class="line">        	&lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;</span><br><span class="line">        	&lt;artifactId&gt;spring-cloud-starter-netflix-zuul&lt;/artifactId&gt;</span><br><span class="line">    	&lt;/dependency&gt;</span><br><span class="line">		&lt;dependency&gt;</span><br><span class="line">			&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">			&lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt;</span><br><span class="line">			&lt;scope&gt;<span class="built_in">test</span>&lt;/scope&gt;</span><br><span class="line">		&lt;/dependency&gt;</span><br><span class="line">	&lt;/dependencies&gt;</span><br><span class="line">	&lt;dependencyManagement&gt;</span><br><span class="line">		&lt;dependencies&gt;</span><br><span class="line">			&lt;dependency&gt;</span><br><span class="line">				&lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;</span><br><span class="line">				&lt;artifactId&gt;spring-cloud-dependencies&lt;/artifactId&gt;</span><br><span class="line">				&lt;version&gt;<span class="variable">$&#123;spring-cloud.version&#125;</span>&lt;/version&gt;</span><br><span class="line">				&lt;<span class="built_in">type</span>&gt;pom&lt;/<span class="built_in">type</span>&gt;</span><br><span class="line">				&lt;scope&gt;import&lt;/scope&gt;</span><br><span class="line">			&lt;/dependency&gt;</span><br><span class="line">		&lt;/dependencies&gt;</span><br><span class="line">	&lt;/dependencyManagement&gt;</span><br><span class="line">	&lt;build&gt;</span><br><span class="line">		&lt;plugins&gt;</span><br><span class="line">			&lt;plugin&gt;</span><br><span class="line">				&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">				&lt;artifactId&gt;spring-boot-maven-plugin&lt;/artifactId&gt;</span><br><span class="line">			&lt;/plugin&gt;</span><br><span class="line">		&lt;/plugins&gt;</span><br><span class="line">	&lt;/build&gt;</span><br><span class="line">&lt;/project&gt;</span><br></pre></td></tr></table></figure>
+
+<p>application.properties文件:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">spring.application.name=springcloud-zuul-gateway</span><br><span class="line">server.port = 9009</span><br><span class="line">eureka.client.serviceUrl.defaultZone=http://localhost:8006/eureka/</span><br><span class="line">zuul.routes.hello.path = /hello/**</span><br><span class="line">zuul.routes.hello.url = http://localhost:9010/hello</span><br><span class="line">zuul.routes.hi.path = /hi/**</span><br><span class="line">zuul.routes.hi.url = http://localhost:9011/hi</span><br></pre></td></tr></table></figure>
+
+<p><strong>其中<code>zuul.routes.{route}.path</code>和<code>uul.routes.{route}.url</code>是自定义路由的规则，通过path配置路径进行过滤，访问该路径会转发到url对应的地址，是属于一对一的配置方式。例如，如果访问<code>http://localhost:9009/hello/butalways</code>的话就会跳转到<code>http://localhost:9010/hello/butalways</code>地址。</strong><br>启动类代码示例：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">@EnableDiscoveryClient</span><br><span class="line">@SpringBootApplication</span><br><span class="line">@EnableZuulProxy</span><br><span class="line">public class ZuulGateway </span><br><span class="line">&#123;</span><br><span class="line">    public static void main( String[] args )</span><br><span class="line">    &#123;</span><br><span class="line">    	SpringApplication.run(ZuulGateway.class, args);</span><br><span class="line">        System.out.println(<span class="string">"zuul 服务启动..."</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>其中，<code>@EnableZuulProxy</code>注解表示开启网关路由服务功能，是<code>@EnableZuulServer</code>注解的增强版，当Zuul与Eureka、Ribbon等组件配合使用时，我们使用<code>@EnableZuulProxy</code>。</strong></p>
+<h3 id="3-客户端"><a href="#3-客户端" class="headerlink" title="3.客户端"></a>3.客户端</h3><p>&emsp;&emsp;客户端这边需要创建两个服务来验证Zuul路由网关是否生效，新建两个项目springcloud-zuul-server1和springcloud-zuul-server2：</p>
+<h4 id="（1）springcloud-zuul-server1"><a href="#（1）springcloud-zuul-server1" class="headerlink" title="（1）springcloud-zuul-server1"></a>（1）springcloud-zuul-server1</h4><p>pom.xml完整配置：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line">&lt;project xmlns=<span class="string">"http://maven.apache.org/POM/4.0.0"</span></span><br><span class="line">	xmlns:xsi=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></span><br><span class="line">	xsi:schemaLocation=<span class="string">"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"</span>&gt;</span><br><span class="line">	&lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;</span><br><span class="line"></span><br><span class="line">	&lt;groupId&gt;1.0.0&lt;/groupId&gt;</span><br><span class="line">	&lt;artifactId&gt;springcloud-zuul-eureka&lt;/artifactId&gt;</span><br><span class="line">	&lt;version&gt;0.0.1-SNAPSHOT&lt;/version&gt;</span><br><span class="line">	&lt;packaging&gt;jar&lt;/packaging&gt;</span><br><span class="line">	&lt;name&gt;springcloud-eureka&lt;/name&gt;</span><br><span class="line">	&lt;url&gt;http://maven.apache.org&lt;/url&gt;</span><br><span class="line">	&lt;parent&gt;</span><br><span class="line">		&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">		&lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;</span><br><span class="line">		&lt;version&gt;2.0.6.RELEASE&lt;/version&gt;</span><br><span class="line">		&lt;relativePath /&gt;</span><br><span class="line">	&lt;/parent&gt;</span><br><span class="line">	&lt;properties&gt;</span><br><span class="line">		&lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt;</span><br><span class="line">		&lt;project.reporting.outputEncoding&gt;UTF-8&lt;/project.reporting.outputEncoding&gt;</span><br><span class="line">		&lt;java.version&gt;1.8&lt;/java.version&gt;</span><br><span class="line">		&lt;spring-cloud.version&gt;Finchley.SR2&lt;/spring-cloud.version&gt;</span><br><span class="line">	&lt;/properties&gt;</span><br><span class="line"></span><br><span class="line">	&lt;dependencies&gt;</span><br><span class="line">		&lt;dependency&gt;</span><br><span class="line">			&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">			&lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;</span><br><span class="line">		&lt;/dependency&gt;</span><br><span class="line">		&lt;dependency&gt;</span><br><span class="line">			&lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;</span><br><span class="line">			&lt;artifactId&gt;spring-cloud-starter&lt;/artifactId&gt;</span><br><span class="line">		&lt;/dependency&gt;</span><br><span class="line">		&lt;dependency&gt;</span><br><span class="line">			&lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;</span><br><span class="line">			&lt;artifactId&gt;spring-cloud-starter-netflix-eureka-client&lt;/artifactId&gt;</span><br><span class="line">		&lt;/dependency&gt;</span><br><span class="line">		&lt;dependency&gt;</span><br><span class="line">			&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">			&lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt;</span><br><span class="line">			&lt;scope&gt;<span class="built_in">test</span>&lt;/scope&gt;</span><br><span class="line">		&lt;/dependency&gt;</span><br><span class="line">	&lt;/dependencies&gt;</span><br><span class="line">	&lt;dependencyManagement&gt;</span><br><span class="line">		&lt;dependencies&gt;</span><br><span class="line">			&lt;dependency&gt;</span><br><span class="line">				&lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;</span><br><span class="line">				&lt;artifactId&gt;spring-cloud-dependencies&lt;/artifactId&gt;</span><br><span class="line">				&lt;version&gt;<span class="variable">$&#123;spring-cloud.version&#125;</span>&lt;/version&gt;</span><br><span class="line">				&lt;<span class="built_in">type</span>&gt;pom&lt;/<span class="built_in">type</span>&gt;</span><br><span class="line">				&lt;scope&gt;import&lt;/scope&gt;</span><br><span class="line">			&lt;/dependency&gt;</span><br><span class="line">		&lt;/dependencies&gt;</span><br><span class="line">	&lt;/dependencyManagement&gt;</span><br><span class="line">	&lt;build&gt;</span><br><span class="line">		&lt;plugins&gt;</span><br><span class="line">			&lt;plugin&gt;</span><br><span class="line">				&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">				&lt;artifactId&gt;spring-boot-maven-plugin&lt;/artifactId&gt;</span><br><span class="line">			&lt;/plugin&gt;</span><br><span class="line">		&lt;/plugins&gt;</span><br><span class="line">	&lt;/build&gt;</span><br><span class="line">&lt;/project&gt;</span><br></pre></td></tr></table></figure>
+
+<p>application.properties配置信息：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">spring.application.name=springcloud-zuul-server1</span><br><span class="line">server.port=9010</span><br><span class="line">eureka.client.serviceUrl.defaultZone=http://localhost:8006/eureka/</span><br></pre></td></tr></table></figure>
+
+<p>启动类：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">@EnableDiscoveryClient</span><br><span class="line">@SpringBootApplication</span><br><span class="line">public class ZuulServer1 </span><br><span class="line">&#123;</span><br><span class="line">    public static void main( String[] args )</span><br><span class="line">    &#123;</span><br><span class="line">    	SpringApplication.run(ZuulServer1.class, args);</span><br><span class="line">        System.out.println(<span class="string">"zuul 第一个服务启动...."</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>控制层代码示例：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@RestController</span><br><span class="line">public class ConsumerController &#123;</span><br><span class="line"></span><br><span class="line">	@RequestMapping(<span class="string">"/hello/&#123;name&#125;"</span>)</span><br><span class="line">	public String index(@PathVariable String name) &#123;</span><br><span class="line">	    <span class="built_in">return</span> name+<span class="string">",Hello World!"</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="（2）springcloud-zuul-server2"><a href="#（2）springcloud-zuul-server2" class="headerlink" title="（2）springcloud-zuul-server2"></a>（2）springcloud-zuul-server2</h4><p>pom.xml配置同springcloud-zuul-server1，application.properties配置信息：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">spring.application.name=springcloud-zuul-server2</span><br><span class="line">server.port=9011</span><br><span class="line">eureka.client.serviceUrl.defaultZone=http://localhost:8006/eureka/</span><br></pre></td></tr></table></figure>
+
+<p>启动类：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">@EnableDiscoveryClient</span><br><span class="line">@SpringBootApplication</span><br><span class="line">public class ZuulServer2 </span><br><span class="line">&#123;</span><br><span class="line">    public static void main( String[] args )</span><br><span class="line">    &#123;</span><br><span class="line">    	SpringApplication.run(ZuulServer2.class, args);</span><br><span class="line">        System.out.println(<span class="string">"zuul 第二个服务启动...."</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>控制层：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@RestController</span><br><span class="line">public class ConsumerController &#123;</span><br><span class="line"></span><br><span class="line">	@RequestMapping(<span class="string">"/hi"</span>)</span><br><span class="line">    public String index(@RequestParam String name) &#123;</span><br><span class="line">        <span class="built_in">return</span> name+<span class="string">",hi!"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>注:这里故意将两个客户端服务的接口参数请求和返回值设置成不一样，以便对Zull的功能进行多方面测试。</strong></p>
+<h3 id="4-测试"><a href="#4-测试" class="headerlink" title="4.测试"></a>4.测试</h3><p>&emsp;&emsp;完成上述的代码开发后，就来测试springcloud-zuul是否可以实现地址过滤转发功能。首先依次启动springcloud-zuul-eureka、springcloud-zuul-gateway、springcloud-zuul-server1和springcloud-zuul-server2这四个项目，其中8006是注册中心springcloud-zuul-eureka的接口，9009是服务springcloud-zuul-gateway的端口，9010是第一个客户端springcloud-zuul-server1的端口，9011是第二个客户端springcloud-zuul-server2的端口。</p>
+<p>启动成功之后，在浏览器中输入<code>http://localhost:9010/hello/butalways</code>，返回：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">butalways,hello world!!</span><br></pre></td></tr></table></figure>
+
+<p>接着输入<code>http://localhost:9011/hi?name=butalways</code>，返回：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">butalways,hi!</span><br></pre></td></tr></table></figure>
+
+<p>以上说明程序正常启动，并且两个客户端的接口返回正确。</p>
 <hr>
-<p>两者之间的区别总结还可参考：<a href="https://www.jb51.net/article/155927.htm" target="_blank" rel="noopener">https://www.jb51.net/article/155927.htm</a><br>为什么使用NoSQL可参考:<a href="https://blog.csdn.net/a909301740/article/details/80149552" target="_blank" rel="noopener">https://blog.csdn.net/a909301740/article/details/80149552</a></p>
-<h2 id="Hbase与Redis"><a href="#Hbase与Redis" class="headerlink" title="Hbase与Redis"></a>Hbase与Redis</h2><p>HBase和Redis的功能上比较相似，都是NoSQL类型的数据库。</p>
-<h3 id="一、Hbase"><a href="#一、Hbase" class="headerlink" title="一、Hbase"></a>一、Hbase</h3><p>HBase是Apache Hadoop中的一个子项目，属于bigtable的开源版本，所实现的语言为Java（故依赖 Java SDK）。HBase依托于Hadoop的HDFS（分布式文件系统）作为最基本存储基础单元。</p>
-<h4 id="1、Hbase的优点"><a href="#1、Hbase的优点" class="headerlink" title="1、Hbase的优点"></a>1、Hbase的优点</h4><ul>
-<li>存储容量大，一个表可以容纳上亿行，上百万列；</li>
-<li>可通过版本进行检索，能搜到所需的历史版本数据；</li>
-<li>负载高时，可通过简单的添加机器来实现水平切分扩展，跟Hadoop的无缝集成保障了其数据可靠性（HDFS）和海量数据分析的高性能（MapReduce）；</li>
-<li>在第3点的基础上可有效避免单点故障的发生。</li>
-</ul>
-<h4 id="2、Hbase的缺点"><a href="#2、Hbase的缺点" class="headerlink" title="2、Hbase的缺点"></a>2、Hbase的缺点</h4><ul>
-<li>基于Java语言实现及Hadoop架构意味着其API更适用于Java项目；</li>
-<li>node开发环境下所需依赖项较多、配置麻烦（或不知如何配置，如持久化配置），缺乏文档；</li>
-<li>占用内存很大，且鉴于建立在为批量分析而优化的HDFS上，导致读取性能不高；</li>
-<li>API相比其它 NoSql 的相对笨拙。</li>
-</ul>
-<h4 id="3、适用场景"><a href="#3、适用场景" class="headerlink" title="3、适用场景"></a>3、适用场景</h4><ul>
-<li>bigtable类型的数据存储；</li>
-<li>对数据有版本查询需求；</li>
-<li>应对超大数据量要求扩展简单的需求。</li>
-</ul>
-<h3 id="二、Redis"><a href="#二、Redis" class="headerlink" title="二、Redis"></a>二、Redis</h3><p>Redis 是一个开源的使用ANSI C语言编写、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API。</p>
-<h4 id="1、Redis的优势"><a href="#1、Redis的优势" class="headerlink" title="1、Redis的优势"></a>1、Redis的优势</h4><ul>
-<li>非常丰富的数据结构；</li>
-<li>Redis提供了事务的功能，可以保证一串命令的原子性，中间不会被任何操作打断；</li>
-<li>数据存在内存中，读写非常的高速，可以达到10w/s的频率。</li>
-</ul>
-<h4 id="2、Redis的缺点"><a href="#2、Redis的缺点" class="headerlink" title="2、Redis的缺点"></a>2、Redis的缺点</h4><ul>
-<li>Redis3.0后才出来官方的集群方案，但仍存在一些架构上的问题；</li>
-<li>持久化功能体验不佳——通过快照方法实现的话，需要每隔一段时间将整个数据库的数据写到磁盘上，代价非常高；而aof方法只追踪变化的数据，类似于mysql的binlog方法，但追加log可能过大，同时所有操作均要重新执行一遍，恢复速度慢；</li>
-<li>由于是内存数据库，所以，单台机器，存储的数据量，跟机器本身的内存大小。虽然redis本身有key过期策略，但是还是需要提前预估和节约内存。如果内存增长过快，需要定期删除数据。</li>
-</ul>
-<h4 id="3、Redis的应用场景"><a href="#3、Redis的应用场景" class="headerlink" title="3、Redis的应用场景"></a>3、Redis的应用场景</h4><p>最佳应用场景：适用于数据变化快且数据库大小可遇见（适合内存容量）的应用程序。例如：微博、数据分析、实时数据搜集、实时通讯等。</p>
-<h3 id="三、Hbase与Redis的区别"><a href="#三、Hbase与Redis的区别" class="headerlink" title="三、Hbase与Redis的区别"></a>三、Hbase与Redis的区别</h3><blockquote>
-<p><strong>1、读写性能</strong></p>
-</blockquote>
-<p>HBase写快读慢，HBase的读取时长通常是几毫秒，而Redis的读取时长通常是几十微秒。性能相差非常大。</p>
-<blockquote>
-<p><strong>2、数据类型</strong></p>
-</blockquote>
-<p>HBase和Redis都支持KV类型，但是Redis支持List、Set等更丰富的类型。</p>
-<blockquote>
-<p><strong>3、海量数据</strong></p>
-</blockquote>
-<p>Redis支持的数据量通常受内存限制，而HBase没有这个限制，可以存储远超内存大小的数据。</p>
-<blockquote>
-<p><strong>4、部署难易</strong></p>
-</blockquote>
-<p>HBase部署需要依赖hadoop、zookeeper等服务，而Redis的部署非常简单。</p>
-<blockquote>
-<p><strong>5、数据可靠性</strong></p>
-</blockquote>
-<p>HBase采用WAL，先记录日志再写入数据，理论上不会丢失数据。而Redis采用的是异步复制数据，在failover时可能会丢失数据。</p>
-<blockquote>
-<p><strong>6、应用场景</strong></p>
-</blockquote>
-<p>HBase适合做大数据的持久存储，而Redis比较适合做缓存。如果数据丢失是不能容忍的，那就用只能用HBase；如果需要一个高性能的环境，而且能够容忍一定的数据丢失，那完全可以考虑使用Redis。</p>
-<h3 id="四、Hbase与Redis的结合"><a href="#四、Hbase与Redis的结合" class="headerlink" title="四、Hbase与Redis的结合"></a>四、Hbase与Redis的结合</h3><p>HBase可以用来做数据的固化，也就是数据存储，做这个他非常合适。Redis适合做cache。可以用HBase+Redis实现数据仓库加缓存数据库，速度和扩展性都兼顾。</p>
-<hr>
-<h2 id="至此，OVER！"><a href="#至此，OVER！" class="headerlink" title="至此，OVER！"></a>至此，OVER！</h2>
+<p>接下来进行访问Zuul，将前两个访问地址的端口都改成服务端的即可，先在浏览器中请求<code>http://localhost:9009/hello/butalways</code>，返回：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">butalways,Hello World!</span><br></pre></td></tr></table></figure>
+
+<p>再输入<code>http://localhost:9009/hi?name=butalways</code>，返回：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">butalways,hi!</span><br></pre></td></tr></table></figure>
+
+<p>若结果如上，则说明zuul路由网关已经生效了，成功地将请求进行了转发！</p>
+
       
 
       
@@ -392,19 +369,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Redis</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">SpringCloud</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Hbase</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">关系型数据库</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">非关系型数据库</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Zuul</a>
         		</li>
       		
 		</ul>
@@ -460,7 +429,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/09/27/关系型与非关系型数据库以及Hbase与Redis/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/11/28/SpringCloud之路由网关Zuul基础使用/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -474,18 +443,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/10/14/圈小猫/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          圈小猫
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/09/26/SpringBoot整合Thymeleaf与Hbase/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">SpringBoot整合Thymeleaf与Hbase</div>
+    <a href="/2019/11/28/SpringCloud之消息总线Bus/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">SpringCloud之消息总线Bus</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -512,7 +472,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#关系型数据库与非关系型数据库"><span class="toc-number">1.</span> <span class="toc-text">关系型数据库与非关系型数据库</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#一、关系型数据库"><span class="toc-number">1.1.</span> <span class="toc-text">一、关系型数据库</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1、关系模型中常用的概念"><span class="toc-number">1.1.1.</span> <span class="toc-text">1、关系模型中常用的概念</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2、关系型数据库的优点"><span class="toc-number">1.1.2.</span> <span class="toc-text">2、关系型数据库的优点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3、当今十大主流的关系型数据库"><span class="toc-number">1.1.3.</span> <span class="toc-text">3、当今十大主流的关系型数据库</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4、关系型数据库存在的问题"><span class="toc-number">1.1.4.</span> <span class="toc-text">4、关系型数据库存在的问题</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二、非关系型数据库"><span class="toc-number">1.2.</span> <span class="toc-text">二、非关系型数据库</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1、非关系数据库结构"><span class="toc-number">1.2.1.</span> <span class="toc-text">1、非关系数据库结构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2、非关系型数据库的优点"><span class="toc-number">1.2.2.</span> <span class="toc-text">2、非关系型数据库的优点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3、非关系型数据库的不足"><span class="toc-number">1.2.3.</span> <span class="toc-text">3、非关系型数据库的不足</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4、非关系型数据库的分类"><span class="toc-number">1.2.4.</span> <span class="toc-text">4、非关系型数据库的分类</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三、关系型与非关系型数据库的比较"><span class="toc-number">1.3.</span> <span class="toc-text">三、关系型与非关系型数据库的比较</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Hbase与Redis"><span class="toc-number">2.</span> <span class="toc-text">Hbase与Redis</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#一、Hbase"><span class="toc-number">2.1.</span> <span class="toc-text">一、Hbase</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1、Hbase的优点"><span class="toc-number">2.1.1.</span> <span class="toc-text">1、Hbase的优点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2、Hbase的缺点"><span class="toc-number">2.1.2.</span> <span class="toc-text">2、Hbase的缺点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3、适用场景"><span class="toc-number">2.1.3.</span> <span class="toc-text">3、适用场景</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二、Redis"><span class="toc-number">2.2.</span> <span class="toc-text">二、Redis</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1、Redis的优势"><span class="toc-number">2.2.1.</span> <span class="toc-text">1、Redis的优势</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2、Redis的缺点"><span class="toc-number">2.2.2.</span> <span class="toc-text">2、Redis的缺点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3、Redis的应用场景"><span class="toc-number">2.2.3.</span> <span class="toc-text">3、Redis的应用场景</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三、Hbase与Redis的区别"><span class="toc-number">2.3.</span> <span class="toc-text">三、Hbase与Redis的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#四、Hbase与Redis的结合"><span class="toc-number">2.4.</span> <span class="toc-text">四、Hbase与Redis的结合</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#至此，OVER！"><span class="toc-number">3.</span> <span class="toc-text">至此，OVER！</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、SpringCloud-Zuul简介"><span class="toc-number">1.</span> <span class="toc-text">一、SpringCloud Zuul简介</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-SpringCloud-Zuul是什么"><span class="toc-number">1.1.</span> <span class="toc-text">1.SpringCloud Zuul是什么</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-SpringCloud-Zuul的功能"><span class="toc-number">1.2.</span> <span class="toc-text">2.SpringCloud Zuul的功能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-为什么需要Zuul"><span class="toc-number">1.3.</span> <span class="toc-text">3.为什么需要Zuul</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、SpringCloud-Zuul示例"><span class="toc-number">2.</span> <span class="toc-text">二、SpringCloud Zuul示例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-注册中心"><span class="toc-number">2.1.</span> <span class="toc-text">1.注册中心</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-服务端"><span class="toc-number">2.2.</span> <span class="toc-text">2.服务端</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-客户端"><span class="toc-number">2.3.</span> <span class="toc-text">3.客户端</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#（1）springcloud-zuul-server1"><span class="toc-number">2.3.1.</span> <span class="toc-text">（1）springcloud-zuul-server1</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#（2）springcloud-zuul-server2"><span class="toc-number">2.3.2.</span> <span class="toc-text">（2）springcloud-zuul-server2</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-测试"><span class="toc-number">2.4.</span> <span class="toc-text">4.测试</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
