@@ -6,15 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: 相册 | Hexo</title>
+  <title>SpringCloud之 Zuul路由网关的过滤器和异常处理 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/tags/相册/index.html">
+  <meta name="description" content="&amp;emsp;&amp;emsp;上一篇博客介绍了(SpringCloud Zuul路由网关的基本使用)[https://butalways1121.gitee.io/2019/11/28/SpringCloud%E4%B9%8B%E8%B7%AF%E7%94%B1%E7%BD%91%E5%85%B3Zuul%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8/]，本文的内容是Sprin">
+<meta name="keywords" content="SpringCloud,Zuul">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SpringCloud之 Zuul路由网关的过滤器和异常处理">
+<meta property="og:url" content="http://yoursite.com/2019/12/02/SpringCloud之-Zuul路由网关的过滤器和异常处理/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="&amp;emsp;&amp;emsp;上一篇博客介绍了(SpringCloud Zuul路由网关的基本使用)[https://butalways1121.gitee.io/2019/11/28/SpringCloud%E4%B9%8B%E8%B7%AF%E7%94%B1%E7%BD%91%E5%85%B3Zuul%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8/]，本文的内容是Sprin">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/105.png">
+<meta property="og:updated_time" content="2019-12-02T06:12:48.281Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="SpringCloud之 Zuul路由网关的过滤器和异常处理">
+<meta name="twitter:description" content="&amp;emsp;&amp;emsp;上一篇博客介绍了(SpringCloud Zuul路由网关的基本使用)[https://butalways1121.gitee.io/2019/11/28/SpringCloud%E4%B9%8B%E8%B7%AF%E7%94%B1%E7%BD%91%E5%85%B3Zuul%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8/]，本文的内容是Sprin">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/105.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -182,64 +189,375 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-SpringCloud之-Zuul路由网关的过滤器和异常处理" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/01/Hexo-Yilia添加相册功能/" class="archive-article-date">
-  	<time datetime="2019-08-01T03:17:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-01</time>
+      <header class="article-header">
+        
+        
+        <a href="/2019/12/02/SpringCloud之-Zuul路由网关的过滤器和异常处理/" class="archive-article-date">
+  	<time datetime="2019-12-02T02:20:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-02</time>
 </a>
-        </div>
-    	 
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+    <p>
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/01/Hexo-Yilia添加相册功能/">Hexo Yilia添加相册功能</a>
+    <h1 class="article-title_code_ant" itemprop="name">
+      SpringCloud之 Zuul路由网关的过滤器和异常处理
     </h1>
   
+</p>
+    
+    <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">2.2k字</span>
+      </span>
+    </span>
 
-        <div class="article-info info-on-right">
-          
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">9分</span>
+      </span>
+    </span>
+</div>
+
+      
+        <p>&emsp;&emsp;<strong>上一篇博客介绍了(SpringCloud Zuul路由网关的基本使用)[<a href="https://butalways1121.gitee.io/2019/11/28/SpringCloud%E4%B9%8B%E8%B7%AF%E7%94%B1%E7%BD%91%E5%85%B3Zuul%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8/]，本文的内容是SpringCloud（基于SpringBoot" target="_blank" rel="noopener">https://butalways1121.gitee.io/2019/11/28/SpringCloud%E4%B9%8B%E8%B7%AF%E7%94%B1%E7%BD%91%E5%85%B3Zuul%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8/]，本文的内容是SpringCloud（基于SpringBoot</a> 2.X，Finchley.SR2版）中的路由网关过滤器Filter和异常处理的简单使用教程，戳<a href="https://github.com/butalways1121/SpringCloudZuul-Filter" target="_blank" rel="noopener">这里</a>下载源码。</strong></p>
+<h2 id="SpringCloud-Zuul-Filter"><a href="#SpringCloud-Zuul-Filter" class="headerlink" title="SpringCloud Zuul Filter"></a>SpringCloud Zuul Filter</h2><h3 id="Zuul的核心"><a href="#Zuul的核心" class="headerlink" title="Zuul的核心"></a>Zuul的核心</h3><p>&emsp;&emsp;Filter是Zuul的核心，用来实现对外服务的控制，能够在HTTP请求和响应的路由过程中执行一系列操作。Filter的生命周期有4个，分别是“PRE”、“ROUTING”、“POST”、“ERROR”，整个生命周期可以用下图来表示：<br><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/105.png" alt></p>
+<ul>
+<li>PRE：这种过滤器在请求被路由之前调用。我们可利用这种过滤器实现身份验证、在集群中选择请求的微服务、记录调试信息等；</li>
+<li>ROUTING：这种过滤器将请求路由到微服务。这种过滤器用于构建发送给微服务的请求，并使用Apache HttpClient或Netfilx Ribbon请求微服务；</li>
+<li>POST：这种过滤器在路由到微服务以后执行。这种过滤器可用来为响应添加标准的HTTP Header、收集统计信息和指标、将响应从微服务发送给客户端等；</li>
+<li>ERROR：在其他阶段发生错误时执行该过滤器。<h3 id="Zuul中默认实现的Filter"><a href="#Zuul中默认实现的Filter" class="headerlink" title="Zuul中默认实现的Filter"></a>Zuul中默认实现的Filter</h3><table>
+<thead>
+<tr>
+<th align="center">类型</th>
+<th align="center">顺序</th>
+<th align="center">过滤器</th>
+<th align="center">功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">pre</td>
+<td align="center">-3</td>
+<td align="center">ServletDetectionFilter</td>
+<td align="center">标记处理Servlet的类型</td>
+</tr>
+<tr>
+<td align="center">pre</td>
+<td align="center">-2</td>
+<td align="center">Servlet30WrapperFilter</td>
+<td align="center">包装HttpServletRequest请求</td>
+</tr>
+<tr>
+<td align="center">pre</td>
+<td align="center">1</td>
+<td align="center">FormBodyWrapperFilter</td>
+<td align="center">包装请求体</td>
+</tr>
+<tr>
+<td align="center">route</td>
+<td align="center">1</td>
+<td align="center">DebugFilter</td>
+<td align="center">标记调试标志</td>
+</tr>
+<tr>
+<td align="center">route</td>
+<td align="center">5</td>
+<td align="center">PreDecorationFilter</td>
+<td align="center">处理请求上下文供后续使用</td>
+</tr>
+<tr>
+<td align="center">route</td>
+<td align="center">10</td>
+<td align="center">RibbonRoutingFilter</td>
+<td align="center">serviceId请求转发</td>
+</tr>
+<tr>
+<td align="center">route</td>
+<td align="center">100</td>
+<td align="center">SimpleHostRoutingFilter</td>
+<td align="center">url请求转发</td>
+</tr>
+<tr>
+<td align="center">route</td>
+<td align="center">100</td>
+<td align="center">SendForwardFilter</td>
+<td align="center">forward请求转发</td>
+</tr>
+<tr>
+<td align="center">post</td>
+<td align="center">0</td>
+<td align="center">SendErrorFilter</td>
+<td align="center">处理有错误的请求响应</td>
+</tr>
+<tr>
+<td align="center">post</td>
+<td align="center">1000</td>
+<td align="center">SendResponseFilter</td>
+<td align="center">处理正常的请求响应</td>
+</tr>
+<tr>
+<td align="center">## SpringCloud Zuul Filter示例</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">&emsp;&emsp;由于在上一篇中我们已经完成了Zuul路由网关的基本功能实现，所以这里直接在之前的项目基础上修改即可。</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">### 1.注册中心</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">application.properties文件中的<code>spring.application.name</code>配置为<code>springcloud-zuul-filter-eureka</code>即可。</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">### 2.服务端</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">application.properties文件中的<code>spring.application.name</code>配置为<code>springcloud-zuul-filter-gateway</code>，接着，添加配置<code>zuul.SendErrorFilter.error.disable=true</code>，表示禁用SendErrorFilter过滤器，否则无法使用自定义的异常过滤器的。</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<blockquote>
+<p>这里在说一下禁用过滤器的规则：组件实现的过滤器，满足执行条件时都是会执行的，若我们想禁用某个过滤器时，可以在配置文件中配置，配置规则：<code>zuul.&lt;SimpleClassName&gt;.&lt;filterType&gt;.disable=true</code>，其中，<code>SimpleClassName</code>为类名，<code>filterType</code>过滤器类型.</p>
+</blockquote>
+<p>然后自定义一个Filter过滤器，在服务网关中自定义过滤器只需要继承<code>ZuulFilter</code>抽象类，然后实现其定义的四个抽象函数就可对请求进行拦截与过滤，代码示例如下，注意这里需要使用<code>Bean</code>注解使该过滤类生效：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line">@Component</span><br><span class="line">public class MyZuulFilter extends ZuulFilter&#123;</span><br><span class="line"></span><br><span class="line">	//shouldFilter()方法表示是否执行该过滤器，也可以说是该过滤器的一个开关</span><br><span class="line">	@Override</span><br><span class="line">	public boolean <span class="function"><span class="title">shouldFilter</span></span>() &#123;</span><br><span class="line">		//此方法可以根据请求的url进行判断是否需要拦截</span><br><span class="line">		<span class="built_in">return</span> <span class="literal">true</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	//run()方法是过滤器的具体逻辑。在该函数中，我们可以实现自定义的过滤逻辑，来确定是否要拦截当前的请求，不对其进行后续的路由，或是在请求路由返回结果之后，对处理结果做一些加工等</span><br><span class="line">	//获取请求的url，如果该url携带了token，我们就让他通过，否则直接拦截</span><br><span class="line">	@Override</span><br><span class="line">	public Object run() throws ZuulException &#123;</span><br><span class="line">		//获取请求的上下文类 注意是：com.netflix.zuul.context包下的</span><br><span class="line">		RequestContext ctx = RequestContext.getCurrentContext();</span><br><span class="line">		HttpServletRequest request = ctx.getRequest();</span><br><span class="line">		ctx.addZuulResponseHeader(<span class="string">"Content-type"</span>, <span class="string">"text/json;charset=UTF-8"</span>);</span><br><span class="line">		ctx.getResponse().setCharacterEncoding(<span class="string">"UTF-8"</span>);</span><br><span class="line">		System.out.println(<span class="string">"请求地址:"</span>+request.getRequestURI());</span><br><span class="line">		String token = request.getParameter(<span class="string">"token"</span>);</span><br><span class="line">		String msg=<span class="string">"请求成功!"</span>;</span><br><span class="line">		<span class="keyword">if</span>(token==null) &#123;</span><br><span class="line">			//使其不进行转发</span><br><span class="line">		   ctx.setSendZuulResponse(<span class="literal">false</span>);</span><br><span class="line">		   msg=<span class="string">"请求失败！原因是token为空！"</span>;</span><br><span class="line">		   ctx.setResponseBody(msg);</span><br><span class="line">		   ctx.setResponseStatusCode(HttpStatus.UNAUTHORIZED.value());</span><br><span class="line">		   //或者添加一个额外参数也可以 传递参数可以使用</span><br><span class="line">//		   ctx.set(<span class="string">"checkAuth"</span>,<span class="literal">false</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		System.out.println(msg);</span><br><span class="line">		<span class="built_in">return</span> msg;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	//设置为前置过滤器，在请求被路由之前调用</span><br><span class="line">	@Override</span><br><span class="line">	public String <span class="function"><span class="title">filterType</span></span>() &#123;</span><br><span class="line">		//前置过滤器</span><br><span class="line">		<span class="built_in">return</span> FilterConstants.PRE_TYPE;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	@Override</span><br><span class="line">	public int <span class="function"><span class="title">filterOrder</span></span>() &#123;</span><br><span class="line">		//执行顺序  0 靠前执行 在spring cloud zuul提供的pre过滤器之后执行，默认的是小于0的。	</span><br><span class="line">		//除了参数校验类的过滤器 一般上直接放在 PreDecoration前</span><br><span class="line">		//即：PRE_DECORATION_FILTER_ORDER - 1;</span><br><span class="line">		//常量类都在：org.springframework.cloud.netflix.zuul.filters.support.FilterConstants 下</span><br><span class="line">		<span class="built_in">return</span> 0;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	//将该过滤类使用Bean注解使其生效</span><br><span class="line">	@Bean</span><br><span class="line">	public MyZuulFilter <span class="function"><span class="title">zuulFilter</span></span>() &#123;</span><br><span class="line">	    <span class="built_in">return</span> new MyZuulFilter();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>接着，再定义一个异常处理类，以便在使用Zuul发生异常时调用来对异常进行处理。同样，自定义异常处理也只需继承<code>SendErrorFilter</code>类并实现相应的方法即可，示例代码如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">@Component</span><br><span class="line">public class MyErrorFilter extends SendErrorFilter&#123;</span><br><span class="line"></span><br><span class="line">	@Override</span><br><span class="line">	public Object <span class="function"><span class="title">run</span></span>() &#123;</span><br><span class="line">		String msg=<span class="string">"请求失败!"</span>;</span><br><span class="line">		//重写 run方法		</span><br><span class="line">		try&#123;</span><br><span class="line">			RequestContext ctx = RequestContext.getCurrentContext();</span><br><span class="line">			//直接复用异常处理类</span><br><span class="line">			ExceptionHolder exception = findZuulException(ctx.getThrowable());</span><br><span class="line">			System.out.println(<span class="string">"错误信息:"</span>+exception.getErrorCause());</span><br><span class="line">			msg+=<span class="string">"error:"</span>+exception.getErrorCause();</span><br><span class="line">			System.out.println(<span class="string">"msg:"</span>+msg);</span><br><span class="line"></span><br><span class="line">			HttpServletResponse response = ctx.getResponse();</span><br><span class="line">			//设置编码</span><br><span class="line">			response.setCharacterEncoding(<span class="string">"UTF-8"</span>);</span><br><span class="line">			response.getOutputStream().write(msg.getBytes());           	 </span><br><span class="line">		&#125;catch (Exception ex) &#123;</span><br><span class="line">			ex.printStackTrace();</span><br><span class="line">			ReflectionUtils.rethrowRuntimeException(ex);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">return</span> msg;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	/**</span><br><span class="line">	 *  自定义异常过滤器</span><br><span class="line">	 */</span><br><span class="line">	@Bean</span><br><span class="line">	//@ConditionalOnProperty(name=<span class="string">"zuul.SendErrorFilter.error.disable"</span>)</span><br><span class="line">	public MyErrorFilter <span class="function"><span class="title">errorFilter</span></span>() &#123;</span><br><span class="line">	    <span class="built_in">return</span> new MyErrorFilter();</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>最后，再定义一个异常回退类用于某个服务无法访问时进行回退处理。这里的定义需要实现<code>FallbackProvider</code>接口中的方法，其中<code>getRoute()方法是指定需要回退服务的名称</code>，<code>fallbackResponse()方法是提供基于执行失败原因并进行回退响应</code>。另外，这里的 <code>private static final String SERVER_NAME=&quot;springcloud-zuul-filter-server2&quot;</code>指定了当服务springcloud-zuul-filter-server2无法调用时才执行该异常回退处理：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line">@Component</span><br><span class="line">public class MyFallback implements FallbackProvider &#123;</span><br><span class="line">    private static  final  String SERVER_NAME=<span class="string">"springcloud-zuul-filter-server2"</span>;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public String <span class="function"><span class="title">getRoute</span></span>() &#123;</span><br><span class="line">        <span class="built_in">return</span> SERVER_NAME;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public ClientHttpResponse fallbackResponse(String route, Throwable cause) &#123;</span><br><span class="line"></span><br><span class="line">        //标记不同的异常为不同的http状态值</span><br><span class="line">        <span class="keyword">if</span> (cause instanceof HystrixTimeoutException) &#123;</span><br><span class="line">            <span class="built_in">return</span> response(HttpStatus.GATEWAY_TIMEOUT);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            //可继续添加自定义异常类</span><br><span class="line">            <span class="built_in">return</span> response(HttpStatus.INTERNAL_SERVER_ERROR);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    //处理</span><br><span class="line">    private ClientHttpResponse response(final HttpStatus status) &#123;</span><br><span class="line">        String msg=<span class="string">"该"</span>+SERVER_NAME+<span class="string">"服务暂时不可用!"</span>;</span><br><span class="line">        <span class="built_in">return</span> new <span class="function"><span class="title">ClientHttpResponse</span></span>() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public HttpStatus getStatusCode() throws IOException &#123;</span><br><span class="line">                <span class="built_in">return</span> status;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            @Override</span><br><span class="line">            public int getRawStatusCode() throws IOException &#123;</span><br><span class="line">                <span class="built_in">return</span> status.value();</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            @Override</span><br><span class="line">            public String getStatusText() throws IOException &#123;</span><br><span class="line">                <span class="built_in">return</span> status.getReasonPhrase();</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            @Override</span><br><span class="line">            public void <span class="function"><span class="title">close</span></span>() &#123;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            @Override</span><br><span class="line">            public InputStream getBody() throws IOException &#123;</span><br><span class="line">                <span class="built_in">return</span> new ByteArrayInputStream(msg.getBytes());</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            @Override</span><br><span class="line">            public HttpHeaders <span class="function"><span class="title">getHeaders</span></span>() &#123;</span><br><span class="line">                HttpHeaders headers = new HttpHeaders();</span><br><span class="line">                headers.setContentType(MediaType.APPLICATION_JSON);</span><br><span class="line">                <span class="built_in">return</span> headers;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Bean</span><br><span class="line">    public MyFallback <span class="function"><span class="title">eurekaClientFallback</span></span>() &#123;</span><br><span class="line">        <span class="built_in">return</span> new MyFallback();</span><br><span class="line">    &#125;   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-客户端"><a href="#3-客户端" class="headerlink" title="3.客户端"></a>3.客户端</h3><p>两个客户端服务无需大的修改，将application.properties文件中的服务名分别修改为<code>springcloud-zuul-filter-server1</code>和<code>springcloud-zuul-filter-server2</code>即可。</p>
+<h3 id="4-测试"><a href="#4-测试" class="headerlink" title="4.测试"></a>4.测试</h3><p>完成项目修改之后，依次启动springcloud-zuul-filter-eureka、springcloud-zuul-filter-gateway、springcloud-zuul-filter-server1和springcloud-zuul-filter-server2这四个项目。其中8006是注册中心<code>springcloud-zuul-filter-eureka</code>的端口，9009是服务端<code>springcloud-zuul-filter-gateway</code>的端口，9010是第一个客户端<code>springcloud-zuul-filter-server1</code>的端口，9011是第二个客户端<code>springcloud-zuul-filter-server2</code>的端口。</p>
+<p><strong>注：路由网关的默认规则是通过`<a href="http://ZUUL_HOST:ZUUL_PORT/微服务实例名(serverId)/" target="_blank" rel="noopener">http://ZUUL_HOST:ZUUL_PORT/微服务实例名(serverId)/</a></strong>来转发值serviceId对应的微服务。例如，本项目中如果在浏览器输入：<code>http://localhost:9009/springcloud-zuul-filter-server1/hello</code>， 它就会跳转访问到：<code>http://localhost:9010/hello/</code>这个地址`。**</p>
+<h4 id="（1）自定义过滤器功能测试"><a href="#（1）自定义过滤器功能测试" class="headerlink" title="（1）自定义过滤器功能测试"></a>（1）自定义过滤器功能测试</h4><p>首先，在浏览器中输入：<code>http://localhost:9009/springcloud-zuul-filter-server1/hello?name=butalways</code>，返回：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">请求失败！原因是token为空!</span><br></pre></td></tr></table></figure>
+
+<p>再加上<code>token</code>之后进行访问，输入<code>http://localhost:9009/springcloud-zuul-filter-server1/hello/butalways?token=123</code>，返回：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">butalways,Hello World!</span><br></pre></td></tr></table></figure>
+
+<p>以上结果说明完成了自定义过滤器的处理。</p>
+<h4 id="（2）自定义异常类处理功能测试"><a href="#（2）自定义异常类处理功能测试" class="headerlink" title="（2）自定义异常类处理功能测试"></a>（2）自定义异常类处理功能测试</h4><p>停止服务<code>springcloud-zuul-filter-server1</code>，在浏览器中输入：<code>http://localhost:9009/springcloud-zuul-filter-server1/hello/butalways?token=123</code>，返回：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">请求失败!error:TIMEOUT请求失败!error:TIMEOUT</span><br></pre></td></tr></table></figure>
+
+<p>以上结果说明完成了自定义异常的处理。</p>
+<h4 id="（3）自定义异常回退处理功能测试"><a href="#（3）自定义异常回退处理功能测试" class="headerlink" title="（3）自定义异常回退处理功能测试"></a>（3）自定义异常回退处理功能测试</h4><p>接着停止服务<code>springcloud-zuul-filter-server2</code>，在浏览器中输入：<code>http://localhost:9009/springcloud-zuul-filter-server2/hi?name=butalwaystoken=123</code>，返回：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">该springcloud-zuul-filter-server2服务暂时不可用!</span><br></pre></td></tr></table></figure>
+
+<p>以上结果说明实现了自定义异常回退处理。</p>
+<p><strong>注：自定义的异常处理和异常回退处理最好不要针对同一个服务同时使用，如果同时使用，会优先进行自定义异常回退处理的处理。</strong></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/alipay.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/wechat.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Yilia</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">SpringCloud</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">相册</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Zuul</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/12/02/SpringCloud之-Zuul路由网关的过滤器和异常处理/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2019/11/28/SpringCloud之路由网关Zuul基础使用/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">SpringCloud之路由网关Zuul基础使用</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#SpringCloud-Zuul-Filter"><span class="toc-number">1.</span> <span class="toc-text">SpringCloud Zuul Filter</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Zuul的核心"><span class="toc-number">1.1.</span> <span class="toc-text">Zuul的核心</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Zuul中默认实现的Filter"><span class="toc-number">1.2.</span> <span class="toc-text">Zuul中默认实现的Filter</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-客户端"><span class="toc-number">1.3.</span> <span class="toc-text">3.客户端</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-测试"><span class="toc-number">1.4.</span> <span class="toc-text">4.测试</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#（1）自定义过滤器功能测试"><span class="toc-number">1.4.1.</span> <span class="toc-text">（1）自定义过滤器功能测试</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#（2）自定义异常类处理功能测试"><span class="toc-number">1.4.2.</span> <span class="toc-text">（2）自定义异常类处理功能测试</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#（3）自定义异常回退处理功能测试"><span class="toc-number">1.4.3.</span> <span class="toc-text">（3）自定义异常回退处理功能测试</span></a></li></ol></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
+  <div id="gitment-ctn"></div> 
+<link rel="stylesheet" href="https://billts.site/extra_css/gitment.css">
+<script src="https://billts.site/js/gitment.js"></script>
+<script>
+var gitment = new Gitment({
+  id: decodeURI(window.location.pathname),
+  owner: 'butalways1121',
+  repo: 'butalways1121.github.io',
+  oauth: {
+    client_id: '04d1e89c3e35949cd1df',
+    client_secret: '349862188473214c081a620b26558ced1977789b',
+  },
+})
+gitment.render('gitment-ctn')
+</script>
+  
 
 
           </div>
@@ -269,9 +587,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
