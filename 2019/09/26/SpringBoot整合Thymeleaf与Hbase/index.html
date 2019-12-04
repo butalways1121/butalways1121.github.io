@@ -16,13 +16,13 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="上一篇博客实现了在虚拟机中搭建Hadoop与Hbase的单机环境，本文内容为之前的SpringBoot项目与Thymeleaf引擎模板和Hbase整合成KafaConsumerStormThymeleaf项目，最终实现的是在前端页面对mysql数据库的增删改查操作，另外，也将hbase数据库的数据展示到前端并实现新增数据功能，同时又将从Hbase数据库拿到的数据插入mysql数据库，主要的一些步骤">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/70.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/71.png">
-<meta property="og:updated_time" content="2019-09-26T09:06:36.127Z">
+<meta property="og:image" content="https://gitee.com/butalways1121/img-Blog/raw/master/70.png">
+<meta property="og:image" content="https://gitee.com/butalways1121/img-Blog/raw/master/71.png">
+<meta property="og:updated_time" content="2019-12-04T08:27:42.164Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SpringBoot整合Thymeleaf与Hbase">
 <meta name="twitter:description" content="上一篇博客实现了在虚拟机中搭建Hadoop与Hbase的单机环境，本文内容为之前的SpringBoot项目与Thymeleaf引擎模板和Hbase整合成KafaConsumerStormThymeleaf项目，最终实现的是在前端页面对mysql数据库的增删改查操作，另外，也将hbase数据库的数据展示到前端并实现新增数据功能，同时又将从Hbase数据库拿到的数据插入mysql数据库，主要的一些步骤">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/70.png">
+<meta name="twitter:image" content="https://gitee.com/butalways1121/img-Blog/raw/master/70.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -251,7 +251,7 @@
 <p><strong>4、在控制层添加页面跳转及实现Hbase数据库操作的查询、插入</strong><br>主要代码如下，在其中比较复杂的就是将hbase数据库的表名添加给每一条数据，最后一起给赋给前端页面进行展示，同时也传给dao层进而插入到mysql数据库：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">@RequestMapping(<span class="string">"/toHbase"</span>)</span><br><span class="line">	public String toHbase(Model model) throws IOException &#123;</span><br><span class="line">		TableName[] tables = HBaseUtil.getListTable();  //获取数组形式的所有表名</span><br><span class="line">		List&lt;HbaseEntity&gt; results =new ArrayList&lt;HbaseEntity&gt;();  //定义一个数组形式的hbaseEntity对象result用以存储查询到的结果</span><br><span class="line">		<span class="keyword">for</span> (TableName table : tables) &#123;//遍历表名，将每一个表名添加到select()出的数组对象</span><br><span class="line">			//HBaseUtil的select()方法查询到没有表名属性的对象数组entitys，select()传入的参数是String，使用tableName自带的方法转换成String类型</span><br><span class="line">			List&lt;Map&lt;String, Object&gt;&gt; entitys =  HBaseUtil.select(table.getNameAsString());</span><br><span class="line">			<span class="keyword">for</span> (Map&lt;String, Object&gt; entity : entitys) &#123;//对于每一个table中entitys的每个对象，添加tableName属性的值</span><br><span class="line">				String jsonString = JSON.toJSONString(entity); //先将entity转换成JsonString</span><br><span class="line">				HbaseEntity parseObject = JSONObject.parseObject(jsonString,HbaseEntity.class);//在将JsonString转换成对象</span><br><span class="line">				parseObject.setTableName(table.getNameAsString());//添加对象tableName属性的值</span><br><span class="line">				results.add(parseObject);//将对象存储到reslut中</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		model.addAttribute(<span class="string">"entitys"</span>, results);</span><br><span class="line">		<span class="keyword">for</span>(HbaseEntity result:results) &#123;</span><br><span class="line">			infoGetService.addToHbase(result);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">return</span> <span class="string">"user/hbase"</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	@RequestMapping(<span class="string">"/toHbaseInsert"</span>)</span><br><span class="line">	public String toHbaseInsert(Model model) &#123;</span><br><span class="line">		<span class="built_in">return</span> <span class="string">"user/hbaseInsert"</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	@RequestMapping(<span class="string">"/insertHbase"</span>)</span><br><span class="line">	public String insertHbase(HbaseEntity hbaseEntity) throws IOException &#123;</span><br><span class="line">		HBaseUtil.insert(hbaseEntity.getTableName(),hbaseEntity.getRowKey(),hbaseEntity.getFamily(), hbaseEntity.getQualifier(),hbaseEntity.getValue());</span><br><span class="line">		<span class="built_in">return</span> <span class="string">"redirect:/toHbase"</span>;//redirect重定向到方法</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="三、测试"><a href="#三、测试" class="headerlink" title="三、测试"></a>三、测试</h3><p>启动程序，在浏览器中输入<a href>http://localhost:8088/list</a>，主页面展示的就是mysql数据库的数据，如下图，点击编辑或者添加用户会跳转到相应的页面实现数据库的修改及插入，点击删除则直接将该条数据删除：<br><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/70.png" alt><br>点击跳转到Hbasey页面，就会看到hbase数据库的所有数据，如下图，同时会将展示出来的所有数据插入到数据库，点击添加信息可以进行对Hbase数据库的添加操作：<br><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/71.png" alt></p>
+<h3 id="三、测试"><a href="#三、测试" class="headerlink" title="三、测试"></a>三、测试</h3><p>启动程序，在浏览器中输入<a href>http://localhost:8088/list</a>，主页面展示的就是mysql数据库的数据，如下图，点击编辑或者添加用户会跳转到相应的页面实现数据库的修改及插入，点击删除则直接将该条数据删除：<br><img src="https://gitee.com/butalways1121/img-Blog/raw/master/70.png" alt><br>点击跳转到Hbasey页面，就会看到hbase数据库的所有数据，如下图，同时会将展示出来的所有数据插入到数据库，点击添加信息可以进行对Hbase数据库的添加操作：<br><img src="https://gitee.com/butalways1121/img-Blog/raw/master/71.png" alt></p>
 <h2 id="至此，OVER！"><a href="#至此，OVER！" class="headerlink" title="至此，OVER！"></a>至此，OVER！</h2>
       
 
@@ -600,19 +600,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Yilia</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">相册</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JPA</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JpaRepository</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Yilia</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">相册</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -672,6 +672,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">SpringMVC</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">MyBaits</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">RestTemplate</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Hadoop</a>
               </li>
              
@@ -684,14 +696,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">SpringMVC</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">MyBaits</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Storm</a>
               </li>
              
@@ -700,15 +704,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Zuul</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Eureka</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">高可用注册中心</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Zuul</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -741,10 +745,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">非关系型数据库</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">RestTemplate</a>
               </li>
              
               <li class="article-tag-list-item">

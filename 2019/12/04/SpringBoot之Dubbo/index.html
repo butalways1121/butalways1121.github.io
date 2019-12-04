@@ -16,17 +16,17 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="&amp;emsp;&amp;emsp;本文介绍了Windows下Zookeeper单机环境的安装、dubbo-admin基于jdk1.8 &amp;amp; Tomcat 7的部署，以及利用Zookeeper做注册中心整合SpringBoot和Dubbo来发布服务，项目源码戳这里。">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/106.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/107.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/108.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/109.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/110.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/111.png">
-<meta property="og:updated_time" content="2019-12-04T07:05:17.203Z">
+<meta property="og:image" content="https://gitee.com/butalways1121/img-Blog/raw/master/106.png">
+<meta property="og:image" content="https://gitee.com/butalways1121/img-Blog/raw/master/107.png">
+<meta property="og:image" content="https://gitee.com/butalways1121/img-Blog/raw/master/108.png">
+<meta property="og:image" content="https://gitee.com/butalways1121/img-Blog/raw/master/109.png">
+<meta property="og:image" content="https://gitee.com/butalways1121/img-Blog/raw/master/110.png">
+<meta property="og:image" content="https://gitee.com/butalways1121/img-Blog/raw/master/111.png">
+<meta property="og:updated_time" content="2019-12-04T08:29:20.499Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SpringBoot之Dubbo">
 <meta name="twitter:description" content="&amp;emsp;&amp;emsp;本文介绍了Windows下Zookeeper单机环境的安装、dubbo-admin基于jdk1.8 &amp;amp; Tomcat 7的部署，以及利用Zookeeper做注册中心整合SpringBoot和Dubbo来发布服务，项目源码戳这里。">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/106.png">
+<meta name="twitter:image" content="https://gitee.com/butalways1121/img-Blog/raw/master/106.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -242,7 +242,7 @@
 <hr>
 <p><strong>名词解释：</strong><br>&emsp;&emsp;WSDL：Web Services Description Language，网络服务描述语言<br>&emsp;&emsp;RPC：Remote Procedure Call Protocol，远程过程调用协议<br>&emsp;&emsp;SOA：Service-Oriented Architecture，面向服务的体系结构</p>
 <h4 id="Dubbo的工作原理"><a href="#Dubbo的工作原理" class="headerlink" title="Dubbo的工作原理"></a>Dubbo的工作原理</h4><p>如图：</p>
-<p><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/106.png" alt><br><strong>角色节点说明：</strong><br>&emsp;&emsp;Provider: 暴露服务的服务提供方；<br>&emsp;&emsp;Consumer: 调用远程服务的服务消费方；<br>&emsp;&emsp;Registry: 服务注册与发现的注册中心；<br>&emsp;&emsp;Monitor: 统计服务的调用次调和调用时间的监控中心；<br>&emsp;&emsp;Container: 服务运行容器。<br><strong>调用关系说明：</strong><br>&emsp;&emsp;0.服务器启动、加载和运行；<br>&emsp;&emsp;1.服务提供者在启动时，向注册中心注册自己提供的服务；<br>&emsp;&emsp;2.服务消费者在启动时，向注册中心订阅自己所需的服务；<br>&emsp;&emsp;3.注册中心返回服务提供者地址列表给消费者，如果有变更，注册中心将基于长连接推送变更给消费者；<br>&emsp;&emsp;4.服务消费者从地址列表中，基于软负载均衡算法选一台服务提供者进行调用，如果调用失败再选另一台；<br>&emsp;&emsp;5.服务消费者和服务提供者在内存中累计调用次数和调用时间，定时每分钟发送一次统计数据到监控中心。</p>
+<p><img src="https://gitee.com/butalways1121/img-Blog/raw/master/106.png" alt><br><strong>角色节点说明：</strong><br>&emsp;&emsp;Provider: 暴露服务的服务提供方；<br>&emsp;&emsp;Consumer: 调用远程服务的服务消费方；<br>&emsp;&emsp;Registry: 服务注册与发现的注册中心；<br>&emsp;&emsp;Monitor: 统计服务的调用次调和调用时间的监控中心；<br>&emsp;&emsp;Container: 服务运行容器。<br><strong>调用关系说明：</strong><br>&emsp;&emsp;0.服务器启动、加载和运行；<br>&emsp;&emsp;1.服务提供者在启动时，向注册中心注册自己提供的服务；<br>&emsp;&emsp;2.服务消费者在启动时，向注册中心订阅自己所需的服务；<br>&emsp;&emsp;3.注册中心返回服务提供者地址列表给消费者，如果有变更，注册中心将基于长连接推送变更给消费者；<br>&emsp;&emsp;4.服务消费者从地址列表中，基于软负载均衡算法选一台服务提供者进行调用，如果调用失败再选另一台；<br>&emsp;&emsp;5.服务消费者和服务提供者在内存中累计调用次数和调用时间，定时每分钟发送一次统计数据到监控中心。</p>
 <h3 id="Zookeeper"><a href="#Zookeeper" class="headerlink" title="Zookeeper"></a>Zookeeper</h3><h4 id="Zookeeper是什么"><a href="#Zookeeper是什么" class="headerlink" title="Zookeeper是什么"></a>Zookeeper是什么</h4><p>&emsp;&emsp;ZooKeeper是一个分布式的，开放源码的分布式应用程序协调服务，是Google的Chubby一个开源的实现，是Hadoop和Hbase的重要组件。它是一个为分布式应用提供一致性服务的软件，提供的功能包括：配置维护、域名服务、分布式同步、组服务等。</p>
 <h4 id="Zookeeper的作用"><a href="#Zookeeper的作用" class="headerlink" title="Zookeeper的作用"></a>Zookeeper的作用</h4><p>&emsp;&emsp;Zookeeper作为一个分布式的服务框架，主要用来解决分布式集群中应用系统的一致性问题，它能提供基于类似于文件系统的目录节点树方式的数据存储，但是Zookeeper并不是用来专门存储数据的，它的作用主要是用来维护和监控你存储的数据的状态变化，通过监控这些数据状态的变化，从而可以达到基于数据的集群管理。</p>
 <h3 id="Zookeeper和Dubbo的关系"><a href="#Zookeeper和Dubbo的关系" class="headerlink" title="Zookeeper和Dubbo的关系"></a>Zookeeper和Dubbo的关系</h3><p>&emsp;&emsp;Dubbo将注册中心进行抽象，使得它可以外接不同的存储媒介给注册中心提供服务，有ZooKeeper、Memcached、Redis等。简单来说打个比方：Dubbo就是动物园的动物，Zookeeper是动物园。如果游客想看动物的话就要去动物园。换句话说就是要把很多不同的Dubbo（动物）放到Zookeeper（动物园中）提供给游客进行观赏。</p>
@@ -260,12 +260,12 @@
 <h3 id="3-测试"><a href="#3-测试" class="headerlink" title="3.测试"></a>3.测试</h3><p>&emsp;&emsp;启动之后在cmd下输入<code>netstat -ano|findstr 2181</code>或<code>jps -l</code>来查看Zookeeper是否启动成功：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">C:\Users\20180877&gt;netstat -ano|findstr 2181</span><br><span class="line">  TCP    0.0.0.0:2181           0.0.0.0:0              LISTENING       9060</span><br><span class="line">  TCP    [::]:2181              [::]:0                 LISTENING       9060</span><br><span class="line"></span><br><span class="line">C:\Users\20180877&gt;jps -l</span><br><span class="line">7504 sun.tools.jps.Jps</span><br><span class="line">9060 org.apache.zookeeper.server.quorum.QuorumPeerMain</span><br></pre></td></tr></table></figure>
 
-<h2 id="三、Dubbo-admin的部署"><a href="#三、Dubbo-admin的部署" class="headerlink" title="三、Dubbo-admin的部署"></a>三、Dubbo-admin的部署</h2><p>&emsp;&emsp;首先，在git上下载dubbo工程，地址：<code>https://github.com/apache/incubator-dubbo</code>，里面包含很多项目,我们只需要用到dubbo-admin就可以了，<strong>温馨提示，master分支上是没有dubbo-admin模块的，所以下载之前需将其切换至2.5.X分支</strong>，如图：<br><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/107.png" alt></p>
+<h2 id="三、Dubbo-admin的部署"><a href="#三、Dubbo-admin的部署" class="headerlink" title="三、Dubbo-admin的部署"></a>三、Dubbo-admin的部署</h2><p>&emsp;&emsp;首先，在git上下载dubbo工程，地址：<code>https://github.com/apache/incubator-dubbo</code>，里面包含很多项目,我们只需要用到dubbo-admin就可以了，<strong>温馨提示，master分支上是没有dubbo-admin模块的，所以下载之前需将其切换至2.5.X分支</strong>，如图：<br><img src="https://gitee.com/butalways1121/img-Blog/raw/master/107.png" alt></p>
 <p>&emsp;&emsp;下载完成之后，进入dubbo-admin目录，在该目录下打开cmd，运行<code>mvn package -Dmaven.skip.test=true</code>命令将其打成war包，命令执行完成后如图，其中有显示war包的存放位置：</p>
-<p><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/108.png" alt></p>
+<p><img src="https://gitee.com/butalways1121/img-Blog/raw/master/108.png" alt></p>
 <p>&emsp;&emsp;接着，将该war包存放于Tomcat的webapps目录下，如<code>D:\apache-tomcat-7.0.96\webapps，</code>，再运行<code>D:\apache-tomcat-7.0.96\bin\startup.bat</code>启动Tomcat。</p>
 <p>&emsp;&emsp;启动之后，在浏览器中输入<code>localhost:8080/dubbo-admin-2.5.10</code>即可进行管理，登录的用户名和密码默认都是root:</p>
-<p><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/109.png" alt><br><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/110.png" alt></p>
+<p><img src="https://gitee.com/butalways1121/img-Blog/raw/master/109.png" alt><br><img src="https://gitee.com/butalways1121/img-Blog/raw/master/110.png" alt></p>
 <h2 id="四、SpringBoot整合Dubbo示例"><a href="#四、SpringBoot整合Dubbo示例" class="headerlink" title="四、SpringBoot整合Dubbo示例"></a>四、SpringBoot整合Dubbo示例</h2><p>本次项目分为服务端和客户端两个：</p>
 <h3 id="1-Dubbo服务端"><a href="#1-Dubbo服务端" class="headerlink" title="1.Dubbo服务端"></a>1.Dubbo服务端</h3><p>&emsp;&emsp;新建SpringBootDubboServer项目作为Dubbo服务的提供者，pom.xml文件配置如下：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=<span class="string">"1.0"</span>?&gt;</span><br><span class="line">&lt;project</span><br><span class="line">	xsi:schemaLocation=<span class="string">"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"</span></span><br><span class="line">	xmlns=<span class="string">"http://maven.apache.org/POM/4.0.0"</span> xmlns:xsi=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span>&gt;</span><br><span class="line">	&lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;</span><br><span class="line">	&lt;parent&gt;</span><br><span class="line">		&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">		&lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;</span><br><span class="line">		&lt;version&gt;1.5.2.RELEASE&lt;/version&gt;</span><br><span class="line">	&lt;/parent&gt;</span><br><span class="line">	&lt;groupId&gt;cn.qlq&lt;/groupId&gt;</span><br><span class="line">	&lt;artifactId&gt;springboot-dubbo-server&lt;/artifactId&gt;</span><br><span class="line">	&lt;version&gt;0.0.1-SNAPSHOT&lt;/version&gt;</span><br><span class="line">	&lt;name&gt;springboot-dubbo-server&lt;/name&gt;</span><br><span class="line">	&lt;url&gt;http://maven.apache.org&lt;/url&gt;</span><br><span class="line">	&lt;properties&gt;</span><br><span class="line">		&lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt;</span><br><span class="line">	&lt;/properties&gt;</span><br><span class="line">	&lt;dependencies&gt;</span><br><span class="line">		&lt;!-- dubbo的依赖 --&gt;</span><br><span class="line">		&lt;dependency&gt;</span><br><span class="line">			&lt;groupId&gt;com.alibaba.spring.boot&lt;/groupId&gt;</span><br><span class="line">			&lt;artifactId&gt;dubbo-spring-boot-starter&lt;/artifactId&gt;</span><br><span class="line">			&lt;version&gt;2.0.0&lt;/version&gt;</span><br><span class="line">		&lt;/dependency&gt;</span><br><span class="line">		&lt;!-- zookeeper client依赖 --&gt;</span><br><span class="line">		&lt;dependency&gt;</span><br><span class="line">			&lt;groupId&gt;com.101tec&lt;/groupId&gt;</span><br><span class="line">			&lt;artifactId&gt;zkclient&lt;/artifactId&gt;</span><br><span class="line">			&lt;version&gt;0.9&lt;/version&gt;</span><br><span class="line">		&lt;/dependency&gt;</span><br><span class="line">	&lt;/dependencies&gt;</span><br><span class="line"></span><br><span class="line">	&lt;build&gt;</span><br><span class="line">		&lt;!-- 配置了很多插件 --&gt;</span><br><span class="line">		&lt;plugins&gt;</span><br><span class="line">			&lt;plugin&gt;</span><br><span class="line">				&lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;</span><br><span class="line">				&lt;artifactId&gt;maven-compiler-plugin&lt;/artifactId&gt;</span><br><span class="line">				&lt;configuration&gt;</span><br><span class="line">					&lt;<span class="built_in">source</span>&gt;1.7&lt;/<span class="built_in">source</span>&gt;</span><br><span class="line">					&lt;target&gt;1.7&lt;/target&gt;</span><br><span class="line">					&lt;encoding&gt;UTF-8&lt;/encoding&gt;</span><br><span class="line">				&lt;/configuration&gt;</span><br><span class="line">			&lt;/plugin&gt;</span><br><span class="line">			&lt;plugin&gt;</span><br><span class="line">				&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">				&lt;artifactId&gt;spring-boot-maven-plugin&lt;/artifactId&gt;</span><br><span class="line">			&lt;/plugin&gt;</span><br><span class="line">		&lt;/plugins&gt;</span><br><span class="line">	&lt;/build&gt;</span><br><span class="line">&lt;/project&gt;</span><br></pre></td></tr></table></figure>
@@ -305,7 +305,7 @@
 <h3 id="3-测试-1"><a href="#3-测试-1" class="headerlink" title="3.测试"></a>3.测试</h3><p>&emsp;&emsp;启动Zookeeper、Tomcat，依次启动SpringBootDubboServer、SpringBootDubboClient两个项目，SpringBootDubboClient端控制台会输出如下：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">DubboClient启动成功。。。</span><br><span class="line">用户名: username0，密码: password0</span><br><span class="line">用户名: username1，密码: password1</span><br><span class="line">用户名: username2，密码: password2</span><br><span class="line">用户名: username3，密码: password3</span><br><span class="line">用户名: username4，密码: password4</span><br><span class="line">用户名: username5，密码: password5</span><br><span class="line">用户名: username6，密码: password6</span><br><span class="line">用户名: username7，密码: password7</span><br><span class="line">用户名: username8，密码: password8</span><br><span class="line">用户名: username9，密码: password9</span><br><span class="line">用户名: username10，密码: password10</span><br><span class="line">用户名: username11，密码: password11</span><br><span class="line">用户名: username12，密码: password12</span><br><span class="line">用户名: username13，密码: password13</span><br><span class="line">用户名: username14，密码: password14</span><br><span class="line">用户名: username15，密码: password15</span><br><span class="line">用户名: username16，密码: password16</span><br><span class="line">用户名: username17，密码: password17</span><br><span class="line">用户名: username18，密码: password18</span><br><span class="line">用户名: username19，密码: password19</span><br></pre></td></tr></table></figure>
 
-<p>同时Dubbo管理界面可查看到如下信息：<br><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/111.png" alt></p>
+<p>同时Dubbo管理界面可查看到如下信息：<br><img src="https://gitee.com/butalways1121/img-Blog/raw/master/111.png" alt></p>
 <hr>
 <p>至此，完成了SpringBoot与Dubbo简单的整合。</p>
 
@@ -647,19 +647,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Yilia</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">相册</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JPA</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JpaRepository</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Yilia</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">相册</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -719,6 +719,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">SpringMVC</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">MyBaits</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">RestTemplate</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Hadoop</a>
               </li>
              
@@ -731,14 +743,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">SpringMVC</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">MyBaits</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Storm</a>
               </li>
              
@@ -747,15 +751,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Zuul</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Eureka</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">高可用注册中心</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Zuul</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -788,10 +792,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">非关系型数据库</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">RestTemplate</a>
               </li>
              
               <li class="article-tag-list-item">

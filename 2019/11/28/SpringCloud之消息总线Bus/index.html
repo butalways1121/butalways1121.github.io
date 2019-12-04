@@ -16,17 +16,17 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="&amp;emsp;&amp;emsp;上一篇博客有讲到SpringCloud Refresh机制，但是会发现客户端每次获取最新配置都需要手动进行刷新，如果客户端较少的时候还可以使用，但很当客户端数量较多时要是一个一个去post客户端来刷新配置就很麻烦了，这时，使用Spring Cloud Bus可以完美解决这一问题：只需要在SpringCloud Config Server端发出refresh，就可以触发所有客">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/96.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/97.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/98.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/99.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/100.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/101.png">
-<meta property="og:updated_time" content="2019-11-28T06:25:10.512Z">
+<meta property="og:image" content="https://gitee.com/butalways1121/img-Blog/raw/master/96.png">
+<meta property="og:image" content="https://gitee.com/butalways1121/img-Blog/raw/master/97.png">
+<meta property="og:image" content="https://gitee.com/butalways1121/img-Blog/raw/master/98.png">
+<meta property="og:image" content="https://gitee.com/butalways1121/img-Blog/raw/master/99.png">
+<meta property="og:image" content="https://gitee.com/butalways1121/img-Blog/raw/master/100.png">
+<meta property="og:image" content="https://gitee.com/butalways1121/img-Blog/raw/master/101.png">
+<meta property="og:updated_time" content="2019-12-04T08:28:59.898Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SpringCloud之消息总线Bus">
 <meta name="twitter:description" content="&amp;emsp;&amp;emsp;上一篇博客有讲到SpringCloud Refresh机制，但是会发现客户端每次获取最新配置都需要手动进行刷新，如果客户端较少的时候还可以使用，但很当客户端数量较多时要是一个一个去post客户端来刷新配置就很麻烦了，这时，使用Spring Cloud Bus可以完美解决这一问题：只需要在SpringCloud Config Server端发出refresh，就可以触发所有客">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/96.png">
+<meta name="twitter:image" content="https://gitee.com/butalways1121/img-Blog/raw/master/96.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -238,20 +238,20 @@
         <p>&emsp;&emsp;<strong><a href="https://butalways1121.github.io/2019/11/25/SpringCloud%E4%B9%8B%E9%85%8D%E7%BD%AE%E4%B8%AD%E5%BF%83Config/" target="_blank" rel="noopener">上一篇博客</a>有讲到SpringCloud Refresh机制，但是会发现客户端每次获取最新配置都需要手动进行刷新，如果客户端较少的时候还可以使用，但很当客户端数量较多时要是一个一个去post客户端来刷新配置就很麻烦了，这时，使用Spring Cloud Bus可以完美解决这一问题：只需要在SpringCloud Config Server端发出refresh，就可以触发所有客户端的微服务实现更新。本文的主要内容就是简单介绍SpringCloud Bus的使用，戳<a href="https://github.com/butalways1121/SpringCloudConfig-Bus" target="_blank" rel="noopener">这里</a>下载源码。。</strong></p>
 <a id="more"></a>
 <h2 id="一、SpringCloud-Bus简介"><a href="#一、SpringCloud-Bus简介" class="headerlink" title="一、SpringCloud Bus简介"></a>一、SpringCloud Bus简介</h2><h3 id="1-SpringCloud-Bus是什么"><a href="#1-SpringCloud-Bus是什么" class="headerlink" title="1.SpringCloud Bus是什么"></a>1.SpringCloud Bus是什么</h3><p>&emsp;&emsp;SpringCloud Bus通过轻量消息代理连接各分布式的节点，它可以用于广播配置文件的更改或者服务之间的通讯，也可以用于监控。SpringCloud Bus的一个核心思想是通过分布式的启动器对SpringBoot应用进行扩展，也可以用来建立一个多应用之间的通信频道。目前唯一实现的方式是用AMQP消息代理作为通道，同样特性的设置（有些取决于通道的设置）在更多通道的文档中。<br>&emsp;&emsp;SpringCloud Bus被很形象地翻译为“消息总线”，可以将它理解为管理和传播所有分布式项目中的消息，其实本质是利用了MQ的广播机制在分布式的系统中传播消息，目前常用的有Kafka和RabbitMQ。利用Bus的机制可以做很多的事情，其中配置中心客户端刷新就是典型的应用场景之一。</p>
-<h3 id="2-Bus在配置中心使用的机制"><a href="#2-Bus在配置中心使用的机制" class="headerlink" title="2.Bus在配置中心使用的机制"></a>2.Bus在配置中心使用的机制</h3><p>首先，先看一下不使用SpringCloud Bus获取配置信息流程图：<br><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/96.png" alt></p>
-<p>再看一下使用SpringCloud Bus获取配置信息流程图:<br><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/97.png" alt></p>
+<h3 id="2-Bus在配置中心使用的机制"><a href="#2-Bus在配置中心使用的机制" class="headerlink" title="2.Bus在配置中心使用的机制"></a>2.Bus在配置中心使用的机制</h3><p>首先，先看一下不使用SpringCloud Bus获取配置信息流程图：<br><img src="https://gitee.com/butalways1121/img-Blog/raw/master/96.png" alt></p>
+<p>再看一下使用SpringCloud Bus获取配置信息流程图:<br><img src="https://gitee.com/butalways1121/img-Blog/raw/master/97.png" alt></p>
 <p>由上图可以看出利用SpringCloud Bus做配置更新的步骤:<br>&emsp;&emsp;(1)首先在配置中进行更新配置文件信息，提交代码触发post发送bus/refresh；<br>&emsp;&emsp;(2)Server端接收到请求并发送给SpringCloud Bus；<br>&emsp;&emsp;(3)SpringCloud Bus接到消息并通知给客户端；<br>&emsp;&emsp;(4)客户端接收到通知，请求Server端获取最新配置进行更新。</p>
 <h2 id="二、RabbitMQ的安装与环境配置"><a href="#二、RabbitMQ的安装与环境配置" class="headerlink" title="二、RabbitMQ的安装与环境配置"></a>二、RabbitMQ的安装与环境配置</h2><p>&emsp;&emsp;因为我们要用到消息队列MQ，MQ主要使用的是RabbitMQ和Kafka，接下来的示例使用的是RabbitMQ，所以需要安装RabbitMQ并配置相应的环境。先来简单了解一下MQ和RabbitMQ：<br>&emsp;&emsp;MQ全称为Message Queue, 是一种应用程序对应用程序的通信方法。应用程序通过读写出入队列的消息（针对应用程序的数据）来通信，而无需专用连接来连接它们。消息传递指的是程序之间通过在消息中发送数据进行通信，而不是通过直接调用彼此来通信，直接调用通常是用于诸如远程过程调用的技术。队列的使用除去了接收和发送应用程序同时执行的要求。<br>&emsp;&emsp;RabbitMQ则是一个实现了AMQP（Advanced Message Queuing Protocol）高级消息队列协议的消息队列服务，使用的是Erlang语言，也因此在安装RabbitMQ之前，需要先安装Erlang并配置相应环境。</p>
 <h3 id="1-Erlang的安装与配置"><a href="#1-Erlang的安装与配置" class="headerlink" title="1.Erlang的安装与配置"></a>1.Erlang的安装与配置</h3><p>&emsp;&emsp;根据电脑系统版本下载Erlang：<code>http://www.erlang.org/downloads</code>，下载完成之后进行安装，除了更改安装路径之外其他默认就好，之后系统的高级设置中配置环境变量：<br>&emsp;&emsp;（1）新建<code>ERLANG_HOME</code>，变量值为Erlang的安装目录，例如<code>D:\Program Files\erl10.5</code>；<br>&emsp;&emsp;（2）在Path变量值中加入<code>;%ERLANG_HOME%\bin</code>即可。</p>
 <h3 id="2-RabbitMQ的安装与配置"><a href="#2-RabbitMQ的安装与配置" class="headerlink" title="2.RabbitMQ的安装与配置"></a>2.RabbitMQ的安装与配置</h3><p>&emsp;&emsp;同样，根据电脑系统版本下载RabbitMQ：<code>http://www.rabbitmq.com/install-windows.html</code>，安装时除了更改安装路径之外其他默认就好，然后在系统的高级设置中配置环境变量：<br>&emsp;&emsp;（1）新建<code>RABBITMQ_HOME</code>，变量值为RabbitMQ的安装目录，例如<code>D:\Program Files\Rabbit MQServer\rabbitmq_server-3.8.1</code>；<br>&emsp;&emsp;（2）在Path变量值中加入<code>;%RABBITMQ_HOME%\sbin</code>即可。</p>
 <h3 id="3-启动RabbitMQ"><a href="#3-启动RabbitMQ" class="headerlink" title="3.启动RabbitMQ"></a>3.启动RabbitMQ</h3><p>&emsp;&emsp;配置完成之后，切换到RabbitMQ的sbin目录下，如<code>D:\Program Files\RabbitMQ Server\rabbitmq_server-3.8.1\sbin</code>，双击<code>rabbitmq-server.bat</code>启动，出现<code>Starting broker... completed with 3 plugins.</code>字样则启动成功：</p>
-<p><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/98.png" alt></p>
+<p><img src="https://gitee.com/butalways1121/img-Blog/raw/master/98.png" alt></p>
 <p><strong>注：如果提示<code>node with name rabbit already running on *</code>的错误，就试着删除<code>C:\Users\Administrator\AppData\Roaming\rabbitmq</code>目录，再重新启动。如果还是不行，就点击开始菜单，在所有程序 - &gt;RabbitMQ Servr - &gt;RabbitMQ Service - stop，先关闭已经启动的RabbitMQ，然后再重新启动。</strong></p>
 <h3 id="4-RabbitMQ的使用"><a href="#4-RabbitMQ的使用" class="headerlink" title="4.RabbitMQ的使用"></a>4.RabbitMQ的使用</h3><p>&emsp;&emsp;成功安装配置好RabbitMQ之后，使用官方提供的一个web管理工具rabbitmq_management来对RabbitMQ进行后台管理（安装RabbitMQ自带有该工具）：先切换到RabbitMQ的sbin目录下，输入<code>rabbitmq-plugins enable rabbitmq_management</code>进行启动：</p>
-<p><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/99.png" alt></p>
+<p><img src="https://gitee.com/butalways1121/img-Blog/raw/master/99.png" alt></p>
 <p>成功启动后，在浏览器输入<code>http://localhost:15672/</code>进行登录，账号密码都是：guest：</p>
-<p><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/100.png" alt></p>
-<p><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/101.png" alt></p>
+<p><img src="https://gitee.com/butalways1121/img-Blog/raw/master/100.png" alt></p>
+<p><img src="https://gitee.com/butalways1121/img-Blog/raw/master/101.png" alt></p>
 <p>登录成功之后可以使用命令进行用户、角色、权限之类的的配置等等。</p>
 <h2 id="三、SpringCloud-Config-Bus示例"><a href="#三、SpringCloud-Config-Bus示例" class="headerlink" title="三、SpringCloud Config Bus示例"></a>三、SpringCloud Config Bus示例</h2><h3 id="1-注册中心"><a href="#1-注册中心" class="headerlink" title="1.注册中心"></a>1.注册中心</h3><p>&emsp;&emsp;同样，需要先创建一个springcloud-config-bus-eureka项目作为注册中心，为了方便，这里还是贴一下代码吧，<strong>需要注意的是此次的项目最好是使用SpringBoot 2.X、Finchley.SR2版本的，因为使用1.X的话，post后相应的服务会在注册中心掉线，影响后期的调用，但2.X版本的post后短暂掉线后就会重新向注册中心注册</strong>。<br>pom.xml文件完整配置：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">&lt;project xmlns=<span class="string">"http://maven.apache.org/POM/4.0.0"</span></span><br><span class="line">	xmlns:xsi=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></span><br><span class="line">	xsi:schemaLocation=<span class="string">"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"</span>&gt;</span><br><span class="line">	&lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;</span><br><span class="line"></span><br><span class="line">	&lt;groupId&gt;1.0.0&lt;/groupId&gt;</span><br><span class="line">	&lt;artifactId&gt;springcloud-config-eureka&lt;/artifactId&gt;</span><br><span class="line">	&lt;version&gt;0.0.1-SNAPSHOT&lt;/version&gt;</span><br><span class="line">	&lt;packaging&gt;jar&lt;/packaging&gt;</span><br><span class="line">	&lt;name&gt;springcloud-config-eureka&lt;/name&gt;</span><br><span class="line">	&lt;url&gt;http://maven.apache.org&lt;/url&gt;</span><br><span class="line">	&lt;parent&gt;</span><br><span class="line">		&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">		&lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;</span><br><span class="line">		&lt;version&gt;2.0.6.RELEASE&lt;/version&gt;</span><br><span class="line">		&lt;relativePath /&gt;</span><br><span class="line">	&lt;/parent&gt;</span><br><span class="line">	&lt;properties&gt;</span><br><span class="line">		&lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt;</span><br><span class="line">		&lt;project.reporting.outputEncoding&gt;UTF-8&lt;/project.reporting.outputEncoding&gt;</span><br><span class="line">		&lt;java.version&gt;1.8&lt;/java.version&gt;</span><br><span class="line">		&lt;spring-cloud.version&gt;Finchley.SR2&lt;/spring-cloud.version&gt;</span><br><span class="line">	&lt;/properties&gt;</span><br><span class="line"></span><br><span class="line">	&lt;dependencies&gt;</span><br><span class="line">		&lt;dependency&gt;</span><br><span class="line">			&lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;</span><br><span class="line">			&lt;artifactId&gt;spring-cloud-starter&lt;/artifactId&gt;</span><br><span class="line">		&lt;/dependency&gt;</span><br><span class="line">		&lt;dependency&gt;</span><br><span class="line">			&lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;</span><br><span class="line">			&lt;artifactId&gt;spring-cloud-starter-netflix-eureka-server&lt;/artifactId&gt;</span><br><span class="line">		&lt;/dependency&gt;</span><br><span class="line">		&lt;dependency&gt;</span><br><span class="line">			&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">			&lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt;</span><br><span class="line">			&lt;scope&gt;<span class="built_in">test</span>&lt;/scope&gt;</span><br><span class="line">		&lt;/dependency&gt;</span><br><span class="line">	&lt;/dependencies&gt;</span><br><span class="line">	&lt;dependencyManagement&gt;</span><br><span class="line">		&lt;dependencies&gt;</span><br><span class="line">			&lt;dependency&gt;</span><br><span class="line">				&lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;</span><br><span class="line">				&lt;artifactId&gt;spring-cloud-dependencies&lt;/artifactId&gt;</span><br><span class="line">				&lt;version&gt;<span class="variable">$&#123;spring-cloud.version&#125;</span>&lt;/version&gt;</span><br><span class="line">				&lt;<span class="built_in">type</span>&gt;pom&lt;/<span class="built_in">type</span>&gt;</span><br><span class="line">				&lt;scope&gt;import&lt;/scope&gt;</span><br><span class="line">			&lt;/dependency&gt;</span><br><span class="line">		&lt;/dependencies&gt;</span><br><span class="line">	&lt;/dependencyManagement&gt;</span><br><span class="line">	&lt;build&gt;</span><br><span class="line">		&lt;plugins&gt;</span><br><span class="line">			&lt;plugin&gt;</span><br><span class="line">				&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">				&lt;artifactId&gt;spring-boot-maven-plugin&lt;/artifactId&gt;</span><br><span class="line">			&lt;/plugin&gt;</span><br><span class="line">		&lt;/plugins&gt;</span><br><span class="line">	&lt;/build&gt;</span><br><span class="line">&lt;/project&gt;</span><br></pre></td></tr></table></figure>
@@ -663,19 +663,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Yilia</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">相册</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JPA</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JpaRepository</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Yilia</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">相册</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -735,6 +735,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">SpringMVC</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">MyBaits</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">RestTemplate</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Hadoop</a>
               </li>
              
@@ -747,14 +759,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">SpringMVC</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">MyBaits</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Storm</a>
               </li>
              
@@ -763,15 +767,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Zuul</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Eureka</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">高可用注册中心</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Zuul</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -804,10 +808,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">非关系型数据库</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">RestTemplate</a>
               </li>
              
               <li class="article-tag-list-item">

@@ -16,18 +16,18 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="&amp;emsp;&amp;emsp;本篇主要介绍的是SpringCloud中的断路器(Hystrix)和断路器指标看板(Dashboard)的相关使用知识，项目实例也非常简单，戳这里下载源码。">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/80.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/81.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/82.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/83.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/84.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/85.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/86.png">
-<meta property="og:updated_time" content="2019-11-25T00:43:19.069Z">
+<meta property="og:image" content="https://gitee.com/butalways1121/img-Blog/raw/master/80.png">
+<meta property="og:image" content="https://gitee.com/butalways1121/img-Blog/raw/master/81.png">
+<meta property="og:image" content="https://gitee.com/butalways1121/img-Blog/raw/master/82.png">
+<meta property="og:image" content="https://gitee.com/butalways1121/img-Blog/raw/master/83.png">
+<meta property="og:image" content="https://gitee.com/butalways1121/img-Blog/raw/master/84.png">
+<meta property="og:image" content="https://gitee.com/butalways1121/img-Blog/raw/master/85.png">
+<meta property="og:image" content="https://gitee.com/butalways1121/img-Blog/raw/master/86.png">
+<meta property="og:updated_time" content="2019-12-04T08:28:46.330Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SpringCloud之断路器Hystrix和断路器监控Dashboard">
 <meta name="twitter:description" content="&amp;emsp;&amp;emsp;本篇主要介绍的是SpringCloud中的断路器(Hystrix)和断路器指标看板(Dashboard)的相关使用知识，项目实例也非常简单，戳这里下载源码。">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/80.png">
+<meta name="twitter:image" content="https://gitee.com/butalways1121/img-Blog/raw/master/80.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -283,13 +283,13 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@RestController</span><br><span class="line">public class ConsumerController &#123;</span><br><span class="line"></span><br><span class="line">	@RequestMapping(<span class="string">"/hello"</span>)</span><br><span class="line">    public String index(@RequestParam String name) &#123;</span><br><span class="line">        <span class="built_in">return</span> name+<span class="string">",Hello World"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h4 id="（3）测试"><a href="#（3）测试" class="headerlink" title="（3）测试"></a>（3）测试</h4><p>&emsp;&emsp;完成如上的工程开发之后，依次启动服务端和客户端的springcloud-hystrix-eureka、springcloud-hystrix-consumer和springcloud-hystrix-consumer2这三个程序，然后在浏览器界面输入<code>http://localhost:8002/</code>，即可查看注册中心的信息：</p>
-<p><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/80.png" alt></p>
+<p><img src="https://gitee.com/butalways1121/img-Blog/raw/master/80.png" alt></p>
 <p>接着，在浏览器中输入<code>http://localhost:9005/hello?name=butalways</code>，浏览器若返回如下则说明springcloud-hystrix-consumer2服务正常：</p>
-<p><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/81.png" alt></p>
+<p><img src="https://gitee.com/butalways1121/img-Blog/raw/master/81.png" alt></p>
 <p>然后在浏览器中输入<code>http://localhost:9004/hello/bualways</code>，控制台打印:<br><code>接受到请求参数:pancm,进行转发到其他服务</code>，同时浏览器显示如下则说明springcloud-hystrix-consumer的Feign调用也是好的：</p>
-<p><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/82.png" alt></p>
+<p><img src="https://gitee.com/butalways1121/img-Blog/raw/master/82.png" alt></p>
 <p>接下来进行短路测试，首先停止springcloud-hystrix-consumer2的服务，然后在浏览器中输入<code>http://localhost:9004/hello/bualways</code>，此时控制台应打印<code>接受到请求参数:butalways,进行转发到其他服务</code>，浏览器则返回如下：</p>
-<p><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/83.png" alt></p>
+<p><img src="https://gitee.com/butalways1121/img-Blog/raw/master/83.png" alt></p>
 <p>出现以上结果则说明短路的功能已经实现了。</p>
 <h2 id="二、SpringCloud-Hystrix-Dashboard"><a href="#二、SpringCloud-Hystrix-Dashboard" class="headerlink" title="二、SpringCloud Hystrix-Dashboard"></a>二、SpringCloud Hystrix-Dashboard</h2><h3 id="1-Hystrix-Dashboard介绍"><a href="#1-Hystrix-Dashboard介绍" class="headerlink" title="1.Hystrix-Dashboard介绍"></a>1.Hystrix-Dashboard介绍</h3><p>&emsp;&emsp;Hystrix-dashboard是一款针对Hystrix进行实时监控的工具，通过Hystrix Dashboard我们可以在直观地看到各Hystrix Command的请求响应时间、请求成功率等数据。</p>
 <p>&emsp;&emsp;Hystrix提供了对于微服务调用状态的监控信息，但是需要结合spring-boot-actuator模块一起使用。<br>Hystrix Dashboard主要用来实时监控Hystrix的各项指标信息。通过Hystrix Dashboard反馈的实时信息，可以帮助我们快速发现系统中存在的问题。</p>
@@ -303,11 +303,11 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">spring.application.name=springcloud-hystrix-dashboard-consumer</span><br><span class="line">server.port=9010</span><br><span class="line">eureka.client.serviceUrl.defaultZone=http://localhost:8002/eureka/</span><br><span class="line">feign.hystrix.enabled=<span class="literal">true</span></span><br><span class="line">management.endpoints.web.exposure.include=hystrix.stream</span><br><span class="line">management.endpoints.web.base-path=/</span><br></pre></td></tr></table></figure>
 
 <p>接着，就可以进行测试了，启动springcloud-hystrix-eureka、springcloud-hystrix-dashboard-consumer和springcloud-hystrix-consumer2三个程序，然后在浏览器中输入<code>http://localhost:9010/hystrix</code>，出现如下界面，可以通过该界面监控使用hystrix-dashboard的项目：</p>
-<p><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/84.png" alt></p>
+<p><img src="https://gitee.com/butalways1121/img-Blog/raw/master/84.png" alt></p>
 <p>接着依照提示在中间的输入框输入:<br><code>http://localhost:9010/hystrix.stream</code>,就会出现如下界面：</p>
-<p><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/85.png" alt></p>
+<p><img src="https://gitee.com/butalways1121/img-Blog/raw/master/85.png" alt></p>
 <p>该界面就是Hystrix Dashboard监控的界面了，通过这个界面我们可以很详细的看到程序的信息，图中一些信息的简单说明如下：</p>
-<p><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/86.png" alt></p>
+<p><img src="https://gitee.com/butalways1121/img-Blog/raw/master/86.png" alt></p>
 <p><strong>注: 如果界面一直提示loading，那么是因为没有进行请求访问，只需在到浏览器上输入:<code>http://localhost:9010/hello/butalways</code>，然后刷新该界面就可以进行查看了。</strong></p>
 
       
@@ -657,19 +657,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Yilia</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">相册</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JPA</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JpaRepository</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Yilia</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">相册</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -729,6 +729,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">SpringMVC</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">MyBaits</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">RestTemplate</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Hadoop</a>
               </li>
              
@@ -741,14 +753,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">SpringMVC</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">MyBaits</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Storm</a>
               </li>
              
@@ -757,15 +761,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Zuul</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Eureka</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">高可用注册中心</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Zuul</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -798,10 +802,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">非关系型数据库</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">RestTemplate</a>
               </li>
              
               <li class="article-tag-list-item">

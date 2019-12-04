@@ -16,14 +16,14 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="&amp;emsp;&amp;emsp;本文介绍的是SpringCloud（基于SpringBoot 2.X，Finchley.SR2版）中的路由网关SpringCloud Zuul的简单使用，戳这里下载源码。">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/102.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/103.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/104.png">
-<meta property="og:updated_time" content="2019-11-29T02:20:48.106Z">
+<meta property="og:image" content="https://gitee.com/butalways1121/img-Blog/raw/master/102.png">
+<meta property="og:image" content="https://gitee.com/butalways1121/img-Blog/raw/master/103.png">
+<meta property="og:image" content="https://gitee.com/butalways1121/img-Blog/raw/master/104.png">
+<meta property="og:updated_time" content="2019-12-04T08:29:07.642Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SpringCloud之路由网关Zuul基础使用">
 <meta name="twitter:description" content="&amp;emsp;&amp;emsp;本文介绍的是SpringCloud（基于SpringBoot 2.X，Finchley.SR2版）中的路由网关SpringCloud Zuul的简单使用，戳这里下载源码。">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/102.png">
+<meta name="twitter:image" content="https://gitee.com/butalways1121/img-Blog/raw/master/102.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -236,9 +236,9 @@
 <a id="more"></a>
 <h2 id="一、SpringCloud-Zuul简介"><a href="#一、SpringCloud-Zuul简介" class="headerlink" title="一、SpringCloud Zuul简介"></a>一、SpringCloud Zuul简介</h2><h3 id="1-SpringCloud-Zuul是什么"><a href="#1-SpringCloud-Zuul是什么" class="headerlink" title="1.SpringCloud Zuul是什么"></a>1.SpringCloud Zuul是什么</h3><p>&emsp;&emsp;SpringCloud Zuul是Netflix设计用来为所有面向设备、web网站提供服务的所有应用的门面，Zuul可以提供动态路由、监控、弹性扩展、安全认证等服务，还可以根据需求将请求路由到多个应用中。<strong>通俗一点来说，就是对服务提供一层保护，对外界的请求进行过滤转发到后端服务中。</strong></p>
 <p>&emsp;&emsp;这里我们可以通过几张简单的示例图来进行了解，不使用路由网关的服务请求与响应示例图:</p>
-<p><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/102.png" alt><br>使用路由网关的示例图：</p>
-<p><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/103.png" alt><br>使用路由网关及注册中心的示例图:</p>
-<p><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/104.png" alt><br>&emsp;&emsp;从上述图中，可以看出加了路由网关之后，实际上是将一对多的关系转变成了一对一的关系，这样的好处是可以在网关层进行数据合法校验、权限认证、负载均衡等统一处理，这样可以在很大的程度上节省的人力和物力，但是这种方式也有一定的弊端，就是以后新增了服务或者在服务中新增方法，就会使得网关层可能需要进行改动。幸好在SpringCloud有Zuul这个组件，通过Eureka将网关和微服务之间相互关联起来，所有的微服务都会在Eureka上进行注册，这样Zuul就能感知到哪些服务在线，并且可以通过配置路由规则将请求自动转发到指定的后端微服务上，这样即使后续新增了服务或者在服务中新增了某些方法，那么只需在Zuul层进行简单配置即可。</p>
+<p><img src="https://gitee.com/butalways1121/img-Blog/raw/master/102.png" alt><br>使用路由网关的示例图：</p>
+<p><img src="https://gitee.com/butalways1121/img-Blog/raw/master/103.png" alt><br>使用路由网关及注册中心的示例图:</p>
+<p><img src="https://gitee.com/butalways1121/img-Blog/raw/master/104.png" alt><br>&emsp;&emsp;从上述图中，可以看出加了路由网关之后，实际上是将一对多的关系转变成了一对一的关系，这样的好处是可以在网关层进行数据合法校验、权限认证、负载均衡等统一处理，这样可以在很大的程度上节省的人力和物力，但是这种方式也有一定的弊端，就是以后新增了服务或者在服务中新增方法，就会使得网关层可能需要进行改动。幸好在SpringCloud有Zuul这个组件，通过Eureka将网关和微服务之间相互关联起来，所有的微服务都会在Eureka上进行注册，这样Zuul就能感知到哪些服务在线，并且可以通过配置路由规则将请求自动转发到指定的后端微服务上，这样即使后续新增了服务或者在服务中新增了某些方法，那么只需在Zuul层进行简单配置即可。</p>
 <h3 id="2-SpringCloud-Zuul的功能"><a href="#2-SpringCloud-Zuul的功能" class="headerlink" title="2.SpringCloud Zuul的功能"></a>2.SpringCloud Zuul的功能</h3><p>Zuul可以通过加载动态过滤机制，从而实现以下各项功能：</p>
 <blockquote>
 <p><strong>验证与安全保障：</strong>识别面向各类资源的验证要求并拒绝那些与要求不符的请求；</p>
@@ -669,19 +669,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Yilia</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">相册</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JPA</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JpaRepository</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Yilia</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">相册</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -741,6 +741,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">SpringMVC</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">MyBaits</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">RestTemplate</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Hadoop</a>
               </li>
              
@@ -753,14 +765,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">SpringMVC</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">MyBaits</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Storm</a>
               </li>
              
@@ -769,15 +773,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Zuul</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Eureka</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">高可用注册中心</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Zuul</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -810,10 +814,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">非关系型数据库</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">RestTemplate</a>
               </li>
              
               <li class="article-tag-list-item">

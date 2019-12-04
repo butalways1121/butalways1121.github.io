@@ -16,12 +16,12 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="&amp;emsp;&amp;emsp;上一篇博客介绍了SpringCloud Zuul路由网关的基本使用，本文的内容是SpringCloud（基于SpringBoot 2.X，Finchley.SR2版）中的路由网关过滤器Filter和异常处理的简单使用教程，戳这里下载源码。">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/105.png">
-<meta property="og:updated_time" content="2019-12-02T06:30:38.776Z">
+<meta property="og:image" content="https://gitee.com/butalways1121/img-Blog/raw/master/105.png">
+<meta property="og:updated_time" content="2019-12-04T08:29:14.018Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SpringCloud之Zuul路由网关的过滤器和异常处理">
 <meta name="twitter:description" content="&amp;emsp;&amp;emsp;上一篇博客介绍了SpringCloud Zuul路由网关的基本使用，本文的内容是SpringCloud（基于SpringBoot 2.X，Finchley.SR2版）中的路由网关过滤器Filter和异常处理的简单使用教程，戳这里下载源码。">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/105.png">
+<meta name="twitter:image" content="https://gitee.com/butalways1121/img-Blog/raw/master/105.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -232,7 +232,7 @@
       
         <p>&emsp;&emsp;<strong>上一篇博客介绍了<a href="https://butalways1121.gitee.io/2019/11/28/SpringCloud%E4%B9%8B%E8%B7%AF%E7%94%B1%E7%BD%91%E5%85%B3Zuul%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8/" target="_blank" rel="noopener">SpringCloud Zuul路由网关的基本使用</a>，本文的内容是SpringCloud（基于SpringBoot 2.X，Finchley.SR2版）中的路由网关过滤器Filter和异常处理的简单使用教程，戳<a href="https://github.com/butalways1121/SpringCloudZuul-Filter" target="_blank" rel="noopener">这里</a>下载源码。</strong></p>
 <a id="more"></a>
-<h2 id="SpringCloud-Zuul-Filter"><a href="#SpringCloud-Zuul-Filter" class="headerlink" title="SpringCloud Zuul Filter"></a>SpringCloud Zuul Filter</h2><h3 id="Zuul的核心"><a href="#Zuul的核心" class="headerlink" title="Zuul的核心"></a>Zuul的核心</h3><p>&emsp;&emsp;Filter是Zuul的核心，用来实现对外服务的控制，能够在HTTP请求和响应的路由过程中执行一系列操作。Filter的生命周期有4个，分别是“PRE”、“ROUTING”、“POST”、“ERROR”，整个生命周期可以用下图来表示：<br><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/105.png" alt></p>
+<h2 id="SpringCloud-Zuul-Filter"><a href="#SpringCloud-Zuul-Filter" class="headerlink" title="SpringCloud Zuul Filter"></a>SpringCloud Zuul Filter</h2><h3 id="Zuul的核心"><a href="#Zuul的核心" class="headerlink" title="Zuul的核心"></a>Zuul的核心</h3><p>&emsp;&emsp;Filter是Zuul的核心，用来实现对外服务的控制，能够在HTTP请求和响应的路由过程中执行一系列操作。Filter的生命周期有4个，分别是“PRE”、“ROUTING”、“POST”、“ERROR”，整个生命周期可以用下图来表示：<br><img src="https://gitee.com/butalways1121/img-Blog/raw/master/105.png" alt></p>
 <ul>
 <li>PRE：这种过滤器在请求被路由之前调用。我们可利用这种过滤器实现身份验证、在集群中选择请求的微服务、记录调试信息等；</li>
 <li>ROUTING：这种过滤器将请求路由到微服务。这种过滤器用于构建发送给微服务的请求，并使用Apache HttpClient或Netfilx Ribbon请求微服务；</li>
@@ -687,19 +687,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Yilia</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">相册</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JPA</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JpaRepository</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Yilia</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">相册</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -759,6 +759,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">SpringMVC</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">MyBaits</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">RestTemplate</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Hadoop</a>
               </li>
              
@@ -771,14 +783,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">SpringMVC</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">MyBaits</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Storm</a>
               </li>
              
@@ -787,15 +791,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Zuul</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Eureka</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">高可用注册中心</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Zuul</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -828,10 +832,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">非关系型数据库</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">RestTemplate</a>
               </li>
              
               <li class="article-tag-list-item">

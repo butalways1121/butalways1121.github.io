@@ -16,14 +16,14 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="该项目是整合了Spring Boot+SpringMVC+MyBaits的Maven项目，在项目中通过RestTemplate的getForObject方法发起GET请求，获取相应接口的数据，再将拿到的数据插入数据库。该项目中调用的接口是DeptManage项目的/api/findAll方法。">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/29.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/30.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/31.png">
-<meta property="og:updated_time" content="2019-08-16T09:36:16.010Z">
+<meta property="og:image" content="https://gitee.com/butalways1121/img-Blog/raw/master/29.png">
+<meta property="og:image" content="https://gitee.com/butalways1121/img-Blog/raw/master/30.png">
+<meta property="og:image" content="https://gitee.com/butalways1121/img-Blog/raw/master/31.png">
+<meta property="og:updated_time" content="2019-12-04T08:24:29.828Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="调用接口获取数据并插入数据库">
 <meta name="twitter:description" content="该项目是整合了Spring Boot+SpringMVC+MyBaits的Maven项目，在项目中通过RestTemplate的getForObject方法发起GET请求，获取相应接口的数据，再将拿到的数据插入数据库。该项目中调用的接口是DeptManage项目的/api/findAll方法。">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/29.png">
+<meta name="twitter:image" content="https://gitee.com/butalways1121/img-Blog/raw/master/29.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -234,7 +234,7 @@
       
         <p>该项目是整合了Spring Boot+SpringMVC+MyBaits的Maven项目，在项目中通过RestTemplate的getForObject方法发起GET请求，获取相应接口的数据，再将拿到的数据插入数据库。该项目中调用的接口是<a href="https://butalways1121.gitee.io/2019/08/16/Spring-Boot-SpringMVC-MyBaits%E5%AE%9E%E7%8E%B0%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/" target="_blank" rel="noopener">DeptManage项目</a>的/api/findAll方法。</p>
 <a id="more"></a>
-<h2 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h2><p>在Navicat中的deptmanage数据库新建deptget表设计如下,其中id属性选择为自增：<br><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/29.png" alt></p>
+<h2 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h2><p>在Navicat中的deptmanage数据库新建deptget表设计如下,其中id属性选择为自增：<br><img src="https://gitee.com/butalways1121/img-Blog/raw/master/29.png" alt></p>
 <h2 id="新建项目"><a href="#新建项目" class="headerlink" title="新建项目"></a>新建项目</h2><p> 新建Maven项目，并做相应的配置文件修改（将端口设为8081）。</p>
 <h2 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h2><h3 id="entity层"><a href="#entity层" class="headerlink" title="entity层"></a>entity层</h3><p>在src/main/java下新建entity包，创建DeptInfo实体类，该实体类封装的变量对应deptget数据库表中的属性:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">package com.DeptManageGet.entity;</span><br><span class="line"></span><br><span class="line">public class DeptInfo &#123;</span><br><span class="line">	private int id;</span><br><span class="line">	private String name;</span><br><span class="line">	private String address;</span><br><span class="line">	public int getId() &#123;</span><br><span class="line">		return id;</span><br><span class="line">	&#125;</span><br><span class="line">	public void setId(int id) &#123;</span><br><span class="line">		this.id = id;</span><br><span class="line">	&#125;</span><br><span class="line">	public String getName() &#123;</span><br><span class="line">		return name;</span><br><span class="line">	&#125;</span><br><span class="line">	public void setName(String name) &#123;</span><br><span class="line">		this.name = name;</span><br><span class="line">	&#125;</span><br><span class="line">	public String getAddress() &#123;</span><br><span class="line">		return address;</span><br><span class="line">	&#125;</span><br><span class="line">	public void setAddress(String address) &#123;</span><br><span class="line">		this.address = address;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -256,7 +256,7 @@
 
 <hr>
 <p>至此，整个项目已创建完毕。</p>
-<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><p>首先运行DeptManage项目，开启接口，然后在启动该项目，在postman中设置如下信息，点击send之后，会返回”true”:<br><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/30.png" alt><br>p30<br>到数据库查看deptget数据表，可以看到数据已插入：<br><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/31.png" alt></p>
+<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><p>首先运行DeptManage项目，开启接口，然后在启动该项目，在postman中设置如下信息，点击send之后，会返回”true”:<br><img src="https://gitee.com/butalways1121/img-Blog/raw/master/30.png" alt><br>p30<br>到数据库查看deptget数据表，可以看到数据已插入：<br><img src="https://gitee.com/butalways1121/img-Blog/raw/master/31.png" alt></p>
 <hr>
 <p>至此，整个功能已实现！</p>
 <h2 id="OVER！"><a href="#OVER！" class="headerlink" title="OVER！"></a>OVER！</h2>
@@ -611,19 +611,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Yilia</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">相册</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JPA</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JpaRepository</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Yilia</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">相册</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -683,6 +683,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">SpringMVC</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">MyBaits</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">RestTemplate</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Hadoop</a>
               </li>
              
@@ -695,14 +707,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">SpringMVC</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">MyBaits</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Storm</a>
               </li>
              
@@ -711,15 +715,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Zuul</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Eureka</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">高可用注册中心</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Zuul</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -752,10 +756,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">非关系型数据库</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">RestTemplate</a>
               </li>
              
               <li class="article-tag-list-item">

@@ -16,16 +16,16 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="什么是StormStorm是Twitter开源的分布式、高容错的实时大数据处理框架，被业界称为实时版Hadoop，它的出现令持续不断的流计算变得容易，弥补了Hadoop批处理所不能满足的实时要求。Storm也是基于C/S架构来进行工作的,C负责将数据处理的方式的jar(Topology)发送给S,S解析C发送过来的jar(Topology)，并按一定规则将jar变成多个Task((Spout/Bo">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/46.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/47.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/48.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/49.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/50.png">
-<meta property="og:updated_time" content="2019-08-22T00:47:05.288Z">
+<meta property="og:image" content="https://gitee.com/butalways1121/img-Blog/raw/master/46.png">
+<meta property="og:image" content="https://gitee.com/butalways1121/img-Blog/raw/master/47.png">
+<meta property="og:image" content="https://gitee.com/butalways1121/img-Blog/raw/master/48.png">
+<meta property="og:image" content="https://gitee.com/butalways1121/img-Blog/raw/master/49.png">
+<meta property="og:image" content="https://gitee.com/butalways1121/img-Blog/raw/master/50.png">
+<meta property="og:updated_time" content="2019-12-04T08:26:15.578Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Storm简介">
 <meta name="twitter:description" content="什么是StormStorm是Twitter开源的分布式、高容错的实时大数据处理框架，被业界称为实时版Hadoop，它的出现令持续不断的流计算变得容易，弥补了Hadoop批处理所不能满足的实时要求。Storm也是基于C/S架构来进行工作的,C负责将数据处理的方式的jar(Topology)发送给S,S解析C发送过来的jar(Topology)，并按一定规则将jar变成多个Task((Spout/Bo">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/46.png">
+<meta name="twitter:image" content="https://gitee.com/butalways1121/img-Blog/raw/master/46.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -246,12 +246,12 @@
 <li>语言无关性：Storm的topology和消息处理组件(Bolt)可以用任何语言来定义， 这一点使得任何人都可以使用Storm。</li>
 </ol>
 <h2 id="Storm的术语"><a href="#Storm的术语" class="headerlink" title="Storm的术语"></a>Storm的术语</h2><ul>
-<li><strong>Topology(拓扑)</strong>:Storm中运行的一个实时应用程序(Storm的一个任务单元)，因为各个组件间的消息流动形成逻辑上的一个拓扑结构(所以叫Topology)。Topolog是一组由Spouts（数据源）和Bolts（数据操作）通过Stream Groupings进行连接组成的图，最简单的Topology：1个Spout，1个Bolt如下图：<br><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/46.png" alt></li>
+<li><strong>Topology(拓扑)</strong>:Storm中运行的一个实时应用程序(Storm的一个任务单元)，因为各个组件间的消息流动形成逻辑上的一个拓扑结构(所以叫Topology)。Topolog是一组由Spouts（数据源）和Bolts（数据操作）通过Stream Groupings进行连接组成的图，最简单的Topology：1个Spout，1个Bolt如下图：<br><img src="https://gitee.com/butalways1121/img-Blog/raw/master/46.png" alt></li>
 <li><strong>Tuple（元组）</strong>：一次消息传递的基本单元。</li>
 <li><strong>Stream</strong>：以Tuple为单位组成的一条有向无界的数据流（就是Tuple在各个组件中流动时的描述）。</li>
 <li><strong>Spout组件</strong>:就是一个继承了某个基类的类,里面有类的方法进行相关的操作,用于获取数据，并传递数据到Bolt。</li>
-<li><strong>Bolt组件</strong>:就是一个继承了某个基类的类,里面有类的方法进行相关的操作,用于对Spout组件发送过来的数据进行处理。<br><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/47.png" alt></li>
-<li><strong>Worker进程</strong>：用于运行Topology子集的进程（一个worker处理topology的一个子集，同一个子集可被多个worker同时处理，一个worker有且仅为一个topology服务）。如下图，一个worker就是一个进程，进程里面包含一个或多个线程，一个线程就是一个executor，一个线程会处理一个或多个任务，一个任务就是一个task，一个task就是一个节点类的实例对象。<br><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/48.png" alt></li>
+<li><strong>Bolt组件</strong>:就是一个继承了某个基类的类,里面有类的方法进行相关的操作,用于对Spout组件发送过来的数据进行处理。<br><img src="https://gitee.com/butalways1121/img-Blog/raw/master/47.png" alt></li>
+<li><strong>Worker进程</strong>：用于运行Topology子集的进程（一个worker处理topology的一个子集，同一个子集可被多个worker同时处理，一个worker有且仅为一个topology服务）。如下图，一个worker就是一个进程，进程里面包含一个或多个线程，一个线程就是一个executor，一个线程会处理一个或多个任务，一个任务就是一个task，一个task就是一个节点类的实例对象。<br><img src="https://gitee.com/butalways1121/img-Blog/raw/master/48.png" alt></li>
 <li><strong>executor线程</strong>:是Worker进程中的一个线程,executor可能会同时运行多个组件(Spout/Bolt),当然同一个executor运行的组件类型是一样的。</li>
 <li><strong>Task任务</strong>：就是组件(Spout/Bolt),一般是一个executor线程运行一个Task。</li>
 <li><strong>Nimbus进程</strong>：控制节点(Nimbus节点)，主结点运行一个叫做Nimbus的守护进程，它负责在集群内分发代码，为每个工作结点指派任务和监控失败的任务。</li>
@@ -259,7 +259,7 @@
 <li><strong>Zookeeper</strong>：集群协调软件（C/S），是完成nimbus和Supervisor之间协调的服务。</li>
 <li><strong>Storm UI</strong>：只提供对topology的监控和统计。</li>
 </ul>
-<h2 id="Storm的集群架构"><a href="#Storm的集群架构" class="headerlink" title="Storm的集群架构"></a>Storm的集群架构</h2><p>Storm集群采用主从架构方式，主节点是Nimbus，从节点是Supervisor，有关调度相关的信息存储到Zookeeper集群中。Nimbus和Supervisors之间所有的协调工作是通过Zookeeper集群。Nimbus进程和Supervisors进程是无法直接连接，并且是无状态的，所有的状态维持在Zookeeper中或保存在本地磁盘上。架构如下图所示：<br><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/49.png" alt></p>
+<h2 id="Storm的集群架构"><a href="#Storm的集群架构" class="headerlink" title="Storm的集群架构"></a>Storm的集群架构</h2><p>Storm集群采用主从架构方式，主节点是Nimbus，从节点是Supervisor，有关调度相关的信息存储到Zookeeper集群中。Nimbus和Supervisors之间所有的协调工作是通过Zookeeper集群。Nimbus进程和Supervisors进程是无法直接连接，并且是无状态的，所有的状态维持在Zookeeper中或保存在本地磁盘上。架构如下图所示：<br><img src="https://gitee.com/butalways1121/img-Blog/raw/master/49.png" alt></p>
 <ul>
 <li><strong>Nimbus</strong>：Storm集群的Master节点，负责分发用户代码，指派给具体的Supervisor节点上的Worker节点，去运行Topology对应的组件（Spout/Bolt）的Task。</li>
 <li><strong>Supervisor</strong>：Storm集群的从节点，负责管理运行在Supervisor节点上的每一个Worker进程的启动和终止。通过Storm的配置文件中的Supervisor.slots.ports配置项，可以指定在一个Supervisor上最大允许多少个Slot，每个Slot通过端口号来唯一标识，一个端口号对应一个Worker进程（如果该Worker进程被启动）。</li>
@@ -267,7 +267,7 @@
 <li><strong>Task</strong>：worker中每一个Spout/Bolt的线程称为一个task. 在Storm0.8之后，task不再与物理线程对应，不同Spout/Bolt的task可能会共享一个物理线程，该线程称为executor。</li>
 <li><strong>Zookeeper</strong>：用来协调Nimbus和Supervisor，如果Supervisor因故障出现问题而无法运行Topology，Nimbus会第一时间感知到，并重新分配Topology到其它可用的Supervisor上运行。</li>
 </ul>
-<h2 id="Storm中的数据流"><a href="#Storm中的数据流" class="headerlink" title="Storm中的数据流"></a>Storm中的数据流</h2><p>Storm结构称为topology(拓扑)，由stream(数据流)、Spout(数据流的生成者)、Bolt(数据流运算者)组成。启动完Topology后,相关组件就开始运行起来了。在Storm中，Spout组件主要用来从数据源拉取数据,形成一个Tuple后转交给Bolt处理。Bolt接受到Tuple处理完后,可以选择继续交给下一个Bolt处理，也可以选择不往下传。这样数据以Tuple的形式一个接一个的往下执行,就形成了一个拓扑数据流。Storm数据在组件间的流向如下图所示:<br><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/50.png" alt></p>
+<h2 id="Storm中的数据流"><a href="#Storm中的数据流" class="headerlink" title="Storm中的数据流"></a>Storm中的数据流</h2><p>Storm结构称为topology(拓扑)，由stream(数据流)、Spout(数据流的生成者)、Bolt(数据流运算者)组成。启动完Topology后,相关组件就开始运行起来了。在Storm中，Spout组件主要用来从数据源拉取数据,形成一个Tuple后转交给Bolt处理。Bolt接受到Tuple处理完后,可以选择继续交给下一个Bolt处理，也可以选择不往下传。这样数据以Tuple的形式一个接一个的往下执行,就形成了一个拓扑数据流。Storm数据在组件间的流向如下图所示:<br><img src="https://gitee.com/butalways1121/img-Blog/raw/master/50.png" alt></p>
 <h2 id="Storm的工作原理"><a href="#Storm的工作原理" class="headerlink" title="Storm的工作原理"></a>Storm的工作原理</h2><ol>
 <li>Storm集群中有两种节点，一种是控制节点(Nimbus节点)，另一种是工作节点(Supervisor节点)。</li>
 <li>所有Topology任务的提交必须在Storm客户端节点上进行(需要配置 Storm.yaml文件)，由Nimbus节点分配给其他Supervisor节点进行处理。</li>
@@ -628,19 +628,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Yilia</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">相册</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JPA</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JpaRepository</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Yilia</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">相册</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -700,6 +700,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">SpringMVC</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">MyBaits</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">RestTemplate</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Hadoop</a>
               </li>
              
@@ -712,14 +724,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">SpringMVC</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">MyBaits</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Storm</a>
               </li>
              
@@ -728,15 +732,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Zuul</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Eureka</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">高可用注册中心</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Zuul</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -769,10 +773,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">非关系型数据库</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">RestTemplate</a>
               </li>
              
               <li class="article-tag-list-item">

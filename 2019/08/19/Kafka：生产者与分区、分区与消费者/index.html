@@ -16,14 +16,14 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="Kafka是一种高吞吐量的分布式发布订阅消息系统，其消息传输机制是：生产者发送消息到主题，消费者订阅主题（以消费者组的名义订阅），而主题下是分区，消息是存储在分区中的，所以事实上生产者发送消息到分区，消费者则从分区读取消息。那么，生产者是将消息投递到哪个分区？而消费者组中的消费者实例之间是怎么分配分区？">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/32.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/33.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/34.png">
-<meta property="og:updated_time" content="2019-08-19T06:51:05.697Z">
+<meta property="og:image" content="https://gitee.com/butalways1121/img-Blog/raw/master/32.png">
+<meta property="og:image" content="https://gitee.com/butalways1121/img-Blog/raw/master/33.png">
+<meta property="og:image" content="https://gitee.com/butalways1121/img-Blog/raw/master/34.png">
+<meta property="og:updated_time" content="2019-12-04T08:25:03.846Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Kafka：生产者与分区、分区与消费者">
 <meta name="twitter:description" content="Kafka是一种高吞吐量的分布式发布订阅消息系统，其消息传输机制是：生产者发送消息到主题，消费者订阅主题（以消费者组的名义订阅），而主题下是分区，消息是存储在分区中的，所以事实上生产者发送消息到分区，消费者则从分区读取消息。那么，生产者是将消息投递到哪个分区？而消费者组中的消费者实例之间是怎么分配分区？">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/32.png">
+<meta name="twitter:image" content="https://gitee.com/butalways1121/img-Blog/raw/master/32.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -237,8 +237,8 @@
 <h3 id="生产者与分区"><a href="#生产者与分区" class="headerlink" title="生产者与分区"></a>生产者与分区</h3><p>生产者是如何决定将一条消息投递到哪个分区的？<br>Kafka默认的分区策略是：<br>    1. 如果在发消息的时候指定了分区，则消息投递到指定的分区<br>    2. 如果没有指定分区，但是消息的key不为空，则基于key的哈希值来选择一个分区<br>    3. 如果既没有指定分区，且消息的key也是空，则用轮询的方式选择一个分区</p>
 <h3 id="分区与消费者"><a href="#分区与消费者" class="headerlink" title="分区与消费者"></a>分区与消费者</h3><p>消费者是以消费组的名义从分区读取消息的，一个消费组只有一个消费者时很容易理解，但若一个消费组有多个消费者是如何分配分区的？<br>消费者分区策略：实现org.apache.kafka.clients.consumer.internals.PartitionAssignor这个接口就可以制定partition对消费者的分配了。kafka已经实现了RangeAssignor和RoundRobinAssignor两种。</p>
 <ol>
-<li>RangeAssignor<br>该策略会把主题的若干个连续的分区分配给消费者（kafka默认用该策略），range分配策略针对的是主题（也就是说，这里所说的分区指的某个主题的分区，消费者指的是订阅这个主题的消费者组中的消费者实例）。对于每个主题，我们以数字顺序排列可用分区，以字典顺序排列消费者。然后，将分区总数除以消费者总数，以确定分配给每个消费者的分区数量。如果能够除尽，则平均分配；如果除不尽，则位于排序前面的消费者将多负责一个分区。<br>例：假设有两个消费者C0和C1，两个主题t0和t1，并且每个主题有3个分区，即t0有t0p0，t0p1和t0p2三个分区，t1有t1p0，t1p1和t1p2三个分区，如果按照range分配策略的话，对于主题t0，消费者C0负责t0p0和t0p1，C1负责t0p2;对于主题t1，消费者C0负责t1p0和t1p1，C1负责t1p2。<br><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/32.png" alt></li>
-<li>RoundRobinAssignor<br>该策略把主题的所有分区逐个分配给消费者，即轮询分配策略。<br>例如按照Round分配策略的话，对于主题t0，消费者C0负责t0p0和t0p2，C1负责t0p1;对于主题t1，消费者C0负责t1p1，C1负责t1p0和t1p2。<br><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/33.png" alt><br>但是，组中每个消费者订阅的主题不一样，分配过程仍然以轮询的方式考虑每个消费者实例，但是如果没有订阅主题，则跳过实例。例如，假设有3个主题t0，t1，t2；其中，t0有1个分区p0，t1有2个分区p0和p1，t2有3个分区p0，p1和p2；有3个消费者C0，C1和C2；C0订阅t0，C1订阅t0和t1，C2订阅t0，t1和t2。那么，按照轮询分配的话，t0p1由C0负责，t1p0由C1负责，C2只能负责t1p1，由于只有C2订阅了t2，所以t2所有分区由C2负责。<br><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/34.png" alt></li>
+<li>RangeAssignor<br>该策略会把主题的若干个连续的分区分配给消费者（kafka默认用该策略），range分配策略针对的是主题（也就是说，这里所说的分区指的某个主题的分区，消费者指的是订阅这个主题的消费者组中的消费者实例）。对于每个主题，我们以数字顺序排列可用分区，以字典顺序排列消费者。然后，将分区总数除以消费者总数，以确定分配给每个消费者的分区数量。如果能够除尽，则平均分配；如果除不尽，则位于排序前面的消费者将多负责一个分区。<br>例：假设有两个消费者C0和C1，两个主题t0和t1，并且每个主题有3个分区，即t0有t0p0，t0p1和t0p2三个分区，t1有t1p0，t1p1和t1p2三个分区，如果按照range分配策略的话，对于主题t0，消费者C0负责t0p0和t0p1，C1负责t0p2;对于主题t1，消费者C0负责t1p0和t1p1，C1负责t1p2。<br><img src="https://gitee.com/butalways1121/img-Blog/raw/master/32.png" alt></li>
+<li>RoundRobinAssignor<br>该策略把主题的所有分区逐个分配给消费者，即轮询分配策略。<br>例如按照Round分配策略的话，对于主题t0，消费者C0负责t0p0和t0p2，C1负责t0p1;对于主题t1，消费者C0负责t1p1，C1负责t1p0和t1p2。<br><img src="https://gitee.com/butalways1121/img-Blog/raw/master/33.png" alt><br>但是，组中每个消费者订阅的主题不一样，分配过程仍然以轮询的方式考虑每个消费者实例，但是如果没有订阅主题，则跳过实例。例如，假设有3个主题t0，t1，t2；其中，t0有1个分区p0，t1有2个分区p0和p1，t2有3个分区p0，p1和p2；有3个消费者C0，C1和C2；C0订阅t0，C1订阅t0和t1，C2订阅t0，t1和t2。那么，按照轮询分配的话，t0p1由C0负责，t1p0由C1负责，C2只能负责t1p1，由于只有C2订阅了t2，所以t2所有分区由C2负责。<br><img src="https://gitee.com/butalways1121/img-Blog/raw/master/34.png" alt></li>
 </ol>
 
       
@@ -588,19 +588,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Yilia</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">相册</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JPA</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JpaRepository</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Yilia</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">相册</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -660,6 +660,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">SpringMVC</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">MyBaits</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">RestTemplate</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Hadoop</a>
               </li>
              
@@ -672,14 +684,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">SpringMVC</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">MyBaits</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Storm</a>
               </li>
              
@@ -688,15 +692,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Zuul</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Eureka</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">高可用注册中心</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Zuul</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -729,10 +733,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">非关系型数据库</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">RestTemplate</a>
               </li>
              
               <li class="article-tag-list-item">

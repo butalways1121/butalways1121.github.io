@@ -16,22 +16,22 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="通过Kafka与SpringBoot、SpringMVC和MyBaits的集成，在项目A中将从接口查找到的数据对象转换成字符串后再通过KafkaTemplate的send()方法写入Kafka，实现Kafka的生产；在项目B中，进行Kafka的消费，并将消费掉的数据插入到数据库（源码点击这里）。">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/35.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/36.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/37.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/38.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/39.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/40.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/41.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/42.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/43.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/44.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/45.png">
-<meta property="og:updated_time" content="2019-08-21T02:35:55.963Z">
+<meta property="og:image" content="https://gitee.com/butalways1121/img-Blog/raw/master/35.png">
+<meta property="og:image" content="https://gitee.com/butalways1121/img-Blog/raw/master/36.png">
+<meta property="og:image" content="https://gitee.com/butalways1121/img-Blog/raw/master/37.png">
+<meta property="og:image" content="https://gitee.com/butalways1121/img-Blog/raw/master/38.png">
+<meta property="og:image" content="https://gitee.com/butalways1121/img-Blog/raw/master/39.png">
+<meta property="og:image" content="https://gitee.com/butalways1121/img-Blog/raw/master/40.png">
+<meta property="og:image" content="https://gitee.com/butalways1121/img-Blog/raw/master/41.png">
+<meta property="og:image" content="https://gitee.com/butalways1121/img-Blog/raw/master/42.png">
+<meta property="og:image" content="https://gitee.com/butalways1121/img-Blog/raw/master/43.png">
+<meta property="og:image" content="https://gitee.com/butalways1121/img-Blog/raw/master/44.png">
+<meta property="og:image" content="https://gitee.com/butalways1121/img-Blog/raw/master/45.png">
+<meta property="og:updated_time" content="2019-12-04T08:26:00.827Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Kafka与SSM的集成">
 <meta name="twitter:description" content="通过Kafka与SpringBoot、SpringMVC和MyBaits的集成，在项目A中将从接口查找到的数据对象转换成字符串后再通过KafkaTemplate的send()方法写入Kafka，实现Kafka的生产；在项目B中，进行Kafka的消费，并将消费掉的数据插入到数据库（源码点击这里）。">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/35.png">
+<meta name="twitter:image" content="https://gitee.com/butalways1121/img-Blog/raw/master/35.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -242,8 +242,8 @@
       
         <p>通过Kafka与SpringBoot、SpringMVC和MyBaits的集成，在项目A中将从接口查找到的数据对象转换成字符串后再通过KafkaTemplate的send()方法写入Kafka，实现Kafka的生产；在项目B中，进行Kafka的消费，并将消费掉的数据插入到数据库（源码点击<a href="https://github.com/butalways1121/Kafka_Producer-Consumer" target="_blank" rel="noopener">这里</a>）。</p>
 <a id="more"></a>
-<h2 id="项目A（Kafka的生产）"><a href="#项目A（Kafka的生产）" class="headerlink" title="项目A（Kafka的生产）"></a>项目A（Kafka的生产）</h2><h3 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h3><p>在Navicat中的test数据库新建info表设计如下,其中id属性选择为自增：<br><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/35.png" alt></p>
-<p>简单插入几条数据如下：<br><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/36.png" alt></p>
+<h2 id="项目A（Kafka的生产）"><a href="#项目A（Kafka的生产）" class="headerlink" title="项目A（Kafka的生产）"></a>项目A（Kafka的生产）</h2><h3 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h3><p>在Navicat中的test数据库新建info表设计如下,其中id属性选择为自增：<br><img src="https://gitee.com/butalways1121/img-Blog/raw/master/35.png" alt></p>
+<p>简单插入几条数据如下：<br><img src="https://gitee.com/butalways1121/img-Blog/raw/master/36.png" alt></p>
 <h3 id="新建Maven项目"><a href="#新建Maven项目" class="headerlink" title="新建Maven项目"></a>新建Maven项目</h3><p>Eclipse中创建Maven Project，输入相应的包名及项目名，这里的项目名是KafkaProducer，包名为com,并做如下修改：</p>
 <ol>
 <li><p>使用如下代码替换pom.xml里面的内容:</p>
@@ -280,8 +280,8 @@
 </li>
 </ol>
 <hr>
-<p>至此，整个项目A已搭建完毕，整体的框架如下：<br><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/37.png" alt></p>
-<h2 id="项目B（Kafka的消费）"><a href="#项目B（Kafka的消费）" class="headerlink" title="项目B（Kafka的消费）"></a>项目B（Kafka的消费）</h2><h3 id="创建数据库-1"><a href="#创建数据库-1" class="headerlink" title="创建数据库"></a>创建数据库</h3><p>在Navicat中的test数据库新建infoget表设计如下:<br><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/38.png" alt></p>
+<p>至此，整个项目A已搭建完毕，整体的框架如下：<br><img src="https://gitee.com/butalways1121/img-Blog/raw/master/37.png" alt></p>
+<h2 id="项目B（Kafka的消费）"><a href="#项目B（Kafka的消费）" class="headerlink" title="项目B（Kafka的消费）"></a>项目B（Kafka的消费）</h2><h3 id="创建数据库-1"><a href="#创建数据库-1" class="headerlink" title="创建数据库"></a>创建数据库</h3><p>在Navicat中的test数据库新建infoget表设计如下:<br><img src="https://gitee.com/butalways1121/img-Blog/raw/master/38.png" alt></p>
 <h3 id="创建项目-1"><a href="#创建项目-1" class="headerlink" title="创建项目"></a>创建项目</h3><p>Eclipse中创建Maven Project，输入相应的包名及项目名，这里的项目名是KafkaConsumer，包名为com,并做如下修改：</p>
 <ol>
 <li><p>使用如下代码替换pom.xml里面的内容:</p>
@@ -315,17 +315,17 @@
 </li>
 </ol>
 <hr>
-<p>至此，整个项目B已搭建完毕，整体的框架如下：<br><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/39.png" alt></p>
+<p>至此，整个项目B已搭建完毕，整体的框架如下：<br><img src="https://gitee.com/butalways1121/img-Blog/raw/master/39.png" alt></p>
 <h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><ol>
-<li>右键项目A即KafkaProducer的App.java,选择运行方式-Java应用程序，在postman中设置如下信息,点击send之后就可以查看到相应id的信息：<br><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/40.png" alt></li>
+<li>右键项目A即KafkaProducer的App.java,选择运行方式-Java应用程序，在postman中设置如下信息,点击send之后就可以查看到相应id的信息：<br><img src="https://gitee.com/butalways1121/img-Blog/raw/master/40.png" alt></li>
 </ol>
-<p>随后在将id赋值2、3分别send一下，到Kafka Tool中查看生产者的数据，可看到已生产了3条数据：<br><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/41.png" alt></p>
-<p>再查看消费者组信息，可以看到消费者有3条数据未消费：<br><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/42.png" alt></p>
+<p>随后在将id赋值2、3分别send一下，到Kafka Tool中查看生产者的数据，可看到已生产了3条数据：<br><img src="https://gitee.com/butalways1121/img-Blog/raw/master/41.png" alt></p>
+<p>再查看消费者组信息，可以看到消费者有3条数据未消费：<br><img src="https://gitee.com/butalways1121/img-Blog/raw/master/42.png" alt></p>
 <ol start="2">
-<li>右键项目B即KafkaConsumerApp.java,选择运行方式-Java应用程序，控制台出现如下信息说明数据已成功消费并插入到数据库：<br><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/43.png" alt></li>
+<li>右键项目B即KafkaConsumerApp.java,选择运行方式-Java应用程序，控制台出现如下信息说明数据已成功消费并插入到数据库：<br><img src="https://gitee.com/butalways1121/img-Blog/raw/master/43.png" alt></li>
 </ol>
-<p>然后到Kafka Tool查看消费者组信息就会发现刚才生产的3条数据已被消费掉：<br><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/44.png" alt></p>
-<p>在到数据库查看，相应的消费掉的3条数据也插入了数据库：<br><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/45.png" alt></p>
+<p>然后到Kafka Tool查看消费者组信息就会发现刚才生产的3条数据已被消费掉：<br><img src="https://gitee.com/butalways1121/img-Blog/raw/master/44.png" alt></p>
+<p>在到数据库查看，相应的消费掉的3条数据也插入了数据库：<br><img src="https://gitee.com/butalways1121/img-Blog/raw/master/45.png" alt></p>
 <hr>
 <h2 id="OVER！"><a href="#OVER！" class="headerlink" title="OVER！"></a>OVER！</h2>
       
@@ -679,19 +679,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Yilia</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">相册</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JPA</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JpaRepository</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Yilia</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">相册</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -751,6 +751,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">SpringMVC</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">MyBaits</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">RestTemplate</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Hadoop</a>
               </li>
              
@@ -763,14 +775,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">SpringMVC</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">MyBaits</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Storm</a>
               </li>
              
@@ -779,15 +783,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Zuul</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Eureka</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">高可用注册中心</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Zuul</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -820,10 +824,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">非关系型数据库</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">RestTemplate</a>
               </li>
              
               <li class="article-tag-list-item">

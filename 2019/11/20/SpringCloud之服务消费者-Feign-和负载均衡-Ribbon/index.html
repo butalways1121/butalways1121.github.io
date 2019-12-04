@@ -16,16 +16,16 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="&amp;emsp;&amp;emsp;本篇主要介绍的是SpringCloud中的服务消费者(Feign)和负载均衡(Ribbon)功能的实现以及使用Feign结合Ribbon实现负载均衡。戳这里下载源码。">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/75.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/76.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/77.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/78.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/79.png">
-<meta property="og:updated_time" content="2019-11-25T00:34:24.444Z">
+<meta property="og:image" content="https://gitee.com/butalways1121/img-Blog/raw/master/75.png">
+<meta property="og:image" content="https://gitee.com/butalways1121/img-Blog/raw/master/76.png">
+<meta property="og:image" content="https://gitee.com/butalways1121/img-Blog/raw/master/77.png">
+<meta property="og:image" content="https://gitee.com/butalways1121/img-Blog/raw/master/78.png">
+<meta property="og:image" content="https://gitee.com/butalways1121/img-Blog/raw/master/79.png">
+<meta property="og:updated_time" content="2019-12-04T08:28:38.791Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SpringCloud之服务消费者(Feign)和负载均衡(Ribbon)">
 <meta name="twitter:description" content="&amp;emsp;&amp;emsp;本篇主要介绍的是SpringCloud中的服务消费者(Feign)和负载均衡(Ribbon)功能的实现以及使用Feign结合Ribbon实现负载均衡。戳这里下载源码。">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/75.png">
+<meta name="twitter:image" content="https://gitee.com/butalways1121/img-Blog/raw/master/75.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -270,13 +270,13 @@
 <p>提供打印信息接口的控制层代码示例如下：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@RestController</span><br><span class="line">public class ConsumerController &#123;</span><br><span class="line"></span><br><span class="line">	@RequestMapping(<span class="string">"/helloworld"</span>)</span><br><span class="line">	public String index(@RequestParam String name) &#123;</span><br><span class="line">        <span class="built_in">return</span> name+<span class="string">",Hello World"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h4 id="（3）测试"><a href="#（3）测试" class="headerlink" title="（3）测试"></a>（3）测试</h4><p>&emsp;&emsp;完成如上三个项目之后，依次启动服务端和客户端的三个程序，然后在浏览器里输入:<code>http://localhost:8001/</code>，即可查看注册中心的信息，如下图，可以看到客户端的两个服务已经注册到Eureka服务端了：<br><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/75.png" alt></p>
-<p>然后在浏览器中输入<code>http://localhost:9003/hello?name=butalways</code>直接调用第二个消费服务springcloud-feign-consumer2的接口，浏览器界面回返回<code>butalways,Hello World</code>：<br><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/76.png" alt></p>
-<p>接着在浏览器中再输入<code>http://localhost:9002/hello/butalways</code>，来通过第一个消费服务springcloud-feign-consumer调用第二个服务springcloud-feign-consumer2，此时控制台会打印<code>接受到请求参数:butalways,进行转发到其他服务</code>，浏览器界面返回<code>butalways,Hello World</code>：<br><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/77.png" alt></p>
+<h4 id="（3）测试"><a href="#（3）测试" class="headerlink" title="（3）测试"></a>（3）测试</h4><p>&emsp;&emsp;完成如上三个项目之后，依次启动服务端和客户端的三个程序，然后在浏览器里输入:<code>http://localhost:8001/</code>，即可查看注册中心的信息，如下图，可以看到客户端的两个服务已经注册到Eureka服务端了：<br><img src="https://gitee.com/butalways1121/img-Blog/raw/master/75.png" alt></p>
+<p>然后在浏览器中输入<code>http://localhost:9003/hello?name=butalways</code>直接调用第二个消费服务springcloud-feign-consumer2的接口，浏览器界面回返回<code>butalways,Hello World</code>：<br><img src="https://gitee.com/butalways1121/img-Blog/raw/master/76.png" alt></p>
+<p>接着在浏览器中再输入<code>http://localhost:9002/hello/butalways</code>，来通过第一个消费服务springcloud-feign-consumer调用第二个服务springcloud-feign-consumer2，此时控制台会打印<code>接受到请求参数:butalways,进行转发到其他服务</code>，浏览器界面返回<code>butalways,Hello World</code>：<br><img src="https://gitee.com/butalways1121/img-Blog/raw/master/77.png" alt></p>
 <p>&emsp;&emsp;若结果如上，则说明客户端已经成功的通过Feign调用了远程服务hello，并且将结果返回到了浏览器。</p>
 <h2 id="二、SpringCloud-Ribbon"><a href="#二、SpringCloud-Ribbon" class="headerlink" title="二、SpringCloud Ribbon"></a>二、SpringCloud Ribbon</h2><h3 id="1-SpringCloud-Ribbon简介"><a href="#1-SpringCloud-Ribbon简介" class="headerlink" title="1.SpringCloud Ribbon简介"></a>1.SpringCloud Ribbon简介</h3><p>&emsp;&emsp;Spring Cloud Ribbon是Netflix发布的开源项目，是一个基于Http和TCP的客服端负载均衡工具。Ribbon客户端组件提供一系列完善的配置项如连接超时、重试等。与Eureka配合使用时，Ribbon可自动从Eureka Server (注册中心)获取服务提供者地址列表，并基于负载均衡算法，通过在客户端中配置ribbonServerList来设置服务端列表去轮询访问以达到均衡负载的作用。简单的说，就是在配置文件中列出Load Balancer后面所有的机器，Ribbon会自动的帮助你基于某种规则（如简单轮询、随即连接等）去连接这些机器，我们也很容易使用Ribbon实现自定义的负载均衡算法。简单地说，Ribbon是一个客户端负载均衡器。</p>
 <p>&emsp;&emsp;使用负载均衡带来的好处很明显：当集群里的1台或者多台服务器down的时候，剩余的没有down的服务器可以保证服务的继续使用，保证了机器的良性使用，不会由于某一高峰时刻导致系统cpu急剧上升。</p>
-<p>&emsp;&emsp;另外，在这里简单说一下Ribbon提供的7种负载均衡策略，如下图：<br><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/78.png" alt></p>
+<p>&emsp;&emsp;另外，在这里简单说一下Ribbon提供的7种负载均衡策略，如下图：<br><img src="https://gitee.com/butalways1121/img-Blog/raw/master/78.png" alt></p>
 <p>Ribbon默认使用的策略是轮询，想要更改的话可以在项目的application.properties中修改，如想将springcloud-ribbon-consumer服务的策略指定为“随机策略”，只需在配置中添加<code>springcloud-ribbon-consumer.ribbon.NFLoadBalancerRuleClassName=com.netflix.loadbalancer.RandomRule</code>即可。</p>
 <h3 id="2-SpringCloud-Ribbon示例"><a href="#2-SpringCloud-Ribbon示例" class="headerlink" title="2.SpringCloud Ribbon示例"></a>2.SpringCloud Ribbon示例</h3><h4 id="（1）服务端-1"><a href="#（1）服务端-1" class="headerlink" title="（1）服务端"></a>（1）服务端</h4><p>&emsp;&emsp;首先建立一个springcloud-ribbon-eureka服务的Maven Project，用于做注册中心，在pom.xml文件中添加相关配置信息：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><span class="line">&lt;project xmlns=<span class="string">"http://maven.apache.org/POM/4.0.0"</span></span><br><span class="line">	xmlns:xsi=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></span><br><span class="line">	xsi:schemaLocation=<span class="string">"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"</span>&gt;</span><br><span class="line">	&lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;</span><br><span class="line"></span><br><span class="line">	&lt;groupId&gt;1.0&lt;/groupId&gt;</span><br><span class="line">	&lt;artifactId&gt;springcloud-eureka-ribbon&lt;/artifactId&gt;</span><br><span class="line">	&lt;version&gt;0.0.1-SNAPSHOT&lt;/version&gt;</span><br><span class="line">	&lt;packaging&gt;jar&lt;/packaging&gt;</span><br><span class="line"></span><br><span class="line">	&lt;name&gt;springcloud-eureka-ribbon&lt;/name&gt;</span><br><span class="line">	&lt;url&gt;http://maven.apache.org&lt;/url&gt;</span><br><span class="line"></span><br><span class="line">	&lt;!-- Spring Boot启动器父类 --&gt;</span><br><span class="line">	&lt;parent&gt;</span><br><span class="line">		&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">		&lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;</span><br><span class="line">		&lt;version&gt;1.5.9.RELEASE&lt;/version&gt;</span><br><span class="line">		&lt;relativePath /&gt;</span><br><span class="line">	&lt;/parent&gt;</span><br><span class="line"></span><br><span class="line">	&lt;properties&gt;</span><br><span class="line">		&lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt;</span><br><span class="line">		&lt;project.reporting.outputEncoding&gt;UTF-8&lt;/project.reporting.outputEncoding&gt;</span><br><span class="line">		&lt;java.version&gt;1.8&lt;/java.version&gt;</span><br><span class="line">		&lt;spring-cloud.version&gt;Dalston.RELEASE&lt;/spring-cloud.version&gt;</span><br><span class="line">	&lt;/properties&gt;</span><br><span class="line"></span><br><span class="line">	&lt;dependencies&gt;</span><br><span class="line">		&lt;!-- eureka依赖 --&gt;</span><br><span class="line">		&lt;dependency&gt;</span><br><span class="line">			&lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;</span><br><span class="line">			&lt;artifactId&gt;spring-cloud-starter&lt;/artifactId&gt;</span><br><span class="line">		&lt;/dependency&gt;</span><br><span class="line">		&lt;dependency&gt;</span><br><span class="line">			&lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;</span><br><span class="line">			&lt;artifactId&gt;spring-cloud-starter-eureka-server&lt;/artifactId&gt;</span><br><span class="line">			&lt;!-- springboot2.x以上 --&gt;</span><br><span class="line">			&lt;!-- &lt;artifactId&gt;spring-cloud-starter-netflix-eureka-server&lt;/artifactId&gt; --&gt;</span><br><span class="line">		&lt;/dependency&gt;</span><br><span class="line">		&lt;!-- Spring Boot Test 依赖 --&gt;</span><br><span class="line">		&lt;dependency&gt;</span><br><span class="line">			&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">			&lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt;</span><br><span class="line">			&lt;scope&gt;<span class="built_in">test</span>&lt;/scope&gt;</span><br><span class="line">		&lt;/dependency&gt;</span><br><span class="line">		&lt;!-- 监控系统健康情况的工具 --&gt;</span><br><span class="line">		&lt;dependency&gt;</span><br><span class="line">			&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">			&lt;artifactId&gt;spring-boot-starter-actuator&lt;/artifactId&gt;</span><br><span class="line">		&lt;/dependency&gt;</span><br><span class="line">		&lt;!-- ribbon依赖 --&gt;</span><br><span class="line">		&lt;dependency&gt;</span><br><span class="line">			&lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;</span><br><span class="line">			&lt;artifactId&gt;spring-cloud-starter-ribbon&lt;/artifactId&gt;</span><br><span class="line">		&lt;/dependency&gt;</span><br><span class="line">	&lt;/dependencies&gt;</span><br><span class="line"></span><br><span class="line">	&lt;dependencyManagement&gt;</span><br><span class="line">		&lt;dependencies&gt;</span><br><span class="line">			&lt;dependency&gt;</span><br><span class="line">				&lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;</span><br><span class="line">				&lt;artifactId&gt;spring-cloud-dependencies&lt;/artifactId&gt;</span><br><span class="line">				&lt;version&gt;<span class="variable">$&#123;spring-cloud.version&#125;</span>&lt;/version&gt;</span><br><span class="line">				&lt;<span class="built_in">type</span>&gt;pom&lt;/<span class="built_in">type</span>&gt;</span><br><span class="line">				&lt;scope&gt;import&lt;/scope&gt;</span><br><span class="line">			&lt;/dependency&gt;</span><br><span class="line">		&lt;/dependencies&gt;</span><br><span class="line">	&lt;/dependencyManagement&gt;</span><br><span class="line"></span><br><span class="line">	&lt;build&gt;</span><br><span class="line">		&lt;plugins&gt;</span><br><span class="line">			&lt;plugin&gt;</span><br><span class="line">				&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">				&lt;artifactId&gt;spring-boot-maven-plugin&lt;/artifactId&gt;</span><br><span class="line">			&lt;/plugin&gt;</span><br><span class="line">		&lt;/plugins&gt;</span><br><span class="line">	&lt;/build&gt;</span><br><span class="line">&lt;/project&gt;</span><br></pre></td></tr></table></figure>
@@ -315,7 +315,7 @@
 <p>打印信息接口类代码：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@RestController</span><br><span class="line">public class ConsumerController &#123;</span><br><span class="line">	</span><br><span class="line">	@RequestMapping(<span class="string">"/hello"</span>)</span><br><span class="line">	public String index(@RequestParam String name) &#123;</span><br><span class="line">		<span class="built_in">return</span> name+<span class="string">",Hello World!这是另一个服务！"</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h4 id="（3）测试-1"><a href="#（3）测试-1" class="headerlink" title="（3）测试"></a>（3）测试</h4><p>&emsp;&emsp;完成之后依次启动服务端和客户端的四个程序，然后在浏览器输入<code>http://localhost:8003/</code>即可查看注册中心的信息，可以看到服务端的三个服务都已注册：<br><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/79.png" alt><br>接着，在浏览器中输入<code>http://localhost:9006//hello</code>请求springcloud-ribbon-consumer的方法，并重复访问，浏览器返回结果为：</p>
+<h4 id="（3）测试-1"><a href="#（3）测试-1" class="headerlink" title="（3）测试"></a>（3）测试</h4><p>&emsp;&emsp;完成之后依次启动服务端和客户端的四个程序，然后在浏览器输入<code>http://localhost:8003/</code>即可查看注册中心的信息，可以看到服务端的三个服务都已注册：<br><img src="https://gitee.com/butalways1121/img-Blog/raw/master/79.png" alt><br>接着，在浏览器中输入<code>http://localhost:9006//hello</code>请求springcloud-ribbon-consumer的方法，并重复访问，浏览器返回结果为：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">butalways,Hello World!</span><br><span class="line">butalways,Hello World! 这是另一个服务！</span><br><span class="line">butalways,Hello World!</span><br><span class="line">butalways,Hello World! 这是另一个服务！</span><br><span class="line">butalways,Hello World!</span><br><span class="line">butalways,Hello World! 这是另一个服务！</span><br></pre></td></tr></table></figure>
 
 <p>至此，说明已经实现了负载均衡功能，而且是采用默认的轮询策略来回调用两个服务名相同的服务。</p>
@@ -682,19 +682,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Yilia</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">相册</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JPA</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JpaRepository</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Yilia</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">相册</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -754,6 +754,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">SpringMVC</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">MyBaits</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">RestTemplate</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Hadoop</a>
               </li>
              
@@ -766,14 +778,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">SpringMVC</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">MyBaits</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Storm</a>
               </li>
              
@@ -782,15 +786,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Zuul</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Eureka</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">高可用注册中心</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Zuul</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -823,10 +827,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">非关系型数据库</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">RestTemplate</a>
               </li>
              
               <li class="article-tag-list-item">

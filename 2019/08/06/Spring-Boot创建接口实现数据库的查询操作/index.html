@@ -16,18 +16,18 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="工具及环境eclipse j2ee 2019、apache-maven-3.6.1、jdk1.8、Navicat for mysql 12、postman。 配置Maven环境下载apache-maven-3.6.1压缩包，解压到某个文件夹，右键计算机-属性-高级系统设置-环境变量中新建MAVEN_HOME，设置值为maven解压的目录路径，编辑Path变量，新增%MAVEN_HOME%\bin。">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/1.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/2.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/3.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/4.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/5.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/6.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/7.png">
-<meta property="og:updated_time" content="2019-08-16T01:10:31.112Z">
+<meta property="og:image" content="https://gitee.com/butalways1121/img-Blog/raw/master/1.png">
+<meta property="og:image" content="https://gitee.com/butalways1121/img-Blog/raw/master/2.png">
+<meta property="og:image" content="https://gitee.com/butalways1121/img-Blog/raw/master/3.png">
+<meta property="og:image" content="https://gitee.com/butalways1121/img-Blog/raw/master/4.png">
+<meta property="og:image" content="https://gitee.com/butalways1121/img-Blog/raw/master/5.png">
+<meta property="og:image" content="https://gitee.com/butalways1121/img-Blog/raw/master/6.png">
+<meta property="og:image" content="https://gitee.com/butalways1121/img-Blog/raw/master/7.png">
+<meta property="og:updated_time" content="2019-12-04T08:23:35.781Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Spring Boot创建接口实现数据库的查询操作">
 <meta name="twitter:description" content="工具及环境eclipse j2ee 2019、apache-maven-3.6.1、jdk1.8、Navicat for mysql 12、postman。 配置Maven环境下载apache-maven-3.6.1压缩包，解压到某个文件夹，右键计算机-属性-高级系统设置-环境变量中新建MAVEN_HOME，设置值为maven解压的目录路径，编辑Path变量，新增%MAVEN_HOME%\bin。">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/butalways1121/img-Blog/master/1.png">
+<meta name="twitter:image" content="https://gitee.com/butalways1121/img-Blog/raw/master/1.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -239,13 +239,13 @@
         <h2 id="工具及环境"><a href="#工具及环境" class="headerlink" title="工具及环境"></a>工具及环境</h2><p>eclipse j2ee 2019、apache-maven-3.6.1、jdk1.8、Navicat for mysql 12、postman。</p>
 <h2 id="配置Maven环境"><a href="#配置Maven环境" class="headerlink" title="配置Maven环境"></a>配置Maven环境</h2><p>下载apache-maven-3.6.1压缩包，解压到某个文件夹，右键计算机-属性-高级系统设置-环境变量中新建MAVEN_HOME，设置值为maven解压的目录路径，编辑Path变量，新增%MAVEN_HOME%\bin。打开cmd.exe，输入命令mvn –version检测是否安装成功，出现Maven版本号字样则表示成功。</p>
 <a id="more"></a>
-<h2 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h2><p>在Navicat中的test数据库新建test表并设计如下，其中id属性选择为自增：<br><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/1.png" alt></p>
-<p>并添加数据如下：<br><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/2.png" alt></p>
-<h2 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h2><h3 id="新建Maven项目"><a href="#新建Maven项目" class="headerlink" title="新建Maven项目"></a>新建Maven项目</h3><p>Eclipse中创建Maven Project，输入相应的包名及项目名，这里的项目名是Select，包名为com,创建好的项目结构如下:<br><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/3.png" alt></p>
+<h2 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h2><p>在Navicat中的test数据库新建test表并设计如下，其中id属性选择为自增：<br><img src="https://gitee.com/butalways1121/img-Blog/raw/master/1.png" alt></p>
+<p>并添加数据如下：<br><img src="https://gitee.com/butalways1121/img-Blog/raw/master/2.png" alt></p>
+<h2 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h2><h3 id="新建Maven项目"><a href="#新建Maven项目" class="headerlink" title="新建Maven项目"></a>新建Maven项目</h3><p>Eclipse中创建Maven Project，输入相应的包名及项目名，这里的项目名是Select，包名为com,创建好的项目结构如下:<br><img src="https://gitee.com/butalways1121/img-Blog/raw/master/3.png" alt></p>
 <p>接着使用如下代码替换pom.xml里面的内容:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line">&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot;</span><br><span class="line">	xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><br><span class="line">	xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt;</span><br><span class="line">	&lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;</span><br><span class="line"></span><br><span class="line">	&lt;groupId&gt;1.0.0&lt;/groupId&gt;</span><br><span class="line">	&lt;artifactId&gt;dms-get-ecall&lt;/artifactId&gt;</span><br><span class="line">	&lt;version&gt;0.0.1-SNAPSHOT&lt;/version&gt;</span><br><span class="line">	&lt;packaging&gt;jar&lt;/packaging&gt;</span><br><span class="line"></span><br><span class="line">	&lt;name&gt;springboot-restful&lt;/name&gt;</span><br><span class="line">	&lt;url&gt;http://maven.apache.org&lt;/url&gt;</span><br><span class="line"></span><br><span class="line">	&lt;properties&gt;</span><br><span class="line">		&lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt;</span><br><span class="line">		&lt;java.version&gt;1.7&lt;/java.version&gt;</span><br><span class="line">		&lt;mybatis-spring-boot&gt;1.2.0&lt;/mybatis-spring-boot&gt;</span><br><span class="line">	&lt;/properties&gt;</span><br><span class="line"></span><br><span class="line">	&lt;parent&gt;</span><br><span class="line">		&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">		&lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;</span><br><span class="line">		&lt;version&gt;1.5.9.RELEASE&lt;/version&gt;</span><br><span class="line">		&lt;relativePath /&gt;</span><br><span class="line">	&lt;/parent&gt;</span><br><span class="line"></span><br><span class="line">	&lt;dependencies&gt;</span><br><span class="line">		&lt;dependency&gt;</span><br><span class="line">			&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">			&lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;</span><br><span class="line">		&lt;/dependency&gt;</span><br><span class="line">		&lt;dependency&gt;</span><br><span class="line">			&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">			&lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt;</span><br><span class="line">			&lt;scope&gt;test&lt;/scope&gt;</span><br><span class="line">		&lt;/dependency&gt;</span><br><span class="line"></span><br><span class="line">		&lt;dependency&gt;</span><br><span class="line">			&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">			&lt;artifactId&gt;spring-boot-devtools&lt;/artifactId&gt;</span><br><span class="line">			&lt;optional&gt;true&lt;/optional&gt;</span><br><span class="line">		&lt;/dependency&gt;</span><br><span class="line"></span><br><span class="line">		&lt;dependency&gt;</span><br><span class="line">			&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">			&lt;artifactId&gt;spring-boot-starter-data-jpa&lt;/artifactId&gt;</span><br><span class="line">		&lt;/dependency&gt;</span><br><span class="line">		&lt;!-- Spring Boot Mybatis 依赖 --&gt;</span><br><span class="line">		&lt;dependency&gt;</span><br><span class="line">			&lt;groupId&gt;org.mybatis.spring.boot&lt;/groupId&gt;</span><br><span class="line">			&lt;artifactId&gt;mybatis-spring-boot-starter&lt;/artifactId&gt;</span><br><span class="line">			&lt;version&gt;$&#123;mybatis-spring-boot&#125;&lt;/version&gt;</span><br><span class="line">		&lt;/dependency&gt;</span><br><span class="line">		&lt;!-- MySQL 连接驱动依赖 --&gt;</span><br><span class="line">		&lt;dependency&gt;</span><br><span class="line">			&lt;groupId&gt;mysql&lt;/groupId&gt;</span><br><span class="line">			&lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;</span><br><span class="line">		&lt;/dependency&gt;</span><br><span class="line">	&lt;/dependencies&gt;</span><br><span class="line">	&lt;build&gt;</span><br><span class="line">		&lt;plugins&gt;</span><br><span class="line">			&lt;plugin&gt;</span><br><span class="line">				&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">				&lt;artifactId&gt;spring-boot-maven-plugin&lt;/artifactId&gt;</span><br><span class="line">				&lt;configuration&gt;</span><br><span class="line">					&lt;fork&gt;true&lt;/fork&gt;</span><br><span class="line">				&lt;/configuration&gt;</span><br><span class="line">			&lt;/plugin&gt;</span><br><span class="line">		&lt;/plugins&gt;</span><br><span class="line">	&lt;/build&gt;</span><br><span class="line">&lt;/project&gt;</span><br></pre></td></tr></table></figure>
 
-<p>在src/main下新建resources文件夹，新建application.properties文件，将如下内容复制：<br><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/4.png" alt></p>
+<p>在src/main下新建resources文件夹，新建application.properties文件，将如下内容复制：<br><img src="https://gitee.com/butalways1121/img-Blog/raw/master/4.png" alt></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">banner.charset=UTF-8</span><br><span class="line">server.tomcat.uri-encoding=UTF-8</span><br><span class="line">spring.http.encoding.charset=UTF-8</span><br><span class="line">spring.http.encoding.enabled=true</span><br><span class="line">spring.http.encoding.force=true</span><br><span class="line">spring.messages.encoding=UTF-8</span><br><span class="line"></span><br><span class="line">server.port=8083</span><br><span class="line">spring.datasource.url=jdbc:mysql://数据库地址:3306/test?useUnicode=true&amp;characterEncoding=utf8&amp;useSSL=false</span><br><span class="line">spring.datasource.username=root</span><br><span class="line">spring.datasource.password=123456</span><br><span class="line">spring.datasource.driver-class-name=com.mysql.jdbc.Driver</span><br></pre></td></tr></table></figure>
 
 <p>将com.Select下的App.java代码更新如下：</p>
@@ -271,7 +271,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">package com.Select.controller;</span><br><span class="line"></span><br><span class="line">import org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line">import org.springframework.web.bind.annotation.PostMapping;</span><br><span class="line">import org.springframework.web.bind.annotation.RequestMapping;</span><br><span class="line">import org.springframework.web.bind.annotation.RestController;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">import com.Select.entity.InfoResult;</span><br><span class="line">import com.Select.service.InfoService;</span><br><span class="line"></span><br><span class="line">@RestController</span><br><span class="line">@RequestMapping(value=&quot;/api&quot;)</span><br><span class="line">public class InfoController &#123;</span><br><span class="line">	@Autowired</span><br><span class="line">	private InfoService infoService;</span><br><span class="line">	</span><br><span class="line">	@PostMapping(&quot;/select&quot;)</span><br><span class="line">	InfoResult selInfoResult() &#123;</span><br><span class="line">		return infoService.selectInfoResult();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <hr>
-<p>至此，整个项目已搭建完毕，整体的框架如下：<br><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/5.png" alt><br>然后就可以运行程序了：右键App.java，选择运行方式-Java应用程序，如果不出意外控制台会出现Hello World！，然后打开postman设置如下信息：<br><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/6.png" alt><br>点击send之后就可以成功获取到test数据库表的所有数据：<br><img src="https://raw.githubusercontent.com/butalways1121/img-Blog/master/7.png" alt></p>
+<p>至此，整个项目已搭建完毕，整体的框架如下：<br><img src="https://gitee.com/butalways1121/img-Blog/raw/master/5.png" alt><br>然后就可以运行程序了：右键App.java，选择运行方式-Java应用程序，如果不出意外控制台会出现Hello World！，然后打开postman设置如下信息：<br><img src="https://gitee.com/butalways1121/img-Blog/raw/master/6.png" alt><br>点击send之后就可以成功获取到test数据库表的所有数据：<br><img src="https://gitee.com/butalways1121/img-Blog/raw/master/7.png" alt></p>
 <hr>
 <h2 id="OVER！"><a href="#OVER！" class="headerlink" title="OVER！"></a>OVER！</h2>
       
@@ -613,19 +613,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Yilia</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">相册</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JPA</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JpaRepository</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Yilia</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">相册</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -685,6 +685,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">SpringMVC</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">MyBaits</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">RestTemplate</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Hadoop</a>
               </li>
              
@@ -697,14 +709,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">SpringMVC</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">MyBaits</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Storm</a>
               </li>
              
@@ -713,15 +717,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Zuul</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Eureka</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">高可用注册中心</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Zuul</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -754,10 +758,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">非关系型数据库</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">RestTemplate</a>
               </li>
              
               <li class="article-tag-list-item">
