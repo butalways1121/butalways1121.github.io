@@ -6,20 +6,15 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>SpringBoot整合jsp项目与web项目打包运行 | Hexo</title>
+  <title>Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="最近完成了一个可以实现文件上传下载及相关信息管理的小项目，在此过程中遇到了两个问题：一是将web项目打成war包，部署于Tomcat，使其可以跟随Tomcat服务的启动而启动；二是将SpringBoot整合JSP的项目打包，使其可以在服务器后台一直运行，方便使用。虽说过程实际很简单，但又由于各种原因折腾了许久，特此记录一下，以防再次掉坑。">
-<meta name="keywords" content="SpringBoot,war包,Tomcat">
-<meta property="og:type" content="article">
-<meta property="og:title" content="SpringBoot整合jsp项目与web项目打包运行">
-<meta property="og:url" content="http://yoursite.com/2019/11/18/SpringBoot整合jsp项目与web项目打包运行/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/page/4/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="最近完成了一个可以实现文件上传下载及相关信息管理的小项目，在此过程中遇到了两个问题：一是将web项目打成war包，部署于Tomcat，使其可以跟随Tomcat服务的启动而启动；二是将SpringBoot整合JSP的项目打包，使其可以在服务器后台一直运行，方便使用。虽说过程实际很简单，但又由于各种原因折腾了许久，特此记录一下，以防再次掉坑。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-11-18T08:08:44.482Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="SpringBoot整合jsp项目与web项目打包运行">
-<meta name="twitter:description" content="最近完成了一个可以实现文件上传下载及相关信息管理的小项目，在此过程中遇到了两个问题：一是将web项目打成war包，部署于Tomcat，使其可以跟随Tomcat服务的启动而启动；二是将SpringBoot整合JSP的项目打包，使其可以在服务器后台一直运行，方便使用。虽说过程实际很简单，但又由于各种原因折腾了许久，特此记录一下，以防再次掉坑。">
+<meta name="twitter:title" content="Hexo">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -187,14 +182,16 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-SpringBoot整合jsp项目与web项目打包运行" class="article article-type-post " itemscope itemprop="blogPost">
+            
+  
+    <article id="post-我的第一篇博客" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
         
-        <a href="/2019/11/18/SpringBoot整合jsp项目与web项目打包运行/" class="archive-article-date">
-  	<time datetime="2019-11-18T03:35:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-18</time>
+        <a href="/2019/07/05/我的第一篇博客/" class="archive-article-date">
+  	<time datetime="2019-07-05T07:04:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-05</time>
 </a>
         
       </header>
@@ -202,8 +199,8 @@
     <div class="article-entry" itemprop="articleBody">
     <p>
   
-    <h1 class="article-title_code_ant" itemprop="name">
-      SpringBoot整合jsp项目与web项目打包运行
+    <h1 itemprop="name">
+      <a class="article-title_code_ant" href="/2019/07/05/我的第一篇博客/">我的第一篇博客</a>
     </h1>
   
 </p>
@@ -213,7 +210,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">658字</span>
+        <span class="post-count">15字</span>
       </span>
     </span>
 
@@ -222,57 +219,19 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">2分</span>
+        <span class="post-count">1分</span>
       </span>
     </span>
 </div>
 
       
-        <p>最近完成了一个可以实现文件上传下载及相关信息管理的小项目，在此过程中遇到了两个问题：一是将web项目打成war包，部署于Tomcat，使其可以跟随Tomcat服务的启动而启动；二是将SpringBoot整合JSP的项目打包，使其可以在服务器后台一直运行，方便使用。虽说过程实际很简单，但又由于各种原因折腾了许久，特此记录一下，以防再次掉坑。</p>
-<a id="more"></a>
-<h2 id="一、Tomcat部署运行war包"><a href="#一、Tomcat部署运行war包" class="headerlink" title="一、Tomcat部署运行war包"></a>一、Tomcat部署运行war包</h2><p>将Web项目右键导出为war包，存放于Tomcat安装目录的webapps下，再配置如下：</p>
-<h3 id="1-配置Tomcat环境变量"><a href="#1-配置Tomcat环境变量" class="headerlink" title="1.配置Tomcat环境变量"></a>1.配置Tomcat环境变量</h3><p>包括如下四个变量：JAVA_HOME，对应值为jdk的根目录；JRE_HOME，对应值为JRE的根目录；CATALINA_HOME，对应值为Tomcat的根目录；Path ，该变量路径后添加Tomcat的bin目录及%CATALINA_HOME%\bin。示例如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">JAVA_HOME        D:\Program Files\Java\jdk1.8.0_211</span><br><span class="line">JRE_HOME         D:\Program Files\Java\jre1.8.0_211</span><br><span class="line">CATALINA_HOME    D:\apache-tomcat-7.0.96</span><br><span class="line">Path             D:\apache-tomcat-7.0.96\bin;%CATALINA_HOME%\lib;%CATALINA_HOME%\bin</span><br></pre></td></tr></table></figure>
-
-<h3 id="2-设置Tomcat服务"><a href="#2-设置Tomcat服务" class="headerlink" title="2.设置Tomcat服务"></a>2.设置Tomcat服务</h3><p>打开运行cmd，进入Tomcat安装路径的bin目录，运行命令：<code>service.bat install</code>，将Tomcat配置成服务，出现”The service ‘tomcat7’ has been installed”说明设置服务成功。</p>
-<h3 id="3-设置开机自启"><a href="#3-设置开机自启" class="headerlink" title="3.设置开机自启"></a>3.设置开机自启</h3><p>Win+R输入<code>services.msc</code>，打开本地的windows服务，找到并启动Apache Tomcat服务，将其修改为自动运行，即可设置为开机自启和后台运行，每次开机后直接请求对应地址就能访问对应的web项目。</p>
-<h2 id="二、后台运行SpringBoot-JSP项目"><a href="#二、后台运行SpringBoot-JSP项目" class="headerlink" title="二、后台运行SpringBoot+JSP项目"></a>二、后台运行SpringBoot+JSP项目</h2><p>这个项目需要注意对数据库的操作要直接写在dao层，要是写在mapper文件夹下，后台启动war包会报错，至于原因暂不清楚，下次别踩坑就好了。打包运行过程十分简单，具体如下：</p>
-<h3 id="1-打包项目"><a href="#1-打包项目" class="headerlink" title="1.打包项目"></a>1.打包项目</h3><p>因为SpringBoot整合的是JSP页面，如若直接打成jar包，其中是不包含jsp页面的，所以需要将SpringBoot项目的pom.xml文件中的<code>&lt;packaging&gt;war&lt;/packaging&gt;</code>修改成<code>&lt;packaging&gt;war&lt;/packaging&gt;</code>，以便打成war包，方便部署。修改完成之后首先右键项目，选择运行方式的”Maven clean”清除target目录，再选择”Maven install”将当前工程打成war包并放入到本地仓库中。</p>
-<h3 id="2-后台运行war包"><a href="#2-后台运行war包" class="headerlink" title="2.后台运行war包"></a>2.后台运行war包</h3><p>打开cmd，切换目录到上一步war包存放的目录，运行<code>javaw -jar war包包名</code>实现后台运行war包，接着在浏览器中输入相应的请求即可访问，如若该主机一直开启，则可以随时访问。</p>
-
+        <h1 id="第一章"><a href="#第一章" class="headerlink" title="第一章"></a>第一章</h1><hr>
+<p>内容</p>
+        
+          <a class="article-more-a" href="/2019/07/05/我的第一篇博客/#more">more >></a>
+        
       
 
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="/assets/img/alipay.png">
-                      <span class="reward-type">支付宝</span>
-                    </div>
-                    
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="/assets/img/wechat.png">
-                      <span class="reward-type">微信</span>
-                    </div>
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -283,15 +242,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">SpringBoot</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">war包</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Tomcat</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
         		</li>
       		
 		</ul>
@@ -300,84 +251,16 @@
       
 
       
-
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/07/05/我的第一篇博客/">展开全文 >></a>
+        </p>
       
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
-        </div>
-      </div>
-    </span>
-  </div>
-</div>
 
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/11/18/SpringBoot整合jsp项目与web项目打包运行/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2019/11/19/SpringCloud之Eureka搭建高可用的注册中心/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          SpringCloud之Eureka搭建高可用的注册中心
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2019/10/14/圈小猫/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">圈小猫</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -392,48 +275,17 @@
         </div>
         
         
-        <div class="toc-container tooltip-left">
-            <i class="icon-font icon-category"></i>
-            <div class="tooltip tooltip-east">
-                <span class="tooltip-item">
-                </span>
-                <span class="tooltip-content">
-                    <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、Tomcat部署运行war包"><span class="toc-number">1.</span> <span class="toc-text">一、Tomcat部署运行war包</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-配置Tomcat环境变量"><span class="toc-number">1.1.</span> <span class="toc-text">1.配置Tomcat环境变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-设置Tomcat服务"><span class="toc-number">1.2.</span> <span class="toc-text">2.设置Tomcat服务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-设置开机自启"><span class="toc-number">1.3.</span> <span class="toc-text">3.设置开机自启</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、后台运行SpringBoot-JSP项目"><span class="toc-number">2.</span> <span class="toc-text">二、后台运行SpringBoot+JSP项目</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-打包项目"><span class="toc-number">2.1.</span> <span class="toc-text">1.打包项目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-后台运行war包"><span class="toc-number">2.2.</span> <span class="toc-text">2.后台运行war包</span></a></li></ol></li></ol>
-                    </div>
-                </span>
-            </div>
-        </div>
-        
     </div>
 </aside>
 
 
 
-  
-  
-  
 
   
-
   
-
-  
-  <div id="gitment-ctn"></div> 
-<link rel="stylesheet" href="https://billts.site/extra_css/gitment.css">
-<script src="https://billts.site/js/gitment.js"></script>
-<script>
-var gitment = new Gitment({
-  id: decodeURI(window.location.pathname),
-  owner: 'butalways1121',
-  repo: 'butalways1121.github.io',
-  oauth: {
-    client_id: '04d1e89c3e35949cd1df',
-    client_secret: '349862188473214c081a620b26558ced1977789b',
-  },
-})
-gitment.render('gitment-ctn')
-</script>
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span>
+    </nav>
   
 
 
@@ -463,8 +315,8 @@ gitment.render('gitment-ctn')
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: false,
-		isPost: true,
+		isHome: true,
+		isPost: false,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,

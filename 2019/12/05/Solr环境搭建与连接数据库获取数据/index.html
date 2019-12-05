@@ -6,20 +6,27 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>SpringBoot整合jsp项目与web项目打包运行 | Hexo</title>
+  <title>Solr环境搭建与连接数据库获取数据 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="最近完成了一个可以实现文件上传下载及相关信息管理的小项目，在此过程中遇到了两个问题：一是将web项目打成war包，部署于Tomcat，使其可以跟随Tomcat服务的启动而启动；二是将SpringBoot整合JSP的项目打包，使其可以在服务器后台一直运行，方便使用。虽说过程实际很简单，但又由于各种原因折腾了许久，特此记录一下，以防再次掉坑。">
-<meta name="keywords" content="SpringBoot,war包,Tomcat">
+  <meta name="description" content="&amp;emsp;&amp;emsp;本文的主要内容是Solr在Windows环境下的搭建，接着简单介绍了使用Solr创建Core并导入数据库的数据，第一次接触Solr，特此记录一下整个实现过程，便于下次使用。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="SpringBoot整合jsp项目与web项目打包运行">
-<meta property="og:url" content="http://yoursite.com/2019/11/18/SpringBoot整合jsp项目与web项目打包运行/index.html">
+<meta property="og:title" content="Solr环境搭建与连接数据库获取数据">
+<meta property="og:url" content="http://yoursite.com/2019/12/05/Solr环境搭建与连接数据库获取数据/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="最近完成了一个可以实现文件上传下载及相关信息管理的小项目，在此过程中遇到了两个问题：一是将web项目打成war包，部署于Tomcat，使其可以跟随Tomcat服务的启动而启动；二是将SpringBoot整合JSP的项目打包，使其可以在服务器后台一直运行，方便使用。虽说过程实际很简单，但又由于各种原因折腾了许久，特此记录一下，以防再次掉坑。">
+<meta property="og:description" content="&amp;emsp;&amp;emsp;本文的主要内容是Solr在Windows环境下的搭建，接着简单介绍了使用Solr创建Core并导入数据库的数据，第一次接触Solr，特此记录一下整个实现过程，便于下次使用。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-11-18T08:08:44.482Z">
+<meta property="og:image" content="https://gitee.com/butalways1121/img-Blog/raw/master/112.png">
+<meta property="og:image" content="https://gitee.com/butalways1121/img-Blog/raw/master/113.png">
+<meta property="og:image" content="https://gitee.com/butalways1121/img-Blog/raw/master/114.png">
+<meta property="og:image" content="https://gitee.com/butalways1121/img-Blog/raw/master/115.png">
+<meta property="og:image" content="https://gitee.com/butalways1121/img-Blog/raw/master/116.png">
+<meta property="og:image" content="https://gitee.com/butalways1121/img-Blog/raw/master/117.png">
+<meta property="og:image" content="https://gitee.com/butalways1121/img-Blog/raw/master/118.png">
+<meta property="og:updated_time" content="2019-12-05T09:20:51.050Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="SpringBoot整合jsp项目与web项目打包运行">
-<meta name="twitter:description" content="最近完成了一个可以实现文件上传下载及相关信息管理的小项目，在此过程中遇到了两个问题：一是将web项目打成war包，部署于Tomcat，使其可以跟随Tomcat服务的启动而启动；二是将SpringBoot整合JSP的项目打包，使其可以在服务器后台一直运行，方便使用。虽说过程实际很简单，但又由于各种原因折腾了许久，特此记录一下，以防再次掉坑。">
+<meta name="twitter:title" content="Solr环境搭建与连接数据库获取数据">
+<meta name="twitter:description" content="&amp;emsp;&amp;emsp;本文的主要内容是Solr在Windows环境下的搭建，接着简单介绍了使用Solr创建Core并导入数据库的数据，第一次接触Solr，特此记录一下整个实现过程，便于下次使用。">
+<meta name="twitter:image" content="https://gitee.com/butalways1121/img-Blog/raw/master/112.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -187,14 +194,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-SpringBoot整合jsp项目与web项目打包运行" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Solr环境搭建与连接数据库获取数据" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
         
-        <a href="/2019/11/18/SpringBoot整合jsp项目与web项目打包运行/" class="archive-article-date">
-  	<time datetime="2019-11-18T03:35:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-18</time>
+        <a href="/2019/12/05/Solr环境搭建与连接数据库获取数据/" class="archive-article-date">
+  	<time datetime="2019-12-05T05:54:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-05</time>
 </a>
         
       </header>
@@ -203,7 +210,7 @@
     <p>
   
     <h1 class="article-title_code_ant" itemprop="name">
-      SpringBoot整合jsp项目与web项目打包运行
+      Solr环境搭建与连接数据库获取数据
     </h1>
   
 </p>
@@ -213,7 +220,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">658字</span>
+        <span class="post-count">2.1k字</span>
       </span>
     </span>
 
@@ -222,23 +229,41 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">2分</span>
+        <span class="post-count">9分</span>
       </span>
     </span>
 </div>
 
       
-        <p>最近完成了一个可以实现文件上传下载及相关信息管理的小项目，在此过程中遇到了两个问题：一是将web项目打成war包，部署于Tomcat，使其可以跟随Tomcat服务的启动而启动；二是将SpringBoot整合JSP的项目打包，使其可以在服务器后台一直运行，方便使用。虽说过程实际很简单，但又由于各种原因折腾了许久，特此记录一下，以防再次掉坑。</p>
+        <p>&emsp;&emsp;<strong>本文的主要内容是Solr在Windows环境下的搭建，接着简单介绍了使用Solr创建Core并导入数据库的数据，第一次接触Solr，特此记录一下整个实现过程，便于下次使用。</strong></p>
 <a id="more"></a>
-<h2 id="一、Tomcat部署运行war包"><a href="#一、Tomcat部署运行war包" class="headerlink" title="一、Tomcat部署运行war包"></a>一、Tomcat部署运行war包</h2><p>将Web项目右键导出为war包，存放于Tomcat安装目录的webapps下，再配置如下：</p>
-<h3 id="1-配置Tomcat环境变量"><a href="#1-配置Tomcat环境变量" class="headerlink" title="1.配置Tomcat环境变量"></a>1.配置Tomcat环境变量</h3><p>包括如下四个变量：JAVA_HOME，对应值为jdk的根目录；JRE_HOME，对应值为JRE的根目录；CATALINA_HOME，对应值为Tomcat的根目录；Path ，该变量路径后添加Tomcat的bin目录及%CATALINA_HOME%\bin。示例如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">JAVA_HOME        D:\Program Files\Java\jdk1.8.0_211</span><br><span class="line">JRE_HOME         D:\Program Files\Java\jre1.8.0_211</span><br><span class="line">CATALINA_HOME    D:\apache-tomcat-7.0.96</span><br><span class="line">Path             D:\apache-tomcat-7.0.96\bin;%CATALINA_HOME%\lib;%CATALINA_HOME%\bin</span><br></pre></td></tr></table></figure>
+<h2 id="一、Solr简介"><a href="#一、Solr简介" class="headerlink" title="一、Solr简介"></a>一、Solr简介</h2><h3 id="1-什么是Solr"><a href="#1-什么是Solr" class="headerlink" title="1.什么是Solr?"></a>1.什么是Solr?</h3><p>&emsp;&emsp;现实生活中我们都知道大多数网站或应用都必须具有某种搜索功能，问题是搜索功能往往是巨大的资源消耗并且它们由于沉重的数据库加载而拖垮你的应用的性能。<br>&emsp;&emsp;这就是为什么转移负载到一个外部的搜索服务器是一个不错的主意，Apache Solr是一个流行的开源搜索服务器，它通过使用类似REST的HTTP API，这就确保你能从几乎任何编程语言来使用Solr。<br>&emsp;&emsp;Solr是一个开源搜索平台，用于构建搜索应用程序。 它建立在Lucene(全文搜索引擎)之上。Solr是企业级的，快速的和高度可扩展的。使用Solr构建的应用程序非常复杂，可提供高性能。<br>&emsp;&emsp;为了在CNET网络的公司网站上添加搜索功能，Yonik Seely于2004年创建了Solr。并在2006年1月，它成为Apache软件基金会下的一个开源项目，并于2016年发布最新版本Solr 6.0，支持并行SQL查询的执行。<br>&emsp;&emsp;Solr可以和Hadoop一起使用。由于Hadoop处理大量数据，Solr帮助我们从这么大的源中找到所需的信息。不仅限于搜索，Solr也可以用于存储目的。像其他NoSQL数据库一样，它是一种非关系数据存储和处理技术。</p>
+<hr>
+<p>&emsp;&emsp;总之，Solr是一个可扩展的，可部署，搜索/存储引擎，优化搜索大量以文本为中心的数据。</p>
+<h3 id="2-为什么需要Solr"><a href="#2-为什么需要Solr" class="headerlink" title="2.为什么需要Solr?"></a>2.为什么需要Solr?</h3><p>&emsp;&emsp;（1）solr本身也可以看成数据库(NOsql类型)，但它比数据库搜索速度更快，所以在项目中我们一般把搜搜的部分交给Solr，就像我们在京东首页所看到的商品信息，并不是来自数据库，而是来源于sorl的索引库；</p>
+<p>&emsp;&emsp;（2）数据库本身不能实现分词效果，而只能使用模糊查询，但是模糊查询非常低效，查询速度比较慢，由于在实际生活中，一般搜索是用的比较多的，这样数据库压力自然就很大，所以我们就让供专业的Solr来做搜索功能。</p>
+<h2 id="二、Solr环境搭建"><a href="#二、Solr环境搭建" class="headerlink" title="二、Solr环境搭建"></a>二、Solr环境搭建</h2><h3 id="1-环境准备"><a href="#1-环境准备" class="headerlink" title="1.环境准备"></a>1.环境准备</h3><p>&emsp;&emsp;Solr 6.6.5：下载地址：<code>http://archive.apache.org/dist/lucene/solr/6.6.5/</code> ，选择<code>solr-6.6.5.zip</code>下载解压为<code>solr-6.6.5</code>文件夹;<br>&emsp;&emsp;Java：jdk 1.8，这个就不用多说了;<br>&emsp;&emsp;Tomcat 8.0.26：下载地址：<code>https://archive.apache.org/dist/tomcat/tomcat-8/v8.0.26/bin/</code>，选择下载<code>apache-tomcat-8.0.26-windows-x64.zip</code>解压为<code>apache-tomcat-8.0.26</code>文件夹。</p>
+<h3 id="2-部署Solr"><a href="#2-部署Solr" class="headerlink" title="2.部署Solr"></a>2.部署Solr</h3><p>&emsp;&emsp;（1）将<code>solr-6.6.5\server\solr-webapp</code>下的<code>webapp</code>文件夹复制到<code>apache-tomcat-8.0.26\webapps</code>下，重命名为solr（可以为任意名称）；<br>&emsp;&emsp;（2）将<code>solr-6.6.5\server\lib\ext</code>下的所有jar包拷贝到<code>apache-tomcat-8.0.26\webapps\solr\WEB-INF\lib</code>路径下;<br>&emsp;&emsp;（3）将<code>solr-6.6.5\dist</code>下的<code>solr-dataimporthandler-6.6.5.jar</code>和<code>solr-dataimporthandler-extras-6.6.5.jar</code>两个jar包拷贝到<code>apache-tomcat-8.0.26\webapps\solr\WEB-INF\lib</code>路径下；<br>&emsp;&emsp;（4）将<code>solr-6.6.5\server\lib</code>下的以<code>metrics</code>开头的5个jar包拷贝到<code>apache-tomcat-8.0.26\webapps\solr\WEB-INF\lib</code>路径下（metrics-core-3.2.2.jar、metrics-ganglia-3.2.2.jar、metrics-graphite-3.2.2.jar、metrics-jetty9-3.2.2.jar、metrics-jvm-3.2.2.jar）；<br>&emsp;&emsp;（5）将<code>solr-6.6.5\server\solr</code>文件夹中的所有内容复制到一个非中文的目录下，该目录用作<code>solr/home</code>文件夹，例如我这里是<code>D:\solr-home</code>；<br>&emsp;&emsp;（6）修改<code>apache-tomcat-8.0.26\webapps\solr\WEB-INF\web.xml</code>文件来指定solr/home，搜索到：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;env-entry&gt;</span><br><span class="line">    &lt;env-entry-name&gt;solr/home&lt;/env-entry-name&gt;</span><br><span class="line">    &lt;env-entry-value&gt;/put/your/solr/home/here&lt;/env-entry-value&gt;</span><br><span class="line">    &lt;env-entry-type&gt;Java.lang.String&lt;/env-entry-type&gt;</span><br><span class="line">&lt;/env-entry&gt;</span><br></pre></td></tr></table></figure>
 
-<h3 id="2-设置Tomcat服务"><a href="#2-设置Tomcat服务" class="headerlink" title="2.设置Tomcat服务"></a>2.设置Tomcat服务</h3><p>打开运行cmd，进入Tomcat安装路径的bin目录，运行命令：<code>service.bat install</code>，将Tomcat配置成服务，出现”The service ‘tomcat7’ has been installed”说明设置服务成功。</p>
-<h3 id="3-设置开机自启"><a href="#3-设置开机自启" class="headerlink" title="3.设置开机自启"></a>3.设置开机自启</h3><p>Win+R输入<code>services.msc</code>，打开本地的windows服务，找到并启动Apache Tomcat服务，将其修改为自动运行，即可设置为开机自启和后台运行，每次开机后直接请求对应地址就能访问对应的web项目。</p>
-<h2 id="二、后台运行SpringBoot-JSP项目"><a href="#二、后台运行SpringBoot-JSP项目" class="headerlink" title="二、后台运行SpringBoot+JSP项目"></a>二、后台运行SpringBoot+JSP项目</h2><p>这个项目需要注意对数据库的操作要直接写在dao层，要是写在mapper文件夹下，后台启动war包会报错，至于原因暂不清楚，下次别踩坑就好了。打包运行过程十分简单，具体如下：</p>
-<h3 id="1-打包项目"><a href="#1-打包项目" class="headerlink" title="1.打包项目"></a>1.打包项目</h3><p>因为SpringBoot整合的是JSP页面，如若直接打成jar包，其中是不包含jsp页面的，所以需要将SpringBoot项目的pom.xml文件中的<code>&lt;packaging&gt;war&lt;/packaging&gt;</code>修改成<code>&lt;packaging&gt;war&lt;/packaging&gt;</code>，以便打成war包，方便部署。修改完成之后首先右键项目，选择运行方式的”Maven clean”清除target目录，再选择”Maven install”将当前工程打成war包并放入到本地仓库中。</p>
-<h3 id="2-后台运行war包"><a href="#2-后台运行war包" class="headerlink" title="2.后台运行war包"></a>2.后台运行war包</h3><p>打开cmd，切换目录到上一步war包存放的目录，运行<code>javaw -jar war包包名</code>实现后台运行war包，接着在浏览器中输入相应的请求即可访问，如若该主机一直开启，则可以随时访问。</p>
+<p>将其中<code>/put/your/solr/home/here</code>修改为上一步的<code>solr/home</code>路径,如<code>D:\solr-home</code>;<br>&emsp;&emsp;（7）在<code>apache-tomcat-8.0.26\webapps\solr\WEB-INF</code>下创建classes文件夹，将<code>solr-6.6.5\server\resources</code>文件夹下的<code>log4j.properties</code>文件拷贝到classes文件夹中；<br>&emsp;&emsp;（8）打开<code>apache-tomcat-8.0.26\webapps\solr\WEB-INF\web.xml</code>文件，注释掉以下权限，否则访问Solr会出现没有授权的错误(大致是在168行)：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;security-constraint&gt;</span><br><span class="line">    &lt;web-resource-collection&gt;</span><br><span class="line">        &lt;web-resource-name&gt;Disable TRACE&lt;/web-resource-name&gt;</span><br><span class="line">        &lt;url-pattern&gt;/&lt;/url-pattern&gt;</span><br><span class="line">        &lt;http-method&gt;TRACE&lt;/http-method&gt;</span><br><span class="line">    &lt;/web-resource-collection&gt;</span><br><span class="line">    &lt;auth-constraint/&gt;</span><br><span class="line">&lt;/security-constraint&gt;</span><br><span class="line">&lt;security-constraint&gt;</span><br><span class="line">    &lt;web-resource-collection&gt;</span><br><span class="line">        &lt;web-resource-name&gt;Enable everything but TRACE&lt;/web-resource-name&gt;</span><br><span class="line">        &lt;url-pattern&gt;/&lt;/url-pattern&gt;</span><br><span class="line">        &lt;http-method-omission&gt;TRACE&lt;/http-method-omission&gt;</span><br><span class="line">    &lt;/web-resource-collection&gt;</span><br><span class="line">&lt;/security-constraint&gt;</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;（9）双击<code>apache-tomcat-8.0.26\bin\startup.bat</code>启动Tomcat，然后在浏览器输入：<code>http://127.0.0.1:8080/solr/index.html</code>，出现如下Solr管理界面则Solr环境搭建完毕：<br><img src="https://gitee.com/butalways1121/img-Blog/raw/master/112.png" alt></p>
+<h2 id="三、使用Solr创建Core从MySql数据库中导入数据"><a href="#三、使用Solr创建Core从MySql数据库中导入数据" class="headerlink" title="三、使用Solr创建Core从MySql数据库中导入数据"></a>三、使用Solr创建Core从MySql数据库中导入数据</h2><h3 id="1-创建数据表"><a href="#1-创建数据表" class="headerlink" title="1.创建数据表"></a>1.创建数据表</h3><p>新建solrtest数据库，再创建一张solr表，创建字段如下：<br><img src="https://gitee.com/butalways1121/img-Blog/raw/master/113.png" alt><br>再简单添加几条数据：<br><img src="https://gitee.com/butalways1121/img-Blog/raw/master/114.png" alt></p>
+<h3 id="2-创建Core"><a href="#2-创建Core" class="headerlink" title="2.创建Core"></a>2.创建Core</h3><p>&emsp;&emsp;在Solr管理界面点击左侧Core Admin -&gt; Add Core，在其中的<code>name</code>和<code>instanceDir</code>输入自己想要的名字，其余默认即可，如下：<br><img src="https://gitee.com/butalways1121/img-Blog/raw/master/115.png" alt><br>点勾之后应该会报错：<br><img src="https://gitee.com/butalways1121/img-Blog/raw/master/116.png" alt><br>上述报错表示的是找不到Solr的配置文件，解决办法是将<code>solr-6.6.5\server\solr\configsets\basic_configs</code>下的conf目录复制到<code>D:\solr-home</code>路径（就是之前指定的<code>solr\home</code>路径）下的<code>first_core</code>中去。</p>
+<p>创建成功之后就可以在管理界面看到刚才新建的内核了：</p>
+<h3 id="3-修改相关配置文件"><a href="#3-修改相关配置文件" class="headerlink" title="3.修改相关配置文件"></a>3.修改相关配置文件</h3><p>&emsp;&emsp;(1)在<code>D:\solr-home\first_core\conf</code>目录下的<code>solrconfig.xml</code>文件中<code>&lt;/config&gt;</code>标签之前添加如下配置信息:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--引入DataImportHandler类的jar--&gt;</span><br><span class="line">&lt;requestHandler name=<span class="string">"/dataimport"</span> class=<span class="string">"org.apache.solr.handler.dataimport.DataImportHandler"</span>&gt;</span><br><span class="line">    &lt;lst name=<span class="string">"defaults"</span>&gt;</span><br><span class="line">        &lt;str name=<span class="string">"config"</span>&gt;data-config.xml&lt;/str&gt;</span><br><span class="line">    &lt;/lst&gt;</span><br><span class="line">&lt;/requestHandler&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意：需要确认文件中不存在其他的dataimport，如果存在直接替换即可.</strong><br>&emsp;&emsp;（2）在<code>D:\solr-home\first_core\conf</code>目录下创建<code>data-config.xml</code>文件，在其中配置数据库相关属性：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span>?&gt;</span><br><span class="line">&lt;dataConfig&gt;</span><br><span class="line">    &lt;dataSource <span class="built_in">type</span>=<span class="string">"JdbcDataSource"</span> driver=<span class="string">"com.mysql.cj.jdbc.Driver"</span> url=<span class="string">"jdbc:mysql://127.0.0.1:3306/solrtest?useUnicode=true&amp;amp;serverTimezone=Asia/Shanghai&amp;amp;useSSL=false&amp;amp;characterEncoding=utf8"</span> user=<span class="string">"root"</span> password=<span class="string">"root"</span> batchSize=<span class="string">"-1"</span> /&gt;</span><br><span class="line">  　&lt;document&gt;</span><br><span class="line">        &lt;!-- name 属性，就代表着一个文档，可以随便命名 --&gt;</span><br><span class="line">        &lt;!-- query 是一条 sql，代表在数据库查找出来的数据 --&gt;</span><br><span class="line">        &lt;entity name=<span class="string">"core_test"</span> query=<span class="string">"select id,name,age,addtime from solr"</span>&gt;</span><br><span class="line">            &lt;!-- 每一个field映射着数据库中列与文档中的域，column是数据库列，name是solr的域(必须是在managed-schema文件中配置过的域才行) --&gt;</span><br><span class="line">            &lt;!--column的id是数据库的id,name的id是managed_schema里面的id，id是必须，并且唯一的--&gt;</span><br><span class="line">            &lt;field column=<span class="string">"id"</span> name=<span class="string">"id"</span> /&gt;</span><br><span class="line">            &lt;field column=<span class="string">"name"</span> name=<span class="string">"name"</span> /&gt;</span><br><span class="line">            &lt;field column=<span class="string">"age"</span> name=<span class="string">"age"</span> /&gt;</span><br><span class="line">            &lt;field column=<span class="string">"addtime"</span> name=<span class="string">"addtime"</span> /&gt;</span><br><span class="line">        &lt;/entity&gt;</span><br><span class="line">    &lt;/document&gt;</span><br><span class="line">&lt;/dataConfig&gt;</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;（3）修改<code>D:\solr-home\first_core\conf\managed-schema</code>文件，添加如下信息，下面的字段要和<code>data-config.xml</code>文件里面字段对应起来：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;field name=<span class="string">"id"</span> <span class="built_in">type</span>=<span class="string">"int"</span> indexed=<span class="string">"true"</span> stored=<span class="string">"false"</span>/&gt;</span><br><span class="line">&lt;field name=<span class="string">"name"</span> <span class="built_in">type</span>=<span class="string">"string"</span> indexed=<span class="string">"true"</span> stored=<span class="string">"true"</span>/&gt;</span><br><span class="line">&lt;field name=<span class="string">"age"</span> <span class="built_in">type</span>=<span class="string">"string"</span> indexed=<span class="string">"true"</span> stored=<span class="string">"true"</span>/&gt;</span><br><span class="line">&lt;field name=<span class="string">"addtime"</span> <span class="built_in">type</span>=<span class="string">"date"</span> indexed=<span class="string">"true"</span> stored=<span class="string">"true"</span>/&gt;</span><br><span class="line">&lt;uniqueKey&gt;id&lt;/uniqueKey&gt;</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;（4）拷贝Mysql驱动<code>mysql-connector-java-8.0.1.jar</code>到<code>apache-tomcat-8.0.26\webapps\solr\WEB-INF\lib</code>目录下（我的Mysql版本是8.0的），需要注意的是Mysql驱动的版本最好要和Mysql的版本一致，否则会报错。Mysql8.0版的驱动下载链接：<code>链接: https://pan.baidu.com/s/1lpGbsysK83qQo2qpYUWItg，提取码：2wfv</code>。</p>
+<h3 id="4-测试"><a href="#4-测试" class="headerlink" title="4.测试"></a>4.测试</h3><p>&emsp;&emsp;完成之后，重启Tomcat，浏览器输入<code>http://127.0.0.1:8080/solr/index.html</code>打开管理界面，选择之前新建的first_core，选择Dataimport -&gt; full-import(全量导入) -&gt; excute执行导入数据库数据，导入成功会出现如下界面：<br><img src="https://gitee.com/butalways1121/img-Blog/raw/master/117.png" alt><br>接着点击Query -&gt; Execute Query 进行数据的查询，可以查看到送数据库导入的数据：<br><img src="https://gitee.com/butalways1121/img-Blog/raw/master/118.png" alt></p>
 
       
 
@@ -278,25 +303,6 @@
     <div class="article-info article-info-index">
       
       
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">SpringBoot</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">war包</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Tomcat</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
       
 
       
@@ -347,7 +353,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/11/18/SpringBoot整合jsp项目与web项目打包运行/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/12/05/Solr环境搭建与连接数据库获取数据/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -361,18 +367,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/11/19/SpringCloud之Eureka搭建高可用的注册中心/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          SpringCloud之Eureka搭建高可用的注册中心
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/10/14/圈小猫/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">圈小猫</div>
+    <a href="/2019/12/04/SpringBoot之Dubbo/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">SpringBoot之Dubbo</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -399,7 +396,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、Tomcat部署运行war包"><span class="toc-number">1.</span> <span class="toc-text">一、Tomcat部署运行war包</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-配置Tomcat环境变量"><span class="toc-number">1.1.</span> <span class="toc-text">1.配置Tomcat环境变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-设置Tomcat服务"><span class="toc-number">1.2.</span> <span class="toc-text">2.设置Tomcat服务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-设置开机自启"><span class="toc-number">1.3.</span> <span class="toc-text">3.设置开机自启</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、后台运行SpringBoot-JSP项目"><span class="toc-number">2.</span> <span class="toc-text">二、后台运行SpringBoot+JSP项目</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-打包项目"><span class="toc-number">2.1.</span> <span class="toc-text">1.打包项目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-后台运行war包"><span class="toc-number">2.2.</span> <span class="toc-text">2.后台运行war包</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、Solr简介"><span class="toc-number">1.</span> <span class="toc-text">一、Solr简介</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-什么是Solr"><span class="toc-number">1.1.</span> <span class="toc-text">1.什么是Solr?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-为什么需要Solr"><span class="toc-number">1.2.</span> <span class="toc-text">2.为什么需要Solr?</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、Solr环境搭建"><span class="toc-number">2.</span> <span class="toc-text">二、Solr环境搭建</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-环境准备"><span class="toc-number">2.1.</span> <span class="toc-text">1.环境准备</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-部署Solr"><span class="toc-number">2.2.</span> <span class="toc-text">2.部署Solr</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、使用Solr创建Core从MySql数据库中导入数据"><span class="toc-number">3.</span> <span class="toc-text">三、使用Solr创建Core从MySql数据库中导入数据</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-创建数据表"><span class="toc-number">3.1.</span> <span class="toc-text">1.创建数据表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-创建Core"><span class="toc-number">3.2.</span> <span class="toc-text">2.创建Core</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-修改相关配置文件"><span class="toc-number">3.3.</span> <span class="toc-text">3.修改相关配置文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-测试"><span class="toc-number">3.4.</span> <span class="toc-text">4.测试</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
