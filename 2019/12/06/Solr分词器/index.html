@@ -6,15 +6,24 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: Centos7 | Hexo</title>
+  <title>Solr分词器 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/tags/Centos7/index.html">
+  <meta name="description" content="&amp;emsp;&amp;emsp;上一篇博客中搭建了Solr的环境，本文来介绍一下Solr中IKAnalyzer分词器的配置。 关于分词&amp;emsp;&amp;emsp;分词是指将一个中文词语拆成若干个词，提供搜索引擎进行查找，比如：北京大学是一个词，如果进行拆分的话可以得到：北京与大学，甚至北京大学也是一个词。">
+<meta name="keywords" content="Solr,分词,IKAnalyzer">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Solr分词器">
+<meta property="og:url" content="http://yoursite.com/2019/12/06/Solr分词器/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="&amp;emsp;&amp;emsp;上一篇博客中搭建了Solr的环境，本文来介绍一下Solr中IKAnalyzer分词器的配置。 关于分词&amp;emsp;&amp;emsp;分词是指将一个中文词语拆成若干个词，提供搜索引擎进行查找，比如：北京大学是一个词，如果进行拆分的话可以得到：北京与大学，甚至北京大学也是一个词。">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="https://gitee.com/butalways1121/img-Blog/raw/master/119.png">
+<meta property="og:image" content="https://gitee.com/butalways1121/img-Blog/raw/master/120.png">
+<meta property="og:image" content="https://gitee.com/butalways1121/img-Blog/raw/master/121.png">
+<meta property="og:updated_time" content="2019-12-06T02:30:10.681Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="Solr分词器">
+<meta name="twitter:description" content="&amp;emsp;&amp;emsp;上一篇博客中搭建了Solr的环境，本文来介绍一下Solr中IKAnalyzer分词器的配置。 关于分词&amp;emsp;&amp;emsp;分词是指将一个中文词语拆成若干个词，提供搜索引擎进行查找，比如：北京大学是一个词，如果进行拆分的话可以得到：北京与大学，甚至北京大学也是一个词。">
+<meta name="twitter:image" content="https://gitee.com/butalways1121/img-Blog/raw/master/119.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -182,68 +191,255 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="n-Solr分词器" class="article article-type-n " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/09/22/Hadoop及Hbase单机环境的搭建/" class="archive-article-date">
-  	<time datetime="2019-09-22T07:45:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-22</time>
+      <header class="article-header">
+        
+        
+        <a href="/2019/12/06/Solr分词器/" class="archive-article-date">
+  	<time datetime="2019-12-06T00:49:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-06</time>
 </a>
-        </div>
-    	 
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+    <p>
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/22/Hadoop及Hbase单机环境的搭建/">Hadoop及Hbase单机环境的搭建</a>
+    <h1 class="article-title_code_ant" itemprop="name">
+      Solr分词器
     </h1>
   
+</p>
+    
+    <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">771字</span>
+      </span>
+    </span>
 
-        <div class="article-info info-on-right">
-          
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">3分</span>
+      </span>
+    </span>
+</div>
+
+      
+        <p>&emsp;&emsp;上一篇<a href="https://butalways1121.gitee.io/2019/12/05/Solr%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E4%B8%8E%E8%BF%9E%E6%8E%A5%E6%95%B0%E6%8D%AE%E5%BA%93%E8%8E%B7%E5%8F%96%E6%95%B0%E6%8D%AE/" target="_blank" rel="noopener">博客</a>中搭建了Solr的环境，本文来介绍一下Solr中IKAnalyzer分词器的配置。</p>
+<h2 id="关于分词"><a href="#关于分词" class="headerlink" title="关于分词"></a>关于分词</h2><p>&emsp;&emsp;<strong>分词</strong>是指将一个中文词语拆成若干个词，提供搜索引擎进行查找，比如：<code>北京大学</code>是一个词，如果进行拆分的话可以得到：<code>北京</code>与<code>大学</code>，甚至<code>北京大学</code>也是一个词。</p>
+<a id="more"></a>
+
+<p>&emsp;&emsp;市面上常见的分词工具有IKAnalyzer、MMSeg4j、Paoding等，这几个分词器各有优劣，大家可以自行研究。</p>
+<hr>
+<p>&emsp;&emsp;本篇文章是关于Solr中IKAnalyzer分词器的配置使用，这里简单介绍一下IKAnalyzer：</p>
+<p>&emsp;&emsp;IKAnalyzer是一个开源的，基于java语言开发的轻量级的中文分词工具包。它是以开源项目Luence为主体的，结合词典分词和文法分析算法的中文分词组件。</p>
+<p>&emsp;&emsp;IKAnalyzer下载地址：<a href="https://pan.baidu.com/s/1Dbma2vAepBSsCag_EztTT" target="_blank" rel="noopener">IKAnalyer</a>，下载完成解压为<code>ikanalyzer-solr5</code>文件夹，如下：</p>
+<p><img src="https://gitee.com/butalways1121/img-Blog/raw/master/119.png" alt></p>
+<p>其中:<br>&emsp;&emsp;<code>ext.dic</code>文件为扩展字典，这是根据“分词器扩展配置文件”中的说明自己新建的文件，表示一些<code>IKAnalyzer</code>自己无法解析的专有词汇，需要程序员手动告诉它，这些词是完整有语义的词，不要再做切分，如 “量子物理”、“拉普拉斯方程”、“高斯定理”、“傅里叶级数” 等等;<br>&emsp;&emsp;<code>IKAnalyzer.cfg.xml</code>文件为分词器扩展配置文件；<br>&emsp;&emsp;<code>stopword.dic</code>为停止词字典，表示无意义的词，中文分词的时候会忽略它们，如 “的”、“地”、“得” 等；<br>&emsp;&emsp;<code>solr-analyzer-ik-5.1.0.jar</code>和<code>ik-analyzer-solr5-5.x.jar</code>为分词jar包。<br><strong>注：无论是“停止字典”还是“扩展字典”，两个文件都要用<code>UTF-8</code>编码，文件中的一行表示一个词，结尾不要有空格。</strong></p>
+<h2 id="Solr中IKAnalyzer分词器的配置测试"><a href="#Solr中IKAnalyzer分词器的配置测试" class="headerlink" title="Solr中IKAnalyzer分词器的配置测试"></a>Solr中IKAnalyzer分词器的配置测试</h2><p>&emsp;&emsp;1.将解压后的<code>ikanalyzer-solr5</code>文件夹中的<code>ik-analyzer-solr5-5.x.jar</code>和<code>solr-analyzer-ik-5.1.0.jar</code>两个jar包复制到<code>pache-tomcat-8.0.26\webapps\solr\WEB-INF\lib</code>文件夹下；</p>
+<p>&emsp;&emsp;2.将解压后的<code>ikanalyzer-solr5</code>文件夹中的<code>ext.dic</code>、<code>IKAnalyzer.cfg.xml</code>和<code>stopword.dic</code>三个文件复制到<code>apache-tomcat-8.0.26\webapps\solr\WEB-INF\classes</code>路径下；</p>
+<p>&emsp;&emsp;3.双击<code>apache-tomcat-8.0.26\bin\startup.bat</code>启动Tomcat，然后在浏览器输入：<code>http://127.0.0.1:8080/solr/index.html</code>进入Solr管理界面，新创建一个Core，命名为<code>solrAnalyzer</code>，如若报错可参考上一篇博客进行操作：</p>
+<p><img src="https://gitee.com/butalways1121/img-Blog/raw/master/120.png" alt></p>
+<p>&emsp;&emsp;4.编辑<code>solr/home</code>路径下的<code>solrAnalyzer\conf\managed-schema</code>文件，在其中<code>&lt;/schema&gt;</code>标签前添加如下IKAnalyzer分词器相关的内容：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;fieldType name=<span class="string">"text_ik"</span> class=<span class="string">"solr.TextField"</span>&gt;  </span><br><span class="line">    &lt;analyzer <span class="built_in">type</span>=<span class="string">"index"</span> useSmart=<span class="string">"false"</span></span><br><span class="line">            class=<span class="string">"org.wltea.analyzer.lucene.IKAnalyzer"</span> /&gt;</span><br><span class="line">    &lt;analyzer <span class="built_in">type</span>=<span class="string">"query"</span> useSmart=<span class="string">"true"</span></span><br><span class="line">            class=<span class="string">"org.wltea.analyzer.lucene.IKAnalyzer"</span> /&gt;</span><br><span class="line">&lt;/fieldType&gt;</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;5.重启Tomcat，打开Solr管理界面，选择solrAnalyzer -&gt; Analysis，在<code>Filed Value</code>框中输入想要分词的中文内容，如”博客园”，接着一定要选择<code>FieldType</code>为我们配置的分词类型<code>text_ik</code>，点击<code>Analyse Values</code>：</p>
+<p><img src="https://gitee.com/butalways1121/img-Blog/raw/master/121.png" alt></p>
+<p>若结果如上，则IKAnalyzer分词器配置成功！</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/alipay.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/wechat.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Hadoop</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Solr</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Hbase</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">分词</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Centos7</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">IKAnalyzer</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/12/06/Solr分词器/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2019/12/05/Solr环境搭建与连接数据库获取数据/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Solr环境搭建与连接数据库获取数据</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#关于分词"><span class="toc-number">1.</span> <span class="toc-text">关于分词</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Solr中IKAnalyzer分词器的配置测试"><span class="toc-number">2.</span> <span class="toc-text">Solr中IKAnalyzer分词器的配置测试</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
+  <div id="gitment-ctn"></div> 
+<link rel="stylesheet" href="https://billts.site/extra_css/gitment.css">
+<script src="https://billts.site/js/gitment.js"></script>
+<script>
+var gitment = new Gitment({
+  id: decodeURI(window.location.pathname),
+  owner: 'butalways1121',
+  repo: 'butalways1121.github.io',
+  oauth: {
+    client_id: '04d1e89c3e35949cd1df',
+    client_secret: '349862188473214c081a620b26558ced1977789b',
+  },
+})
+gitment.render('gitment-ctn')
+</script>
+  
 
 
           </div>
@@ -273,9 +469,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,

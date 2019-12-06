@@ -22,7 +22,7 @@
 <meta property="og:image" content="https://gitee.com/butalways1121/img-Blog/raw/master/116.png">
 <meta property="og:image" content="https://gitee.com/butalways1121/img-Blog/raw/master/117.png">
 <meta property="og:image" content="https://gitee.com/butalways1121/img-Blog/raw/master/118.png">
-<meta property="og:updated_time" content="2019-12-05T09:34:12.777Z">
+<meta property="og:updated_time" content="2019-12-06T00:01:05.129Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Solr环境搭建与连接数据库获取数据">
 <meta name="twitter:description" content="&amp;emsp;&amp;emsp;本文的主要内容是Solr在Windows环境下的搭建，接着简单介绍了使用Solr创建Core并导入数据库的数据，第一次接触Solr，特此记录一下整个实现过程，便于下次使用。">
@@ -274,7 +274,7 @@
 <p><img src="https://gitee.com/butalways1121/img-Blog/raw/master/116.png" alt></p>
 <p>上述报错表示的是找不到Solr的配置文件，解决办法是将<code>solr-6.6.5\server\solr\configsets\basic_configs</code>下的conf目录复制到<code>D:\solr-home</code>路径（就是之前指定的<code>solr\home</code>路径）下的<code>first_core</code>中去。</p>
 <hr>
-<p>创建成功之后就可以在管理界面看到刚才新建的内核了：</p>
+<p>创建成功之后就可以在管理界面看到刚才新建的内核了。</p>
 <h3 id="3-修改相关配置文件"><a href="#3-修改相关配置文件" class="headerlink" title="3.修改相关配置文件"></a>3.修改相关配置文件</h3><p>&emsp;&emsp;(1)在<code>D:\solr-home\first_core\conf</code>目录下的<code>solrconfig.xml</code>文件中<code>&lt;/config&gt;</code>标签之前添加如下配置信息:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--引入DataImportHandler类的jar--&gt;</span><br><span class="line">&lt;requestHandler name=<span class="string">"/dataimport"</span> class=<span class="string">"org.apache.solr.handler.dataimport.DataImportHandler"</span>&gt;</span><br><span class="line">    &lt;lst name=<span class="string">"defaults"</span>&gt;</span><br><span class="line">        &lt;str name=<span class="string">"config"</span>&gt;data-config.xml&lt;/str&gt;</span><br><span class="line">    &lt;/lst&gt;</span><br><span class="line">&lt;/requestHandler&gt;</span><br></pre></td></tr></table></figure>
 
@@ -392,6 +392,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2019/12/06/Solr分词器/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Solr分词器
+        
+      </div>
+    </a>
   
   
     <a href="/2019/12/04/SpringBoot之Dubbo/" id="article-nav-older" class="article-nav-link-wrap">
@@ -610,19 +619,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Yilia</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">相册</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JPA</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JpaRepository</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Yilia</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">相册</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -647,6 +656,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Redis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Solr</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">分词</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">IKAnalyzer</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -682,18 +703,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">SpringMVC</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">MyBaits</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">RestTemplate</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Hadoop</a>
               </li>
              
@@ -706,19 +715,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">SpringMVC</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">MyBaits</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Storm</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">SpringCloud</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Hystrix</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Dashboard</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -731,6 +740,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Zuul</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Hystrix</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Dashboard</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -755,6 +772,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">非关系型数据库</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">RestTemplate</a>
               </li>
              
               <li class="article-tag-list-item">
