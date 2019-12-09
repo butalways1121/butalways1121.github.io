@@ -184,6 +184,104 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Spring定时任务" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+        
+        <a href="/2019/12/09/Spring定时任务/" class="archive-article-date">
+  	<time datetime="2019-12-09T06:36:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-09</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+    <p>
+  
+    <h1 itemprop="name">
+      <a class="article-title_code_ant" href="/2019/12/09/Spring定时任务/">Spring定时任务</a>
+    </h1>
+  
+</p>
+    
+    <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">2.9k字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">12分</span>
+      </span>
+    </span>
+</div>
+
+      
+        <p>&emsp;&emsp;<strong>定时任务，即在某个时间点做某件事情，核心是以时间为关注点，即在一个特定的时间点，系统执行指定的一个操作，本文主要介绍了Spring中定时任务的三种创建方式，戳<a href="https://gitee.com/butalways1121/SpringScheduledTask.git" target="_blank" rel="noopener">这里</a>下载源码。</strong></p>
+<h2 id="一、静态：基于注解-Scheduled"><a href="#一、静态：基于注解-Scheduled" class="headerlink" title="一、静态：基于注解@Scheduled"></a>一、静态：基于注解@Scheduled</h2><p>&emsp;&emsp;基于注解<code>@Scheduled</code>默认为单线程，开启多个任务时，任务的执行时机会受上一个任务执行时间的影响。</p>
+        
+          <a class="article-more-a" href="/2019/12/09/Spring定时任务/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Spring定时任务</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/12/09/Spring定时任务/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="n-Solr分词器" class="article article-type-n  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -225,7 +323,7 @@
 </div>
 
       
-        <p>&emsp;&emsp;上一篇<a href="https://butalways1121.gitee.io/2019/12/05/Solr%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E4%B8%8E%E8%BF%9E%E6%8E%A5%E6%95%B0%E6%8D%AE%E5%BA%93%E8%8E%B7%E5%8F%96%E6%95%B0%E6%8D%AE/" target="_blank" rel="noopener">博客</a>中搭建了Solr的环境，本文来介绍一下Solr中IKAnalyzer分词器的配置。</p>
+        <p>&emsp;&emsp;<strong>上一篇<a href="https://butalways1121.gitee.io/2019/12/05/Solr%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E4%B8%8E%E8%BF%9E%E6%8E%A5%E6%95%B0%E6%8D%AE%E5%BA%93%E8%8E%B7%E5%8F%96%E6%95%B0%E6%8D%AE/" target="_blank" rel="noopener">博客</a>中搭建了Solr的环境，本文来介绍一下Solr中IKAnalyzer分词器的配置。</strong></p>
 <h2 id="关于分词"><a href="#关于分词" class="headerlink" title="关于分词"></a>关于分词</h2><p>&emsp;&emsp;<strong>分词</strong>是指将一个中文词语拆成若干个词，提供搜索引擎进行查找，比如：<code>北京大学</code>是一个词，如果进行拆分的话可以得到：<code>北京</code>与<code>大学</code>，甚至<code>北京大学</code>也是一个词。</p>
         
           <a class="article-more-a" href="/2019/12/06/Solr分词器/#more">more >></a>
@@ -1103,111 +1201,6 @@
 
 
   
-    <article id="post-SpringCloud之Eureka搭建高可用的注册中心" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-        
-        <a href="/2019/11/19/SpringCloud之Eureka搭建高可用的注册中心/" class="archive-article-date">
-  	<time datetime="2019-11-19T08:12:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-    <p>
-  
-    <h1 itemprop="name">
-      <a class="article-title_code_ant" href="/2019/11/19/SpringCloud之Eureka搭建高可用的注册中心/">SpringCloud之Eureka搭建高可用的注册中心</a>
-    </h1>
-  
-</p>
-    
-    <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">2.6k字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">10分</span>
-      </span>
-    </span>
-</div>
-
-      
-        <p>&emsp;&emsp;<strong>第一次接触SpringCloud，在这里简单介绍一下SpringCloud及Eureka，同时记录一下使用Eureka搭建一个高可用的服务注册与发现模块。戳<a href="https://github.com/butalways1121/SpringCloudEureka" target="_blank" rel="noopener">这里</a>下载源码。顺便在这里分享一篇<a href="https://www.cnblogs.com/zhuwenjoyce/p/9663324.html" target="_blank" rel="noopener">SpringCloud注解和配置以及pom依赖说明</a>，文中很详细得说明了pom依赖可以支持什么功能、支持什么注解以及引入该依赖可以在application.properties中添加什么配置等，还是很良心之作。</strong></p>
-        
-          <a class="article-more-a" href="/2019/11/19/SpringCloud之Eureka搭建高可用的注册中心/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">SpringCloud</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Eureka</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">高可用注册中心</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/11/19/SpringCloud之Eureka搭建高可用的注册中心/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1365,6 +1358,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Yilia</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">相册</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">ObjectMapper</a>
               </li>
              
@@ -1378,14 +1379,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JpaRepository</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Yilia</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">相册</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1437,30 +1430,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">hexo-yilia</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Live2d看板动画</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">SpringMVC</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">MyBaits</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">RestTemplate</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Hadoop</a>
               </li>
              
@@ -1478,14 +1447,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">SpringCloud</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Eureka</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">高可用注册中心</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1513,15 +1474,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Topology</a>
+                <a href="javascript:void(0)" class="js-tag color1">hexo-yilia</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">关系型数据库</a>
+                <a href="javascript:void(0)" class="js-tag color1">Live2d看板动画</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">非关系型数据库</a>
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">SpringMVC</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">MyBaits</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">RestTemplate</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1542,6 +1515,30 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Ribbon</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Topology</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Spring定时任务</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">关系型数据库</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">非关系型数据库</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Eureka</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">高可用注册中心</a>
               </li>
             
             <div class="clearfix"></div>

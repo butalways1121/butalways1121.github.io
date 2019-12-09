@@ -6,15 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2019/7 | Hexo</title>
+  <title>Spring定时任务 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/archives/2019/07/index.html">
+  <meta name="description" content="&amp;emsp;&amp;emsp;定时任务，即在某个时间点做某件事情，核心是以时间为关注点，即在一个特定的时间点，系统执行指定的一个操作，本文主要介绍了Spring中定时任务的三种创建方式，戳这里下载源码。 一、静态：基于注解@Scheduled&amp;emsp;&amp;emsp;基于注解@Scheduled默认为单线程，开启多个任务时，任务的执行时机会受上一个任务执行时间的影响。">
+<meta name="keywords" content="Spring定时任务">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spring定时任务">
+<meta property="og:url" content="http://yoursite.com/2019/12/09/Spring定时任务/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="&amp;emsp;&amp;emsp;定时任务，即在某个时间点做某件事情，核心是以时间为关注点，即在一个特定的时间点，系统执行指定的一个操作，本文主要介绍了Spring中定时任务的三种创建方式，戳这里下载源码。 一、静态：基于注解@Scheduled&amp;emsp;&amp;emsp;基于注解@Scheduled默认为单线程，开启多个任务时，任务的执行时机会受上一个任务执行时间的影响。">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-12-09T07:57:59.865Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="Spring定时任务">
+<meta name="twitter:description" content="&amp;emsp;&amp;emsp;定时任务，即在某个时间点做某件事情，核心是以时间为关注点，即在一个特定的时间点，系统执行指定的一个操作，本文主要介绍了Spring中定时任务的三种创建方式，戳这里下载源码。 一、静态：基于注解@Scheduled&amp;emsp;&amp;emsp;基于注解@Scheduled默认为单线程，开启多个任务时，任务的执行时机会受上一个任务执行时间的影响。">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -182,102 +187,322 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Spring定时任务" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/07/10/hexo-yilia主题如何添加Live2d看板动画/" class="archive-article-date">
-  	<time datetime="2019-07-10T08:27:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-10</time>
+      <header class="article-header">
+        
+        
+        <a href="/2019/12/09/Spring定时任务/" class="archive-article-date">
+  	<time datetime="2019-12-09T06:36:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-09</time>
 </a>
-        </div>
-    	 
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+    <p>
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/07/10/hexo-yilia主题如何添加Live2d看板动画/">hexo-yilia主题如何添加Live2d看板动画</a>
+    <h1 class="article-title_code_ant" itemprop="name">
+      Spring定时任务
     </h1>
   
+</p>
+    
+    <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">2.9k字</span>
+      </span>
+    </span>
 
-        <div class="article-info info-on-right">
-          
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">12分</span>
+      </span>
+    </span>
+</div>
+
+      
+        <p>&emsp;&emsp;<strong>定时任务，即在某个时间点做某件事情，核心是以时间为关注点，即在一个特定的时间点，系统执行指定的一个操作，本文主要介绍了Spring中定时任务的三种创建方式，戳<a href="https://gitee.com/butalways1121/SpringScheduledTask.git" target="_blank" rel="noopener">这里</a>下载源码。</strong></p>
+<h2 id="一、静态：基于注解-Scheduled"><a href="#一、静态：基于注解-Scheduled" class="headerlink" title="一、静态：基于注解@Scheduled"></a>一、静态：基于注解@Scheduled</h2><p>&emsp;&emsp;基于注解<code>@Scheduled</code>默认为单线程，开启多个任务时，任务的执行时机会受上一个任务执行时间的影响。</p>
+<a id="more"></a>
+
+<p>&emsp;&emsp;使用SpringBoot基于注解来创建定时任务非常简单，只需几行代码便可完成，所需依赖：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;parent&gt;</span><br><span class="line">	&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">	&lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;</span><br><span class="line">	&lt;version&gt;2.0.1.RELEASE&lt;/version&gt;</span><br><span class="line">	&lt;/parent&gt;</span><br><span class="line">&lt;!-- SpringBoot 核心组件 --&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">	&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">	&lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+
+<p>定时器代码示例：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">import org.springframework.scheduling.annotation.Scheduled;</span><br><span class="line">import org.springframework.stereotype.Component;</span><br><span class="line">import java.util.Date;</span><br><span class="line">@Component</span><br><span class="line">@EnableScheduling</span><br><span class="line">public class Job &#123;</span><br><span class="line">    @Scheduled(fixedDelay = 5000)</span><br><span class="line">    public void fixedDelayJob() throws InterruptedException &#123;</span><br><span class="line">        System.out.println(<span class="string">"fixedDelay 每隔5秒"</span> + new Date());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Scheduled(fixedRate = 3000)</span><br><span class="line">    public void <span class="function"><span class="title">fixedRateJob</span></span>() &#123;</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">"fixedRate 每隔3秒"</span> + new Date());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Scheduled(cron = <span class="string">"0 0,30 0,8 ? * ? "</span>)</span><br><span class="line">    public void <span class="function"><span class="title">cronJob</span></span>() &#123;</span><br><span class="line">        System.out.println(new Date() + <span class="string">" ...&gt;&gt;cron...."</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">fixedRate 每隔3秒Mon Dec 09 11:33:11 CST 2019</span><br><span class="line">fixedDelay 每隔5秒Mon Dec 09 11:33:13 CST 2019</span><br><span class="line">fixedRate 每隔3秒Mon Dec 09 11:33:14 CST 2019</span><br><span class="line">fixedRate 每隔3秒Mon Dec 09 11:33:17 CST 2019</span><br><span class="line">fixedDelay 每隔5秒Mon Dec 09 11:33:18 CST 2019</span><br><span class="line">fixedRate 每隔3秒Mon Dec 09 11:33:20 CST 2019</span><br><span class="line">........</span><br></pre></td></tr></table></figure>
+
+<p><strong>总结一下：</strong><br>&emsp;&emsp;1、<code>@EnableScheduling</code>注解，其作用是自动扫描注解<code>@Scheduled</code>的任务并后台执行。</p>
+<p>&emsp;&emsp;2、<code>@Scheduled</code>注解用于标注某个方法是一个定时任务的方法，该注解有三个属性：<code>fixedDelay</code>、<code>fexRate</code>和<code>cron</code>，都是用来设置调度时间。</p>
+<p>&emsp;&emsp;3、<code>fixedDelay</code>属性表示该任务执行完后隔多长时间再调用。</p>
+<p>&emsp;&emsp;4、<code>fixedRate</code>属性表示任务隔多长时间调用一次，不管任务是否执行完成。</p>
+<p>&emsp;&emsp;5、<code>cron</code>属性是以表达式的形式来表示时间，比如要设置每天什么时候执行，就可以用cron表达式。corn表达式是一个字符串，以5或6个空格隔开，分为6或7个域，每一个域代表一个含义，如下：</p>
+<table>
+<thead>
+<tr>
+<th align="left">字段</th>
+<th align="left">允许值</th>
+<th align="left">允许的特殊字符</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">秒（Seconds）</td>
+<td align="left">0~59的整数</td>
+<td align="left">, - * /    四个字符</td>
+</tr>
+<tr>
+<td align="left">分（Minutes）</td>
+<td align="left">0~59的整数</td>
+<td align="left">, - * /    四个字符</td>
+</tr>
+<tr>
+<td align="left">小时（Hours）</td>
+<td align="left">0~23的整数</td>
+<td align="left">, - * /    四个字符</td>
+</tr>
+<tr>
+<td align="left">日期（DayofMonth）</td>
+<td align="left">1~31的整数（但是你需要考虑你月的天数）</td>
+<td align="left">,- * ? / L W C     八个字符</td>
+</tr>
+<tr>
+<td align="left">月份（Month）</td>
+<td align="left">1~12的整数或者 JAN-DEC</td>
+<td align="left">, - * ? / , - * /    四个字符</td>
+</tr>
+<tr>
+<td align="left">星期（DayofWeek）</td>
+<td align="left">1~7的整数或者 SUN-SAT（1=SUN）,1表示星期天，2表示星期一</td>
+<td align="left">, - * ? / L C #     八个字符</td>
+</tr>
+<tr>
+<td align="left">年(可选，留空)（Year）</td>
+<td align="left">1970~2099</td>
+<td align="left">, - * /    四个字符</td>
+</tr>
+</tbody></table>
+<p>特殊符号的含义如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">*: 表示匹配该域的任意值，假如在Minutes域使用*, 即表示每分钟都会触发事件。</span><br><span class="line"></span><br><span class="line">?: 只能用在DayofMonth和DayofWeek两个域。它也匹配域的任意值，但实际不会。因为DayofMonth和DayofWeek会相互影响。例如想在每月的20日触发调度，不管20日到底是星期几，则只能使用如下写法： 13 13 15 20 * ?, 其中最后一位只能用？，而不能使用*，如果使用*表示不管星期几都会触发，实际上并不是这样。</span><br><span class="line"></span><br><span class="line">-: 表示范围，例如在Minutes域使用5-20，表示从5分到20分钟每分钟触发一次。</span><br><span class="line"></span><br><span class="line">/：表示起始时间开始触发，然后每隔固定时间触发一次，例如在Minutes域使用5/20,则意味着5分钟触发一次，而25，45等分别触发一次。</span><br><span class="line"></span><br><span class="line">,: 表示列出枚举值。例如：在Minutes域使用5,20，则意味着在5和20分每分钟触发一次。</span><br><span class="line"></span><br><span class="line">L: 表示最后，只能出现在DayofWeek和DayofMonth域，如果在DayofWeek域使用5L,意味着在最后的一个星期四触发。</span><br><span class="line"></span><br><span class="line">W: 表示有效工作日(周一到周五)，只能出现在DayofMonth域，系统将在离指定日期的最近的有效工作日触发事件。例如：在 DayofMonth使用5W，如果5日是星期六，则将在最近的工作日：星期五，即4日触发。如果5日是星期天，则在6日(周一)触发；如果5日在星期一 到星期五中的一天，则就在5日触发。另外一点，W的最近寻找不会跨过月份</span><br><span class="line"></span><br><span class="line">LW: 这两个字符可以连用，表示在某个月最后一个工作日，即最后一个星期五。</span><br><span class="line"></span><br><span class="line"><span class="comment">#: 用于确定每个月第几个星期几，只能出现在DayofMonth域。例如在4#2，表示某月的第二个星期三。</span></span><br></pre></td></tr></table></figure>
+
+<p>corn表达式举例如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">0 0 2 1 * ? *   表示在每月的1日的凌晨2点执行任务</span><br><span class="line"></span><br><span class="line">0 15 10 ? * MON-FRI   表示周一到周五每天上午10:15执行作业</span><br><span class="line"></span><br><span class="line">0 15 10 ? 6L 2002-2006   表示2002-2006年的每个月的最后一个星期五上午10:15执行作</span><br><span class="line"></span><br><span class="line">0 0 10,14,16 * * ?   每天上午10点，下午2点，4点 </span><br><span class="line"></span><br><span class="line">0 0/30 9-17 * * ?   朝九晚五工作时间内每半小时 </span><br><span class="line"></span><br><span class="line">0 0 12 ? * WED    表示每个星期三中午12点 </span><br><span class="line"></span><br><span class="line">0 0 12 * * ?   每天中午12点触发 </span><br><span class="line"></span><br><span class="line">0 15 10 ? * *    每天上午10:15触发 </span><br><span class="line"></span><br><span class="line">0 15 10 * * ?     每天上午10:15触发 </span><br><span class="line"></span><br><span class="line">0 15 10 * * ? *    每天上午10:15触发 </span><br><span class="line"></span><br><span class="line">0 15 10 * * ? 2005    2005年的每天上午10:15触发 </span><br><span class="line"></span><br><span class="line">0 * 14 * * ?     在每天下午2点到下午2:59期间的每1分钟触发 </span><br><span class="line"></span><br><span class="line">0 0/5 14 * * ?    在每天下午2点到下午2:55期间的每5分钟触发 </span><br><span class="line"></span><br><span class="line">0 0/5 14,18 * * ?     在每天下午2点到2:55期间和下午6点到6:55期间的每5分钟触发 </span><br><span class="line"></span><br><span class="line">0 0-5 14 * * ?    在每天下午2点到下午2:05期间的每1分钟触发 </span><br><span class="line"></span><br><span class="line">0 10,44 14 ? 3 WED    每年三月的星期三的下午2:10和2:44触发 </span><br><span class="line"></span><br><span class="line">0 15 10 ? * MON-FRI    周一至周五的上午10:15触发 </span><br><span class="line"></span><br><span class="line">0 15 10 15 * ?    每月15日上午10:15触发 </span><br><span class="line"></span><br><span class="line">0 15 10 L * ?    每月最后一日的上午10:15触发 </span><br><span class="line"></span><br><span class="line">0 15 10 ? * 6L    每月的最后一个星期五上午10:15触发 </span><br><span class="line"></span><br><span class="line">0 15 10 ? * 6L 2002-2005   2002年至2005年的每月的最后一个星期五上午10:15触发 </span><br><span class="line"></span><br><span class="line">0 15 10 ? * 6<span class="comment">#3   每月的第三个星期五上午10:15触发</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="二、动态：基于接口SchedulingConfigurer"><a href="#二、动态：基于接口SchedulingConfigurer" class="headerlink" title="二、动态：基于接口SchedulingConfigurer"></a>二、动态：基于接口SchedulingConfigurer</h2><p>&emsp;&emsp;显然，使用<code>@Scheduled</code>注解很方便，但缺点是当我们调整了执行周期的时候，需要重启应用才能生效。为了达到实时生效的效果，可以使用接口来完成定时任务:</p>
+<p>1、导入依赖：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&lt;parent&gt;</span><br><span class="line">    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">	&lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;</span><br><span class="line">	&lt;version&gt;2.0.1.RELEASE&lt;/version&gt;</span><br><span class="line">&lt;/parent&gt;</span><br><span class="line">&lt;!-- SpringBoot 核心组件 --&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">	&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">	&lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line">&lt;!--添加MySql依赖 --&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;mysql&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line">&lt;!--添加Mybatis依赖 配置mybatis的一些初始化的东西--&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.mybatis.spring.boot&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;mybatis-spring-boot-starter&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;1.3.1&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line">&lt;!-- 添加mybatis依赖 --&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.mybatis&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;mybatis&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;3.4.5&lt;/version&gt;</span><br><span class="line">    &lt;scope&gt;compile&lt;/scope&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+
+<p>2、添加数据库记录：<br>&emsp;&emsp;在本地test数据库中新建查询执行如下脚本内容，添加corn表达式的值：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">DROP TABLE IF EXISTS `cron`;</span><br><span class="line">CREATE TABLE `cron`  (</span><br><span class="line">  `cron_id` varchar(30) NOT NULL PRIMARY KEY,</span><br><span class="line">  `cron` varchar(30) NOT NULL  </span><br><span class="line">);</span><br><span class="line">INSERT INTO `cron` VALUES (<span class="string">'1'</span>, <span class="string">'0/10 * * * * ?'</span>);</span><br></pre></td></tr></table></figure>
+
+<p>3、application.properties文件配置信息：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">server.port=8088</span><br><span class="line">spring.datasource.url=jdbc:mysql://localhost:3306/<span class="built_in">test</span>?useUnicode=<span class="literal">true</span>&amp;characterEncoding=utf8</span><br><span class="line">spring.datasource.username=root</span><br><span class="line">spring.datasource.password=root</span><br><span class="line">spring.datasource.driver-class-name=com.mysql.jdbc.Driver</span><br></pre></td></tr></table></figure>
+
+<p>4、创建定时器：<br>&emsp;&emsp;数据库准备好数据之后，接下来来编写定时任务，注意这里添加的是<strong>TriggerTask</strong>，目的是循环读取我们在数据库设置好的执行周期，以及执行相关定时任务的内容，示例如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">import java.util.Date;</span><br><span class="line"></span><br><span class="line">import org.apache.ibatis.annotations.Mapper;</span><br><span class="line">import org.apache.ibatis.annotations.Select;</span><br><span class="line">import org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line">import org.springframework.context.annotation.Configuration;</span><br><span class="line">import org.springframework.scheduling.annotation.EnableScheduling;</span><br><span class="line">import org.springframework.scheduling.annotation.SchedulingConfigurer;</span><br><span class="line">import org.springframework.scheduling.config.ScheduledTaskRegistrar;</span><br><span class="line">import org.springframework.scheduling.support.CronTrigger;</span><br><span class="line">import org.springframework.stereotype.Component;</span><br><span class="line"></span><br><span class="line">import com.mysql.jdbc.StringUtils;</span><br><span class="line"></span><br><span class="line">@Component</span><br><span class="line">@Configuration      //主要用于标记配置类，兼备Component的效果。</span><br><span class="line">@EnableScheduling   // 开启定时任务</span><br><span class="line">public class DynamicJob implements SchedulingConfigurer &#123;</span><br><span class="line"></span><br><span class="line">    @Mapper</span><br><span class="line">    public interface CronMapper &#123;</span><br><span class="line">        @Select(<span class="string">"select cron from cron limit 1"</span>)</span><br><span class="line">        public String getCron();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Autowired      //注入mapper</span><br><span class="line">    @SuppressWarnings(<span class="string">"all"</span>)</span><br><span class="line">    CronMapper cronMapper;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 执行定时任务.</span><br><span class="line">     */</span><br><span class="line">    @Override</span><br><span class="line">    public void configureTasks(ScheduledTaskRegistrar taskRegistrar) &#123;</span><br><span class="line"></span><br><span class="line">        taskRegistrar.addTriggerTask(</span><br><span class="line">                //1.添加任务内容(Runnable)</span><br><span class="line">                () -&gt; System.out.println(<span class="string">"执行动态定时任务: "</span> + new Date()),</span><br><span class="line">                //2.设置执行周期(Trigger)</span><br><span class="line">                triggerContext -&gt; &#123;</span><br><span class="line">                    //2.1 从数据库获取执行周期</span><br><span class="line">                    String cron = cronMapper.getCron();</span><br><span class="line">                    System.out.println(<span class="string">"cron="</span>+cron);</span><br><span class="line">                    //2.2 合法性校验.</span><br><span class="line">                    <span class="keyword">if</span> (StringUtils.isNullOrEmpty(cron)) &#123;</span><br><span class="line">                        // Omitted Code ..</span><br><span class="line">                    &#125;</span><br><span class="line">                    //2.3 返回执行周期(Date)</span><br><span class="line">                    <span class="built_in">return</span> new CronTrigger(cron).nextExecutionTime(triggerContext);</span><br><span class="line">                &#125;</span><br><span class="line">        );</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>5、测试<br>&emsp;&emsp;运行结果如下，可以执行周期是在数据库设置的10s一次：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">cron=0/10 * * * * ?</span><br><span class="line">执行动态定时任务: Mon Dec 09 14:12:40 CST 2019</span><br><span class="line">cron=0/10 * * * * ?</span><br><span class="line">执行动态定时任务: Mon Dec 09 14:12:50 CST 2019</span><br><span class="line">cron=0/10 * * * * ?</span><br><span class="line">执行动态定时任务: Mon Dec 09 14:13:00 CST 2019</span><br><span class="line">cron=0/10 * * * * ?</span><br><span class="line">执行动态定时任务: Mon Dec 09 14:13:10 CST 2019</span><br><span class="line">cron=0/10 * * * * ?</span><br><span class="line">.......</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;接着，修改数据库corn的值为<code>0/6 * * * * ?</code>，表示定时任务周期为6s，控制台打印：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">cron=0/6 * * * * ?</span><br><span class="line">执行动态定时任务: Mon Dec 09 14:14:24 CST 2019</span><br><span class="line">cron=0/6 * * * * ?</span><br><span class="line">执行动态定时任务: Mon Dec 09 14:14:30 CST 2019</span><br><span class="line">cron=0/6 * * * * ?</span><br><span class="line">执行动态定时任务: Mon Dec 09 14:14:36 CST 2019</span><br><span class="line">cron=0/6 * * * * ?</span><br><span class="line">.......</span><br></pre></td></tr></table></figure>
+
+<p><strong>注：如果在数据库修改时格式出现错误，则定时任务会停止，即使重新修改正确也只能重新启动项目才能恢复。</strong></p>
+<h2 id="三、基于注解设定多线程定时任务"><a href="#三、基于注解设定多线程定时任务" class="headerlink" title="三、基于注解设定多线程定时任务"></a>三、基于注解设定多线程定时任务</h2><p>&emsp;&emsp;基于注解创建多线程任务代码如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">import java.time.LocalDateTime;</span><br><span class="line"></span><br><span class="line">import org.springframework.scheduling.annotation.Async;</span><br><span class="line">import org.springframework.scheduling.annotation.EnableAsync;</span><br><span class="line">import org.springframework.scheduling.annotation.EnableScheduling;</span><br><span class="line">import org.springframework.scheduling.annotation.Scheduled;</span><br><span class="line">import org.springframework.stereotype.Component;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">@Component</span><br><span class="line">@EnableScheduling // 1.开启定时任务</span><br><span class="line">@EnableAsync // 2.开启多线程</span><br><span class="line">public class MultiThreadJob &#123;</span><br><span class="line"></span><br><span class="line">	@Async</span><br><span class="line">	@Scheduled(fixedDelay = 1000) // 间隔1秒</span><br><span class="line">	public void first() throws InterruptedException &#123;</span><br><span class="line">		System.out.println(</span><br><span class="line">				<span class="string">"第一个定时任务开始 : "</span> + LocalDateTime.now().toLocalTime() + <span class="string">"\r\n线程 : "</span> + Thread.currentThread().getName());</span><br><span class="line">		System.out.println();</span><br><span class="line">		Thread.sleep(1000 * 10);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	@Async</span><br><span class="line">	@Scheduled(fixedDelay = 2000) // 间隔2秒</span><br><span class="line">	public void <span class="function"><span class="title">second</span></span>() &#123;</span><br><span class="line">		System.out.println(</span><br><span class="line">				<span class="string">"第二个定时任务开始 : "</span> + LocalDateTime.now().toLocalTime() + <span class="string">"\r\n线程 : "</span> + Thread.currentThread().getName());</span><br><span class="line">		System.out.println();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>其中，<code>@Async</code>注解非常重要，在Spring中，基于<code>@Async</code>标注的方法，称之为异步方法；这些方法将在执行的时候，将会在独立的线程中被执行，调用者无需等待它的完成，即可继续其他的操作。</strong></p>
+<p>启动程序，允许结果如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">第二个定时任务开始 : 14:22:32.584</span><br><span class="line">线程 : SimpleAsyncTaskExecutor-2</span><br><span class="line">第一个定时任务开始 : 14:22:32.584</span><br><span class="line">线程 : SimpleAsyncTaskExecutor-1</span><br><span class="line">第一个定时任务开始 : 14:22:33.558</span><br><span class="line">线程 : SimpleAsyncTaskExecutor-3</span><br><span class="line">第二个定时任务开始 : 14:22:34.559</span><br><span class="line">线程 : SimpleAsyncTaskExecutor-4</span><br><span class="line">第一个定时任务开始 : 14:22:34.559</span><br><span class="line">线程 : SimpleAsyncTaskExecutor-5</span><br><span class="line">第一个定时任务开始 : 14:22:35.560</span><br><span class="line">线程 : SimpleAsyncTaskExecutor-6</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;以上结果可以看出第一个定时任务和第二个定时任务执行时间互不影响，两者每次执行的时间间隔分别是1s和2s。</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/alipay.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/wechat.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">hexo-yilia</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Live2d看板动画</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Spring定时任务</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/12/09/Spring定时任务/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/07/05/我的第一篇博客/" class="archive-article-date">
-  	<time datetime="2019-07-05T07:04:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-05</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/12/06/Solr分词器/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Solr分词器</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/07/05/我的第一篇博客/">我的第一篇博客</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、静态：基于注解-Scheduled"><span class="toc-number">1.</span> <span class="toc-text">一、静态：基于注解@Scheduled</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、动态：基于接口SchedulingConfigurer"><span class="toc-number">2.</span> <span class="toc-text">二、动态：基于接口SchedulingConfigurer</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、基于注解设定多线程定时任务"><span class="toc-number">3.</span> <span class="toc-text">三、基于注解设定多线程定时任务</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
   
-    </div></section>
   
 
-    
+  
+
+  
+
+  
+  <div id="gitment-ctn"></div> 
+<link rel="stylesheet" href="https://billts.site/extra_css/gitment.css">
+<script src="https://billts.site/js/gitment.js"></script>
+<script>
+var gitment = new Gitment({
+  id: decodeURI(window.location.pathname),
+  owner: 'butalways1121',
+  repo: 'butalways1121.github.io',
+  oauth: {
+    client_id: '04d1e89c3e35949cd1df',
+    client_secret: '349862188473214c081a620b26558ced1977789b',
+  },
+})
+gitment.render('gitment-ctn')
+</script>
+  
 
 
           </div>
@@ -307,8 +532,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
