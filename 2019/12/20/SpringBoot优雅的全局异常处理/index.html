@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="&amp;emsp;&amp;emsp;SpringBoot的项目已经有一定的异常处理了，其中有一个@ControllerAdvice注解，该注解表示开启了全局异常的捕获，使用时只需自定义一个方法并使用@ExceptionHandler注解（用于声明异常处理的方法），然后在其value属性里面定义捕获异常的类型即可对这些捕获的异常做进一步的处理，示例代码如下： 12345678@ControllerAdvicep">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-12-20T03:27:38.941Z">
+<meta property="og:updated_time" content="2019-12-20T03:53:32.857Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SpringBoot优雅的全局异常处理">
 <meta name="twitter:description" content="&amp;emsp;&amp;emsp;SpringBoot的项目已经有一定的异常处理了，其中有一个@ControllerAdvice注解，该注解表示开启了全局异常的捕获，使用时只需自定义一个方法并使用@ExceptionHandler注解（用于声明异常处理的方法），然后在其value属性里面定义捕获异常的类型即可对这些捕获的异常做进一步的处理，示例代码如下： 12345678@ControllerAdvicep">
@@ -276,7 +276,7 @@
 <p>3、接着测试空指针异常是否能够被正确的捕获并处理。在项目的<code>GlobalExceptionHandler</code>自定义全局异常类里面，除了定义空指针的异常处理，也定义了最高级别之一的<code>Exception</code>异常，那么这里发生了空指针异常之后，它是回优先使用哪一个呢？这里使用PUT方式请求<code>http://localhost:8181/api/user</code>，Body参数为：<code>{&quot;id&quot;:1,&quot;age&quot;:18}</code>，返回参数：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">"code"</span>: <span class="string">"400"</span>,</span><br><span class="line">    <span class="string">"message"</span>: <span class="string">"请求的数据格式不符!"</span>,</span><br><span class="line">    <span class="string">"result"</span>: null</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>以上结果说明正确返回空指针的异常处理，可以得出全局异常处理会有限处理子类的异常。  </p>
+<p>以上结果说明正确返回空指针的异常处理，可以得出全局异常处理会优先处理子类的异常。  </p>
 <p>4、用DELETE方式请求<code>http://localhost:8181/api/user</code>来测试未指定异常是否能被捕获处理，Body参数为：<code>{&quot;id&quot;:1}</code>，返回参数如下：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">"code"</span>: <span class="string">"500"</span>,</span><br><span class="line">    <span class="string">"message"</span>: <span class="string">"服务器内部错误!"</span>,</span><br><span class="line">    <span class="string">"result"</span>: null</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -632,14 +632,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ObjectMapper</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JSONObject</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Kafka</a>
               </li>
              
@@ -652,10 +644,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Redis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Solr</a>
               </li>
              
@@ -665,6 +653,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">IKAnalyzer</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">ObjectMapper</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JSONObject</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Redis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -688,15 +688,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">hexo-yilia</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Live2d看板动画</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -736,19 +736,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Storm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">SpringCloud</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Eureka</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">高可用注册中心</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -764,6 +752,22 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Eureka</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">高可用注册中心</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Spring定时任务</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Storm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Config</a>
               </li>
              
@@ -773,10 +777,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">RabbitMQ</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Spring定时任务</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -796,14 +796,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Zookeeper</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Dubbo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Thymeleaf</a>
               </li>
              
@@ -813,6 +805,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Ribbon</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Zookeeper</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Dubbo</a>
               </li>
             
             <div class="clearfix"></div>
@@ -877,6 +877,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           
             <li class="search-li">
               <a href="https://yl1690561739.gitee.io/bookmark/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>Buzhibujue&#39;s bookmark</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="https://shiliashili.github.io/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>WJY&#39;s blog</a>
             </li>
           
         </ul>

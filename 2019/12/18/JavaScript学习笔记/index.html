@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="&amp;emsp;&amp;emsp;JavaScript是脚本语言，是可插入HTML页面的编程代码。使用JavaScript可以直接写入HTML输出流、对事件作出反应、改变HTML的内容或图像或样式、验证输入等。 JavaScript显示数据JavaScript可以通过不同的方式来输出数据：&amp;emsp;&amp;emsp;使用window.alert()弹出警告框;&amp;emsp;&amp;emsp;使用document.wri">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-12-19T09:29:31.502Z">
+<meta property="og:updated_time" content="2019-12-25T01:46:46.051Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript学习笔记">
 <meta name="twitter:description" content="&amp;emsp;&amp;emsp;JavaScript是脚本语言，是可插入HTML页面的编程代码。使用JavaScript可以直接写入HTML输出流、对事件作出反应、改变HTML的内容或图像或样式、验证输入等。 JavaScript显示数据JavaScript可以通过不同的方式来输出数据：&amp;emsp;&amp;emsp;使用window.alert()弹出警告框;&amp;emsp;&amp;emsp;使用document.wri">
@@ -213,7 +213,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">2k字</span>
+        <span class="post-count">2.2k字</span>
       </span>
     </span>
 
@@ -222,7 +222,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">7分</span>
+        <span class="post-count">8分</span>
       </span>
     </span>
 </div>
@@ -232,174 +232,64 @@
 <h2 id="JavaScript显示数据"><a href="#JavaScript显示数据" class="headerlink" title="JavaScript显示数据"></a>JavaScript显示数据</h2><p>JavaScript可以通过不同的方式来输出数据：<br>&emsp;&emsp;使用<code>window.alert()</code>弹出警告框;<br>&emsp;&emsp;使用<code>document.write()</code>方法将内容写到 HTML 文档中;<br>&emsp;&emsp;使用<code>innerHTML</code>写入到HTML元素;<br>&emsp;&emsp;使用<code>console.log()</code>写入到浏览器的控制台。  </p>
 <a id="more"></a>
 <h2 id="JavaScript语法"><a href="#JavaScript语法" class="headerlink" title="JavaScript语法"></a>JavaScript语法</h2><p>JavaScript是一个程序语言，语法规则定义了语言结构。</p>
-<h3 id="字面量"><a href="#字面量" class="headerlink" title="字面量"></a>字面量</h3><p>在编程语言中，一般将固定值称为字面量，如3.14。<br>&emsp;&emsp;<strong>数字字面量</strong>可以是整数、小数或科学计数e，如<code>3.14</code>、<code>1001</code>、<code>123e5</code>等。<br>&emsp;&emsp;<strong>字符串字面量</strong>可以使用单引号或双引号，例：<code>&quot;Hello World&quot;</code>、<code>&#39;Hello World&#39;</code>。<br>&emsp;&emsp;<strong>表达式字面量</strong>用于计算，例：<code>5+6</code>、<code>5*10</code>等。<br>&emsp;&emsp;<strong>数组字面量</strong>定义一个数组，例：<code>[40,100,1,25]</code>。<br>&emsp;&emsp;<strong>对象字面量</strong>定义一个对象，例：<code>{firstName:&quot;John&quot;, lastName:&quot;Doe&quot;}</code>。<br>&emsp;&emsp;<strong>函数字面量</strong>定义一个函数，例：<code>function myFunction(a, b) { return a * b;}</code>。</p>
+<h3 id="字面量"><a href="#字面量" class="headerlink" title="字面量"></a>字面量</h3><p>在编程语言中，一般将固定值称为字面量，如<code>3.14</code>。<br>&emsp;&emsp;<strong>数字字面量</strong>可以是整数、小数或科学计数e，如<code>3.14</code>、<code>1001</code>、<code>123e5</code>等。<br>&emsp;&emsp;<strong>字符串字面量</strong>可以使用单引号或双引号，例：<code>&quot;Hello World&quot;</code>、<code>&#39;Hello World&#39;</code>。<br>&emsp;&emsp;<strong>表达式字面量</strong>用于计算，例：<code>5+6</code>、<code>5*10</code>等。<br>&emsp;&emsp;<strong>数组字面量</strong>定义一个数组，例：<code>[40,100,1,25]</code>。<br>&emsp;&emsp;<strong>对象字面量</strong>定义一个对象，例：<code>{firstName:&quot;John&quot;, lastName:&quot;Doe&quot;}</code>。<br>&emsp;&emsp;<strong>函数字面量</strong>定义一个函数，例：<code>function myFunction(a, b) { return a * b;}</code>。</p>
 <h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><p>变量用于存储数据值，JavaScript使用关键字var来定义变量，使用<code>=</code>来为变量赋值，例： </p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var x, length  </span><br><span class="line">x = 5  </span><br><span class="line">length = 6</span><br></pre></td></tr></table></figure>
 
-<p><strong>注：变量时一个名词，字面量是一个值。</strong></p>
-<h3 id="操作符"><a href="#操作符" class="headerlink" title="操作符"></a>操作符</h3><table>
-<thead>
-<tr>
-<th align="left">类型</th>
-<th align="left">示例</th>
-<th align="left">描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">赋值，算术和位运算符</td>
-<td align="left">= + - * /</td>
-<td align="left">在JS运算符中描述</td>
-</tr>
-<tr>
-<td align="left">条件，比较及逻辑运算符</td>
-<td align="left">== != &lt; &gt;</td>
-<td align="left">在JS比较运算符中描述</td>
-</tr>
-<tr>
-<td align="left">### 注释</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left">使用方式：<code>//这是一个注释</code></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left">### 数据类型</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left">JS有多种数据类型：数字、字符串、数组、对象、布尔、对空(<code>null</code>，可以通过将变量的值设置为<code>null</code>来清空变量)等。</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left"><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var length = 16;                                  // Number 通过数字字面量赋值</span><br><span class="line">var points = x * 10;                              // Number 通过表达式字面量赋值</span><br><span class="line">var lastName = <span class="string">"Johnson"</span>;                         // String 通过字符串字面量赋值</span><br><span class="line">var cars = [<span class="string">"Saab"</span>, <span class="string">"Volvo"</span>, <span class="string">"BMW"</span>];              // Array  通过数组字面量赋值</span><br><span class="line">var person = &#123;firstName:<span class="string">"John"</span>, lastName:<span class="string">"Doe"</span>&#125;;  // Object 通过对象字面量赋值</span><br></pre></td></tr></table></figure></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-</tbody></table>
-<h2 id="JavaScript语句标识符"><a href="#JavaScript语句标识符" class="headerlink" title="JavaScript语句标识符"></a>JavaScript语句标识符</h2><table>
-<thead>
-<tr>
-<th align="left">语句</th>
-<th align="left">描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">break</td>
-<td align="left">用于跳出循环</td>
-</tr>
-<tr>
-<td align="left">catch</td>
-<td align="left">语句块，在try语句执行出错时执行catch语句块</td>
-</tr>
-<tr>
-<td align="left">continue</td>
-<td align="left">跳过循环中的一个迭代</td>
-</tr>
-<tr>
-<td align="left">do…whlie</td>
-<td align="left">执行一个语句块，在条件语句为true时继续执行该语句块</td>
-</tr>
-<tr>
-<td align="left">for</td>
-<td align="left">在条件语句为true时，可以将代码块执行指定的次数</td>
-</tr>
-<tr>
-<td align="left">for…in</td>
-<td align="left">用于遍历数组或者对象的属性（对数组或者对象的属性进行循环操作）</td>
-</tr>
-<tr>
-<td align="left">function</td>
-<td align="left">定义一个函数</td>
-</tr>
-<tr>
-<td align="left">if…else</td>
-<td align="left">用语言基于不同的条件来执行不同的动作</td>
-</tr>
-<tr>
-<td align="left">return</td>
-<td align="left">退出函数</td>
-</tr>
-<tr>
-<td align="left">switch</td>
-<td align="left">用于基于不同的条件来执行不同的操作</td>
-</tr>
-<tr>
-<td align="left">throw</td>
-<td align="left">抛出（生成）错误</td>
-</tr>
-<tr>
-<td align="left">var</td>
-<td align="left">声明一个变量</td>
-</tr>
-<tr>
-<td align="left">while</td>
-<td align="left">当条件语句为true时，执行语句块</td>
-</tr>
-<tr>
-<td align="left">## JavaScript对象</td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left"><strong>定义对象：</strong> <code>var person = {firstName:&quot;John&quot;, lastName:&quot;Doe&quot;, age:50, eyeColor:&quot;blue&quot;};</code>；</td>
-<td align="left"></td>
-</tr>
-</tbody></table>
+<p><strong>注：变量是一个名词，字面量是一个值。</strong></p>
+<h3 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h3><p>使用方式：<code>//这是一个注释</code></p>
+<h2 id="JavaScript对象"><a href="#JavaScript对象" class="headerlink" title="JavaScript对象"></a>JavaScript对象</h2><p><strong>定义对象：</strong> <code>var person = {firstName:&quot;John&quot;, lastName:&quot;Doe&quot;, age:50, eyeColor:&quot;blue&quot;};</code>；  </p>
 <p><strong>对象属性：</strong> 键值对<code>name:value</code>在JavaScript对象通常称为对象属性，访问对象属性有两种方式，<code>person.lastName</code>或<code>person[&quot;lastName&quot;]</code>。  </p>
 <p><strong>对象方法：</strong> 对象的方法定义了一个函数，并作为对象的属性存储，访问对象的方法：<code>person.funllName()</code>。  </p>
 <h2 id="JavaScript函数"><a href="#JavaScript函数" class="headerlink" title="JavaScript函数"></a>JavaScript函数</h2><h3 id="函数语法"><a href="#函数语法" class="headerlink" title="函数语法"></a>函数语法</h3><p>函数就是包裹在花括号中的代码块，前面使用了关键词<code>function</code>，当调用该函数时，会执行函数内的代码：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> functionname()</span><br><span class="line">&#123;</span><br><span class="line">    // 执行代码</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="调用带有参数的函数"><a href="#调用带有参数的函数" class="headerlink" title="调用带有参数的函数"></a>调用带有参数的函数</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;button onclick=<span class="string">"myFunction('Harry Potter','Wizard')"</span>&gt;点击这里&lt;/button&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    <span class="keyword">function</span> myFunction(name,job)&#123;</span><br><span class="line">        alert(<span class="string">"Welcome "</span> + name + <span class="string">", the "</span> + job);</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="带有返回值的函数"><a href="#带有返回值的函数" class="headerlink" title="带有返回值的函数"></a>带有返回值的函数</h3><p>示例：  </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> myFunction(a,b)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">return</span> a*b;</span><br><span class="line">&#125;</span><br><span class="line">document.getElementById(<span class="string">"demo"</span>).innerHTML=myFunction(4,3);</span><br></pre></td></tr></table></figure>
-
 <h3 id="局部变量与全局变量"><a href="#局部变量与全局变量" class="headerlink" title="局部变量与全局变量"></a>局部变量与全局变量</h3><p>在JavaScript函数内部声明的变量（使用var）是局部变量，所以只能在函数内部访问它，其作用域是局部的；在函数外声明的变量是全局变量，网页上的所有脚本和函数都能访问它。  </p>
 <p>JavaScript 变量的生命期从它们被声明的时间开始，局部变量会在函数运行以后被删除，全局变量会在页面关闭后被删除。</p>
-<h2 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h2><p>HTML事件是发生在HTML元素上的事情，在事件触发时，JavaScript可以执行一写代码，常见的HTML事件如下：<br>| 事件 | 描述 |<br>| :—— | :—— |<br>| onchange | HTML元素改变 |<br>| onclick | 点击HTML元素 |<br>| onmouseover | 在一个HTML元素上移动鼠标 |<br>| onmouseout | 从一个HTMl元素是上移开鼠标 |<br>| onkeydown | 按下键盘按键 |<br>| onload | 浏览器已完成页面的加载 |</p>
-<h2 id="JavaScript字符串"><a href="#JavaScript字符串" class="headerlink" title="JavaScript字符串"></a>JavaScript字符串</h2><p>JavaScript字符串用于存储和处理文本，可以是插入到引号中的任何字符，字符串也可以是对象。  </p>
-<h3 id="字符串长度"><a href="#字符串长度" class="headerlink" title="字符串长度"></a>字符串长度</h3><p>字符串长度可以使用内置属性<code>length</code>来计算，如</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var txt=<span class="string">"ZXCCVBNM"</span>;</span><br><span class="line">var sln=txt.length;</span><br></pre></td></tr></table></figure>
-
-<p>也可以使用索引位置来访问字符串中的任意一个字符，如：<code>var character=txt[2]</code>，索引是从0开始的。</p>
-<h3 id="可以使用转义字符转义的特殊字符"><a href="#可以使用转义字符转义的特殊字符" class="headerlink" title="可以使用转义字符转义的特殊字符"></a>可以使用转义字符转义的特殊字符</h3><p>反斜杠（<code>\</code>）是一个转义字符，可以将特殊字符转换为字符串字符，在字符串中可以使用转义字符转义的特殊字符如下：<br>| 代码 | 输出 |<br>| :—— | :—— |<br>| <code>\&#39;</code> | 单引号 |<br>| <code>\&quot;</code> | 双引号 |<br>| <code>\\</code> | 反斜杠 |<br>| <code>\n</code> | 换行 |<br>| <code>\r</code> | 回车 |<br>| <code>\t</code> | tab（制表符） |<br>| <code>\b</code> | 退格符 |<br>| <code>\f</code> | 换页符 |</p>
-<h3 id="字符串属性"><a href="#字符串属性" class="headerlink" title="字符串属性"></a>字符串属性</h3><table>
+<h2 id="JavaScript事件"><a href="#JavaScript事件" class="headerlink" title="JavaScript事件"></a>JavaScript事件</h2><p>HTML事件是发生在HTML元素上的事情，常见的HTML事件如下：  </p>
+<table>
 <thead>
 <tr>
-<th align="left">属性</th>
+<th align="left">事件</th>
 <th align="left">描述</th>
 </tr>
 </thead>
 <tbody><tr>
-<td align="left">constructor</td>
-<td align="left">返回创建字符串属性的函数</td>
+<td align="left">onchange</td>
+<td align="left">HTML元素改变</td>
 </tr>
 <tr>
-<td align="left">length</td>
-<td align="left">返回字符串的长度</td>
+<td align="left">onclick</td>
+<td align="left">点击HTML元素</td>
 </tr>
 <tr>
-<td align="left">prototype</td>
-<td align="left">允许你向对象添加属性和方法</td>
+<td align="left">onmouseover</td>
+<td align="left">在一个HTML元素上移动鼠标</td>
 </tr>
 <tr>
-<td align="left">### 字符串方法</td>
-<td align="left"></td>
+<td align="left">onmouseout</td>
+<td align="left">从一个HTMl元素是上移开鼠标</td>
 </tr>
 <tr>
-<td align="left">方法</td>
-<td align="left">描述</td>
+<td align="left">onkeydown</td>
+<td align="left">按下键盘按键</td>
 </tr>
 <tr>
-<td align="left">:——</td>
-<td align="left">:——</td>
+<td align="left">onload</td>
+<td align="left">浏览器已完成页面的加载</td>
 </tr>
+</tbody></table>
+<h2 id="JavaScript字符串"><a href="#JavaScript字符串" class="headerlink" title="JavaScript字符串"></a>JavaScript字符串</h2><p>JavaScript字符串用于存储和处理文本，可以是插入到引号中的任何字符，字符串也可以是对象。  </p>
+<h3 id="字符串长度"><a href="#字符串长度" class="headerlink" title="字符串长度"></a>字符串长度</h3><p>字符串长度可以使用内置属性<code>length</code>来计算，如<code>txt.length</code>；可以使用索引位置来访问字符串中的任意一个字符，如：<code>var character=txt[2]</code>，索引是从0开始的。</p>
+<h3 id="可以使用转义字符转义的特殊字符"><a href="#可以使用转义字符转义的特殊字符" class="headerlink" title="可以使用转义字符转义的特殊字符"></a>可以使用转义字符转义的特殊字符</h3><p>反斜杠（<code>\</code>）是一个转义字符，可以将特殊字符转换为字符串字符，在字符串中可以使用转义字符转义的特殊字符：<code>\&#39;</code>- 单引号；<code>\&quot;</code> - 双引号；<code>\\</code> - 反斜杠；<code>\n</code> - 换行； <code>\r</code> - 回车；<code>\t</code> - tab（制表符）；<code>\b</code> - 退格符；<code>\f</code> - 换页符。  </p>
+<h3 id="字符串方法"><a href="#字符串方法" class="headerlink" title="字符串方法"></a>字符串方法</h3><table>
+<thead>
 <tr>
+<th align="left">方法</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
 <td align="left">charAt()</td>
 <td align="left">返回指定索引位置的字符</td>
 </tr>
@@ -422,10 +312,6 @@
 <tr>
 <td align="left">lastIndexOf()</td>
 <td align="left">返回字符串中检索指定字符最后一次出现的位置</td>
-</tr>
-<tr>
-<td align="left">localeCompare()</td>
-<td align="left">用本地特定的顺序来比较两个字符串</td>
 </tr>
 <tr>
 <td align="left">match()</td>
@@ -464,14 +350,6 @@
 <td align="left">提取字符串中两个指定的索引号之间的字符</td>
 </tr>
 <tr>
-<td align="left">toLocaleLowerCase()</td>
-<td align="left">根据主机的语言环境把字符串转换为小写，只有几种语言（如土耳其语）具有地方特有的大小写映射</td>
-</tr>
-<tr>
-<td align="left">toLocaleUpperCase()</td>
-<td align="left">根据主机的语言环境把字符串转换为大写，只有几种语言（如土耳其语）具有地方特有的大小写映射</td>
-</tr>
-<tr>
 <td align="left">toLowerCase()</td>
 <td align="left">把字符串转换为小写</td>
 </tr>
@@ -491,19 +369,15 @@
 <td align="left">valueOf()</td>
 <td align="left">返回某个字符串对象的原始值</td>
 </tr>
+</tbody></table>
+<h3 id="HTMl包装方法"><a href="#HTMl包装方法" class="headerlink" title="HTMl包装方法"></a>HTMl包装方法</h3><table>
+<thead>
 <tr>
-<td align="left">### HTMl包装方法</td>
-<td align="left"></td>
+<th align="left">方法</th>
+<th align="left">描述</th>
 </tr>
-<tr>
-<td align="left">方法</td>
-<td align="left">描述</td>
-</tr>
-<tr>
-<td align="left">:——</td>
-<td align="left">:——</td>
-</tr>
-<tr>
+</thead>
+<tbody><tr>
 <td align="left">anchor()</td>
 <td align="left">创建HTML锚</td>
 </tr>
@@ -546,6 +420,46 @@
 <tr>
 <td align="left">strike()</td>
 <td align="left">用于显示加删除线的字符串</td>
+</tr>
+<tr>
+<td align="left">sup()</td>
+<td align="left">把字符串显示为上标</td>
+</tr>
+</tbody></table>
+<h2 id="JavaScript-Date对象"><a href="#JavaScript-Date对象" class="headerlink" title="JavaScript Date对象"></a>JavaScript Date对象</h2><p><code>Date()</code>方法获得当前日期:  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">var d=new Date();</span><br><span class="line">document.write(d);</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">```   </span><br><span class="line">示例：  </span><br><span class="line">```bash</span><br><span class="line">d.getFullYear();//获取年份</span><br><span class="line">d.getMonth()+1；//月份</span><br><span class="line">d.getDate()；//日</span><br><span class="line">d.getDay();//周几[0-6]</span><br><span class="line">d.getHours();//小时</span><br><span class="line">d.getMinutes();//分</span><br><span class="line">d.getSeconds();//秒</span><br><span class="line">Math.floor((d.getMonth()+3)/3)；//季度</span><br><span class="line">d.getMilliseconds()；//毫秒</span><br><span class="line">d.getTime();//返回从1970年1月1日至今的毫秒数  </span><br><span class="line">d.setFullYear(2020,10,3);//用于设置具体的日期</span><br><span class="line">d.toUTCString();//将当日的日期（根据 UTC）转换为字符串</span><br></pre></td></tr></table></figure>
+
+<h2 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a><a href="https://www.runoob.com/js/js-regexp.html" target="_blank" rel="noopener">正则表达式</a></h2><p>正则表达式是由一个字符序列形成的搜索模式，正则表达式可用于所有文本搜索和文本替换的操作，语法：<code>/正则表达式主体/修饰符(可选)</code>，例：<code>/runoob/i</code>是一个正则表达式，其中<code>runoob</code>是一个正则表达式主体（用于检索），<code>i</code>是一个修饰符（搜索不区分大小写）。  </p>
+<p>在JavaScript中，正则表达式通常用于两个字符串方法<code>search()</code>和<code>replace()</code>。<code>search()方法</code>用于检索字符串中指定的子字符串，或检索与正则表达式相匹配的子字符串，并返回子串的起始位置；<code>replace()方法</code>用于在字符串中用一些字符替换另一些字符，或替换一个与正则表达式匹配的子串。  </p>
+<p>示例：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//使用正则表达式搜索<span class="string">"Runoob"</span>字符串，且不区分大小写：</span><br><span class="line">var str = <span class="string">"Visit Runoob!"</span>; </span><br><span class="line">var n = str.search(/Runoob/i);</span><br><span class="line">//使用正则表达式且不区分大小写将字符串中的Microsoft替换为Runoob:</span><br><span class="line">var str = document.getElementById(<span class="string">"demo"</span>).innerHTML; </span><br><span class="line">var txt = str.replace(/microsoft/i,<span class="string">"Runoob"</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="JavaScript错误-throw、try和catch"><a href="#JavaScript错误-throw、try和catch" class="headerlink" title="JavaScript错误-throw、try和catch"></a>JavaScript错误-throw、try和catch</h2><p><code>try</code>语句 - 测试代码块的错误；<br><code>catch</code>语句 - 处理错误；<br><code>throw</code>语句 - 创建自定义错误；<br><code>finally</code>语句 - 在<code>try</code>和<code>catch</code>之后，无论是否有触发异常，该语句都会执行。  </p>
+<p>示例：  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">myFunction</span></span>() &#123;</span><br><span class="line">    var message,x;</span><br><span class="line">    message = document.getElementById(<span class="string">"p01"</span>);</span><br><span class="line">    message.innerHTML = <span class="string">""</span>;</span><br><span class="line">    x = document.getElementById(<span class="string">"demo"</span>).value;</span><br><span class="line">    try &#123; </span><br><span class="line">        <span class="keyword">if</span>(x == <span class="string">""</span>) throw <span class="string">"值是空的"</span>;</span><br><span class="line">        <span class="keyword">if</span>(isNaN(x)) throw <span class="string">"值不是一个数字"</span>;</span><br><span class="line">        x = Number(x);</span><br><span class="line">        <span class="keyword">if</span>(x &gt; 10) throw <span class="string">"太大"</span>;</span><br><span class="line">        <span class="keyword">if</span>(x &lt; 5) throw <span class="string">"太小"</span>;</span><br><span class="line">     &#125;</span><br><span class="line">     catch(err) &#123;</span><br><span class="line">        message.innerHTML = <span class="string">"错误: "</span> + err + <span class="string">"."</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    finally &#123;</span><br><span class="line">        document.getElementById(<span class="string">"demo"</span>).value = <span class="string">""</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="JavaScript-this关键字"><a href="#JavaScript-this关键字" class="headerlink" title="JavaScript this关键字"></a>JavaScript this关键字</h2><p>JavaScript中的<code>this</code>会随着执行环境的改变而改变：  </p>
+<p>1.方法中的<code>this</code>表示该方法所属的对象，如： </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var person = &#123;</span><br><span class="line">  firstName: <span class="string">"John"</span>,</span><br><span class="line">  lastName : <span class="string">"Doe"</span>,</span><br><span class="line">  id       : 5566,</span><br><span class="line">  fullName : <span class="function"><span class="title">function</span></span>() &#123;</span><br><span class="line">    <span class="built_in">return</span> this.firstName + <span class="string">" "</span> + this.lastName;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>其中，<code>this</code>表示<code>person</code>对象，<code>fullName()</code>方法所属的对象就是<code>person</code>。<br>2.单独使用this，则它指向全局对象；<br>3.函数使用中，<code>this</code>指向函数的所属者；<br>4.严格模式下函数时没有绑定到<code>this</code>上，这时候<code>this</code>是<code>undefined</code>；<br>5.在HTML事件句柄中，<code>this</code>指向了接收事件的HTML元素；<br>6.<code>apply</code>和<code>call</code>允许切换函数执行的上下文环境，即<code>this</code>绑定的对象，可以将<code>this</code>引用到任何对象。</p>
+<h2 id="JavaScript-JSON"><a href="#JavaScript-JSON" class="headerlink" title="JavaScript JSON"></a><a href="https://www.runoob.com/js/js-json.html" target="_blank" rel="noopener">JavaScript JSON</a></h2><p>JSON是用于存储和传输数据的格式，语法规则：数据是<code>键/值</code>对、数据由<code>,</code>分隔、大括号保存对象、方括号保存数组，JSON示例：  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="string">"sites"</span>:[</span><br><span class="line">    &#123;<span class="string">"name"</span>:<span class="string">"Runoob"</span>, <span class="string">"url"</span>:<span class="string">"www.runoob.com"</span>&#125;, </span><br><span class="line">    &#123;<span class="string">"name"</span>:<span class="string">"Google"</span>, <span class="string">"url"</span>:<span class="string">"www.google.com"</span>&#125;,</span><br><span class="line">    &#123;<span class="string">"name"</span>:<span class="string">"Taobao"</span>, <span class="string">"url"</span>:<span class="string">"www.taobao.com"</span>&#125;</span><br><span class="line">]&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="相关函数"><a href="#相关函数" class="headerlink" title="相关函数"></a>相关函数</h3><table>
+<thead>
+<tr>
+<th align="left">函数</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>JSON.parse()</code></td>
+<td align="left">用于将一个JSON字符串转换为JavaScript对象</td>
+</tr>
+<tr>
+<td align="left"><code>JSON.stringify()</code></td>
+<td align="left">用于将JavaScript值转换为JSON字符串</td>
 </tr>
 </tbody></table>
 
@@ -700,7 +614,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#JavaScript显示数据"><span class="toc-number">1.</span> <span class="toc-text">JavaScript显示数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JavaScript语法"><span class="toc-number">2.</span> <span class="toc-text">JavaScript语法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#字面量"><span class="toc-number">2.1.</span> <span class="toc-text">字面量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#变量"><span class="toc-number">2.2.</span> <span class="toc-text">变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#操作符"><span class="toc-number">2.3.</span> <span class="toc-text">操作符</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JavaScript语句标识符"><span class="toc-number">3.</span> <span class="toc-text">JavaScript语句标识符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JavaScript函数"><span class="toc-number">4.</span> <span class="toc-text">JavaScript函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#函数语法"><span class="toc-number">4.1.</span> <span class="toc-text">函数语法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#调用带有参数的函数"><span class="toc-number">4.2.</span> <span class="toc-text">调用带有参数的函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#带有返回值的函数"><span class="toc-number">4.3.</span> <span class="toc-text">带有返回值的函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#局部变量与全局变量"><span class="toc-number">4.4.</span> <span class="toc-text">局部变量与全局变量</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#事件"><span class="toc-number">5.</span> <span class="toc-text">事件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JavaScript字符串"><span class="toc-number">6.</span> <span class="toc-text">JavaScript字符串</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#字符串长度"><span class="toc-number">6.1.</span> <span class="toc-text">字符串长度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#可以使用转义字符转义的特殊字符"><span class="toc-number">6.2.</span> <span class="toc-text">可以使用转义字符转义的特殊字符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#字符串属性"><span class="toc-number">6.3.</span> <span class="toc-text">字符串属性</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#JavaScript显示数据"><span class="toc-number">1.</span> <span class="toc-text">JavaScript显示数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JavaScript语法"><span class="toc-number">2.</span> <span class="toc-text">JavaScript语法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#字面量"><span class="toc-number">2.1.</span> <span class="toc-text">字面量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#变量"><span class="toc-number">2.2.</span> <span class="toc-text">变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#注释"><span class="toc-number">2.3.</span> <span class="toc-text">注释</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JavaScript对象"><span class="toc-number">3.</span> <span class="toc-text">JavaScript对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JavaScript函数"><span class="toc-number">4.</span> <span class="toc-text">JavaScript函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#函数语法"><span class="toc-number">4.1.</span> <span class="toc-text">函数语法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#局部变量与全局变量"><span class="toc-number">4.2.</span> <span class="toc-text">局部变量与全局变量</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JavaScript事件"><span class="toc-number">5.</span> <span class="toc-text">JavaScript事件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JavaScript字符串"><span class="toc-number">6.</span> <span class="toc-text">JavaScript字符串</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#字符串长度"><span class="toc-number">6.1.</span> <span class="toc-text">字符串长度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#可以使用转义字符转义的特殊字符"><span class="toc-number">6.2.</span> <span class="toc-text">可以使用转义字符转义的特殊字符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#字符串方法"><span class="toc-number">6.3.</span> <span class="toc-text">字符串方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HTMl包装方法"><span class="toc-number">6.4.</span> <span class="toc-text">HTMl包装方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JavaScript-Date对象"><span class="toc-number">7.</span> <span class="toc-text">JavaScript Date对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#正则表达式"><span class="toc-number">8.</span> <span class="toc-text">正则表达式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JavaScript错误-throw、try和catch"><span class="toc-number">9.</span> <span class="toc-text">JavaScript错误-throw、try和catch</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JavaScript-this关键字"><span class="toc-number">10.</span> <span class="toc-text">JavaScript this关键字</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JavaScript-JSON"><span class="toc-number">11.</span> <span class="toc-text">JavaScript JSON</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#相关函数"><span class="toc-number">11.1.</span> <span class="toc-text">相关函数</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -904,14 +818,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ObjectMapper</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JSONObject</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Kafka</a>
               </li>
              
@@ -924,10 +830,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Redis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Solr</a>
               </li>
              
@@ -937,6 +839,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">IKAnalyzer</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">ObjectMapper</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JSONObject</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Redis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -960,15 +874,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">hexo-yilia</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Live2d看板动画</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1008,19 +922,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Storm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">SpringCloud</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Eureka</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">高可用注册中心</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1036,6 +938,22 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Eureka</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">高可用注册中心</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Spring定时任务</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Storm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Config</a>
               </li>
              
@@ -1045,10 +963,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">RabbitMQ</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Spring定时任务</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1068,14 +982,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Zookeeper</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Dubbo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Thymeleaf</a>
               </li>
              
@@ -1085,6 +991,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Ribbon</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Zookeeper</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Dubbo</a>
               </li>
             
             <div class="clearfix"></div>
@@ -1149,6 +1063,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           
             <li class="search-li">
               <a href="https://yl1690561739.gitee.io/bookmark/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>Buzhibujue&#39;s bookmark</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="https://shiliashili.github.io/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>WJY&#39;s blog</a>
             </li>
           
         </ul>
