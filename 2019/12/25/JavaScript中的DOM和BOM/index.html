@@ -6,15 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: Kafka | Hexo</title>
+  <title>JavaScript中的DOM和BOM | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/tags/Kafka/index.html">
+  <meta name="description" content="&amp;emsp;&amp;emsp;BOM是浏览器对象模型，使得JavaScript有能力与浏览器“对话”，用来获取或设置浏览器的属性、行为，例如：新建窗口、获取屏幕分辨率、浏览器版本号、弹出对话框、进行导航等；DOM是文档对象模型，通DOM可以访问HTML文档的所有元素。">
+<meta name="keywords" content="BOM,DOM">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript中的DOM和BOM">
+<meta property="og:url" content="http://yoursite.com/2019/12/25/JavaScript中的DOM和BOM/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="&amp;emsp;&amp;emsp;BOM是浏览器对象模型，使得JavaScript有能力与浏览器“对话”，用来获取或设置浏览器的属性、行为，例如：新建窗口、获取屏幕分辨率、浏览器版本号、弹出对话框、进行导航等；DOM是文档对象模型，通DOM可以访问HTML文档的所有元素。">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-12-25T06:13:40.654Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="JavaScript中的DOM和BOM">
+<meta name="twitter:description" content="&amp;emsp;&amp;emsp;BOM是浏览器对象模型，使得JavaScript有能力与浏览器“对话”，用来获取或设置浏览器的属性、行为，例如：新建窗口、获取屏幕分辨率、浏览器版本号、弹出对话框、进行导航等；DOM是文档对象模型，通DOM可以访问HTML文档的所有元素。">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -182,206 +187,328 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-JavaScript中的DOM和BOM" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+        
+        <a href="/2019/12/25/JavaScript中的DOM和BOM/" class="archive-article-date">
+  	<time datetime="2019-12-25T01:55:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-25</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+    <p>
+  
+    <h1 class="article-title_code_ant" itemprop="name">
+      JavaScript中的DOM和BOM
+    </h1>
+  
+</p>
+    
+    <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">2k字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">7分</span>
+      </span>
+    </span>
+</div>
+
+      
+        <p>&emsp;&emsp;<strong>BOM是浏览器对象模型，使得JavaScript有能力与浏览器“对话”，用来获取或设置浏览器的属性、行为，例如：新建窗口、获取屏幕分辨率、浏览器版本号、弹出对话框、进行导航等；DOM是文档对象模型，通DOM可以访问HTML文档的所有元素。</strong></p>
+<a id="more"></a>
+<h2 id="一、BOM"><a href="#一、BOM" class="headerlink" title="一、BOM"></a>一、BOM</h2><p>BOM包含<code>windows</code>（窗口）、<code>navigator</code>（浏览器）、<code>screen</code>（浏览器屏幕）、<code>history</code>（访问历史）、<code>location</code>（地址）等对象。  </p>
+<h3 id="1、windows对象"><a href="#1、windows对象" class="headerlink" title="1、windows对象"></a>1、windows对象</h3><p>windows对象：页面一旦加载，就会创建<code>windows</code>对象，无需自行创建，通过该对象可以获取浏览器窗口宽高、打开关闭新窗口等属性，如下：  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">window.innerHeight - 浏览器窗口的内部高度(包括滚动条)</span><br><span class="line">window.innerWidth - 浏览器窗口的内部宽度(包括滚动条)</span><br><span class="line">window.open() - 打开新窗口</span><br><span class="line">window.close() - 关闭当前窗口</span><br><span class="line">window.moveTo() - 移动当前窗口</span><br><span class="line">window.resizeTo() - 调整当前窗口的尺寸</span><br></pre></td></tr></table></figure>
+
+<h3 id="2、screen对象"><a href="#2、screen对象" class="headerlink" title="2、screen对象"></a>2、screen对象</h3><p>screen对象包含有关用户屏幕的信息：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">screen.width - 屏幕总宽度</span><br><span class="line">screen.height - 屏幕总高度</span><br><span class="line">screen.availWidth - 屏幕的可用宽度，减去界面特性，如窗口任务栏</span><br><span class="line">screen.availHeight - 屏幕的可用高度，减去界面特性，如窗口任务栏</span><br><span class="line">screen.colorDepth - 屏幕的色彩深度</span><br><span class="line">screen.pixelDepth - 屏幕的分辨率</span><br></pre></td></tr></table></figure>
+
+<h3 id="3、location对象"><a href="#3、location对象" class="headerlink" title="3、location对象"></a>3、location对象</h3><p>location对象用于获得当前页面的地址URL，并把浏览器重定向到新的页面：  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">location.href - 当前页面的URL</span><br><span class="line">location.hostname - web主机的域名</span><br><span class="line">location.pathname - 当前页面的路径和文件名</span><br><span class="line">location.port - web主机的端口（80或443）</span><br><span class="line">location.protocol - 所使用的web协议（http:或https:）</span><br><span class="line">location.assign(<span class="string">"http:www.baidu.com"</span>) - 加载新的文档</span><br></pre></td></tr></table></figure>
+
+<h3 id="4、history对象"><a href="#4、history对象" class="headerlink" title="4、history对象"></a>4、history对象</h3><p>history对象记录浏览器的访问历史：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">history.back() - 加载历史列表中的前一个URL</span><br><span class="line">history.forward() - 加载历史列表中的下一个URL</span><br></pre></td></tr></table></figure>
+
+<h3 id="5、navigator对象"><a href="#5、navigator对象" class="headerlink" title="5、navigator对象"></a>5、navigator对象</h3><p>navigator对象提供浏览器相关信息，包括浏览器名称、版本号、操作系统等：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">navigator.appCodeName - 浏览器代号</span><br><span class="line">navigator.appName - 浏览器名称</span><br><span class="line">navigator.appVersion - 浏览器版本</span><br><span class="line">navigator.cookieEnabled - 启用Cookies</span><br><span class="line">navigator.platform - 硬件平台</span><br><span class="line">navigator.userAgent - 用户代理</span><br><span class="line">navigator.systemLanguage - 用户代理语言</span><br></pre></td></tr></table></figure>
+
+<h3 id="6、弹窗"><a href="#6、弹窗" class="headerlink" title="6、弹窗"></a>6、弹窗</h3><p>可以在JavaScript中创建三种消息框：警告框、确认框、提示框。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">alert(<span class="string">"警告！"</span>); - 警告框经常用于确保用户可以得到某些信息，当警告框出现后，用户需要点击确定按钮才能继续进行操作</span><br><span class="line"></span><br><span class="line">confirm(<span class="string">"确定吗？"</span>); - 确认框通常用于验证是否接受用户操作，你点击<span class="string">"确认"</span>, 确认框返回<span class="literal">true</span>，如果点击 <span class="string">"取消"</span>, 确认框返回<span class="literal">false</span></span><br><span class="line"></span><br><span class="line">prompt(<span class="string">"sometext"</span>,<span class="string">"defaultvalue"</span>); - 提示框经常用于提示用户在进入页面前输入某个值，当提示框出现后，用户需要输入某个值，然后点击确认或取消按钮才能继续操纵。点击确认，那么返回值为输入的值，点击取消，那么返回值为null</span><br></pre></td></tr></table></figure>
+
+<p><strong>注：弹窗使用<code>反斜杠+&quot;n&quot;(\n)</code>来设置换行，如：<code>alert(&quot;Hello\nHow are you?&quot;);</code>。</strong></p>
+<h3 id="7、计时事件"><a href="#7、计时事件" class="headerlink" title="7、计时事件"></a>7、计时事件</h3><p>通过使用JavaScript，可以做到在一个设定的时间间隔之后来执行代码，而不是在函数调用后立即执行，称之为“计时事件”。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">setInterval(<span class="string">"javascript function"</span>,milliseconds); - 间隔指定的毫秒数不停地执行指定的代码</span><br><span class="line"></span><br><span class="line">setTimeout(<span class="string">"javascript function"</span>, milliseconds); - 在指定的毫秒数后执行指定代码</span><br><span class="line"></span><br><span class="line">clearTimeout(timeoutVariable); - 停止执行setTimeout()方法的函数代码</span><br></pre></td></tr></table></figure>
+
+<h2 id="二、DOM"><a href="#二、DOM" class="headerlink" title="二、DOM"></a>二、DOM</h2><p>网页被加载时，浏览器会创建页面的文档对象模型，通过HTML DOM，可以访问JavaScript HTML文档的所有元素。  </p>
+<h3 id="1、查找元素"><a href="#1、查找元素" class="headerlink" title="1、查找元素"></a>1、查找元素</h3><p>（1）通过id查找元素，例：<code>document.getElementById(&quot;intro&quot;);</code>；  </p>
+<p>（2）通过标签名查找元素，例：<code>getElementsByTagName(&quot;p&quot;);</code>；  </p>
+<p>（3）通过类名找到元素，例：<code>getElementsByClassName(&quot;intro&quot;);</code>。</p>
+<h3 id="2、改变HTML元素的内容"><a href="#2、改变HTML元素的内容" class="headerlink" title="2、改变HTML元素的内容"></a>2、改变HTML元素的内容</h3><p>（1）改变HMTL输出流：<code>document.write()</code>可用于直接向HTML 输出流写内容，如<code>document.write(Date())</code>可用于输出当前日期;  </p>
+<p>（2）改变HTML内容：修改HTML内容的最简单的方法是使用<code>innerHTML</code>属性，例：<code>document.getElementById(&quot;p1&quot;).innerHTML=&quot;新文本!&quot;;</code>；  </p>
+<p>（3）改变HTML属性：<code>document.getElementById(id).attribute=新属性值</code>，例：<code>document.getElementById(&quot;image&quot;).src=&quot;landscape.jpg&quot;;</code>。</p>
+<h3 id="3、改变CSS"><a href="#3、改变CSS" class="headerlink" title="3、改变CSS"></a>3、改变CSS</h3><p>（1）改变HTML样式：<code>document.getElementById(id).style.property=新样式</code>，例：<code>document.getElementById(&quot;p2&quot;).style.color=&quot;blue&quot;;</code>； </p>
+<p>（2）使用事件：HTML DOM允许通过触发事件来执行代码，比如以下事件：元素被点击、页面加载完成、输入框被修改等，例：<code>onclick=&quot;document.getElementById(&#39;id1&#39;).style.color=&#39;red&#39;&quot;</code>。</p>
+<h3 id="4、DOM事件"><a href="#4、DOM事件" class="headerlink" title="4、DOM事件"></a>4、<a href="https://how2j.cn/k/dom/dom-event/464.html#step1189" target="_blank" rel="noopener">DOM事件</a></h3><p>常用的事件如下：  </p>
+<table>
+<thead>
+<tr>
+<th align="left">事件类别</th>
+<th align="left">事件</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">焦点事件</td>
+<td align="left">获取焦点 - onfocus、失去焦点 - onblur</td>
+</tr>
+<tr>
+<td align="left">鼠标事件</td>
+<td align="left">鼠标按下 - onmousedown、鼠标弹起 - onmouseup、鼠标经过 - onmousemove、鼠标进入 - onmouseover、鼠标退出 - onmouseout</td>
+</tr>
+<tr>
+<td align="left">键盘事件</td>
+<td align="left">键盘按下 - onkeydown/onkeypress、键盘弹起 - onkeyup</td>
+</tr>
+<tr>
+<td align="left">点击事件</td>
+<td align="left">单击 - onclick、双击 - ondblclick</td>
+</tr>
+<tr>
+<td align="left">变化事件</td>
+<td align="left">发生变化 - onchange</td>
+</tr>
+<tr>
+<td align="left">提交事件</td>
+<td align="left">form元素提交 - omsubmit</td>
+</tr>
+<tr>
+<td align="left">加载事件</td>
+<td align="left">整个文档或一个图片加载成功，会出发onloadsh事件</td>
+</tr>
+<tr>
+<td align="left">阻止事件的发生</td>
+<td align="left">return false;</td>
+</tr>
+</tbody></table>
+<h3 id="5、EventListener"><a href="#5、EventListener" class="headerlink" title="5、EventListener"></a>5、EventListener</h3><p>（1）<code>addEventListener()</code>方法用于向指定元素添加事件句柄，语法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">element.addEventListener(event, function, useCapture);</span><br></pre></td></tr></table></figure>
+
+<p>其中，第一个参数是事件的类型 (如 “click” 或 “mousedown”)，第二个参数是事件触发后调用的函数，第三个参数是个布尔值用于描述事件是冒泡还是捕获，该参数是可选的。  </p>
+<p><strong>注：<code>addEventListener()</code>方法允许向同一个元素添加多个事件，且不会覆盖已存在的事件。</strong></p>
+<p>示例 - 当点击元素时弹出”Hello World!”框:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">element.addEventListener(<span class="string">"click"</span>, <span class="function"><span class="title">function</span></span>()&#123; alert(<span class="string">"Hello World!"</span>); &#125;);</span><br></pre></td></tr></table></figure>
+
+<p>（2）<code>removeEventListener()</code>方法移除由<code>addEventListener()</code>方法添加的事件句柄，例：<code>element.removeEventListener(&quot;click&quot;, myFunction);</code></p>
+<h3 id="6、DOM元素（节点）"><a href="#6、DOM元素（节点）" class="headerlink" title="6、DOM元素（节点）"></a>6、DOM元素（节点）</h3><p>（1）创建新的元素（节点） - <code>appendChild()</code>，该方法可用于添加新元素到尾部，示例：  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="string">"div1"</span>&gt;</span><br><span class="line">    &lt;p id=<span class="string">"p1"</span>&gt;这是一个段落。&lt;/p&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    //创建&lt;p&gt;元素</span><br><span class="line">    var para = document.createElement(<span class="string">"p"</span>);</span><br><span class="line">    //为 &lt;p&gt; 元素创建一个新的文本节点</span><br><span class="line">    var node = document.createTextNode(<span class="string">"这是一个新的段落。"</span>);</span><br><span class="line">    //将文本节点添加到&lt;p&gt;元素中</span><br><span class="line">    para.appendChild(node);</span><br><span class="line">    //查找已存在的元素</span><br><span class="line">    var element = document.getElementById(<span class="string">"div1"</span>);</span><br><span class="line">    //将&lt;p&gt;元素添加到已存在的元素中</span><br><span class="line">    element.appendChild(para);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>（2）创建新的元素（节点） - <code>insertBefore()</code>，该方法可用于添加新元素到开始位置，使用方法同上。  </p>
+<p>（3）移除已存在的元素，移除一个元素的前提是需要知道该元素的父元素，示例：  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="string">"div1"</span>&gt;</span><br><span class="line">    &lt;p id=<span class="string">"p1"</span>&gt;这是一个段落。&lt;/p&gt;</span><br><span class="line">    &lt;p id=<span class="string">"p2"</span>&gt;这是另外一个段落。&lt;/p&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"> </span><br><span class="line">&lt;script&gt;</span><br><span class="line">    var parent = document.getElementById(<span class="string">"div1"</span>);</span><br><span class="line">    var child = document.getElementById(<span class="string">"p1"</span>);</span><br><span class="line">    //从父元素中移除子节点</span><br><span class="line">    parent.removeChild(child);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>(4)替换HTML元素 - <code>replaceChild()</code>，可以使用<code>replaceChild()</code>方法来替换HTML DOM中的元素，示例：  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="string">"div1"</span>&gt;</span><br><span class="line">    &lt;p id=<span class="string">"p1"</span>&gt;这是一个段落。&lt;/p&gt;</span><br><span class="line">    &lt;p id=<span class="string">"p2"</span>&gt;这是另外一个段落。&lt;/p&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"> </span><br><span class="line">&lt;script&gt;</span><br><span class="line">    var para = document.createElement(<span class="string">"p"</span>);</span><br><span class="line">    var node = document.createTextNode(<span class="string">"这是一个新的段落。"</span>);</span><br><span class="line">    para.appendChild(node);</span><br><span class="line"> </span><br><span class="line">    var parent = document.getElementById(<span class="string">"div1"</span>);</span><br><span class="line">    var child = document.getElementById(<span class="string">"p1"</span>);</span><br><span class="line">    parent.replaceChild(para, child);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="7、DOM集合"><a href="#7、DOM集合" class="headerlink" title="7、DOM集合"></a>7、DOM集合</h3><p><code>getElementsByTagName()</code>方法返回HTMLCollection对象，该对象类似包含HTML元素的一个数组，例：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//获取&lt;p&gt;元素的集合</span><br><span class="line">var myCollection = document.getElementsByTagName(&quot;p&quot;);</span><br><span class="line">//显示集合元素个数</span><br><span class="line">document.getElementById(&quot;demo&quot;).innerHTML = myCollection.length;</span><br></pre></td></tr></table></figure>
+
+<h3 id="8、DOM节点列表"><a href="#8、DOM节点列表" class="headerlink" title="8、DOM节点列表"></a>8、DOM节点列表</h3><p><code>NodeList</code>对象是一个从文档中获取的节点列表（集合），该对象类似HTMLCollection对象，例：  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//获取&lt;p&gt;元素的列表</span><br><span class="line">var myNodelist = document.querySelectorAll(<span class="string">"p"</span>);</span><br><span class="line">//显示节点列表的元素个数</span><br><span class="line">document.getElementById(<span class="string">"demo"</span>).innerHTML = myNodelist.length;</span><br></pre></td></tr></table></figure>
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/alipay.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/wechat.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/30/SpringBoot整合Kafka-Storm/" class="archive-article-date">
-  	<time datetime="2019-08-30T02:28:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/30/SpringBoot整合Kafka-Storm/">SpringBoot整合Kafka+Storm</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Kafka</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">BOM</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Spring Boot</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Storm</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">DOM</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/12/25/JavaScript中的DOM和BOM/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/21/Kafka与SSM的集成/" class="archive-article-date">
-  	<time datetime="2019-08-21T00:22:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-21</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/12/20/SpringBoot优雅的全局异常处理/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">SpringBoot优雅的全局异常处理</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/21/Kafka与SSM的集成/">Kafka与SSM的集成</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Kafka</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Spring Boot</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">SpringMVC</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">MyBaits</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、BOM"><span class="toc-number">1.</span> <span class="toc-text">一、BOM</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、windows对象"><span class="toc-number">1.1.</span> <span class="toc-text">1、windows对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、screen对象"><span class="toc-number">1.2.</span> <span class="toc-text">2、screen对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、location对象"><span class="toc-number">1.3.</span> <span class="toc-text">3、location对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4、history对象"><span class="toc-number">1.4.</span> <span class="toc-text">4、history对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5、navigator对象"><span class="toc-number">1.5.</span> <span class="toc-text">5、navigator对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6、弹窗"><span class="toc-number">1.6.</span> <span class="toc-text">6、弹窗</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7、计时事件"><span class="toc-number">1.7.</span> <span class="toc-text">7、计时事件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、DOM"><span class="toc-number">2.</span> <span class="toc-text">二、DOM</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、查找元素"><span class="toc-number">2.1.</span> <span class="toc-text">1、查找元素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、改变HTML元素的内容"><span class="toc-number">2.2.</span> <span class="toc-text">2、改变HTML元素的内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、改变CSS"><span class="toc-number">2.3.</span> <span class="toc-text">3、改变CSS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4、DOM事件"><span class="toc-number">2.4.</span> <span class="toc-text">4、DOM事件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5、EventListener"><span class="toc-number">2.5.</span> <span class="toc-text">5、EventListener</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6、DOM元素（节点）"><span class="toc-number">2.6.</span> <span class="toc-text">6、DOM元素（节点）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7、DOM集合"><span class="toc-number">2.7.</span> <span class="toc-text">7、DOM集合</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8、DOM节点列表"><span class="toc-number">2.8.</span> <span class="toc-text">8、DOM节点列表</span></a></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/19/Kafka：生产者与分区、分区与消费者/" class="archive-article-date">
-  	<time datetime="2019-08-19T06:27:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-19</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/19/Kafka：生产者与分区、分区与消费者/">Kafka：生产者与分区、分区与消费者</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Kafka</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">生产者与消费者</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">分区</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/13/Kafka使用Java实现数据的生产和消费/" class="archive-article-date">
-  	<time datetime="2019-08-13T01:07:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-13</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/13/Kafka使用Java实现数据的生产和消费/">Kafka使用Java实现数据的生产和消费</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Kafka</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">生产者与消费者</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
+  <div id="gitment-ctn"></div> 
+<link rel="stylesheet" href="https://billts.site/extra_css/gitment.css">
+<script src="https://billts.site/js/gitment.js"></script>
+<script>
+var gitment = new Gitment({
+  id: decodeURI(window.location.pathname),
+  owner: 'butalways1121',
+  repo: 'butalways1121.github.io',
+  oauth: {
+    client_id: '04d1e89c3e35949cd1df',
+    client_secret: '349862188473214c081a620b26558ced1977789b',
+  },
+})
+gitment.render('gitment-ctn')
+</script>
+  
 
 
           </div>
@@ -411,9 +538,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
