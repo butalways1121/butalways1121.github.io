@@ -8,20 +8,20 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>SpringBoot+Nginx实现负载均衡 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="&amp;emsp;&amp;emsp;Nginx是一款自由的、开源的、高性能的HTTP服务器和反向代理服务器，同时也是一个IMAP、POP3、SMTP代理服务器，由俄罗斯的程序设计师Igor Sysoev所开发，能够支支撑5万并发请求，并且CPU、内存等资源消耗非常低，同时运行非常稳定。本文简单介绍了Nginx的相关基础知识，同时整合SpringBoot+Nginx简单地实现了负载均衡。">
+  <meta name="description" content="&amp;emsp;&amp;emsp;Nginx是一款自由的、开源的、高性能的HTTP服务器和反向代理服务器，同时也是一个IMAP、POP3、SMTP代理服务器，由俄罗斯的程序设计师Igor Sysoev所开发，能够支撑5万并发请求，并且CPU、内存等资源消耗非常低，同时运行非常稳定。本文简单介绍了Nginx的相关基础知识，同时整合SpringBoot+Nginx简单地实现了负载均衡。">
 <meta name="keywords" content="SpringBoot,Nginx">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SpringBoot+Nginx实现负载均衡">
 <meta property="og:url" content="http://yoursite.com/2019/12/25/SpringBoot+Nginx实现负载均衡/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="&amp;emsp;&amp;emsp;Nginx是一款自由的、开源的、高性能的HTTP服务器和反向代理服务器，同时也是一个IMAP、POP3、SMTP代理服务器，由俄罗斯的程序设计师Igor Sysoev所开发，能够支支撑5万并发请求，并且CPU、内存等资源消耗非常低，同时运行非常稳定。本文简单介绍了Nginx的相关基础知识，同时整合SpringBoot+Nginx简单地实现了负载均衡。">
+<meta property="og:description" content="&amp;emsp;&amp;emsp;Nginx是一款自由的、开源的、高性能的HTTP服务器和反向代理服务器，同时也是一个IMAP、POP3、SMTP代理服务器，由俄罗斯的程序设计师Igor Sysoev所开发，能够支撑5万并发请求，并且CPU、内存等资源消耗非常低，同时运行非常稳定。本文简单介绍了Nginx的相关基础知识，同时整合SpringBoot+Nginx简单地实现了负载均衡。">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://gitee.com/butalways1121/img-Blog/raw/master/122.png">
 <meta property="og:image" content="https://gitee.com/butalways1121/img-Blog/raw/master/123.png">
-<meta property="og:updated_time" content="2019-12-26T06:28:22.844Z">
+<meta property="og:updated_time" content="2019-12-27T01:56:39.224Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SpringBoot+Nginx实现负载均衡">
-<meta name="twitter:description" content="&amp;emsp;&amp;emsp;Nginx是一款自由的、开源的、高性能的HTTP服务器和反向代理服务器，同时也是一个IMAP、POP3、SMTP代理服务器，由俄罗斯的程序设计师Igor Sysoev所开发，能够支支撑5万并发请求，并且CPU、内存等资源消耗非常低，同时运行非常稳定。本文简单介绍了Nginx的相关基础知识，同时整合SpringBoot+Nginx简单地实现了负载均衡。">
+<meta name="twitter:description" content="&amp;emsp;&amp;emsp;Nginx是一款自由的、开源的、高性能的HTTP服务器和反向代理服务器，同时也是一个IMAP、POP3、SMTP代理服务器，由俄罗斯的程序设计师Igor Sysoev所开发，能够支撑5万并发请求，并且CPU、内存等资源消耗非常低，同时运行非常稳定。本文简单介绍了Nginx的相关基础知识，同时整合SpringBoot+Nginx简单地实现了负载均衡。">
 <meta name="twitter:image" content="https://gitee.com/butalways1121/img-Blog/raw/master/122.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -231,7 +231,7 @@
 </div>
 
       
-        <p>&emsp;&emsp;<strong>Nginx是一款自由的、开源的、高性能的HTTP服务器和反向代理服务器，同时也是一个IMAP、POP3、SMTP代理服务器，由俄罗斯的程序设计师Igor Sysoev所开发，能够支支撑5万并发请求，并且CPU、内存等资源消耗非常低，同时运行非常稳定。本文简单介绍了Nginx的相关基础知识，同时整合SpringBoot+Nginx简单地实现了负载均衡。</strong></p>
+        <p>&emsp;&emsp;<strong>Nginx是一款自由的、开源的、高性能的HTTP服务器和反向代理服务器，同时也是一个IMAP、POP3、SMTP代理服务器，由俄罗斯的程序设计师Igor Sysoev所开发，能够支撑5万并发请求，并且CPU、内存等资源消耗非常低，同时运行非常稳定。本文简单介绍了Nginx的相关基础知识，同时整合SpringBoot+Nginx简单地实现了负载均衡。</strong></p>
 <a id="more"></a>
 <h2 id="一、Nginx简介"><a href="#一、Nginx简介" class="headerlink" title="一、Nginx简介"></a>一、Nginx简介</h2><h3 id="1、Nginx如何工作"><a href="#1、Nginx如何工作" class="headerlink" title="1、Nginx如何工作"></a>1、Nginx如何工作</h3><p><strong>Nginx的目的提供低内存使用率和高并发性</strong>，它不会为每个Web请求创建新的流程，而是使用异步事件驱动的方法，在单个线程中处理请求。  </p>
 <p>使用Nginx，一个主进程可以控制多个工作进程，主进程维护工作进程的过程，而工作进程则进行实际的操作。由于Nginx是异步的，因此每个请求都可以由工作进程并发执行，而不会阻止其他请求。</p>
@@ -400,6 +400,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2019/12/27/jQuery学习笔记/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          jQuery学习笔记
+        
+      </div>
+    </a>
   
   
     <a href="/2019/12/25/JavaScript中的DOM和BOM/" id="article-nav-older" class="article-nav-link-wrap">
@@ -618,11 +627,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ObjectMapper</a>
+                <a href="javascript:void(0)" class="js-tag color1">Yilia</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JSONObject</a>
+                <a href="javascript:void(0)" class="js-tag color3">相册</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -631,14 +640,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JpaRepository</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Yilia</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">相册</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -651,6 +652,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">IKAnalyzer</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">ObjectMapper</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JSONObject</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -690,15 +699,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">SpringMVC</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">MyBaits</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">RestTemplate</a>
+                <a href="javascript:void(0)" class="js-tag color2">jQuery</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -711,6 +712,22 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Live2d看板动画</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">SpringMVC</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">MyBaits</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">RestTemplate</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">HTML</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -734,7 +751,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">HTML</a>
+                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">全局异常处理</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -746,19 +767,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">全局异常处理</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">SpringCloud</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Zuul</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -770,27 +779,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Zuul</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Hystrix</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Dashboard</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Spring定时任务</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">关系型数据库</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">非关系型数据库</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Topology</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -806,6 +803,22 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Topology</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Spring定时任务</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">关系型数据库</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">非关系型数据库</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">HTML5</a>
               </li>
              
@@ -818,15 +831,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Thymeleaf</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Feign</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Ribbon</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Thymeleaf</a>
               </li>
             
             <div class="clearfix"></div>

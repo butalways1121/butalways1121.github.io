@@ -18,7 +18,7 @@
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://gitee.com/butalways1121/img-Blog/raw/master/70.png">
 <meta property="og:image" content="https://gitee.com/butalways1121/img-Blog/raw/master/71.png">
-<meta property="og:updated_time" content="2019-12-04T08:27:42.164Z">
+<meta property="og:updated_time" content="2019-12-30T07:11:01.151Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SpringBoot整合Thymeleaf与Hbase">
 <meta name="twitter:description" content="上一篇博客实现了在虚拟机中搭建Hadoop与Hbase的单机环境，本文内容为之前的SpringBoot项目与Thymeleaf引擎模板和Hbase整合成KafaConsumerStormThymeleaf项目，最终实现的是在前端页面对mysql数据库的增删改查操作，另外，也将hbase数据库的数据展示到前端并实现新增数据功能，同时又将从Hbase数据库拿到的数据插入mysql数据库，主要的一些步骤">
@@ -236,7 +236,7 @@
 <h3 id="一、SpringBoot项目整合Thymeleaf"><a href="#一、SpringBoot项目整合Thymeleaf" class="headerlink" title="一、SpringBoot项目整合Thymeleaf"></a>一、SpringBoot项目整合Thymeleaf</h3><p><strong>1、pom.xml中添加Thymeleaf依赖</strong><br>如下：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;spring-boot-starter-thymeleaf&lt;/artifactId&gt;</span><br><span class="line">        &lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
 
-<p><strong>2、创建Thymeleaf的资源文件</strong><br>Thymeleaf的资源文件是放在src/main/resources目录下，其中resources目录下的的static目录用于放置静态内容，比如css、js、jpg图片等，emplates目录用于放置项目使用的页面模板，也就是.html文件。<br><strong>3、编写Controller实现页面的跳转以及对数据库的操作</strong><br>主要代码如下，至于对数据库操作的增删改查方法就不一一列出了：</p>
+<p><strong>2、创建Thymeleaf的资源文件</strong><br>Thymeleaf的资源文件是放在src/main/resources目录下，其中resources目录下的的static目录用于放置静态内容，比如css、js、jpg图片等，templates目录用于放置项目使用的页面模板，也就是.html文件。<br><strong>3、编写Controller实现页面的跳转以及对数据库的操作</strong><br>主要代码如下，至于对数据库操作的增删改查方法就不一一列出了：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">@RequestMapping(<span class="string">"/list"</span>)</span><br><span class="line">public String toList(Model model) &#123;</span><br><span class="line">	List&lt;InfoGet&gt; infos = infoGetService.findAll();</span><br><span class="line">	model.addAttribute(<span class="string">"infos"</span>,infos);</span><br><span class="line">	<span class="built_in">return</span> <span class="string">"user/list"</span>;</span><br><span class="line">&#125;</span><br><span class="line">@RequestMapping(<span class="string">"/toAdd"</span>)</span><br><span class="line">public String toAdd(Model model) &#123;</span><br><span class="line">	<span class="built_in">return</span> <span class="string">"user/add"</span>;</span><br><span class="line">&#125;</span><br><span class="line">@RequestMapping(<span class="string">"/addUser"</span>)</span><br><span class="line">public String addUser(InfoGet infoGet) &#123;</span><br><span class="line">	infoGetService.add(infoGet);</span><br><span class="line">	<span class="built_in">return</span> <span class="string">"redirect:/list"</span>;</span><br><span class="line">&#125;</span><br><span class="line">@RequestMapping(<span class="string">"/delete"</span>)</span><br><span class="line">public String delete(int id) &#123;</span><br><span class="line">	infoGetService.delete(id);</span><br><span class="line">	<span class="built_in">return</span> <span class="string">"redirect:/list"</span>;</span><br><span class="line">&#125;</span><br><span class="line">@RequestMapping(<span class="string">"/toEdit"</span>)</span><br><span class="line">public String toEdit(Model model,int id) &#123;</span><br><span class="line">	InfoGet info = infoGetService.findById(id);</span><br><span class="line">     model.addAttribute(<span class="string">"info"</span>, info);</span><br><span class="line">	<span class="built_in">return</span> <span class="string">"user/edit"</span>;</span><br><span class="line">&#125;</span><br><span class="line">@RequestMapping(<span class="string">"/edit"</span>)</span><br><span class="line">public String edit(InfoGet infoGet) &#123;</span><br><span class="line">	infoGetService.update(infoGet);</span><br><span class="line">	<span class="built_in">return</span> <span class="string">"redirect:/list"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h3 id="二、SpringBoot整合Hbase"><a href="#二、SpringBoot整合Hbase" class="headerlink" title="二、SpringBoot整合Hbase"></a>二、SpringBoot整合Hbase</h3><p><strong>1、pom.xml中添加hbase依赖</strong><br>如下，其中jdk.tools的systemPath需改成本机的路径：</p>
@@ -600,11 +600,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ObjectMapper</a>
+                <a href="javascript:void(0)" class="js-tag color1">Yilia</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JSONObject</a>
+                <a href="javascript:void(0)" class="js-tag color3">相册</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -613,14 +613,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JpaRepository</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Yilia</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">相册</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -633,6 +625,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">IKAnalyzer</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">ObjectMapper</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JSONObject</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -672,15 +672,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">SpringMVC</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">MyBaits</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">RestTemplate</a>
+                <a href="javascript:void(0)" class="js-tag color2">jQuery</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -693,6 +685,22 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Live2d看板动画</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">SpringMVC</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">MyBaits</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">RestTemplate</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">HTML</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -716,7 +724,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">HTML</a>
+                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">全局异常处理</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -728,19 +740,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">全局异常处理</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">SpringCloud</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Zuul</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -752,27 +752,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Zuul</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Hystrix</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Dashboard</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Spring定时任务</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">关系型数据库</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">非关系型数据库</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Topology</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -788,6 +776,22 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Topology</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Spring定时任务</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">关系型数据库</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">非关系型数据库</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">HTML5</a>
               </li>
              
@@ -800,15 +804,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Thymeleaf</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Feign</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Ribbon</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Thymeleaf</a>
               </li>
             
             <div class="clearfix"></div>

@@ -22,7 +22,7 @@
 <meta property="og:image" content="https://gitee.com/butalways1121/img-Blog/raw/master/116.png">
 <meta property="og:image" content="https://gitee.com/butalways1121/img-Blog/raw/master/117.png">
 <meta property="og:image" content="https://gitee.com/butalways1121/img-Blog/raw/master/118.png">
-<meta property="og:updated_time" content="2019-12-06T00:01:05.129Z">
+<meta property="og:updated_time" content="2019-12-30T07:25:02.459Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Solr环境搭建与连接数据库获取数据">
 <meta name="twitter:description" content="&amp;emsp;&amp;emsp;本文的主要内容是Solr在Windows环境下的搭建，接着简单介绍了使用Solr创建Core并导入数据库的数据，第一次接触Solr，特此记录一下整个实现过程，便于下次使用。">
@@ -244,7 +244,7 @@
 <p>&emsp;&emsp;Solr可以和Hadoop一起使用。由于Hadoop处理大量数据，Solr帮助我们从这么大的源中找到所需的信息。不仅限于搜索，Solr也可以用于存储目的。像其他NoSQL数据库一样，它是一种非关系数据存储和处理技术。</p>
 <hr>
 <p>&emsp;&emsp;总之，Solr是一个可扩展的，可部署，搜索/存储引擎，优化搜索大量以文本为中心的数据。</p>
-<h3 id="2-为什么需要Solr"><a href="#2-为什么需要Solr" class="headerlink" title="2.为什么需要Solr?"></a>2.为什么需要Solr?</h3><p>&emsp;&emsp;（1）Solr本身也可以看成数据库(Nosql类型)，但它比数据库搜索速度更快，所以在项目中我们一般把搜搜的部分交给Solr，就像我们在京东首页所看到的商品信息，并不是来自数据库，而是来源于Sorl的索引库；</p>
+<h3 id="2-为什么需要Solr"><a href="#2-为什么需要Solr" class="headerlink" title="2.为什么需要Solr?"></a>2.为什么需要Solr?</h3><p>&emsp;&emsp;（1）Solr本身也可以看成数据库(Nosql类型)，但它比数据库搜索速度更快，所以在项目中我们一般把搜索的部分交给Solr，就像我们在京东首页所看到的商品信息，并不是来自数据库，而是来源于Solr的索引库；</p>
 <p>&emsp;&emsp;（2）数据库本身不能实现分词效果，而只能使用模糊查询，但是模糊查询非常低效，查询速度比较慢，由于在实际生活中，一般搜索是用的比较多的，这样数据库压力自然就很大，所以我们就让供专业的Solr来做搜索功能。</p>
 <h2 id="二、Solr环境搭建"><a href="#二、Solr环境搭建" class="headerlink" title="二、Solr环境搭建"></a>二、Solr环境搭建</h2><h3 id="1-环境准备"><a href="#1-环境准备" class="headerlink" title="1.环境准备"></a>1.环境准备</h3><p>&emsp;&emsp;<strong>Solr 6.6.5：</strong>下载地址：<code>http://archive.apache.org/dist/lucene/solr/6.6.5/</code> ，选择<code>solr-6.6.5.zip</code>下载解压为<code>solr-6.6.5</code>文件夹;</p>
 <p>&emsp;&emsp;<strong>Java：</strong>jdk 1.8，这个就不用多说了;</p>
@@ -619,11 +619,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ObjectMapper</a>
+                <a href="javascript:void(0)" class="js-tag color1">Yilia</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JSONObject</a>
+                <a href="javascript:void(0)" class="js-tag color3">相册</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -632,14 +632,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JpaRepository</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Yilia</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">相册</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -652,6 +644,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">IKAnalyzer</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">ObjectMapper</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JSONObject</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -691,15 +691,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">SpringMVC</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">MyBaits</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">RestTemplate</a>
+                <a href="javascript:void(0)" class="js-tag color2">jQuery</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -712,6 +704,22 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Live2d看板动画</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">SpringMVC</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">MyBaits</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">RestTemplate</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">HTML</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -735,7 +743,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">HTML</a>
+                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">全局异常处理</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -747,19 +759,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">全局异常处理</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">SpringCloud</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Zuul</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -771,27 +771,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Zuul</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Hystrix</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Dashboard</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Spring定时任务</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">关系型数据库</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">非关系型数据库</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Topology</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -807,6 +795,22 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Topology</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Spring定时任务</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">关系型数据库</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">非关系型数据库</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">HTML5</a>
               </li>
              
@@ -819,15 +823,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Thymeleaf</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Feign</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Ribbon</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Thymeleaf</a>
               </li>
             
             <div class="clearfix"></div>

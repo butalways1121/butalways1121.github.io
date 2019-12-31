@@ -19,7 +19,7 @@
 <meta property="og:image" content="https://gitee.com/butalways1121/img-Blog/raw/master/119.png">
 <meta property="og:image" content="https://gitee.com/butalways1121/img-Blog/raw/master/120.png">
 <meta property="og:image" content="https://gitee.com/butalways1121/img-Blog/raw/master/121.png">
-<meta property="og:updated_time" content="2019-12-06T09:23:41.586Z">
+<meta property="og:updated_time" content="2019-12-30T07:48:30.421Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Solr分词器">
 <meta name="twitter:description" content="&amp;emsp;&amp;emsp;上一篇博客中搭建了Solr的环境，本文来介绍一下Solr中IKAnalyzer分词器的配置。 关于分词&amp;emsp;&amp;emsp;分词是指将一个中文词语拆成若干个词，提供搜索引擎进行查找，比如：北京大学是一个词，如果进行拆分的话可以得到：北京与大学，甚至北京大学也是一个词。">
@@ -217,7 +217,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">771字</span>
+        <span class="post-count">779字</span>
       </span>
     </span>
 
@@ -240,7 +240,7 @@
 <hr>
 <p>&emsp;&emsp;本篇文章是关于Solr中IKAnalyzer分词器的配置使用，这里简单介绍一下IKAnalyzer：</p>
 <p>&emsp;&emsp;IKAnalyzer是一个开源的，基于java语言开发的轻量级的中文分词工具包。它是以开源项目Luence为主体的，结合词典分词和文法分析算法的中文分词组件。</p>
-<p>&emsp;&emsp;IKAnalyzer下载地址：<a href="https://pan.baidu.com/s/1Dbma2vAepBSsCag_EztTT" target="_blank" rel="noopener">IKAnalyer</a>，下载完成解压为<code>ikanalyzer-solr5</code>文件夹，如下：</p>
+<p>&emsp;&emsp;IKAnalyzer百度网盘下载地址：<a href="https://pan.baidu.com/s/1FawdRPFUrERcnRxmRIqoJw" target="_blank" rel="noopener">IKAnalyer</a>， 提取码: <code>1yt4</code>，下载完成解压为<code>ikanalyzer-solr5</code>文件夹，如下：</p>
 <p><img src="https://gitee.com/butalways1121/img-Blog/raw/master/119.png" alt></p>
 <p>其中:<br>&emsp;&emsp;<code>ext.dic</code>文件为扩展字典，这是根据“分词器扩展配置文件”中的说明自己新建的文件，表示一些<code>IKAnalyzer</code>自己无法解析的专有词汇，需要程序员手动告诉它，这些词是完整有语义的词，不要再做切分，如 “量子物理”、“拉普拉斯方程”、“高斯定理”、“傅里叶级数” 等等;<br>&emsp;&emsp;<code>IKAnalyzer.cfg.xml</code>文件为分词器扩展配置文件；<br>&emsp;&emsp;<code>stopword.dic</code>为停止词字典，表示无意义的词，中文分词的时候会忽略它们，如 “的”、“地”、“得” 等；<br>&emsp;&emsp;<code>solr-analyzer-ik-5.1.0.jar</code>和<code>ik-analyzer-solr5-5.x.jar</code>为分词jar包。<br><strong>注：无论是“停止字典”还是“扩展字典”，两个文件都要用<code>UTF-8</code>编码，文件中的一行表示一个词，结尾不要有空格。</strong></p>
 <h2 id="Solr中IKAnalyzer分词器的配置测试"><a href="#Solr中IKAnalyzer分词器的配置测试" class="headerlink" title="Solr中IKAnalyzer分词器的配置测试"></a>Solr中IKAnalyzer分词器的配置测试</h2><p>&emsp;&emsp;1.将解压后的<code>ikanalyzer-solr5</code>文件夹中的<code>ik-analyzer-solr5-5.x.jar</code>和<code>solr-analyzer-ik-5.1.0.jar</code>两个jar包复制到<code>pache-tomcat-8.0.26\webapps\solr\WEB-INF\lib</code>文件夹下；</p>
@@ -601,11 +601,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ObjectMapper</a>
+                <a href="javascript:void(0)" class="js-tag color1">Yilia</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JSONObject</a>
+                <a href="javascript:void(0)" class="js-tag color3">相册</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -614,14 +614,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JpaRepository</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Yilia</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">相册</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -634,6 +626,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">IKAnalyzer</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">ObjectMapper</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JSONObject</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -673,15 +673,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">SpringMVC</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">MyBaits</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">RestTemplate</a>
+                <a href="javascript:void(0)" class="js-tag color2">jQuery</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -694,6 +686,22 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Live2d看板动画</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">SpringMVC</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">MyBaits</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">RestTemplate</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">HTML</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -717,7 +725,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">HTML</a>
+                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">全局异常处理</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -729,19 +741,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">全局异常处理</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">SpringCloud</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Zuul</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -753,27 +753,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Zuul</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Hystrix</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Dashboard</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Spring定时任务</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">关系型数据库</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">非关系型数据库</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Topology</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -789,6 +777,22 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Topology</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Spring定时任务</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">关系型数据库</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">非关系型数据库</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">HTML5</a>
               </li>
              
@@ -801,15 +805,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Thymeleaf</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Feign</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Ribbon</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Thymeleaf</a>
               </li>
             
             <div class="clearfix"></div>
