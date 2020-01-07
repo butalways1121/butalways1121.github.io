@@ -8,18 +8,20 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>AJAX学习笔记 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="&amp;emsp;&amp;emsp;JAX = Asynchronous JavaScript and XML（异步的 JavaScript 和 XML），是一种用于创建快速动态网页的技术，通过在后台与服务器进行少量数据交换，AJAX 可以使网页实现异步更新，这意味着可以在不重新加载整个网页的情况下，对网页的某部分进行更新。">
+  <meta name="description" content="&amp;emsp;&amp;emsp;AJAX = Asynchronous JavaScript and XML（异步的 JavaScript 和 XML），是一种用于创建快速动态网页的技术，通过在后台与服务器进行少量数据交换，AJAX 可以使网页实现异步更新，这意味着可以在不重新加载整个网页的情况下，对网页的某部分进行更新。">
 <meta name="keywords" content="AJAX">
 <meta property="og:type" content="article">
 <meta property="og:title" content="AJAX学习笔记">
 <meta property="og:url" content="http://yoursite.com/2020/01/06/AJAX学习笔记/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="&amp;emsp;&amp;emsp;JAX = Asynchronous JavaScript and XML（异步的 JavaScript 和 XML），是一种用于创建快速动态网页的技术，通过在后台与服务器进行少量数据交换，AJAX 可以使网页实现异步更新，这意味着可以在不重新加载整个网页的情况下，对网页的某部分进行更新。">
+<meta property="og:description" content="&amp;emsp;&amp;emsp;AJAX = Asynchronous JavaScript and XML（异步的 JavaScript 和 XML），是一种用于创建快速动态网页的技术，通过在后台与服务器进行少量数据交换，AJAX 可以使网页实现异步更新，这意味着可以在不重新加载整个网页的情况下，对网页的某部分进行更新。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-01-06T08:35:53.937Z">
+<meta property="og:image" content="https://gitee.com/butalways1121/img-Blog/raw/master/126.png">
+<meta property="og:updated_time" content="2020-01-07T00:33:17.966Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="AJAX学习笔记">
-<meta name="twitter:description" content="&amp;emsp;&amp;emsp;JAX = Asynchronous JavaScript and XML（异步的 JavaScript 和 XML），是一种用于创建快速动态网页的技术，通过在后台与服务器进行少量数据交换，AJAX 可以使网页实现异步更新，这意味着可以在不重新加载整个网页的情况下，对网页的某部分进行更新。">
+<meta name="twitter:description" content="&amp;emsp;&amp;emsp;AJAX = Asynchronous JavaScript and XML（异步的 JavaScript 和 XML），是一种用于创建快速动态网页的技术，通过在后台与服务器进行少量数据交换，AJAX 可以使网页实现异步更新，这意味着可以在不重新加载整个网页的情况下，对网页的某部分进行更新。">
+<meta name="twitter:image" content="https://gitee.com/butalways1121/img-Blog/raw/master/126.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -213,7 +215,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">962字</span>
+        <span class="post-count">1.1k字</span>
       </span>
     </span>
 
@@ -222,19 +224,43 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">3分</span>
+        <span class="post-count">4分</span>
       </span>
     </span>
 </div>
 
       
-        <p>&emsp;&emsp;<strong>JAX = Asynchronous JavaScript and XML（异步的 JavaScript 和 XML），是一种用于创建快速动态网页的技术，通过在后台与服务器进行少量数据交换，AJAX 可以使网页实现异步更新，这意味着可以在不重新加载整个网页的情况下，对网页的某部分进行更新。</strong></p>
+        <p>&emsp;&emsp;<strong>AJAX = Asynchronous JavaScript and XML（异步的 JavaScript 和 XML），是一种用于创建快速动态网页的技术，通过在后台与服务器进行少量数据交换，AJAX 可以使网页实现异步更新，这意味着可以在不重新加载整个网页的情况下，对网页的某部分进行更新。</strong></p>
 <a id="more"></a>
 <h2 id="一、AJAX-创建XMLHttpRequest-对象"><a href="#一、AJAX-创建XMLHttpRequest-对象" class="headerlink" title="一、AJAX - 创建XMLHttpRequest 对象"></a>一、AJAX - 创建XMLHttpRequest 对象</h2><p>XMLHttpRequest 是 AJAX 的基础，用于在后台与服务器交换数据，这意味着可以在不重新加载整个网页的情况下，对网页的某部分进行更新。  </p>
 <p>IE7+、Firefox、Chrome、Safari 以及 Opera等现代主流浏览器创建XMLHttpRequest对象语法： <code>variable=new XMLHttpRequest();</code> ；  </p>
 <p>IE5、IE6创建语法： <code>variable=new ActiveXObject(&quot;Microsoft.XMLHTTP&quot;);</code> 。</p>
 <h2 id="二、AJAX-向服务器发送请求"><a href="#二、AJAX-向服务器发送请求" class="headerlink" title="二、AJAX - 向服务器发送请求"></a>二、AJAX - 向服务器发送请求</h2><p>XMLHttpRequest 对象用于和服务器交换数据，如需将请求发送到服务器，可以使用 XMLHttpRequest 对象的 open() 和 send() 方法：  </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">xmlhttp.open(<span class="string">"GET"</span>,<span class="string">"ajax_info.txt"</span>,<span class="literal">true</span>);</span><br><span class="line">xmlhttp.send();</span><br><span class="line">```  </span><br><span class="line"></span><br><span class="line">| 方法 | 描述 | 参数 |</span><br><span class="line">| :------ | :------ | :------ |</span><br><span class="line">| open(method,url,async) | 规定请求的类型、URL以及是否异步处理请求 | method - 请求的类型，GET或POST；url - 文件在服务器上的位置； async - <span class="literal">true</span>(异步)或<span class="literal">false</span>(同步) |</span><br><span class="line">| send(string) | 将请求发送到服务器 | string - 仅用于POST请求 |</span><br><span class="line"></span><br><span class="line">一般情况下，GET 更简单也更快，并且大部分情况下都能用，以下几种情况使用 POST 更合适：  </span><br><span class="line">&amp;emsp;&amp;emsp;无法使用缓存文件（更新服务器上的文件或数据库）；  </span><br><span class="line">&amp;emsp;&amp;emsp;向服务器发送大量数据（POST 没有数量限制）；  </span><br><span class="line">&amp;emsp;&amp;emsp;发送包含未知字符的用户输入时，POST 比 GET 更稳定也更可靠。</span><br><span class="line"><span class="comment">## GET请求</span></span><br><span class="line">一个简单的 GET 请求：  </span><br><span class="line">```bash</span><br><span class="line">xmlhttp.open(<span class="string">"GET"</span>,<span class="string">"/try/ajax/demo_get.php"</span>,<span class="literal">true</span>);</span><br><span class="line">xmlhttp.send();</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">xmlhttp.open(<span class="string">"GET"</span>,<span class="string">"ajax_info.txt"</span>,<span class="literal">true</span>);</span><br><span class="line">xmlhttp.send();</span><br></pre></td></tr></table></figure>
+
+<p>详细解释如下：  </p>
+<table>
+<thead>
+<tr>
+<th align="left">方法</th>
+<th align="left">描述</th>
+<th align="left">参数</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">open(method,url,async)</td>
+<td align="left">规定请求的类型、URL以及是否异步处理请求</td>
+<td align="left">method - 请求的类型，GET或POST；url - 文件在服务器上的位置； async - true(异步)或false(同步)</td>
+</tr>
+<tr>
+<td align="left">send(string)</td>
+<td align="left">将请求发送到服务器</td>
+<td align="left">string - 仅用于POST请求</td>
+</tr>
+</tbody></table>
+<p>一般情况下，GET 更简单也更快，并且大部分情况下都能用，以下几种情况使用 POST 更合适：<br>&emsp;&emsp;无法使用缓存文件（更新服务器上的文件或数据库）；<br>&emsp;&emsp;向服务器发送大量数据（POST 没有数量限制）；<br>&emsp;&emsp;发送包含未知字符的用户输入时，POST 比 GET 更稳定也更可靠。</p>
+<h2 id="GET请求"><a href="#GET请求" class="headerlink" title="GET请求"></a>GET请求</h2><p>一个简单的 GET 请求：  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">xmlhttp.open(<span class="string">"GET"</span>,<span class="string">"/try/ajax/demo_get.php"</span>,<span class="literal">true</span>);</span><br><span class="line">xmlhttp.send();</span><br></pre></td></tr></table></figure>
 
 <p>为了避免得到的是缓存的结果，通常会向URL添加一个唯一的ID：  </p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">xmlhttp.open(<span class="string">"GET"</span>,<span class="string">"/try/ajax/demo_get.php?t="</span> + Math.random(),<span class="literal">true</span>);</span><br><span class="line">xmlhttp.send();</span><br></pre></td></tr></table></figure>
@@ -269,7 +295,8 @@
 <p>如果来自服务器的响应并非 XML，需使用 responseText 属性，该属性返回字符串形式的响应数据：  </p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">document.getElementById(<span class="string">"myDiv"</span>).innerHTML=xmlhttp.responseText;</span><br></pre></td></tr></table></figure>
 
-<p>如果来自服务器的响应是 XML ，并且需要作为 XML 对象进行解析，需使用responseXML属性。<br>示例 - 请求 cd_catalog.xml 文件，并解析响应：</p>
+<p>如果来自服务器的响应是 XML ，并且需要作为 XML 对象进行解析，需使用responseXML属性。  </p>
+<p>示例 - 请求 cd_catalog.xml 文件，并解析响应：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">xmlDoc=xmlhttp.responseXML;</span><br><span class="line">txt=<span class="string">""</span>;</span><br><span class="line">x=xmlDoc.getElementsByTagName(<span class="string">"ARTIST"</span>);</span><br><span class="line"><span class="keyword">for</span> (i=0;i&lt;x.length;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        txt=txt + x[i].childNodes[0].nodeValue + <span class="string">"&lt;br&gt;"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">document.getElementById(<span class="string">"myDiv"</span>).innerHTML=txt;</span><br></pre></td></tr></table></figure>
 
 <h2 id="四、AJAX-onreadystatechange-事件"><a href="#四、AJAX-onreadystatechange-事件" class="headerlink" title="四、AJAX - onreadystatechange 事件"></a>四、AJAX - <a href="https://www.runoob.com/ajax/ajax-xmlhttprequest-onreadystatechange.html" target="_blank" rel="noopener">onreadystatechange 事件</a></h2><p>当请求被发送到服务器时，我们需要执行一些基于响应的任务，每当 readyState 改变时，就会触发 onreadychange 事件，readyState 属性存有 XMLHttpRequest 的状态信息，XMLHttpRequest 对象有三个重要的属性：  </p>
@@ -294,7 +321,12 @@
 </tr>
 </tbody></table>
 <hr>
-<p><a href="https://www.runoob.com/ajax/ajax-examples.html" target="_blank" rel="noopener">更多实例</a>。。。</p>
+<p>更多实例参考<a href="https://www.runoob.com/ajax/ajax-examples.html" target="_blank" rel="noopener">这里</a>。。。</p>
+<p>另外，贴一个可以在博客中添加的每日一言的代码，就是使用 AJAX 的  XMLHttpRequest 对象从 <code>https://v1.hitokoto.cn</code> 网址上获取内容：  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;p id=<span class="string">"hitokoto"</span> style=<span class="string">"margin:0 20px 0 20px;color:	#CD5C5C;"</span>&gt;&lt;/p&gt;</span><br><span class="line">&lt;div style=<span class="string">"margin:0 20px 0 20px;"</span>&gt;</span><br><span class="line">    &lt;p id=<span class="string">"from"</span> style=<span class="string">"margin:10px;text-align:right;color:	#BC8F8F;"</span>&gt;&lt;/p&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    var xmlhttp = new XMLHttpRequest();</span><br><span class="line">    xmlhttp.onreadystatechange = <span class="function"><span class="title">function</span></span>() &#123;</span><br><span class="line">        <span class="keyword">if</span> (this.readyState == 4 &amp;&amp; this.status == 200) &#123;</span><br><span class="line">            yiyan = JSON.parse(this.responseText);</span><br><span class="line">            document.getElementById(<span class="string">"hitokoto"</span>).innerHTML =yiyan.hitokoto;</span><br><span class="line">            document.getElementById(<span class="string">"from"</span>).innerHTML =<span class="string">"——《"</span>+ yiyan.from+<span class="string">"》"</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    xmlhttp.open(<span class="string">"GET"</span>, <span class="string">"https://v1.hitokoto.cn/?c=a&amp;c=d&amp;c=c"</span>, <span class="literal">true</span>);</span><br><span class="line">    xmlhttp.send();</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果如下：  </p>
+<p><img src="https://gitee.com/butalways1121/img-Blog/raw/master/126.png" alt></p>
 
       
 
@@ -438,7 +470,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、AJAX-创建XMLHttpRequest-对象"><span class="toc-number">1.</span> <span class="toc-text">一、AJAX - 创建XMLHttpRequest 对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、AJAX-向服务器发送请求"><span class="toc-number">2.</span> <span class="toc-text">二、AJAX - 向服务器发送请求</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#POST-请求"><span class="toc-number">2.1.</span> <span class="toc-text">POST 请求</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、AJAX-服务器响应"><span class="toc-number">3.</span> <span class="toc-text">三、AJAX - 服务器响应</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、AJAX-onreadystatechange-事件"><span class="toc-number">4.</span> <span class="toc-text">四、AJAX - onreadystatechange 事件</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、AJAX-创建XMLHttpRequest-对象"><span class="toc-number">1.</span> <span class="toc-text">一、AJAX - 创建XMLHttpRequest 对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、AJAX-向服务器发送请求"><span class="toc-number">2.</span> <span class="toc-text">二、AJAX - 向服务器发送请求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GET请求"><span class="toc-number">3.</span> <span class="toc-text">GET请求</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#POST-请求"><span class="toc-number">3.1.</span> <span class="toc-text">POST 请求</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、AJAX-服务器响应"><span class="toc-number">4.</span> <span class="toc-text">三、AJAX - 服务器响应</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、AJAX-onreadystatechange-事件"><span class="toc-number">5.</span> <span class="toc-text">四、AJAX - onreadystatechange 事件</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -638,19 +670,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JPA</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JpaRepository</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">HashSet</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JPA</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JpaRepository</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -722,18 +754,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">SpringMVC</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">MyBaits</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">RestTemplate</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">HTML</a>
               </li>
              
@@ -759,6 +779,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">SpringMVC</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">MyBaits</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -823,6 +851,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">非关系型数据库</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">RestTemplate</a>
               </li>
              
               <li class="article-tag-list-item">
