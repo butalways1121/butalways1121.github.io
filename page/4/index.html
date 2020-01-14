@@ -184,6 +184,414 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Java对象与Json字符串之间的相互转换" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+        
+        <a href="/2019/09/10/Java对象与Json字符串之间的相互转换/" class="archive-article-date">
+  	<time datetime="2019-09-10T07:17:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+    <p>
+  
+    <h1 itemprop="name">
+      <a class="article-title_code_ant" href="/2019/09/10/Java对象与Json字符串之间的相互转换/">Java对象与Json字符串之间的相互转换</a>
+    </h1>
+  
+</p>
+    
+    <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">384字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">1分</span>
+      </span>
+    </span>
+</div>
+
+      
+        <p>在SpringBoot项目和Kafka整合的项目中用到了Java对象和Json字符串之间的转换，这里简单总结一下转换的几种方法。</p>
+        
+          <a class="article-more-a" href="/2019/09/10/Java对象与Json字符串之间的相互转换/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">ObjectMapper</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JSONObject</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/09/10/Java对象与Json字符串之间的相互转换/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-JPA基础查询方法JpaRepository简介" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+        
+        <a href="/2019/09/06/JPA基础查询方法JpaRepository简介/" class="archive-article-date">
+  	<time datetime="2019-09-06T02:39:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+    <p>
+  
+    <h1 itemprop="name">
+      <a class="article-title_code_ant" href="/2019/09/06/JPA基础查询方法JpaRepository简介/">JPA基础查询方法JpaRepository简介</a>
+    </h1>
+  
+</p>
+    
+    <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">1.4k字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">5分</span>
+      </span>
+    </span>
+</div>
+
+      
+        <h2 id="Spring-Data"><a href="#Spring-Data" class="headerlink" title="Spring Data"></a>Spring Data</h2><p>AppleFramework在数据访问控制层采用了Spring Data作为这一层的解决方案。Spring Data所解决的问题：Spring Data提供了一整套数据访问层(DAO)的解决方案，致力于减少数据访问层(DAO)的开发量。它使用一个叫作Repository的接口类为基础，它被定义为访问底层数据模型的超级接口:<br><code>public interface Repository&lt;T, ID extends Serializable&gt; {}</code><br>而对于某种具体的数据访问操作，则在其子接口中定义。所有继承这个接口的interface都被Spring所管理，此接口作为标识接口，功能就是用来控制domain模型的。Spring Data可以让我们只定义接口，只要遵循spring data的规范，就无需写实现类。</p>
+        
+          <a class="article-more-a" href="/2019/09/06/JPA基础查询方法JpaRepository简介/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">JPA</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">JpaRepository</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/09/06/JPA基础查询方法JpaRepository简介/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-SpringBoot整合Jsp" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+        
+        <a href="/2019/09/05/SpringBoot整合Jsp/" class="archive-article-date">
+  	<time datetime="2019-09-05T02:22:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+    <p>
+  
+    <h1 itemprop="name">
+      <a class="article-title_code_ant" href="/2019/09/05/SpringBoot整合Jsp/">SpringBoot整合Jsp</a>
+    </h1>
+  
+</p>
+    
+    <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">1.1k字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">5分</span>
+      </span>
+    </span>
+</div>
+
+      
+        <p>本文内容为SpringBoot与Jsp的整合,最终的成果是在<a href="https://github.com/butalways1121/Spring-Boot-SpringMVC-MyBaits" target="_blank" rel="noopener">DeptManage项目</a>的基础上，结合简单的Jsp页面整合成<a href="https://github.com/butalways1121/SpringBoot-Jsp" target="_blank" rel="noopener">DeptManageJsp项目</a>,在Jsp页面实现对数据库的增删改查操作。主要内容如下：</p>
+        
+          <a class="article-more-a" href="/2019/09/05/SpringBoot整合Jsp/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Spring Boot</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Jsp</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/09/05/SpringBoot整合Jsp/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-SpringBoot整合Kafka-Storm" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+        
+        <a href="/2019/08/30/SpringBoot整合Kafka-Storm/" class="archive-article-date">
+  	<time datetime="2019-08-30T02:28:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-30</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+    <p>
+  
+    <h1 itemprop="name">
+      <a class="article-title_code_ant" href="/2019/08/30/SpringBoot整合Kafka-Storm/">SpringBoot整合Kafka+Storm</a>
+    </h1>
+  
+</p>
+    
+    <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">2.4k字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">11分</span>
+      </span>
+    </span>
+</div>
+
+      
+        <p>通过SpringBoot、Kafkah和Storm的整合，实现了项目KafkaProducerStorm中请求数据库的数据并将数据发送到Kafka,在项目KafkaConsumerStorm中消费Kafka的数据并将消费掉的数据传给Storm进行判断，然后将符合条件的数据信息插入到数据库(项目源码点击<a href="https://github.com/butalways1121/SpringBoot-Kafka-Storm" target="_blank" rel="noopener">这里</a>）。</p>
+        
+          <a class="article-more-a" href="/2019/08/30/SpringBoot整合Kafka-Storm/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Kafka</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Spring Boot</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Storm</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/08/30/SpringBoot整合Kafka-Storm/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Storm入门的一个Demo" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -799,404 +1207,6 @@
 
 
   
-    <article id="post-Kafka使用Java实现数据的生产和消费" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-        
-        <a href="/2019/08/13/Kafka使用Java实现数据的生产和消费/" class="archive-article-date">
-  	<time datetime="2019-08-13T01:07:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-    <p>
-  
-    <h1 itemprop="name">
-      <a class="article-title_code_ant" href="/2019/08/13/Kafka使用Java实现数据的生产和消费/">Kafka使用Java实现数据的生产和消费</a>
-    </h1>
-  
-</p>
-    
-    <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">2.9k字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">13分</span>
-      </span>
-    </span>
-</div>
-
-      
-        <h2 id="Kafka的简单介绍"><a href="#Kafka的简单介绍" class="headerlink" title="Kafka的简单介绍"></a>Kafka的简单介绍</h2><p>Kafka是一种高吞吐量的分布式发布订阅消息系统，它可以处理消费者规模的网站中的所有动作流数据。Kafka是一个分布式流平台，主要有三个功能：<br>    1.发布和订阅记录的流，类似于消息队列或企业级消息系统；<br>    2.以容错的方式记录消息流，kafka以文件的方式来存储消息流；<br>    3.系统具备在数据流触发时进行实时处理。<br>Kafka应用场景：构建可在系统或应用程序之间可靠获取数据的实时流数据管道；构建实时流应用程序，可以转换或响应数据流。</p>
-        
-          <a class="article-more-a" href="/2019/08/13/Kafka使用Java实现数据的生产和消费/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Kafka</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">生产者与消费者</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/08/13/Kafka使用Java实现数据的生产和消费/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Spring-Boot连接数据库并插入数据" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-        
-        <a href="/2019/08/09/Spring-Boot连接数据库并插入数据/" class="archive-article-date">
-  	<time datetime="2019-08-08T23:59:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-    <p>
-  
-    <h1 itemprop="name">
-      <a class="article-title_code_ant" href="/2019/08/09/Spring-Boot连接数据库并插入数据/">Spring Boot 连接数据库并插入数据</a>
-    </h1>
-  
-</p>
-    
-    <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">1.2k字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">6分</span>
-      </span>
-    </span>
-</div>
-
-      
-        <h2 id="创建数据库表"><a href="#创建数据库表" class="headerlink" title="创建数据库表"></a>创建数据库表</h2><p>在test数据库下新建test表如下,有id和name两个属性，其中id设为自增：<br><img src="https://gitee.com/butalways1121/img-Blog/raw/master/8.png" alt></p>
-        
-          <a class="article-more-a" href="/2019/08/09/Spring-Boot连接数据库并插入数据/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Spring Boot</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/08/09/Spring-Boot连接数据库并插入数据/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Spring-Boot创建接口实现数据库的查询操作" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-        
-        <a href="/2019/08/06/Spring-Boot创建接口实现数据库的查询操作/" class="archive-article-date">
-  	<time datetime="2019-08-06T00:26:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-    <p>
-  
-    <h1 itemprop="name">
-      <a class="article-title_code_ant" href="/2019/08/06/Spring-Boot创建接口实现数据库的查询操作/">Spring Boot创建接口实现数据库的查询操作</a>
-    </h1>
-  
-</p>
-    
-    <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">1.4k字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">7分</span>
-      </span>
-    </span>
-</div>
-
-      
-        <h2 id="工具及环境"><a href="#工具及环境" class="headerlink" title="工具及环境"></a>工具及环境</h2><p>eclipse j2ee 2019、apache-maven-3.6.1、jdk1.8、Navicat for mysql 12、postman。</p>
-<h2 id="配置Maven环境"><a href="#配置Maven环境" class="headerlink" title="配置Maven环境"></a>配置Maven环境</h2><p>下载apache-maven-3.6.1压缩包，解压到某个文件夹，右键计算机-属性-高级系统设置-环境变量中新建MAVEN_HOME，设置值为maven解压的目录路径，编辑Path变量，新增%MAVEN_HOME%\bin。打开cmd.exe，输入命令mvn –version检测是否安装成功，出现Maven版本号字样则表示成功。</p>
-        
-          <a class="article-more-a" href="/2019/08/06/Spring-Boot创建接口实现数据库的查询操作/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Spring Boot</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/08/06/Spring-Boot创建接口实现数据库的查询操作/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Hexo-Yilia添加相册功能" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-        
-        <a href="/2019/08/01/Hexo-Yilia添加相册功能/" class="archive-article-date">
-  	<time datetime="2019-08-01T03:17:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-    <p>
-  
-    <h1 itemprop="name">
-      <a class="article-title_code_ant" href="/2019/08/01/Hexo-Yilia添加相册功能/">Hexo Yilia添加相册功能</a>
-    </h1>
-  
-</p>
-    
-    <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">390字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">1分</span>
-      </span>
-    </span>
-</div>
-
-      
-        <h2 id="下载并修改所需文件"><a href="#下载并修改所需文件" class="headerlink" title="下载并修改所需文件"></a>下载并修改所需文件</h2><p>简单起见，直接将该<a href="https://pan.baidu.com/s/1ZRVWw3Ruh2zHSQurQrykog" target="_blank" rel="noopener">文件</a>整体下载，解压后将assets和photos两个目录复制到blog/source下，做如下更改：<br>1.将\blog\source\photos下的tool.py中的data.json的地址修改为其所在路径：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">with open(&quot;F:/blog/source/photos/data.json&quot;,&quot;w&quot;) as fp:</span><br><span class="line">        json.dump(final_dict, fp)</span><br></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2019/08/01/Hexo-Yilia添加相册功能/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Yilia</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">相册</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/08/01/Hexo-Yilia添加相册功能/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/5/">Next &raquo;</a>
@@ -1358,22 +1368,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Yilia</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">相册</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">HashSet</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JPA</a>
               </li>
              
@@ -1390,6 +1384,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">HashSet</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Kafka</a>
               </li>
              
@@ -1399,6 +1401,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">分区</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Nacos</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Feign</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">config</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1415,6 +1429,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">IKAnalyzer</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Yilia</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">相册</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1435,6 +1457,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Tomcat</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1502,23 +1528,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Eureka</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">高可用注册中心</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Zuul</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Hystrix</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Dashboard</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Zuul</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1535,6 +1553,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Spring定时任务</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Eureka</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">高可用注册中心</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1567,10 +1593,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Thymeleaf</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Feign</a>
               </li>
              
               <li class="article-tag-list-item">
