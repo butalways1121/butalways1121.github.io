@@ -18,7 +18,9 @@
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://gitee.com/butalways1121/img-Blog/raw/master/131.png">
 <meta property="og:image" content="https://gitee.com/butalways1121/img-Blog/raw/master/132.png">
-<meta property="og:updated_time" content="2020-04-03T08:28:41.002Z">
+<meta property="og:image" content="https://gitee.com/butalways1121/img-Blog/raw/master/133.png">
+<meta property="og:image" content="https://gitee.com/butalways1121/img-Blog/raw/master/134.png">
+<meta property="og:updated_time" content="2020-04-07T03:05:25.736Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="页面中给select下拉框添加option的实现">
 <meta name="twitter:description" content="&amp;emsp;&amp;emsp;发现上一篇博客也是 select 下拉框相关的，嗯，可能最近遇到的问题都是前端的吧。这几天收获不大，这次来记录一下在页面中给 select 下拉框添加 option 并自动选中的实现吧。">
@@ -216,7 +218,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">459字</span>
+        <span class="post-count">805字</span>
       </span>
     </span>
 
@@ -225,7 +227,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">2分</span>
+        <span class="post-count">3分</span>
       </span>
     </span>
 </div>
@@ -237,11 +239,18 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;table border=<span class="string">"1px;"</span>width=<span class="string">"40%;"</span>&gt;</span><br><span class="line">    &lt;th  colspan=<span class="string">"2"</span> &gt;选择表&lt;/th&gt;</span><br><span class="line">    &lt;tr&gt;</span><br><span class="line">        &lt;td style=<span class="string">"width: 35%;"</span>&gt;请选择分类&lt;/td&gt;</span><br><span class="line">        &lt;td&gt;</span><br><span class="line">            &lt;select id=<span class="string">"select"</span> onchange=<span class="string">"showinfo()"</span>&gt;</span><br><span class="line">               &lt;option&gt;aaaa&lt;/option&gt;</span><br><span class="line">               &lt;option&gt;bbbb&lt;/option&gt;</span><br><span class="line">               &lt;option&gt;cccc&lt;/option&gt;</span><br><span class="line">               &lt;option&gt;dddd&lt;/option&gt;</span><br><span class="line">               &lt;option value=<span class="string">'add'</span>&gt;添加分类&lt;/option&gt;</span><br><span class="line">            &lt;/select&gt;</span><br><span class="line">            &lt;div style=<span class="string">"display: none;"</span> id=<span class="string">"addBlock"</span>&gt;</span><br><span class="line">               &lt;input id=<span class="string">"addInput"</span> placeholder=<span class="string">"请输入新增分类"</span>/&gt;</span><br><span class="line">               &lt;input <span class="built_in">type</span>=<span class="string">"button"</span> value=<span class="string">"点击添加"</span> id=<span class="string">"addButton"</span> onclick=<span class="string">"addOptionToSelect()"</span>&gt;</span><br><span class="line">               &lt;input <span class="built_in">type</span>=<span class="string">"button"</span> value=<span class="string">"取消"</span> id=<span class="string">"cancleButton"</span> onclick=<span class="string">"hideinfo()"</span>&gt;</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">        &lt;/td&gt;</span><br><span class="line">    &lt;/tr&gt;</span><br><span class="line">&lt;/table&gt;</span><br></pre></td></tr></table></figure>
 
 <h3 id="js代码"><a href="#js代码" class="headerlink" title="js代码"></a>js代码</h3><p>主要用来向 <code>select</code> 的已有 <code>option</code> 添加一个新的 <code>option</code> ，以及控制输入框及按钮的显示与消失，如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">      //实现添加option并自动选中</span><br><span class="line">      <span class="keyword">function</span> <span class="function"><span class="title">addOptionToSelect</span></span>() &#123;</span><br><span class="line">         var select = document.getElementById(<span class="string">"select"</span>);</span><br><span class="line">         var objOption = document.createElement(<span class="string">"OPTION"</span>);</span><br><span class="line">         objOption.text = document.getElementById(<span class="string">"addInput"</span>).value;</span><br><span class="line">         select.add(objOption);</span><br><span class="line">         select.options[select.options.length - 1].selected = <span class="string">'selected'</span>;</span><br><span class="line">         hideinfo();</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      //点击添加分类option时显示输入框及添加按钮块</span><br><span class="line">      <span class="keyword">function</span> <span class="function"><span class="title">showinfo</span></span>() &#123;</span><br><span class="line">         <span class="keyword">if</span> (document.getElementById(<span class="string">"select"</span>).value == <span class="string">'add'</span>) &#123;</span><br><span class="line">            $(<span class="string">"#addBlock"</span>).css(<span class="string">"display"</span>, <span class="string">"block"</span>);</span><br><span class="line">         &#125;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      //隐藏添加分类按钮显示输入框及添加按钮块</span><br><span class="line">      <span class="keyword">function</span> <span class="function"><span class="title">hideinfo</span></span>()&#123;</span><br><span class="line">         $(<span class="string">"#addBlock"</span>).css(<span class="string">"display"</span>, <span class="string">"none"</span>);</span><br><span class="line">      &#125;</span><br><span class="line">   &lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">      //实现添加option并自动选中</span><br><span class="line">      <span class="keyword">function</span> <span class="function"><span class="title">addOptionToSelect</span></span>() &#123;</span><br><span class="line">         var select = document.getElementById(<span class="string">"select"</span>);</span><br><span class="line">         var objOption = document.createElement(<span class="string">"OPTION"</span>);</span><br><span class="line">         objOption.text = document.getElementById(<span class="string">"addInput"</span>).value;</span><br><span class="line">         select.add(objOption);</span><br><span class="line">         select.options[select.options.length - 1].selected = <span class="string">'selected'</span>;</span><br><span class="line">         hideinfo();</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      //点击添加分类按钮显示输入框及添加按钮块，并隐藏select框</span><br><span class="line">      <span class="keyword">function</span> <span class="function"><span class="title">showinfo</span></span>() &#123;</span><br><span class="line">         <span class="keyword">if</span> (document.getElementById(<span class="string">"select"</span>).value == <span class="string">'add'</span>) &#123;</span><br><span class="line">            $(<span class="string">"#addBlock"</span>).css(<span class="string">"display"</span>, <span class="string">"block"</span>);</span><br><span class="line">            $(<span class="string">"#select"</span>).css(<span class="string">"display"</span>, <span class="string">"none"</span>);</span><br><span class="line">         &#125;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      //隐藏添加分类按钮显示输入框及添加按钮块，，并显示select框</span><br><span class="line">      <span class="keyword">function</span> <span class="function"><span class="title">hideinfo</span></span>()&#123;</span><br><span class="line">         $(<span class="string">"#addBlock"</span>).css(<span class="string">"display"</span>, <span class="string">"none"</span>);</span><br><span class="line">         $(<span class="string">"#select"</span>).css(<span class="string">"display"</span>, <span class="string">"block"</span>);</span><br><span class="line">      &#125;</span><br><span class="line">   &lt;/script&gt;</span><br></pre></td></tr></table></figure>
 
 <h3 id="运行结果"><a href="#运行结果" class="headerlink" title="运行结果"></a>运行结果</h3><p>下拉框中选择<code>添加分类</code>，输入框及两个按钮显示：  </p>
-<p><img src="https://gitee.com/butalways1121/img-Blog/raw/master/131.png" alt><br>输入框中输入要添加的分类，点击<code>点击添加</code>，即可自动添加并选中该分类：  </p>
-<p><img src="https://gitee.com/butalways1121/img-Blog/raw/master/132.png" alt></p>
+<p><img src="https://gitee.com/butalways1121/img-Blog/raw/master/131.png" alt>  </p>
+<p>输入框中输入要添加的分类，点击<code>点击添加</code>，即可自动添加并选中该分类：  </p>
+<p><img src="https://gitee.com/butalways1121/img-Blog/raw/master/132.png" alt>  </p>
+<hr>
+<p>在此在分享一下另一位同事的做法，他讲 input 和 select 框何为一体了，看上去简洁很多，但功能同样可以实现，如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line"></span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta http-equiv=<span class="string">"Content-Type"</span> content=<span class="string">"text/html;charset=UTF-8"</span>&gt;</span><br><span class="line">  &lt;style <span class="built_in">type</span>=<span class="string">"text/css"</span>&gt;</span><br><span class="line">    .box &#123;</span><br><span class="line">      position: relative;</span><br><span class="line">      width: 200px;</span><br><span class="line">      height: 20px;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    .selectBox &#123;</span><br><span class="line">      width: 200px;</span><br><span class="line">      height: 20px;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    .inputBox &#123;</span><br><span class="line">      position: absolute;</span><br><span class="line">      left: 0;</span><br><span class="line">      top: 1px;</span><br><span class="line">      width: 179px;</span><br><span class="line">      height: 14px;</span><br><span class="line">      display: none;</span><br><span class="line">    &#125;</span><br><span class="line">  &lt;/style&gt;</span><br><span class="line">  &lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line">    <span class="keyword">function</span> myselect(value) &#123;</span><br><span class="line">      var select = document.getElementById(<span class="string">'selectBox'</span>);</span><br><span class="line">      var input = document.getElementById(<span class="string">'inputBox'</span>);</span><br><span class="line">      <span class="keyword">if</span> (value == 8) &#123;</span><br><span class="line">        input.style.display = <span class="string">"block"</span>;</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        input.style.display = <span class="string">"none"</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;div class=<span class="string">"box"</span>&gt;</span><br><span class="line">    &lt;select id=<span class="string">"selectBox"</span> class=<span class="string">"selectBox"</span> onchange=<span class="string">"myselect(this.value)"</span>&gt;</span><br><span class="line">      &lt;option value=<span class="string">"1"</span>&gt;星期一&lt;/option&gt;</span><br><span class="line">      &lt;option value=<span class="string">"2"</span>&gt;星期二&lt;/option&gt;</span><br><span class="line">      &lt;option value=<span class="string">"3"</span>&gt;星期三&lt;/option&gt;</span><br><span class="line">      &lt;option value=<span class="string">"4"</span>&gt;星期四&lt;/option&gt;</span><br><span class="line">      &lt;option value=<span class="string">"5"</span>&gt;星期五&lt;/option&gt;</span><br><span class="line">      &lt;option value=<span class="string">"6"</span>&gt;星期六&lt;/option&gt;</span><br><span class="line">      &lt;option value=<span class="string">"7"</span>&gt;星期天&lt;/option&gt;</span><br><span class="line">      &lt;option value=<span class="string">"8"</span>&gt;请输入&lt;/option&gt;</span><br><span class="line">    &lt;/select&gt;</span><br><span class="line">    &lt;input <span class="built_in">type</span>=<span class="string">"text"</span> autofocus=<span class="string">"autofocus"</span> placeholder=<span class="string">"请输入"</span> class=<span class="string">"inputBox"</span> id=<span class="string">"inputBox"</span></span><br><span class="line">      onchange=<span class="string">"this.previousSibling.value=this.value"</span>&gt;</span><br><span class="line">    &lt;!--previousSibling：获取元素的上一个兄弟节点；（既包含元素节点、文本节点、注释节点）--&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line"></span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<p>运行效果：  </p>
+<p><img src="https://gitee.com/butalways1121/img-Blog/raw/master/133.png" alt><br><img src="https://gitee.com/butalways1121/img-Blog/raw/master/134.png" alt></p>
 
       
 
@@ -581,39 +590,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">HTML5</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">RedirectAttributes</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Hadoop</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Hbase</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Centos7</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Yilia</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">相册</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JPA</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JpaRepository</a>
+                <a href="javascript:void(0)" class="js-tag color1">HTML5</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -637,6 +618,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Hadoop</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Hbase</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Centos7</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">HashSet</a>
               </li>
              
@@ -649,6 +642,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">HTML</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JPA</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JpaRepository</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Kafka</a>
               </li>
              
@@ -657,7 +662,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">分区</a>
+                <a href="javascript:void(0)" class="js-tag color1">Nacos</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Feign</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -673,19 +682,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Nacos</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Feign</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">config</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Redis</a>
+                <a href="javascript:void(0)" class="js-tag color3">分区</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -701,19 +702,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">HTML</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">SpringBoot</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Zookeeper</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Dubbo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -721,7 +710,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">拦截器</a>
+                <a href="javascript:void(0)" class="js-tag color1">Redis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">ObjectMapper</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JSONObject</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -729,7 +726,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Storm</a>
+                <a href="javascript:void(0)" class="js-tag color1">Yilia</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">相册</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">拦截器</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -753,23 +758,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Jsp</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">SpringCloud</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Hystrix</a>
+                <a href="javascript:void(0)" class="js-tag color2">Eureka</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Dashboard</a>
+                <a href="javascript:void(0)" class="js-tag color3">高可用注册中心</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ObjectMapper</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JSONObject</a>
+                <a href="javascript:void(0)" class="js-tag color5">Zuul</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -785,19 +790,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Zuul</a>
+                <a href="javascript:void(0)" class="js-tag color3">Hystrix</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Eureka</a>
+                <a href="javascript:void(0)" class="js-tag color5">Dashboard</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">高可用注册中心</a>
+                <a href="javascript:void(0)" class="js-tag color5">Zookeeper</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Jsp</a>
+                <a href="javascript:void(0)" class="js-tag color1">Dubbo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -805,7 +810,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Topology</a>
+                <a href="javascript:void(0)" class="js-tag color1">Storm</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -818,14 +823,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">href 属性</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">hexo-yilia</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Live2d看板动画</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -845,15 +842,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">关系型数据库</a>
+                <a href="javascript:void(0)" class="js-tag color2">Ribbon</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">非关系型数据库</a>
+                <a href="javascript:void(0)" class="js-tag color4">Topology</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">RestTemplate</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -865,11 +866,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">RestTemplate</a>
+                <a href="javascript:void(0)" class="js-tag color1">hexo-yilia</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Ribbon</a>
+                <a href="javascript:void(0)" class="js-tag color1">Live2d看板动画</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">关系型数据库</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">非关系型数据库</a>
               </li>
             
             <div class="clearfix"></div>
